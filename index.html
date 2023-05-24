@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAWZ</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+</head>
+<style>
+    @-webkit-keyframes fade-in-bottom {
+    0% {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-bottom {
+    0% {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+    body{
+        position: relative;
+        margin: 0;
+        background-color: black;
+    }
+    h1{
+        margin: 0;
+        padding-top: 3rem;
+        padding-left: 2rem;
+    }
+    .videito{
+        filter: brightness(60%);
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 105%;
+        min-height: 100%;
+        transform: translateX(calc((100% - 100vw) / 2));
+        z-index: -2;
+    }
+    .textopadre{
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .texto1{
+        font-size: calc(4em + 4vw);
+        color: white;
+        -webkit-animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	    animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        position: absolute;
+        font-family: 'Poppins', sans-serif;
+    }
+    .texto2{
+        display: flex;
+        justify-content: center;
+        color: white;
+        z-index: 5;
+        position: absolute;
+        font-size: calc(1em + 1vw);
+        margin-top: 1150px;
+        -webkit-animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	    animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        margin-left: 1800px;
+        margin-right: 1800px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .spotify{
+        scale: 0.3;
+        transition: ease-in 0.13s;
+    }
+    .spotify:hover{
+        scale: 0.45;
+        transition: ease-in 0.13s;
+    }
+    .youtube{
+        display: flex;
+        scale: 0.7;
+        transition: ease-in 0.13s;
+    }
+    .youtube:hover{
+        scale: 1;
+        transition: ease-in 0.13s;
+    }
+    .contenedordeiconos{
+        display: flex;
+        margin-top: 2%;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 40%;
+        margin-right: 40%;
+        align-items: center;
+        position: absolute;
+        width: 20%;
+        height: 500px;
+        scale: calc(1em + 1vw);
+    }
+    .spotifycont{
+        position: absolute;
+    }
+</style>
+<body>
+    <div class="textopadre">
+    <b class="texto1">Conocé MAWZ</b>
+        <a align="center" class="texto2">El rapero y freestyler argentino LIT Killah finalmente ha estrenado su primer álbum, titulado MAWZ haciendo referencia al primer acronimo con el que se identificaba. En este disco vemos colaboraciones muy esperadas con otros artistas de la escena argentina, entre estos FMK, Rusherking, Maria Becerra e incluso Duki y Khea</a>
+    </div>
+    <div class="contenedordeiconos">
+        <a class="spotifycont" title="MAWZ en Spotify" href="https://open.spotify.com/album/1SBHFu8QLBlhsqLL7WQtlR"><img href class="spotify" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" ></img></a>
+        <a title="MAWZ en Youtube" href="https://www.youtube.com/playlist?list=PL2qOEvSN1l4HhGEm0qNXBiiqkQgfjrXHO"><img class="youtube" src="https://www.edigitalagency.com.au/wp-content/uploads/Youtube-logo-white-only-png.png" ></img></a>
+    </div>
+    <video id="videito" class="videito" onplay="setCurTime()" src="soyunomas2.mp4" muted autoplay>
+    </video>
+</body>
+<script>
+    var vid = document.getElementById("videito");
+    function setCurTime() {
+        vid.currentTime=62
+    }
+</script>
+</html>
