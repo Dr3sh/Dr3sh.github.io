@@ -115,8 +115,16 @@
     .spotifycont{
         position: absolute;
     }
+    .fondo{
+        z-index: -2;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+}
 </style>
 <body>
+    <img id="fondo" class="fondo" src="fondo.png">
+</img>
     <div class="textopadre">
     <b class="texto1">Conocé MAWZ</b>
         <a align="center" class="texto2">El rapero y freestyler argentino LIT Killah finalmente ha estrenado su primer álbum, titulado MAWZ haciendo referencia al primer acronimo con el que se identificaba. En este disco vemos colaboraciones muy esperadas con otros artistas de la escena argentina, entre estos FMK, Rusherking, Maria Becerra e incluso Duki y Khea</a>
@@ -125,8 +133,6 @@
         <a class="spotifycont" title="MAWZ en Spotify" href="https://open.spotify.com/album/1SBHFu8QLBlhsqLL7WQtlR"><img href class="spotify" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" ></img></a>
         <a title="MAWZ en Youtube" href="https://www.youtube.com/playlist?list=PL2qOEvSN1l4HhGEm0qNXBiiqkQgfjrXHO"><img class="youtube" src="https://www.edigitalagency.com.au/wp-content/uploads/Youtube-logo-white-only-png.png" ></img></a>
     </div>
-    <video id="videito" class="videito" onplay="setCurTime()" src="soyunomas2.mp4" muted autoplay>
-    </video>
 </body>
 <script>
     var vid = document.getElementById("videito");
