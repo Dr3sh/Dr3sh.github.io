@@ -4,140 +4,336 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAWZ</title>
-    <link rel="shortcut icon" href="favicon.png">
+    <title>Inicia sesión</title>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
 </head>
 <style>
-    @-webkit-keyframes fade-in-bottom {
-    0% {
-      -webkit-transform: translateY(50px);
-              transform: translateY(50px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(0);
-              transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  @keyframes fade-in-bottom {
-    0% {
-      -webkit-transform: translateY(50px);
-              transform: translateY(50px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(0);
-              transform: translateY(0);
-      opacity: 1;
-    }
-  }
     body{
-        position: relative;
+        display: flex;
+        justify-content: center;
         margin: 0;
+    }
+    .iniciasesion{
+        position: absolute;
+        left: 98px;
+        bottom: -14px;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+    }
+    .registrarse{
+        position: absolute;
+        left: 98px;
+        bottom: -14px;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+    }
+    .github{
+        scale: 0.01;
+    }
+    .quiensoy{
+        text-decoration: none;
+        margin-left: 20px;
+        margin-top: 6px;
+        font-size: 25px;
+        color: white;
+        font-weight: bold;
+    }
+    .rick{
+        text-decoration: none;
+        color: white;
+        margin-left: 20px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .github{
+        text-decoration: none;
+        color: white;
+        margin-left: 20px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .discord{
+        text-decoration: none;
+        color: white;
+        margin-left: 20px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .cuadrado1{
+        margin-top: 200px;
+        margin-bottom: 180px;
+        width: 400px;
+        height: 540px;
+        background-color: white;
+        border: solid black 5px;
+        position: absolute;
+        border-radius: 30px;
+    }
+    .cuadrado2{
+    width: 400px;
+    position: absolute;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: 60px;
+    background-color: black;
+    }
+    .cuadrado3{
+        margin-top: 200px;
+        margin-bottom: 180px;
+        width: 400px;
+        height: 540px;
+        background-color: white;
+        border: solid black 5px;
+        position: absolute;
+        border-radius: 30px;
+    }
+    .cuadrado4{
+    width: 400px;
+    position: absolute;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: 60px;
+    background-color: black;
+    }
+    .inputsregistro{
+        user-select: none;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 85px;
+        margin-bottom: 320px;
+        margin-left: 45px;
+        margin-right: 115px;
+        flex-direction: column;
+        display: flex;
+        position: absolute;
+    }
+    .inputs{
+        user-select: none;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 130px;
+        margin-bottom: 320px;
+        margin-left: 45px;
+        margin-right: 115px;
+        flex-direction: column;
+        display: flex;
+        position: absolute;
+    }
+    .userinput{
+        font-family: 'Poppins', sans-serif;
+        border: none;
+        outline: none;
+        margin-bottom: 25px;
+        color: white;
+        height: 35px;
+        width: 300px;
+        border-radius: 5px;
+        background-color: black;
+        user-select: none;
+    }
+    .passwordinput{
+        user-select: none;
+        font-family: 'Poppins', sans-serif;
+        border: none;
+        outline: none;
+        color: white;
+        height: 35px;
+        width: 300px;
+        border-radius: 5px;
         background-color: black;
     }
-    h1{
-        margin: 0;
-        padding-top: 3rem;
-        padding-left: 2rem;
-    }
-    .videito{
-        filter: brightness(60%);
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 105%;
-        min-height: 100%;
-        transform: translateX(calc((100% - 100vw) / 2));
-        z-index: -2;
-    }
-    .textopadre{
-        height: 60vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .texto1{
-        font-size: calc(4em + 4vw);
-        color: white;
-        -webkit-animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	    animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-        position: absolute;
+    .correoinput{
         font-family: 'Poppins', sans-serif;
-    }
-    .texto2{
-        display: flex;
-        justify-content: center;
+        border: none;
+        outline: none;
+        margin-bottom: 10px;
         color: white;
-        z-index: 5;
-        position: absolute;
-        font-size: calc(1em + 1vw);
-        margin-top: 1150px;
-        -webkit-animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	    animation: fade-in-bottom 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-        margin-left: 1800px;
-        margin-right: 1800px;
+        height: 35px;
+        width: 300px;
+        border-radius: 5px;
+        background-color: black;
+        user-select: none;
+    }
+    .userinputregistro{
         font-family: 'Poppins', sans-serif;
+        border: none;
+        outline: none;
+        margin-bottom: 10px;
+        color: white;
+        height: 35px;
+        width: 300px;
+        border-radius: 5px;
+        background-color: black;
+        user-select: none;
     }
-    .spotify{
-        scale: 0.3;
-        transition: ease-in 0.13s;
+    .passwordinputregistro{
+        user-select: none;
+        font-family: 'Poppins', sans-serif;
+        border: none;
+        outline: none;
+        color: white;
+        height: 35px;
+        width: 300px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: black;
     }
-    .spotify:hover{
-        scale: 0.45;
-        transition: ease-in 0.13s;
+    .password2inputregistro{
+        user-select: none;
+        font-family: 'Poppins', sans-serif;
+        border: none;
+        outline: none;
+        color: white;
+        height: 35px;
+        width: 300px;
+        border-radius: 5px;
+        background-color: black;
     }
-    .youtube{
-        display: flex;
-        scale: 0.7;
-        transition: ease-in 0.13s;
+    .registroboton{
+    display: flex;
+    position: absolute;
+    margin-top: 310px;
+    width: 308px;
+    height: 60px;
+    margin-left: 1px;
+    margin-right: 52px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: solid black 2px;
+    border-radius: 5px;
+    font-size: 25px;
+    background-color: white;
+  }
+    ::placeholder{
+        color: white;
     }
-    .youtube:hover{
-        scale: 1;
-        transition: ease-in 0.13s;
+    .entrar{
+    display: flex;
+    position: absolute;
+    margin-top: 350px;
+    width: 308px;
+    height: 60px;
+    margin-left: 47px;
+    margin-right: 52px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: solid black 2px;
+    border-radius: 5px;
+    font-size: 25px;
+    background-color: white;
+  }
+  .hidden {
+        display: none;
     }
-    .contenedordeiconos{
-        display: flex;
-        margin-top: 2%;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: 40%;
-        margin-right: 40%;
-        align-items: center;
+    .fade-transition {
+        transition: opacity 0.5s ease;
+    }
+    .panel-superior {
+      width: 100%;
+      background-color: black;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .togglecuadrado{
         position: absolute;
-        width: 20%;
-        height: 500px;
-        scale: calc(1em + 1vw);
     }
-    .spotifycont{
-        position: absolute;
-    }
-    .fondo{
-        z-index: -2;
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
+    .botonessuperiores{
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        color: white;
+        margin-top: 5px;
 }
+.togglecuadrado{
+    display: flex;
+    position: absolute;
+    margin-top: 482px;
+    width: 404px;
+    height: 60px;
+    margin-left: -2px;
+    margin-right: 52px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: solid black 2px;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    border-bottom-left-radius: 300px;
+    border-bottom-right-radius: 300px;
+    font-size: 25px;
+    background-color: white;
+  }
+  .togglecuadrado2{
+    display: flex;
+    position: absolute;
+    margin-top: 397px;
+    width: 404px;
+    height: 60px;
+    margin-left: -47px;
+    margin-right: 52px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: solid black 2px;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    border-bottom-left-radius: 300px;
+    border-bottom-right-radius: 300px;
+    font-size: 25px;
+    background-color: white;
+  }
 </style>
 <body>
-    <img id="fondo" class="fondo" src="fondo.png">
-</img>
-    <div class="textopadre">
-    <b class="texto1">Conocé MAWZ</b>
-        <a align="center" class="texto2">El rapero y freestyler argentino LIT Killah finalmente ha estrenado su primer álbum, titulado MAWZ haciendo referencia al primer acronimo con el que se identificaba. En este disco vemos colaboraciones muy esperadas con otros artistas de la escena argentina, entre estos FMK, Rusherking, Maria Becerra e incluso Duki y Khea</a>
-    </div>
-    <div class="contenedordeiconos">
-        <a class="spotifycont" title="MAWZ en Spotify" href="https://open.spotify.com/album/1SBHFu8QLBlhsqLL7WQtlR"><img href class="spotify" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" ></img></a>
-        <a title="MAWZ en Youtube" href="https://www.youtube.com/playlist?list=PL2qOEvSN1l4HhGEm0qNXBiiqkQgfjrXHO"><img class="youtube" src="https://www.edigitalagency.com.au/wp-content/uploads/Youtube-logo-white-only-png.png" ></img></a>
-    </div>
+    <div class="panel-superior"><div class="botonessuperiores">
+        <a class="quiensoy" target="_blank" href="quiensoy.html">¿Quien soy?</a>
+        <a class="github" target="_blank" href="https://github.com/Dr3sh">Github</a>
+        <a class="discord" target="_blank" href="https://discord.com/">Discord</a>
+        <a class="rick" target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Codigo de esta página</a>
+        </div>
+    </div>  
+     <div class="cuadrado1 hidden fade-transition" id="cuadrado1"><div class="cuadrado2"><h1 class="iniciasesion">Inicia sesión</h1></div>
+    <form>
+    <div class="inputs">
+        <label for="userinput">Usuario</label>
+        <input autocomplete="off" placeholder="Introduce el usuario" style="padding-left: 8px;" class="userinput" type="text" name="Usuario" required></input>
+        <label for="userinput">Contraseña</label>
+        <input autocomplete="off" placeholder="Introduce la contraseña" style="padding-left: 8px;" class="passwordinput" type="password" name="Contraseña" required></input>
+        </div>
+        <input class="entrar" type="submit" value="Entrar"></input>
+        <button class="togglecuadrado" id="toggleCuadrados">¿Registrarse?</button>
+        </div>
+</form>
+<div class="cuadrado3 fade-transition" id="cuadrado3"><div class="cuadrado4"><h1 class="registrarse">Registrarse</h1></div>
+<div class="inputsregistro">
+    <label for="userinputregistro">Correo electrónico</label>
+    <input placeholder="Introduce tu correo electrónico" style="padding-left: 8px;" class="correoinput" type="text" name="Usuario"></input>
+    <label for="userinputregistro">Usuario</label>
+    <input placeholder="Introduce tu usuario" style="padding-left: 8px;" class="userinputregistro" type="text" name="Usuario"></input>
+    <label for="userinputregistro">Contraseña</label>
+    <input placeholder="Introduce la contraseña" style="padding-left: 8px;" class="passwordinputregistro" type="password" name="Contraseña"></input>
+    <label for="password2inputregistro">Repetir Contraseña</label>
+    <input placeholder="Repite la contraseña" style="padding-left: 8px;" class="password2inputregistro" type="password" name="Contraseña"></input>
+    <input class="registroboton" type="submit" value="Registrarse"></input>
+    <button class="togglecuadrado2" id="toggleCuadrados2">¿Ya tienes cuenta?</button>
+</div>
+</div>
+    <script src="scriptcambioentreregistro.js">
+    </script>
 </body>
-<script>
-    var vid = document.getElementById("videito");
-    function setCurTime() {
-        vid.currentTime=62
-    }
-</script>
 </html>
