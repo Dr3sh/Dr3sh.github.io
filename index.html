@@ -2,338 +2,241 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicia sesión</title>
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <title>lov u</title>
 </head>
+<body>
+    <div class="todo">
+    <div class="speech-wrapper">
+        <div class="bubble">
+          <div class="txt">
+            <p class="name">Jeider</p>
+            <p id="mensaje" class="message"></p>
+            <span id="hora" class="timestamp">12:00 AM</span>
+          </div>
+        </div>
+    </div>
+    <div class="contadorcompleto">
+    <div class="siguientemens">Siguiente mensaje en:</div>
+    <div class="contador" id="contador">00:00:00</div>
+    </div>
+    </div>
+</body>
 <style>
-    body{
+    .cambiomanual {
+        width: 200px;
+        height: 20px;
+        border: none;
+
+        color: #f5f5f5;
+        background-color: #2ecc71;
+    }
+    .todo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contadorcompleto {
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .siguientemens {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 30px;  
+        color: white;
+    }
+    .contador {
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 100px;
+        color: white;
+    }
+    .triangulito {
+        background-color: #2ecc71;
+        width: 10px;
+        height: 10px;
+    }
+    .speech-wrapper{
+        scale: 1.3;
+  padding: 30px 40px;
+  .bubble{
+    width: 24vw;
+    height: auto;
+    display: block;
+    background: rgb(32, 44, 51);
+    border-radius: 4px;
+    position: relative;
+    margin: 0 0 25px;
+    &.alt{
+      margin: 0 0 0 60px;
+    }
+    .txt{
+      padding: 8px 55px 8px 14px;
+      .name{
+        font-weight: 600;
+        font-size: 1.0vh;
+        margin: 0 0 4px;
+        color: rgb(6, 207, 129);
+        span{
+          font-weight: normal;
+          color: #b3b3b3;
+        }
+        &.alt{
+          color: #2ecc71;
+        }
+      }
+      .message{
+        font-size: 1.3vh;
         margin: 0;
-    }
-    .iniciasesion{
+        color: #ffffff;
+      }
+      .timestamp{
+        font-size: 0.9vh;
         position: absolute;
-        left: 98px;
-        bottom: -14px;
-        color: white;
-        font-family: 'Poppins', sans-serif;
+        bottom: 8px;
+        right: 10px;
+        text-transform: uppercase; color: #999
+      }
     }
-    .registrarse{
-        position: absolute;
-        left: 98px;
-        bottom: -14px;
-        color: white;
-        font-family: 'Poppins', sans-serif;
+    .bubble-arrow {
+      position: absolute;
+      width: 0;
+      bottom:42px;
+      left: -16px;
+      height: 0;
+      &.alt{
+        right: -2px;      
+        bottom: 40px;
+        left: auto;
+      }
     }
-    .github{
-        scale: 0.01;
+    .bubble-arrow:after {
+      content: "";
+      position: absolute;
+      border: 0 solid transparent;
+      border-top: 9px solid #f5f5f5;
+      border-radius: 0 20px 0;
+      width: 15px;
+      height: 30px;
+      transform: rotate(145deg);
     }
-    .quiensoy{
-        text-decoration: none;
-        margin-left: 20px;
-        margin-top: 6px;
-        font-size: 25px;
-        color: white;
-        font-weight: bold;
+    .bubble-arrow.alt:after {
+      transform: rotate(45deg) scaleY(-1);
     }
-    .rick{
-        text-decoration: none;
-        color: white;
-        margin-left: 20px;
-        font-size: 25px;
-        font-weight: bold;
-    }
-    .github{
-        text-decoration: none;
-        color: white;
-        margin-left: 20px;
-        font-size: 25px;
-        font-weight: bold;
-    }
-    .discord{
-        text-decoration: none;
-        color: white;
-        margin-left: 20px;
-        font-size: 25px;
-        font-weight: bold;
-    }
-    .cuadrado1{
-        margin-top: 200px;
-        margin-bottom: 180px;
-        width: 400px;
-        height: 540px;
-        background-color: white;
-        border: solid black 5px;
-        position: absolute;
-        border-radius: 30px;
-    }
-    .cuadrado2{
-    width: 400px;
-    position: absolute;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    height: 60px;
-    background-color: black;
-    }
-    .cuadrado3{
-        margin-top: 200px;
-        margin-bottom: 180px;
-        width: 400px;
-        height: 540px;
-        background-color: white;
-        border: solid black 5px;
-        position: absolute;
-        border-radius: 30px;
-    }
-    .cuadrado4{
-    width: 400px;
-    position: absolute;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    height: 60px;
-    background-color: black;
-    }
-    .inputsregistro{
-        user-select: none;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 85px;
-        margin-bottom: 320px;
-        margin-left: 45px;
-        margin-right: 115px;
-        flex-direction: column;
-        display: flex;
-        position: absolute;
-    }
-    .inputs{
-        user-select: none;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 130px;
-        margin-bottom: 320px;
-        margin-left: 45px;
-        margin-right: 115px;
-        flex-direction: column;
-        display: flex;
-        position: absolute;
-    }
-    .userinput{
-        font-family: 'Poppins', sans-serif;
-        border: none;
-        outline: none;
-        margin-bottom: 25px;
-        color: white;
-        height: 35px;
-        width: 300px;
-        border-radius: 5px;
-        background-color: black;
-        user-select: none;
-    }
-    .passwordinput{
-        user-select: none;
-        font-family: 'Poppins', sans-serif;
-        border: none;
-        outline: none;
-        color: white;
-        height: 35px;
-        width: 300px;
-        border-radius: 5px;
-        background-color: black;
-    }
-    .correoinput{
-        font-family: 'Poppins', sans-serif;
-        border: none;
-        outline: none;
-        margin-bottom: 10px;
-        color: white;
-        height: 35px;
-        width: 300px;
-        border-radius: 5px;
-        background-color: black;
-        user-select: none;
-    }
-    .userinputregistro{
-        font-family: 'Poppins', sans-serif;
-        border: none;
-        outline: none;
-        margin-bottom: 10px;
-        color: white;
-        height: 35px;
-        width: 300px;
-        border-radius: 5px;
-        background-color: black;
-        user-select: none;
-    }
-    .passwordinputregistro{
-        user-select: none;
-        font-family: 'Poppins', sans-serif;
-        border: none;
-        outline: none;
-        color: white;
-        height: 35px;
-        width: 300px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        background-color: black;
-    }
-    .password2inputregistro{
-        user-select: none;
-        font-family: 'Poppins', sans-serif;
-        border: none;
-        outline: none;
-        color: white;
-        height: 35px;
-        width: 300px;
-        border-radius: 5px;
-        background-color: black;
-    }
-    .registroboton{
-    display: flex;
-    position: absolute;
-    margin-top: 310px;
-    width: 308px;
-    height: 60px;
-    margin-left: 1px;
-    margin-right: 52px;
-    text-align: center;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    border: solid black 2px;
-    border-radius: 5px;
-    font-size: 25px;
-    background-color: white;
   }
-    ::placeholder{
-        color: white;
-    }
-    .entrar{
-    display: flex;
-    position: absolute;
-    margin-top: 350px;
-    width: 308px;
-    height: 60px;
-    margin-left: 47px;
-    margin-right: 52px;
-    text-align: center;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    border: solid black 2px;
-    border-radius: 5px;
-    font-size: 25px;
-    background-color: white;
-  }
-  .hidden {
-        display: none;
-    }
-    .fade-transition {
-        transition: opacity 0.5s ease;
-    }
-    .panel-superior {
-      width: 100%;
-      background-color: black;
-      height: 50px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .togglecuadrado{
-        position: absolute;
-    }
-    .botonessuperiores{
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
-        color: white;
-        margin-top: 5px;
 }
-.togglecuadrado{
-    display: flex;
-    position: absolute;
-    margin-top: 482px;
-    width: 404px;
-    height: 60px;
-    margin-left: -2px;
-    margin-right: 52px;
-    text-align: center;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    border: solid black 2px;
-    border-top-left-radius: 300px;
-    border-top-right-radius: 300px;
-    border-bottom-left-radius: 300px;
-    border-bottom-right-radius: 300px;
-    font-size: 25px;
-    background-color: white;
-  }
-  .togglecuadrado2{
-    display: flex;
-    position: absolute;
-    margin-top: 397px;
-    width: 404px;
-    height: 60px;
-    margin-left: -47px;
-    margin-right: 52px;
-    text-align: center;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    border: solid black 2px;
-    border-top-left-radius: 300px;
-    border-top-right-radius: 300px;
-    border-bottom-left-radius: 300px;
-    border-bottom-right-radius: 300px;
-    font-size: 25px;
-    background-color: white;
-  }
+    html {
+        height: 100%;
+    }
+    body {
+        user-select: none;
+        display: flex;
+        flex-direction: column ;
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(32, 31, 31);
+        background-image: url(back.png);
+        background-size: 200vh;
+    }
+    .mensaje {
+        color: black;
+    }
 </style>
-<body>
-    <div class="panel-superior"><div class="botonessuperiores">
-        <a class="quiensoy" target="_blank" href="quiensoy.html">¿Quien soy?</a>
-        <a class="github" target="_blank" href="https://github.com/Dr3sh">Github</a>
-        <a class="discord" target="_blank" href="https://discord.com/">Discord</a>
-        <a class="rick" target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Codigo de esta página</a>
-        </div>
-    </div>  
-     <div class="cuadrado1 fade-transition" id="cuadrado1"><div class="cuadrado2"><h1 class="iniciasesion">Inicia sesión</h1></div>
-    <form>
-    <div class="inputs">
-        <label for="userinput">Usuario</label>
-        <input autocomplete="off" placeholder="Introduce el usuario" style="padding-left: 8px;" class="userinput" type="text" name="Usuario" required></input>
-        <label for="userinput">Contraseña</label>
-        <input autocomplete="off" placeholder="Introduce la contraseña" style="padding-left: 8px;" class="passwordinput" type="password" name="Contraseña" required></input>
-        </div>
-        <input class="entrar" type="submit" value="Entrar"></input>
-        <button class="togglecuadrado" id="toggleCuadrados">¿Registrarse?</button>
-        </div>
-</form>
-<div class="cuadrado3 hidden fade-transition" id="cuadrado3"><div class="cuadrado4"><h1 class="registrarse">Registrarse</h1></div>
-<div class="inputsregistro">
-    <label for="userinputregistro">Correo electrónico</label>
-    <input placeholder="Introduce tu correo electrónico" style="padding-left: 8px;" class="correoinput" type="text" name="Usuario"></input>
-    <label for="userinputregistro">Usuario</label>
-    <input placeholder="Introduce tu usuario" style="padding-left: 8px;" class="userinputregistro" type="text" name="Usuario"></input>
-    <label for="userinputregistro">Contraseña</label>
-    <input placeholder="Introduce la contraseña" style="padding-left: 8px;" class="passwordinputregistro" type="password" name="Contraseña"></input>
-    <label for="password2inputregistro">Repetir Contraseña</label>
-    <input placeholder="Repite la contraseña" style="padding-left: 8px;" class="password2inputregistro" type="password" name="Contraseña"></input>
-    <input class="registroboton" type="submit" value="Registrarse"></input>
-    <button class="togglecuadrado2" id="toggleCuadrados2">¿Ya tienes cuenta?</button>
-</div>
-</div>
-    <script src="scriptcambioentreregistro.js">
-    </script>
-</body>
+<script>
+        function formatearNumero(numero) {
+            return numero < 10 ? `0${numero}` : numero;
+        }
+
+        function actualizarContador(tiempoRestante) {
+            const horas = Math.floor(tiempoRestante / 3600);
+            const minutos = Math.floor((tiempoRestante % 3600) / 60);
+            const segundos = tiempoRestante % 60;
+
+            const horasFormateadas = formatearNumero(horas);
+            const minutosFormateados = formatearNumero(minutos);
+            const segundosFormateados = formatearNumero(segundos);
+
+            document.getElementById("contador").textContent = `
+                ${horasFormateadas}:${minutosFormateados}:${segundosFormateados}
+            `;
+        }
+    function actualizarTexto() {
+    const frases = [
+      "lov u",
+      "amo tus ojos my lov",
+      "i love you like kanye loves kanye",
+      "espero que tengas/estés teniendo un lindo día, si no házmelo saber por favor",
+      "beautiful morning, you're the sun in my morning baby",
+      "te amo my lov",
+      "hola mi amor",
+      "si necesitas hablar o desahogarte estoy para tí siempre",
+      "gracias por soportarme tanto",
+      "amo que a pesar de que no entiendas mucho sobre la mitad de las cosas que digo sigas aguantandome día a día, lov u",
+      "te amo, ahora dilo tú",
+      "definitivamente soy tu fan #1",
+      "¿cómo amaneció mi café de la mañana?",
+      "me hacéis feliz",
+      "que privilegio es que vos me digáis my lov",
+      "i don't know how i'ma manage if one day you just up and leave",
+      "no sé pq tardaste tanto en llegar a mi vida, supongo que lo bueno se hace esperar",
+      "vamos por un helado?",
+      "me hace feliz pensar que cada vez confías más en mí, al principio eras bastante más tímida y reservada",
+      "tu amas a spiderman y yo a tí",
+      "siempre que necesites hablar estaré para tí"
+    ];
+
+    const indice = Math.floor(Math.random() * frases.length);
+    document.getElementById("mensaje").textContent = frases[indice];
+  }
+
+    function iniciarCuentaAtras() {
+        const tiempoInicial = 24 * 60 * 60;
+        let tiempoRestante = tiempoInicial;
+
+        const intervalo = setInterval(() => {
+            tiempoRestante--;
+            actualizarContador(tiempoRestante);
+
+            if (tiempoRestante <= 0) {
+                clearInterval(intervalo);
+                actualizarTexto();
+                tiempoRestante = tiempoInicial;
+                iniciarCuentaAtras();
+            }
+        }, 1000);
+    }
+    function obtenerHoraActual() {
+            const ahora = new Date();
+            const horas = ahora.getHours();
+            const minutos = ahora.getMinutes();
+
+            const horasFormateadas = formatearNumero(horas)
+            const minutosFormateados = formatearNumero(minutos)
+
+
+            let horaFormateada = horas % 12;
+            if (horaFormateada === 0) {
+                horaFormateada = 12; 
+            }
+            const sufijo = horas >= 12 ? 'PM' : 'AM';
+
+            document.getElementById('hora').textContent = `${horaFormateada}:${minutosFormateados} ${sufijo}`;
+        }
+
+        setInterval(obtenerHoraActual, 1000);
+
+    window.onload = () => {
+        iniciarCuentaAtras();
+    };
+
+    actualizarTexto();
+</script>
 </html>
