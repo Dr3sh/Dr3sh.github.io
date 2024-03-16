@@ -8,17 +8,21 @@
 </head>
 <body>
     <div class="todo">
+    <label class="mensaje1">(lo de mensaje x de 17 quiere decir que estás viendo uno de los mensajes de los 17 que pueden salir)</label>
+    <p></p>
     <div class="speech-wrapper">
         <div class="bubble">
           <div class="txt">
             <p class="name">Jeider</p>
             <p id="mensaje" class="message"></p>
             <p></p>
-            <img class="gif" width="150px" height="auto" src="https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/Aq.gif">
+          <!---  <img class="gif" width="150px" height="auto" src="https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/Aq.gif">-->
+            <img class="raton" width="83px" height="auto" src="sad mouse.webp">
             <span id="hora" class="timestamp">12:00 AM</span>
           </div>
         </div>
     </div>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3ZEno9fORwMA1HPecdLi0R?utm_source=generator&theme=0" width="122%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
     <p></p>
     <p></p>
@@ -27,6 +31,11 @@
     </div>
 </body>
 <style>
+  .mensaje1 {
+    color: rgb( 255, 255, 255, 0.5);
+    font-weight: 400;
+    font-style: italic;
+  }
   .video1 {
     border-radius: 10px;
   }
@@ -57,6 +66,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .fotos {
+      display: flex;
+      flex-direction: column;
     }
     .contadorcompleto {
         display: flex;
@@ -232,11 +245,23 @@
         }
     function actualizarTexto() {
     const frases = [
-    "gu mornin",
-    "gu nai",
-    "holo",
-    "cómo estáis¿",
-    "estoy haciendo música"
+    "holo (mensaje 1 de 17)",
+    "no me gustaría que te alejes (mensaje 2 de 17)",
+    "creo que el que ya no hablemos tanto es por mi culpa... (mensaje 3 de 17)",
+    "un último lov u no estará mal (mensaje 4 de 17)",
+    "te quiero mucho ale (mensaje 5 de 17)",
+    "cómo estáis¿ (mensaje 6 de 17)",
+    "gu mornin (mensaje 7 de 17)",
+    "gu nai (mensaje 8 de 17)",
+    "kanye aún no ha sacado el álbum (no importa cuando leas esto) (mensaje 9 de 17)",
+    "puse tu canción ahi abajo (mensaje 10 de 17)",
+    "te extraño ale, y no pq ya no estés, si no pq estamos mas distantes y yo estoy como la foto de abajo de este mensaje (mensaje 11 de 17)",
+    "tú puedes con eso y más, no importa que día leas esto (mensaje 12 de 17)",
+    "sé que últimamente estoy algo distante, perdóname por eso, es solo que no quiero molestar (mensaje 13 de 17)",
+    "la música me hace feliz (mensaje 14 de 17)",
+    "supongo que ya iba siendo hora de renovar los mensajes (mensaje 15 de 17)",
+    "amo el café (mensaje 16 de 17)",
+    "don't leave, it's my fault (mensaje 17 de 17)"
     ];
 
     const indice = Math.floor(Math.random() * frases.length);
