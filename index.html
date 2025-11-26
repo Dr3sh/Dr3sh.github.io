@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <style>
+        :root{
+            --bg: #212224;
+            --fg: #F5EFE7;
+            --muted: rgba(255,255,255,0.06);
+            --card-bg: rgba(255,255,255,0.03);
+            --radius: 8px;
+            --max-width: 1100px;
+            --gap: 16px;
+        }
+
+        /* Reset + layout */
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            padding: 20px;
+            display:flex;
+            justify-content:center;
+            align-items:flex-start;
+        }
+
+        .container{
+            width:100%;
+            max-width: var(--max-width);
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            display:flex;
+            gap:var(--gap);
+            align-items:center;
+            justify-content:center; /* centrar la brand horizontalmente */
+            flex-wrap:wrap;
+            margin-bottom: 12px;
+        }
+
+        header h2{ margin:0; font-size:1rem; cursor:pointer; opacity:0.95 }
+
+        .brand {
+            display:flex;
+            flex-direction:column; /* logo arriba, título debajo */
+            gap:8px;
+            align-items:center;
+            text-align:center;
+            min-width:0;
+        }
+
+        .brand img {
+            width: 180px; /* logo más grande */
+            height: auto;
+            display: block;
+        }
+
+        /* ocultamos el título textual (lo quitaste) */
+        h1.page-title { display: none; }
+
+        h1.section-title{
+            margin: 12px 0 8px 0;
+            font-size:1.4rem;
+        }
+
+        h2.lead{
+            margin:0 0 20px 0;
+            font-size:1.55rem; /* ~18px: un poco más grande */
+            font-weight:700;    /* más presencia sin exagerar */
+            color: rgba(245,239,231,0.96); /* ligeramente más brillante */
+            line-height:1.45;
+            letter-spacing:0.2px;
+            max-width:920px; /* para no ocupar toda la línea y mantener foco en el logo */
+            text-shadow: 0 1px 0 rgba(0,0,0,0.22); /* sutil relieve */
+        }
+
+        /* Versions / accordion */
+        #versions{ margin-top: 12px; display:flex; flex-direction:column; gap:12px; }
+
+        .version {
+            background: var(--card-bg);
+            border: 1px solid var(--muted);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: box-shadow 180ms ease;
+        }
+
+        .version:hover{ box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+
+        .version .title {
+            padding: 14px 18px;
+            cursor: pointer;
+            user-select: none;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:12px;
+        }
+
+        .version .title h1 {
+            margin: 0;
+            font-size: 1.05rem;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+
+        .version .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 300ms ease, padding 200ms ease;
+            padding: 0 18px;
+        }
+
+        .version.active .content {
+            padding: 12px 18px 18px;
+            max-height: 800px; /* alto suficiente para la mayoría de contenidos */
+        }
+
+        .version .title::after {
+            content: "▸";
+            margin-left: 12px;
+            transform-origin:center;
+            transition: transform 200ms ease;
+            opacity:0.85;
+        }
+        .version.active .title::after {
+            content: "▾";
+        }
+
+        .version .content p{ margin:0 0 12px 0; color:rgba(245,239,231,0.95); line-height:1.45 }
+
+        .download-row{
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+            align-items:center;
+        }
+
+        .download-row form, .download-row a {
+            margin:0;
+        }
+
+        .download-row input[type="submit"], .download-row .link-btn {
+            background: none;
+            border: var(--fg) solid 1.5px;
+            color: var(--fg);
+            padding: 10px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 180ms ease, color 180ms ease, transform 120ms ease, box-shadow 180ms ease;
+        }
+
+        .download-row .link-btn{
+            display:inline-block;
+            text-decoration:none;
+        }
+
+        .download-row input[type="submit"]:hover,
+        .download-row .link-btn:hover,
+        .download-row input[type="submit"]:focus,
+        .download-row .link-btn:focus {
+            background: var(--fg);
+            color: var(--bg);
+            outline: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+            transform: translateY(-3px);
+        }
+
+        .download-row input[type="submit"]:active,
+        .download-row .link-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        }
+
+        /* Images responsive */
+        img { max-width:100%; height:auto; display:block; }
+
+        /* server title images - fixed pixel height so all titles match */
+        .server > img {
+            display:block;
+            margin: 12px auto;
+            max-width: 760px; /* same visual width as your existing title */
+            width: 100%;
+            height: 160px; /* fixed pixel height — keep all title images same height */
+            object-fit: contain;
+        }
+
+        /* server layout: imagen arriba (columna); logo pequeño alineado a la izquierda y descripción ocupa todo el ancho */
+        .server {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 8px 0;
+            width: 100%;
+        }
+
+        .server > img {
+            width: 700px;
+            height: auto;
+            object-fit: contain;
+            margin: 0;
+            align-self: center;
+        }
+
+        /* descripción y versiones ocupan todo el ancho disponible */
+        .server > h2.lead {
+            margin: 0;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--fg);
+            line-height: 1.35;
+            width: 100%;
+        }
+
+        .server > .versions {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* responsive: en pantallas pequeñas centramos para mejor lectura */
+        @media (max-width: 800px) {
+            .server > img { width: 140px; align-self: flex-start; }
+            .server > h2.lead { font-size: 1.2rem; text-align: left; }
+            .server > .versions { width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .server { align-items: center; text-align: center; }
+            .server > img { width: 120px; align-self: center; }
+            .server > h2.lead { font-size: 1.05rem; width: 100%; }
+        }
+
+        /* Small screens */
+        @media (max-width: 800px) {
+            :root{--max-width:900px}
+            .brand img{ width:120px }
+            h1.page-title{ font-size:1.3rem }
+            h1.section-title{ font-size:1.2rem }
+            .version .title{ padding:12px 14px }
+            .version .title h1{ font-size:1rem }
+            /* ajustes para .lead en pantallas medias */
+            h2.lead { font-size:1.05rem; max-width:760px; }
+            .server > img { height: 130px; max-width: 600px; }
+        }
+
+        @media (max-width: 480px) {
+            body{ padding:12px }
+            .container{ padding:12px }
+            header{ gap:8px; align-items:flex-start }
+            header h2{ font-size:0.95rem }
+            .brand img{ width:80px }
+            h1.page-title{ display:none }
+            h1.section-title{ font-size:1.05rem }
+            h2.lead{ font-size:0.98rem; max-width:100%; }
+            .version .title{ padding:10px 12px }
+            .version .content{ padding: 0 12px }
+            .version.active .content{ padding:10px 12px 12px }
+            .download-row input[type="submit"]{ padding:9px 10px; font-size:0.95rem }
+            .server > img { height: 110px; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand" aria-label="brand">
+                <img src="assets/logo.svg" alt="logo">
+            </div>
+        </header>
+
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,0.06);margin:8px 0 18px 0;">
+
+<div class="servidores-list">
+  <!-- Sección para Expediciones (imagen y descripción ahora pueden ser sustituidas desde versions.json) -->
+  <section class="server" data-server="expediciones" id="server-expediciones" aria-label="Expediciones">
+    <img src="assets/expediciones_title2.png" alt="expediciones">
+    <h2 class="lead"></h2>
+    <div class="versions" data-server="expediciones"></div>
+  </section>
+
+  <!-- Nueva sección para otro servidor (puedes duplicar/editar para agregar más servidores) -->
+  <section class="server" data-server="otroServidor" id="server-otroServidor" aria-label="Otro Servidor" style="display:none;">
+    <!-- image can be provided from versions.json; onerror hide -->
+    <img src="assets/otro_title.png" alt="otro servidor" onerror="this.style.display='none'">
+    <h2 class="lead">Descripción breve del otro servidor. Sustituye este texto por la descripción real cuando añadas versiones para este servidor.</h2>
+    <div class="versions" data-server="otroServidor"></div>
+  </section>
+</div>
+
+        <script>
+/* carga y render dinámico + comprobación de cambios en versions.json
+   ahora soporta especificar imágenes y descripciones de cada servidor dentro de versions.json.
+   FORMAT accepted:
+   1) legacy: an array of version objects -> [{ id, server, title, link, description, extra_link }, ...]
+   2) new: an object { servers: [{ id, image, title, description }], versions: [ ... ] }
+   Si se proporciona servers[], el script aplicará image/description a las secciones .server correspondientes
+*/
+let currentETag = null;
+let currentLastModified = null;
+const CHECK_INTERVAL_MS = 30000; // comprobar cada 30s
+
+function escapeHtml(s){ return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function escapeAttr(s){ return String(s||'').replace(/"/g,'&quot;'); }
+
+/* render de versiones agrupadas por servidor (ya existente) */
+function renderGroupedVersions(versions) {
+  // limpiar todos los contenedores de versiones
+  const containers = document.querySelectorAll('.versions');
+  containers.forEach(c => c.innerHTML = '');
+
+  // Si versions es null/undefined, salir
+  if (!Array.isArray(versions)) versions = [];
+
+  versions.forEach(v => {
+    const serverId = v.server || 'expediciones'; // fallback a expediciones si no viene
+    const container = document.querySelector(`.versions[data-server="${serverId}"]`);
+    if (!container) return; // no hay sección para este servidor (puedes crearla en el HTML)
+    const div = document.createElement('div');
+    div.className = 'version';
+    div.dataset.id = v.id || '';
+    div.innerHTML = `
+      <div class="title"><h1 title="${escapeAttr(v.title || '')}">${escapeHtml(v.title)}</h1></div>
+      <div class="content">
+        <p>${escapeHtml(v.description || '')}</p>
+        <div class="download-row">
+          <form action="${escapeAttr(v.link || '#')}" method="get" target="_blank">
+            <input type="submit" value="Descargar">
+          </form>
+          ${v.extra_link ? `<a class="link-btn" href="${escapeAttr(v.extra_link)}" target="_blank">Más info</a>` : ''}
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+
+  // ocultar secciones sin contenido y mostrar las que tienen versiones
+  document.querySelectorAll('.server').forEach(section => {
+    const sId = section.getAttribute('data-server');
+    const cont = section.querySelector(`.versions[data-server="${sId}"]`);
+    if (!cont || cont.children.length === 0) section.style.display = 'none';
+    else section.style.display = '';
+  });
+}
+
+/* Fetch que acepta ambos formatos (legacy array o nuevo objeto) y aplica imágenes/descripcion de servidores */
+async function fetchVersionsAndRender() {
+  const res = await fetch('/versions.json', {cache: 'no-cache'});
+  if (!res.ok) return;
+  const data = await res.json();
+
+  let versions = [];
+  let serversMeta = [];
+
+  if (Array.isArray(data)) {
+    // formato legacy: solo array de versiones
+    versions = data;
+  } else if (data && typeof data === 'object') {
+    // nuevo formato: { servers: [...], versions: [...] }
+    versions = Array.isArray(data.versions) ? data.versions : [];
+    serversMeta = Array.isArray(data.servers) ? data.servers : [];
+  }
+
+  // aplicar metadatos de servidores (imagenes / descripciones)
+  serversMeta.forEach(s => {
+    if (!s || !s.id) return;
+    const safeId = String(s.id);
+    let section = document.querySelector(`.server[data-server="${safeId}"]`);
+    // si no existe la sección, la creamos al final (opcional)
+    if (!section) {
+      const list = document.querySelector('.servidores-list');
+      if (!list) return;
+      section = document.createElement('section');
+      section.className = 'server';
+      section.setAttribute('data-server', safeId);
+      section.id = 'server-' + safeId;
+      section.setAttribute('aria-label', s.title || safeId);
+      section.innerHTML = `<img src="${escapeAttr(s.image || '')}" alt="${escapeAttr(s.title || safeId)}" onerror="this.style.display='none'"><h2 class="lead">${escapeHtml(s.description || '')}</h2><div class="versions" data-server="${escapeAttr(safeId)}"></div>`;
+      list.appendChild(section);
+    } else {
+      // actualizar imagen si viene
+      if (s.image) {
+        let img = section.querySelector('img');
+        if (!img) {
+          img = document.createElement('img');
+          section.insertBefore(img, section.firstChild);
+        }
+        img.src = s.image;
+        img.alt = s.title || safeId;
+        img.style.display = '';
+      }
+      // actualizar descripción si viene
+      if (s.description) {
+        let lead = section.querySelector('h2.lead');
+        if (!lead) {
+          lead = document.createElement('h2');
+          lead.className = 'lead';
+          section.appendChild(lead);
+        }
+        lead.textContent = s.description;
+      }
+    }
+  });
+
+  // render versiones
+  renderGroupedVersions(versions);
+
+  // ocultar imagenes vacías en secciones sin image
+  document.querySelectorAll('.server').forEach(section => {
+    const img = section.querySelector('img');
+    if (img && (!img.src || img.src.trim() === '')) img.style.display = 'none';
+  });
+}
+
+async function checkAndUpdate() {
+  try {
+    const head = await fetch('/versions.json', { method: 'HEAD', cache: 'no-cache' });
+    if (!head.ok) return;
+    const etag = head.headers.get('etag');
+    const lastMod = head.headers.get('last-modified');
+
+    const changed = (etag && etag !== currentETag) ||
+                    (!etag && lastMod && lastMod !== currentLastModified) ||
+                    (etag === null && lastMod === null && currentETag === null && currentLastModified === null);
+
+    if (changed) {
+      currentETag = etag;
+      currentLastModified = lastMod;
+      await fetchVersionsAndRender();
+    }
+  } catch (err) {
+    console.warn('checkAndUpdate error', err);
+  }
+}
+
+/* Delegación de eventos para abrir/cerrar versiones (funciona para todas las secciones) */
+document.addEventListener('click', (e) => {
+  const title = e.target.closest('.title');
+  if (title) {
+    const v = title.closest('.version');
+    if (!v) return;
+    const all = document.querySelectorAll('.version');
+    const isActive = v.classList.contains('active');
+    all.forEach(x => x.classList.remove('active'));
+    if (!isActive) v.classList.add('active');
+    return;
+  }
+
+  // clic fuera de cualquier .version => cerrar todas
+  if (!e.target.closest('.version')) {
+    document.querySelectorAll('.version').forEach(x => x.classList.remove('active'));
+  }
+});
+
+// inicializar: primera carga y polling periódico
+(function init() {
+  checkAndUpdate();
+  setInterval(checkAndUpdate, CHECK_INTERVAL_MS);
+})();
+        </script>
+    </div>
+</body>
+</html>
