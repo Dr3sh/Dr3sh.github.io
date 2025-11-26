@@ -1,1 +1,28 @@
-Version 2
+Novedades en el Modpack
+Mods Agregados:
+
+Modpack Update Checker: Te ayuda a saber cuándo hay actualizaciones del modpack.
+
+Enlace: https://www.curseforge.com/minecraft/mc-mods/modpack-update-checker
+
+Item Borders: Añade bordes a los objetos para que se distingan mejor.
+
+Enlace: https://modrinth.com/mod/item-borders
+
+Emotecraft: Ahora puedes usar gestos y animaciones (emotes).
+
+Enlace: https://www.curseforge.com/minecraft/mc-mods/emotecraft
+
+JourneyMap: Mapa completo en tiempo real para orientarte.
+
+Enlace: https://modrinth.com/mod/journeymap
+
+Retirado:
+
+Pack de texturas "Small Caps".
+
+Enlace: https://modrinth.com/resourcepack/small-caps-font
+
+Otros Ajustes:
+
+Se hicieron varios cambios en la interfaz (UI) del juego.
