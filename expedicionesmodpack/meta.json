@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "hotfixesFormat": null,
+"versions": [
+    {
+        "id": "0.1",
+        "releasedAt": 1764043200000
+        "promotions": {
+            "downloads": {
+                "Descargar nueva versión": "https://dr3sh.github.io/"
+            }
+        }
+    }
+]
+}
