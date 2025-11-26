@@ -1,1 +1,6 @@
-
+{
+  "modpackName": "expediciones",
+  "latestVersion": "0.2",
+  "updateUrl": "https://dr3sh.github.io",
+  "changelog": "Corrección de bugs y nuevas misiones."
+}
