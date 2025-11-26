@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
   "hotfixesFormat": null,
-"versions": [
-      {
-        "id": "0.1",
-        "releasedAt": 209384093820,
-        "promotions": {
-            "downloads": {
-                "modrinth": "https://modrinth.com/",
-                "curseforge": "https://curseforge.com/",
-                "generic": "https://example.com/"
-            }
+  "versions": [
+    {
+      "id": "0.1",
+      "releasedAt": 209384093820,
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/",
+          "curseforge": "https://curseforge.com/",
+          "generic": "https://example.com/"
         }
+      }
     },
     {
-        "id": "0.2",
-        "releasedAt": 1764043200000,
-        "promotions": {
-            "downloads": {
-                "modrinth": "https://modrinth.com/mod/modpack-update-checker"
-            }
+      "id": "0.2",
+      "releasedAt": 1764043200000,
+      "promotions": {
+        "downloads": {
+          "modrinth": "https://modrinth.com/mod/modpack-update-checker"
         }
+      }
     }
-]
+  ]
 }
