@@ -24,6 +24,14 @@
       "link": "https://download1321.mediafire.com/j5xp3pkmmwcgbFolkWIdS43Ix78i5Oato4ZoOIsgMbS1r-zxsZ7Q3BNYxuhUaFzVFgQfT1dyeUdJHA9J0naElEtBcqoyGHSGL7WnQgGq3zCLjW0t1rDu0-zSEnj8IM7TBydpj_FTP_AZ_wClH13J94E0ZIezIZvyC64dilRmP8LeF80/ofn8yc8g81mr67d/expediciones+modpack+v0.2.rar",
       "published_at": "2025-11-26"
     },
+          {
+      "id": "exp-v0.3",
+      "server": "expediciones",
+      "title": "Expediciones v0.3",
+      "description": "Mala mia se me olvidó poner los mods.",
+      "link": "https://download1326.mediafire.com/kpupkzu4979g5byyam423JOxkp_pPUPnKJ-MB0z1GuKBCgIZaCJnnAFNjyzLXf0Ya7yhNQ3ROgiu4R_a5Ri22ZjyzfRoprkatIsZJ0NRIip9_-JGUA6ktZ83w2W638io5jb74XtkoSfwe6X4W_MYBxLUzLbG_pkxsv0Dj6bDfiVQmLA/gio13cz8y4btyd4/Modpack+Expediciones+v0.3.rar",
+      "published_at": "2025-11-26"
+    },
     {
       "id": "darkcraft",
       "server": "darkcraft",
@@ -35,3 +43,4 @@
   ]
 
 }
+
