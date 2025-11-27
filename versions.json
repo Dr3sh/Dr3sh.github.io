@@ -11,9 +11,17 @@
     {
       "id": "exp-v1",
       "server": "expediciones",
-      "title": "Expediciones V1",
+      "title": "Expediciones v0.1",
       "description": "Versión fundacional del modpack de Expediciones. Esta primera versión está diseñada para un juego estable y optimizado, sirviendo como molde para futuras expansiones.",
       "link": "https://download1527.mediafire.com/gaax2xn1unfg5Akhu6nPCsy4kh6M3mHMPm357rb-cAUtIGkj3R5m-P5B-DlQHqE2-KAd5gUuzp_yRfzLzoKx7yz3MxYm6EC-Xks0OsyZ544PYuMMP6BcOv16_-iCJVQBi_NDzWCYjwYsqJcpF5AtKGBi_mqmXdHt0y22cxI3eMCDvqg/xmckgr7gnag3h3h/Expediciones+v0.1.rar",
+      "published_at": "2025-11-26"
+    },
+      {
+      "id": "exp-v0.2",
+      "server": "expediciones",
+      "title": "Expediciones v0.2",
+      "description": "Bug fixes.",
+      "link": "https://download1321.mediafire.com/j5xp3pkmmwcgbFolkWIdS43Ix78i5Oato4ZoOIsgMbS1r-zxsZ7Q3BNYxuhUaFzVFgQfT1dyeUdJHA9J0naElEtBcqoyGHSGL7WnQgGq3zCLjW0t1rDu0-zSEnj8IM7TBydpj_FTP_AZ_wClH13J94E0ZIezIZvyC64dilRmP8LeF80/ofn8yc8g81mr67d/expediciones+modpack+v0.2.rar",
       "published_at": "2025-11-26"
     },
     {
@@ -25,4 +33,5 @@
       "published_at": "2025-11-26"
     }
   ]
+
 }
