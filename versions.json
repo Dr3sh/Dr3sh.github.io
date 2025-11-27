@@ -32,6 +32,14 @@
       "link": "https://download1326.mediafire.com/kpupkzu4979g5byyam423JOxkp_pPUPnKJ-MB0z1GuKBCgIZaCJnnAFNjyzLXf0Ya7yhNQ3ROgiu4R_a5Ri22ZjyzfRoprkatIsZJ0NRIip9_-JGUA6ktZ83w2W638io5jb74XtkoSfwe6X4W_MYBxLUzLbG_pkxsv0Dj6bDfiVQmLA/gio13cz8y4btyd4/Modpack+Expediciones+v0.3.rar",
       "published_at": "2025-11-26"
     },
+              {
+      "id": "exp-v0.4",
+      "server": "expediciones",
+      "title": "Expediciones v0.4",
+      "description": "Bug fixes.",
+      "link": "https://www.mediafire.com/file/ocvb2tnspe8pdqa/Modpack_Expediciones_v0.4.rar/file",
+      "published_at": "2025-11-26"
+    },
     {
       "id": "darkcraft",
       "server": "darkcraft",
@@ -43,4 +51,5 @@
   ]
 
 }
+
 
