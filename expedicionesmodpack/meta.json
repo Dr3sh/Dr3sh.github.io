@@ -28,6 +28,15 @@
           "generic": "https://dr3sh.github.io/"
         }
       }
+    },
+            {
+      "id": "0.4",
+      "releasedAt": 1764196151000,
+      "promotions": {
+        "downloads": {
+          "generic": "https://dr3sh.github.io/"
+        }
+      }
     }
   ]
 }
