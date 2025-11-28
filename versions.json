@@ -47,9 +47,9 @@
       "published_at": "2025-11-26"
     },
     {
-      "id": "darkcraft",
-      "server": "darkcraft",
-      "title": "Expediciones V1",
+      "id": "pandora1",
+      "server": "pandora",
+      "title": "Pandora v1",
       "description": "Versión fundacional del modpack de Expediciones. Esta primera iteración está diseñada para un juego estable y optimizado, sirviendo como molde para futuras expansiones.",
       "link": "https://download1527.mediafire.com/tovrlnwdyn6g2dkUbVzM2_JOucLA9JoJfLj4Zh8BihIgfrwN7MkydvtrvhBME3hNDeMhgauqGauHruqJU1xlzrl1gVrrrdWjpSERnb-UQ61d7NYal5H247g9_s7gFzGUdm5YVXOExCS57PBM7wtRlGTFcWJ-vL3aQFJUeJYG0xcsKX4/mpgwdaed53kurxu/.minecraft.rar",
       "published_at": "2025-11-26"
@@ -57,6 +57,7 @@
   ]
 
 }
+
 
 
 
