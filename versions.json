@@ -10,7 +10,13 @@
       "id": "pandora",
       "title": "Pandora",
       "image": "assets/pandora_title.png",
-      "description": "Opa"
+      "description": "WIP"
+    },
+      {
+      "id": "cobbleverse",
+      "title": "Cobbleverse",
+      "image": "assets/cobbleverse_title.png",
+      "description": "Servidor de Cobblemon con base Semi-Vanilla. La idea principal es que el juego se sienta como el Minecraft de siempre, pero con Pokémon integrados de forma natural."
     }
   ],
   "versions": [
@@ -50,13 +56,22 @@
       "id": "pandora1",
       "server": "pandora",
       "title": "Pandora v1",
-      "description": "Versión fundacional del modpack de Expediciones. Esta primera iteración está diseñada para un juego estable y optimizado, sirviendo como molde para futuras expansiones.",
+      "description": "Versión fundacional del modpack de Pandora.",
       "link": "https://download1527.mediafire.com/tovrlnwdyn6g2dkUbVzM2_JOucLA9JoJfLj4Zh8BihIgfrwN7MkydvtrvhBME3hNDeMhgauqGauHruqJU1xlzrl1gVrrrdWjpSERnb-UQ61d7NYal5H247g9_s7gFzGUdm5YVXOExCS57PBM7wtRlGTFcWJ-vL3aQFJUeJYG0xcsKX4/mpgwdaed53kurxu/.minecraft.rar",
       "published_at": "2025-11-26"
+    },
+        {
+      "id": "cobble2",
+      "server": "cobbleverse",
+      "title": "Cobbleverse v2",
+      "description": "Algunos mods añadidos.",
+      "link": "https://download1527.mediafire.com/tovrlnwdyn6g2dkUbVzM2_JOucLA9JoJfLj4Zh8BihIgfrwN7MkydvtrvhBME3hNDeMhgauqGauHruqJU1xlzrl1gVrrrdWjpSERnb-UQ61d7NYal5H247g9_s7gFzGUdm5YVXOExCS57PBM7wtRlGTFcWJ-vL3aQFJUeJYG0xcsKX4/mpgwdaed53kurxu/.minecraft.rar",
+      "published_at": "2026-01-18"
     }
   ]
 
 }
+
 
 
 
