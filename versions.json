@@ -64,15 +64,14 @@
       "id": "cobble2",
       "server": "cobbleverse",
       "title": "Cobbleverse v2",
-      "description": "{
-  "descripcion_mods": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces."
-}",
+      "description": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces.",
       "link": "https://www.mediafire.com/file/2wg14mus6gesymo/Modpack_Cobbleverse_v2.rar/file",
       "published_at": "2026-01-18"
     }
   ]
 
 }
+
 
 
 
