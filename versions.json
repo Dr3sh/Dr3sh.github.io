@@ -67,6 +67,7 @@
       "id": "cobble2",
       "server": "cobbleverse",
       "title": "Cobbleverse v2",
+      "status": "hidden",
       "description": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces.",
       "link": "https://www.mediafire.com/file/2wg14mus6gesymo/Modpack_Cobbleverse_v2.rar/file",
       "published_at": "2026-01-18"
@@ -75,6 +76,7 @@
       "id": "cobble3",
       "server": "cobbleverse",
       "title": "Cobbleverse v3",
+      "status": "hidden",
       "description": "Eliminado Carry on. Agregado Chipped",
       "link": "https://www.mediafire.com/file/6zazqhcma0hjc4l/ModPack_Cobbleverse_v3.rar/file",
       "published_at": "2026-01-18"
@@ -83,6 +85,7 @@
       "id": "cobble4",
       "server": "cobbleverse",
       "title": "Cobbleverse v4",
+      "status": "active",
       "description": "Agregados Only Hammers, Simple Excavators, Simplest Broadaxes (Herramientas más eficientes), Tom's Simple Storage (Administrador de almacenamiento), Datapack All The Mons (Incluye Pokémon que no spawnean naturalmente), y ReFramed (Losas, escaleras, vallas y más con texturas personalizadas).",
       "link": "https://www.dropbox.com/scl/fi/vu7hc90ysx3e6gybyja6y/ModPack-Cobbleverse-v4.rar?rlkey=7ivx49fc1k4f4fjdfih61z7i8&st=tkxrblka&dl=1",
       "published_at": "2026-01-19"
@@ -90,6 +93,7 @@
   ]
 
 }
+
 
 
 
