@@ -10,6 +10,7 @@
         {
       "id": "pandora",
       "title": "Pandora",
+          "status": "hidden",
       "image": "assets/pandora_title.png",
       "description": "WIP"
     },
@@ -88,6 +89,7 @@
   ]
 
 }
+
 
 
 
