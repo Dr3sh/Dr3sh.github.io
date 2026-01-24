@@ -98,10 +98,20 @@
       "description": "Agregados más mods. ¿Alguien lee esto?. Antau la Yabi no te quiere.",
       "link": "https://www.mediafire.com/file/hcu3hh7781rlqge/ModPack_Cobbleverse_v5.rar/file",
       "published_at": "2026-01-21"
+    },
+      {
+      "id": "cobble6",
+      "server": "cobbleverse",
+      "title": "Cobbleverse v6",
+      "status": "active",
+      "description": "Añadidas megaevoluciones de Pokémon Leyendas ZA. Añadido sistema GTS (Compra/Venta). Añadidas armaduras con temática de Pokémon. Añadido Jade",
+      "link": "https://www.mediafire.com/file/dg1q94n50or5fib/ModPack_Cobbleverse_v6.rar/file",
+      "published_at": "2026-01-24"
     }
   ]
 
 }
+
 
 
 
