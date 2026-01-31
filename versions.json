@@ -66,7 +66,7 @@
         {
       "id": "cobble2",
       "server": "cobbleverse",
-      "title": "Cobbleverse v2",
+      "title": "Desgraciamon v2",
       "status": "hidden",
       "description": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces.",
       "link": "https://www.mediafire.com/file/2wg14mus6gesymo/Modpack_Cobbleverse_v2.rar/file",
@@ -75,7 +75,7 @@
     {
       "id": "cobble3",
       "server": "cobbleverse",
-      "title": "Cobbleverse v3",
+      "title": "Desgraciamon v3",
       "status": "hidden",
       "description": "Eliminado Carry on. Agregado Chipped.",
       "link": "https://www.mediafire.com/file/6zazqhcma0hjc4l/ModPack_Cobbleverse_v3.rar/file",
@@ -84,7 +84,7 @@
         {
       "id": "cobble4",
       "server": "cobbleverse",
-      "title": "Cobbleverse v4",
+      "title": "Desgraciamon v4",
       "status": "active",
       "description": "Agregados Only Hammers, Simple Excavators, Simplest Broadaxes (Herramientas más eficientes), Tom's Simple Storage (Administrador de almacenamiento), Datapack All The Mons (Incluye Pokémon que no spawnean naturalmente), y ReFramed (Losas, escaleras, vallas y más con texturas personalizadas).",
       "link": "https://www.mediafire.com/file/i2qekqpwmnoehk1/ModPack_Cobbleverse_v4.rar/file",
@@ -93,7 +93,7 @@
             {
       "id": "cobble5",
       "server": "cobbleverse",
-      "title": "Cobbleverse v5",
+      "title": "Desgraciamon v5",
       "status": "active",
       "description": "Agregados más mods. ¿Alguien lee esto?. Antau la Yabi no te quiere.",
       "link": "https://www.mediafire.com/file/hcu3hh7781rlqge/ModPack_Cobbleverse_v5.rar/file",
@@ -102,15 +102,25 @@
       {
       "id": "cobble6",
       "server": "cobbleverse",
-      "title": "Cobbleverse v6",
+      "title": "Desgraciamon v6",
       "status": "active",
       "description": "Añadidas megaevoluciones de Pokémon Leyendas ZA. Añadido sistema GTS (Compra/Venta). Añadidas armaduras con temática de Pokémon. Añadido Jade.",
       "link": "https://www.mediafire.com/file/dg1q94n50or5fib/ModPack_Cobbleverse_v6.rar/file",
       "published_at": "2026-01-24"
+    },
+          {
+      "id": "cobble7",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v7",
+      "status": "active",
+      "description": "No sé.",
+      "link": "https://www.mediafire.com/file/uut99qvycghbjzf/ModPack_Desgraciamon_v7.rar/file",
+      "published_at": "2026-01-31"
     }
   ]
 
 }
+
 
 
 
