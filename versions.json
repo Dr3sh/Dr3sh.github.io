@@ -116,10 +116,20 @@
       "description": "No sé.",
       "link": "https://www.mediafire.com/file/uut99qvycghbjzf/ModPack_Desgraciamon_v7.rar/file",
       "published_at": "2026-01-31"
+    },
+              {
+      "id": "cobble8",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v8",
+      "status": "active",
+      "description": "Somos carlos kirk.",
+      "link": "https://www.mediafire.com/file/z9zm1uj27njy1pj/ModPack_Desgraciamon_v8.rar/file",
+      "published_at": "2026-02-10"
     }
   ]
 
 }
+
 
 
 
