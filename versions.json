@@ -133,6 +133,15 @@
       "description": "Somos carlos kirk.",
       "link": "https://www.mediafire.com/file/z9zm1uj27njy1pj/ModPack_Desgraciamon_v8.rar/file",
       "published_at": "2026-02-10"
+    },
+             {
+      "id": "desgra0",
+      "server": "desgraciamon2",
+      "title": "Desgraciamon 2 v???",
+      "status": "active",
+      "description": "null",
+      "link": "https://i.imgur.com/1u3TaGj.png",
+      "published_at": "2026-05-05"
     }
   ]
 
