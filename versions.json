@@ -20,6 +20,13 @@
       "status": "active",
       "image": "assets/desgraciamon_title.png",
       "description": "Servidor de Cobblemon con base Semi-Vanilla. La idea principal es que el juego se sienta como el Minecraft de siempre, pero con Pokémon integrados de forma natural."
+    },
+    {
+      "id": "desgraciamon2",
+      "title": "Desgraciamon 2",
+      "status": "active",
+      "image": "assets/desgraciamon2logo.png",
+      "description": "Desgraciamon fue tan bueno que sacaron desgraciamon 2..."
     }
   ],
   "versions": [
