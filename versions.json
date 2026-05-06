@@ -142,15 +142,6 @@
       "description": "null",
       "link": "https://github.com/Dr3sh/Dr3sh.github.io/blob/main/assets/jeje.png?raw=true",
       "published_at": "2026-05-05"
-    },
-    {
-      "id": "desgraciamonprueba",
-      "server": "desgraciamon2",
-      "title": "Desgraciamon Prueba",
-      "status": "active",
-      "description": "prueba",
-      "link": "https://gemini.google.com/app",
-      "published_at": "2026-05-06"
     }
   ]
 }
