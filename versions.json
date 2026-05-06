@@ -7,14 +7,14 @@
       "image": "assets/expediciones_title2.png",
       "description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales."
     },
-        {
+    {
       "id": "pandora",
       "title": "Pandora",
       "status": "hidden",
       "image": "assets/pandora_title.png",
       "description": "WIP"
     },
-      {
+    {
       "id": "cobbleverse",
       "title": "Desgraciamon",
       "status": "active",
@@ -38,7 +38,7 @@
       "link": "https://download1527.mediafire.com/gaax2xn1unfg5Akhu6nPCsy4kh6M3mHMPm357rb-cAUtIGkj3R5m-P5B-DlQHqE2-KAd5gUuzp_yRfzLzoKx7yz3MxYm6EC-Xks0OsyZ544PYuMMP6BcOv16_-iCJVQBi_NDzWCYjwYsqJcpF5AtKGBi_mqmXdHt0y22cxI3eMCDvqg/xmckgr7gnag3h3h/Expediciones+v0.1.rar",
       "published_at": "2025-11-26"
     },
-      {
+    {
       "id": "exp-v0.2",
       "server": "expediciones",
       "title": "Expediciones v0.2",
@@ -46,7 +46,7 @@
       "link": "https://download1321.mediafire.com/j5xp3pkmmwcgbFolkWIdS43Ix78i5Oato4ZoOIsgMbS1r-zxsZ7Q3BNYxuhUaFzVFgQfT1dyeUdJHA9J0naElEtBcqoyGHSGL7WnQgGq3zCLjW0t1rDu0-zSEnj8IM7TBydpj_FTP_AZ_wClH13J94E0ZIezIZvyC64dilRmP8LeF80/ofn8yc8g81mr67d/expediciones+modpack+v0.2.rar",
       "published_at": "2025-11-26"
     },
-          {
+    {
       "id": "exp-v0.3",
       "server": "expediciones",
       "title": "Expediciones v0.3",
@@ -54,7 +54,7 @@
       "link": "https://download1326.mediafire.com/kpupkzu4979g5byyam423JOxkp_pPUPnKJ-MB0z1GuKBCgIZaCJnnAFNjyzLXf0Ya7yhNQ3ROgiu4R_a5Ri22ZjyzfRoprkatIsZJ0NRIip9_-JGUA6ktZ83w2W638io5jb74XtkoSfwe6X4W_MYBxLUzLbG_pkxsv0Dj6bDfiVQmLA/gio13cz8y4btyd4/Modpack+Expediciones+v0.3.rar",
       "published_at": "2025-11-26"
     },
-              {
+    {
       "id": "exp-v0.4",
       "server": "expediciones",
       "title": "Expediciones v0.4",
@@ -70,7 +70,7 @@
       "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       "published_at": "2025-11-26"
     },
-        {
+    {
       "id": "cobble2",
       "server": "cobbleverse",
       "title": "Desgraciamon v2",
@@ -88,7 +88,7 @@
       "link": "https://www.mediafire.com/file/6zazqhcma0hjc4l/ModPack_Cobbleverse_v3.rar/file",
       "published_at": "2026-01-18"
     },
-        {
+    {
       "id": "cobble4",
       "server": "cobbleverse",
       "title": "Desgraciamon v4",
@@ -97,7 +97,7 @@
       "link": "https://www.mediafire.com/file/i2qekqpwmnoehk1/ModPack_Cobbleverse_v4.rar/file",
       "published_at": "2026-01-19"
     },
-            {
+    {
       "id": "cobble5",
       "server": "cobbleverse",
       "title": "Desgraciamon v5",
@@ -106,7 +106,7 @@
       "link": "https://www.mediafire.com/file/hcu3hh7781rlqge/ModPack_Cobbleverse_v5.rar/file",
       "published_at": "2026-01-21"
     },
-      {
+    {
       "id": "cobble6",
       "server": "cobbleverse",
       "title": "Desgraciamon v6",
@@ -115,7 +115,7 @@
       "link": "https://drive.google.com/uc?id=1wUMSFUs8IjFPvSxoOGidF4T5TI8CPZyy",
       "published_at": "2026-01-24"
     },
-          {
+    {
       "id": "cobble7",
       "server": "cobbleverse",
       "title": "Desgraciamon v7",
@@ -125,7 +125,7 @@
       "published_at": "2026-01-31",
       "size_mb": 20.7
     },
-              {
+    {
       "id": "cobble8",
       "server": "cobbleverse",
       "title": "Desgraciamon v8",
@@ -134,7 +134,7 @@
       "link": "https://www.mediafire.com/file/z9zm1uj27njy1pj/ModPack_Desgraciamon_v8.rar/file",
       "published_at": "2026-02-10"
     },
-             {
+    {
       "id": "desgra0",
       "server": "desgraciamon2",
       "title": "Desgraciamon 2 v???",
@@ -142,40 +142,15 @@
       "description": "null",
       "link": "https://github.com/Dr3sh/Dr3sh.github.io/blob/main/assets/jeje.png?raw=true",
       "published_at": "2026-05-05"
+    },
+    {
+      "id": "desgraciamonprueba",
+      "server": "desgraciamon2",
+      "title": "Desgraciamon Prueba",
+      "status": "active",
+      "description": "prueba",
+      "link": "https://gemini.google.com/app",
+      "published_at": "2026-05-06"
     }
   ]
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
