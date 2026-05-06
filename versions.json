@@ -17,7 +17,7 @@
     {
       "id": "cobbleverse",
       "title": "Desgraciamon",
-      "status": "active",
+      "status": "hidden",
       "image": "assets/desgraciamon_title.png",
       "description": "Servidor de Cobblemon con base Semi-Vanilla. La idea principal es que el juego se sienta como el Minecraft de siempre, pero con Pokémon integrados de forma natural."
     },
