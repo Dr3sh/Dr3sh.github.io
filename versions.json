@@ -136,6 +136,16 @@
       "link": "https://www.mediafire.com/file/0bap3gln6nrwa88/DESGRACIAMON_2_MODPACK_v1.zip/file",
       "size_mb": 954.4,
       "published_at": "2026-05-13"
+    },
+    {
+      "id": "desgraciamon2v2",
+      "server": "desgraciamon2",
+      "title": "Desgraciamon 2 v2",
+      "status": "active",
+      "description": "version 2",
+      "link": "https://www.mediafire.com/file/xt2f8uqjxbehiuy/DESGRACIAMON_2_MODPACK_v2.zip/file",
+      "size_mb": 954.4,
+      "published_at": "2026-05-22"
     }
   ]
 }
