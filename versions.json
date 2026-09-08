@@ -136,16 +136,6 @@
       "link": "https://github.com/Dr3sh/modpack-versions/releases/download/DESGRACIAMON2/DESGRACIAMON.2.MODPACK.v1.zip",
       "size_mb": 954.4,
       "published_at": "2026-05-13"
-    },
-    {
-      "id": "desgraciamon2v2",
-      "server": "desgraciamon2",
-      "title": "Desgraciamon 2 v2",
-      "status": "active",
-      "description": "version 2",
-      "link": "https://www.mediafire.com/file/xt2f8uqjxbehiuy/DESGRACIAMON_2_MODPACK_v2.zip/file",
-      "size_mb": 954.4,
-      "published_at": "2026-05-22"
     }
   ]
 }
