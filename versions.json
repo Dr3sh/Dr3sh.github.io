@@ -17,6 +17,14 @@
       "description": "WIP"
     },
     {
+      "id": "opus",
+      "title": "Opus Obscura",
+      "status": "active",
+      "image": "https://i.imgur.com/SVPaVhd.png",
+      "theme_color": "#8d1b1b",
+      "description": "WIP"
+    },
+    {
       "id": "cobbleverse",
       "title": "Desgraciamon",
       "status": "hidden",
