@@ -5,6 +5,7 @@
       "title": "Expediciones",
       "status": "active",
       "image": "assets/expediciones_title2.png",
+      "theme_color": "#1b41a3"
       "description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales."
     },
     {
@@ -12,12 +13,14 @@
       "title": "Pandora",
       "status": "active",
       "image": "assets/pandora_title.png",
+      "theme_color": "#6b1b8d"
       "description": "WIP"
     },
     {
       "id": "cobbleverse",
       "title": "Desgraciamon",
       "status": "hidden",
+      
       "image": "assets/desgraciamon_title.png",
       "description": "Servidor de Cobblemon con base Semi-Vanilla. La idea principal es que el juego se sienta como el Minecraft de siempre, pero con Pokémon integrados de forma natural."
     },
@@ -25,6 +28,7 @@
       "id": "desgraciamon2",
       "title": "Desgraciamon 2",
       "status": "active",
+      "theme_color": "#f6a0d3"
       "image": "assets/desgraciamon2logo.png",
       "minecraft_version": "1.20.1",
       "mod_loader": "fabric",
