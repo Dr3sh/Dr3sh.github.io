@@ -154,6 +154,19 @@
       "mod_loader": "fabric",
       "mod_loader_version": "0.19.5",
       "published_at": "2026-05-13"
+    },
+      {
+      "id": "opusv1",
+      "server": "Opus",
+      "title": "Opus Obscura v1",
+      "status": "active",
+      "description": "guess who's back",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/DESGRACIAMON2/DESGRACIAMON.2.MODPACK.v1.zip",
+      "size_mb": 953.4,
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.19.5",
+      "published_at": "2026-05-13"
     }
   ]
 }
