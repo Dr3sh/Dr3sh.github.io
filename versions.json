@@ -157,7 +157,7 @@
     },
       {
       "id": "opusv1",
-      "server": "Opus",
+      "server": "opus",
       "title": "Opus Obscura v1",
       "status": "active",
       "description": "guess who's back",
