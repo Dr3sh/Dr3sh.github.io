@@ -29,7 +29,9 @@
       "title": "Desgraciamon",
       "status": "active",
       "image": "assets/desgraciamon_title.png",
-      "description": "Servidor de Cobblemon con base Semi-Vanilla. La idea principal es que el juego se sienta como el Minecraft de siempre, pero con Pokémon integrados de forma natural."
+      "description": "Servidor de Cobblemon con base Semi-Vanilla. La idea principal es que el juego se sienta como el Minecraft de siempre, pero con Pokémon integrados de forma natural.",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric"
     },
     {
       "id": "desgraciamon2",
@@ -41,9 +43,16 @@
       "mod_loader": "fabric",
       "mod_loader_version": "0.19.5",
       "description": "Secuela del mejor servidor de Cobbleverse que existe, pero ahora con casino Y SIN GENTE QUE CAPTURE 50 MIL LEGENDARIOS AL DIA",
-      "logo_square": "https://media.forgecdn.net/avatars/thumbnails/1189/349/256/256/638764246107108450.png"
+      "logo_square": "https://media.forgecdn.net/avatars/thumbnails/1189/349/256/256/638764246107108450.png",
+      "screenshots": [
+        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(1).jpg",
+        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(2).jpg",
+        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(3).jpg.",
+        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(4).jpg",
+        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(5).jpg"
+      ]
     },
-        {
+    {
       "id": "desgraciamon3",
       "title": "Desgraciamon 4",
       "status": "active",
@@ -167,7 +176,7 @@
       "mod_loader_version": "0.19.5",
       "published_at": "2026-05-13"
     },
-      {
+    {
       "id": "opusv1",
       "server": "opus",
       "title": "Opus Obscura v1",
@@ -180,7 +189,7 @@
       "mod_loader_version": "0.19.5",
       "published_at": "2026-05-13"
     },
-          {
+    {
       "id": "desgraciamon3v1",
       "server": "desgraciamon3",
       "title": "Desgraciamon 4 v1",
@@ -193,5 +202,7 @@
       "mod_loader_version": "0.19.5",
       "published_at": "2026-05-13"
     }
-  ]
+  ],
+  "launcher_refresh_mode": "manual_user",
+  "launcher_refresh_id": "initial"
 }
