@@ -27,7 +27,7 @@
     {
       "id": "cobbleverse",
       "title": "Desgraciamon",
-      "status": "hidden",
+      "status": "active",
       "image": "assets/desgraciamon_title.png",
       "description": "Servidor de Cobblemon con base Semi-Vanilla. La idea principal es que el juego se sienta como el Minecraft de siempre, pero con Pokémon integrados de forma natural."
     },
@@ -40,7 +40,7 @@
       "minecraft_version": "1.21.1",
       "mod_loader": "fabric",
       "mod_loader_version": "0.19.5",
-      "description": "Desgraciamon fue tan bueno que sacaron desgraciamon 2...",
+      "description": "Secuela del mejor servidor de Cobbleverse que existe, pero ahora con casino Y SIN GENTE QUE CAPTURE 50 MIL LEGENDARIOS AL DÍA",
       "logo_square": "https://media.forgecdn.net/avatars/thumbnails/1189/349/256/256/638764246107108450.png"
     },
         {
