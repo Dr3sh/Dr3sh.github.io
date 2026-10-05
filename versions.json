@@ -45,15 +45,15 @@
     },
         {
       "id": "desgraciamon3",
-      "title": "Desgraciamon III",
+      "title": "Desgraciamon 4",
       "status": "active",
-      "theme_color": "#0c4539",
-      "image": "assets/desgraciamon2logo.png",
+      "theme_color": "#0c1645",
+      "image": "assets/desgraciamon4logov1.png",
       "minecraft_version": "1.21.1",
       "mod_loader": "fabric",
       "mod_loader_version": "0.19.5",
       "description": "DICIEMBREEEEEEEEE...",
-      "logo_square": "https://media.forgecdn.net/avatars/thumbnails/1189/349/256/256/638764246107108450.png"
+      "logo_square": "assets/desgraciamon41x1.png"
     }
   ],
   "versions": [
@@ -183,7 +183,7 @@
           {
       "id": "desgraciamon3v1",
       "server": "desgraciamon3",
-      "title": "Desgraciamon 3 v1",
+      "title": "Desgraciamon 4 v1",
       "status": "active",
       "description": "guess who's back",
       "link": "https://github.com/Dr3sh/modpack-versions/releases/download/DESGRACIAMON2/DESGRACIAMON.2.MODPACK.v1.zip",
