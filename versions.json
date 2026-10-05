@@ -203,6 +203,6 @@
       "published_at": "2026-05-13"
     }
   ],
-  "launcher_refresh_mode": "manual_global",
-  "launcher_refresh_id": "initial"
+  "launcher_refresh_mode": "automatic",
+  "launcher_refresh_id": "2026-10-05T21:04:04.896Z"
 }
