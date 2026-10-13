@@ -70,6 +70,22 @@
         }
       ],
       "pokemonReward": null
+    },
+    {
+      "id": "2064a65f-e6a6-41cd-b7c9-e0fede7044cb",
+      "title": "Captura un gyarados",
+      "body": "",
+      "color": "#75d7a1",
+      "objective": "CATCH_SPECIES",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "cobblemon:gyarados",
+      "pokemonType": "",
+      "amount": 1,
+      "daily": false,
+      "repeatable": false,
+      "itemRewards": [],
+      "pokemonReward": null,
+      "moneyReward": 12000
     }
   ]
 }
