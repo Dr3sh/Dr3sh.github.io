@@ -86,6 +86,22 @@
       "itemRewards": [],
       "pokemonReward": null,
       "moneyReward": 12000
+    },
+    {
+      "id": "ac601f00-affa-4bad-b26c-40116aeec1b7",
+      "title": "asdasd",
+      "body": "adfs",
+      "color": "#75d7a1",
+      "objective": "GET_ITEM",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "",
+      "pokemonType": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "itemRewards": [],
+      "pokemonReward": null,
+      "moneyReward": 0
     }
   ]
 }
