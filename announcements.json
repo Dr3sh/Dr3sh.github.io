@@ -1,1 +1,67 @@
-
+{
+  "schemaVersion": 1,
+  "announcements": [
+    {
+      "id": "e5d4a546-8074-4d1f-aaaf-0404ebe8996f",
+      "title": "sadsad",
+      "body": "faddsfsad",
+      "color": "#f4c84b",
+      "bodyColor": "#ffffff",
+      "imageUrl": ""
+    },
+    {
+      "id": "07f90ee2-6c41-41fc-82f4-8093c199faa0",
+      "title": "sdfljhasfgdhjsafgjkhlashkjl",
+      "body": "JULIO HIJUEPUITA",
+      "color": "#f4c84b",
+      "bodyColor": "#ffffff",
+      "imageUrl": ""
+    }
+  ],
+  "missions": [
+    {
+      "id": "53629a15-0760-4f09-bf13-97f34c8ced6c",
+      "title": "Captura tres pikachu",
+      "body": "captura 2 pikachu",
+      "color": "#d4ff00",
+      "objective": "CATCH_SPECIES",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "cobblemon:pikachu",
+      "pokemonType": "",
+      "amount": 2,
+      "daily": false,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "itemId": "cobblemon:master_ball",
+          "count": 4
+        }
+      ],
+      "pokemonReward": null
+    },
+    {
+      "id": "2651b4fd-3c28-4989-a72f-6491fbeea597",
+      "title": "GHOLA",
+      "body": "DSAFASDF",
+      "color": "#75d7a1",
+      "objective": "CATCH_SPECIES",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "cobblemon:arceus",
+      "pokemonType": "",
+      "amount": 1,
+      "daily": false,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "itemId": "minecraft:master_ball",
+          "count": 4
+        },
+        {
+          "itemId": "minecraft:diamond",
+          "count": 3
+        }
+      ],
+      "pokemonReward": null
+    }
+  ]
+}
