@@ -6,7 +6,9 @@
       "status": "active",
       "image": "assets/expediciones_title2.png",
       "theme_color": "#1b41a3",
-      "description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales."
+      "description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales.",
+      "minecraft_version": "1.21.4",
+      "mod_loader": "fabric"
     },
     {
       "id": "pandora",
@@ -77,8 +79,11 @@
       "server": "expediciones",
       "title": "Expediciones v0.1",
       "description": "Versión fundacional del modpack de Expediciones. Esta primera versión está diseñada para un juego estable y optimizado, sirviendo como molde para futuras expansiones.",
-      "link": "https://download1527.mediafire.com/gaax2xn1unfg5Akhu6nPCsy4kh6M3mHMPm357rb-cAUtIGkj3R5m-P5B-DlQHqE2-KAd5gUuzp_yRfzLzoKx7yz3MxYm6EC-Xks0OsyZ544PYuMMP6BcOv16_-iCJVQBi_NDzWCYjwYsqJcpF5AtKGBi_mqmXdHt0y22cxI3eMCDvqg/xmckgr7gnag3h3h/Expediciones+v0.1.rar",
-      "published_at": "2025-11-26"
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/EXPEDICIONES/EXPEDICIOENS.zip",
+      "published_at": "2025-11-26",
+      "minecraft_version": "1.21.4",
+      "mod_loader_version": "",
+      "size_mb": 961
     },
     {
       "id": "exp-v0.2",
