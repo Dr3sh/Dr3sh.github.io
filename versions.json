@@ -27,7 +27,28 @@
       "description": "WIP",
       "minecraft_version": "1.21.1",
       "mod_loader": "neoforge",
-      "screenshots": []
+      "screenshots": [
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052515124-9d8960aa-c7ca-4367-89ce-739b6602bdf4-2026-07-29_00-23-27.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052523089-cf4a3ebc-851f-4ebe-b160-8394e418dd35-221223.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052531718-6d115972-4123-466e-94d6-2de359c155a1-2026-07-28_03-02-58.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052536997-145bc078-c898-4f8f-8088-b69c6fa0ba13-2026-07-18_03-45-27.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052541807-56cd89a3-a097-47a1-819f-977d5f669756-2026-07-04_20-48-37.png",
+          "status": "active"
+        }
+      ]
     },
     {
       "id": "cobbleverse",
