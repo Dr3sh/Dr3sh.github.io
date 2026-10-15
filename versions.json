@@ -105,7 +105,9 @@
       "minecraft_version": "1.21.1",
       "mod_loader": "fabric",
       "status": "active",
-      "mod_loader_version": ""
+      "mod_loader_version": "",
+      "version": "1.0.1",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon42/manifest.json"
     },
     {
       "id": "exp-v1",
@@ -245,7 +247,9 @@
       "size_mb": 953.4,
       "minecraft_version": "1.21.1",
       "mod_loader": "fabric",
-      "published_at": "2026-05-13"
+      "published_at": "2026-05-13",
+      "version": "1.0.0",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/DESGRACIAMON41/manifest.json"
     }
   ],
   "launcher_refresh_mode": "automatic",
