@@ -1,5 +1,17 @@
 {
   "schemaVersion": 1,
-  "announcements": [],
+  "announcements": [
+    {
+      "id": "0169c9d0-1b38-4e24-a505-24ee6577b97c",
+      "title": "<prism=#00FF4C,#22533E><bold>Nuevo legendario avistado!</bold></prism>",
+      "body": "<prism=#FF004C,#43303E><bold>Cerca de la casa de Jeide hay un MEWTWO SHINY</bold></prism>",
+      "color": "#ff6b4a",
+      "bodyColor": "#f5d76e",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
+    }
+  ],
   "missions": []
 }
