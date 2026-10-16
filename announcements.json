@@ -11,6 +11,17 @@
       "showInChat": true,
       "showInHud": true,
       "hudDurationSeconds": 15
+    },
+    {
+      "id": "20e16fca-d60f-4bab-b1f3-9590456df7f1",
+      "title": "hola",
+      "body": "hola",
+      "color": "#ff6b4a",
+      "bodyColor": "#f5d76e",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
     }
   ],
   "missions": []
