@@ -22,6 +22,17 @@
       "showInChat": true,
       "showInHud": true,
       "hudDurationSeconds": 15
+    },
+    {
+      "id": "725c255a-6455-4dae-9103-4bd93f90f85f",
+      "title": "<prism=#FF0000,#37FF00><bold>¡EL EVENTO DE NAVIDAD HA INICIADO!</bold></prism>",
+      "body": "<prism=#FF0000,#37FF00><bold>¡EL EVENTO DE NAVIDAD HA INICIADO!</bold></prism>",
+      "color": "#ff6b4a",
+      "bodyColor": "#f5d76e",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
     }
   ],
   "missions": []
