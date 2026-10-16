@@ -46,6 +46,17 @@
       "showInChat": true,
       "showInHud": true,
       "hudDurationSeconds": 15
+    },
+    {
+      "id": "7a7a2aa7-cb9c-4b42-88dd-5d5ee6568fdb",
+      "title": "asdsad",
+      "body": "",
+      "color": "#ff6b4a",
+      "bodyColor": "#f5d76e",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
     }
   ],
   "missions": [
