@@ -35,6 +35,17 @@
       "showInChat": true,
       "showInHud": true,
       "hudDurationSeconds": 10
+    },
+    {
+      "id": "b75895fd-36be-438c-92cd-f3f9820773b3",
+      "title": "<prism=#FFD700,#8800ff>Legendario avistado</prism>",
+      "body": "\nSe avistó un <prism=#ff0000,#ffffFF>Mewtwo</prism> en las coordenadas X: 23 // Z: 343",
+      "color": "#ff6b4a",
+      "bodyColor": "#f5d76e",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
     }
   ],
   "missions": [
