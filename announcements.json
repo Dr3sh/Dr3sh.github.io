@@ -35,5 +35,43 @@
       "hudDurationSeconds": 15
     }
   ],
-  "missions": []
+  "missions": [
+    {
+      "id": "083deba2-df85-4a62-a942-844a4df84dad",
+      "title": "mision 1",
+      "body": "",
+      "color": "#55d69e",
+      "bodyColor": "#e5ece8",
+      "objective": "CATCH_SPECIES",
+      "itemId": "",
+      "pokemonId": "cobblemon:charizard",
+      "pokemonType": "",
+      "amount": 3,
+      "daily": false,
+      "repeatable": false,
+      "objectives": [
+        {
+          "id": "a7f26cdc-e96a-473d-8ebe-b893634f9d29",
+          "type": "CATCH_SPECIES",
+          "amount": 3,
+          "itemId": "",
+          "pokemonId": "cobblemon:charizard",
+          "pokemonType": "",
+          "pokemonProperties": ""
+        }
+      ],
+      "itemRewards": [],
+      "pokemonReward": {
+        "speciesId": "cobblemon:arceus",
+        "properties": "level=67"
+      },
+      "pokemonRewards": [
+        {
+          "speciesId": "cobblemon:arceus",
+          "properties": "level=67"
+        }
+      ],
+      "moneyReward": 199999999
+    }
+  ]
 }
