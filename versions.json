@@ -3,7 +3,7 @@
     {
       "id": "expediciones",
       "title": "Expediciones",
-      "status": "hidden",
+      "status": "active",
       "image": "assets/expediciones_title2.png",
       "theme_color": "#1b41a3",
       "description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales.",
