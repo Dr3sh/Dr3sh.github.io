@@ -96,21 +96,6 @@
   ],
   "versions": [
     {
-      "id": "desgraciamon3-1-0-1",
-      "server": "desgraciamon3",
-      "title": "Desgraciamon 4 Test 2",
-      "version": "1.0.1",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1-0-1/desgraciamon3-1-0-1.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1-0-1/manifest.json",
-      "sha256": "a0410baddb525291a099e9762581b21d4339d42ff3c7ecb3979084d861ec2a71",
-      "description": "",
-      "published_at": "2026-10-17",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "size_mb": 132.7,
-      "status": "active"
-    },
-    {
       "id": "desgraciamon3-1-0-0",
       "server": "desgraciamon3",
       "title": "Desgraciamon 4 Test 1",
@@ -255,5 +240,5 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-17T15:19:18.969Z"
+  "launcher_refresh_id": "2026-10-17T15:32:44.523Z"
 }
