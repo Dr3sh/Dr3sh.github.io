@@ -96,6 +96,19 @@
   ],
   "versions": [
     {
+      "id": "desgraciamon3-1-0-1",
+      "server": "desgraciamon3",
+      "title": "Desgraciamon 4 Test 2",
+      "version": "1.0.1",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1-0-1/desgraciamon3-1-0-1.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1-0-1/manifest.json",
+      "sha256": "7db63a14df8fcfa622a1ddf184be191bc484f56576d4cf6202689a191458402b",
+      "description": "",
+      "published_at": "2026-10-17",
+      "size_mb": 134,
+      "status": "active"
+    },
+    {
       "id": "desgraciamon3-1-0-0",
       "server": "desgraciamon3",
       "title": "Desgraciamon 4 Test 1",
@@ -240,5 +253,5 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-17T15:32:44.523Z"
+  "launcher_refresh_id": "2026-10-17T16:17:17.418Z"
 }
