@@ -60,7 +60,57 @@
       "mod_loader": "fabric",
       "logo": "https://i.imgur.com/ykI6gmG.png",
       "logo_square": "https://i.imgur.com/RMpI0r8.png",
-      "theme_color": "#383838"
+      "theme_color": "#383838",
+      "screenshots": [
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255943226-8af5e4b1-3665-470c-820f-2eb2a898eb51-2026-01-18_15-46-12.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255953357-16d55390-ed15-4c4c-98bb-fad96694f4b3-2026-01-20_10-27-00.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255961241-3f3fbef0-e309-400a-b56a-dcd65347c5be-2026-01-20_17-07-21.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255972033-bef94dcc-8f75-42c4-a970-eaf5e9615696-2026-01-30_19-44-18.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255976711-3cc1510d-c037-4847-b4cb-7ca067730c5f-2026-02-01_15-35-30.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255983232-6f041f04-3757-4b2c-8bd1-3bd6dc45f227-2026-01-31_13-59-39_2.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255987503-6692c9b0-062e-4cfb-9054-090820a26166-2026-01-31_15-02-12.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255991096-94bec1a8-f742-487c-adc0-872c59e2a067-2026-01-31_13-38-50.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255995490-7832f397-8042-4e64-ab07-962f1b4d7d32-2026-01-31_13-48-42.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256007677-31ddb27e-a576-4213-977c-aabefabc03ac-2026-01-31_13-45-49.png",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256019524-781d6dd2-bc85-4d9b-9856-fa452c452772-IMG-20260203-WA0021.jpg",
+          "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256023940-a95ab7ae-60d9-4925-9133-823d6ba61443-IMG-20260128-WA0020.jpg",
+          "status": "active"
+        }
+      ]
     },
     {
       "id": "desgraciamon2",
