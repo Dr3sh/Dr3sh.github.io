@@ -274,21 +274,6 @@
       "status": "active"
     },
     {
-      "id": "desgraciamon3-1-0-0",
-      "server": "desgraciamon3",
-      "title": "Desgraciamon 4 Test 1",
-      "version": "1.0.0",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1-0-0/desgraciamon3-1-0-0.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1-0-0/manifest.json",
-      "sha256": "6723b9af086c1a64d014dff37902b89aab720504a07aff715ce9526bcc64253d",
-      "description": "",
-      "published_at": "2026-10-17",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "size_mb": 134.4,
-      "status": "active"
-    },
-    {
       "id": "exp-v1",
       "server": "expediciones",
       "title": "Expediciones v0.1",
@@ -361,5 +346,5 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-18T09:07:21.510Z"
+  "launcher_refresh_id": "2026-10-18T09:07:26.712Z"
 }
