@@ -146,6 +146,134 @@
   ],
   "versions": [
     {
+      "id": "cobbleverse-8",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v8",
+      "version": "8",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v8/cobbleverse-8.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v8/manifest.json",
+      "sha256": "e1b5b56e8198e3a87e183f93bc36f29c51e7e97c383f7346f1ddfb096b904ac5",
+      "description": "Somos carlos kirk.",
+      "published_at": "2026-02-10",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 769.7,
+      "status": "active"
+    },
+    {
+      "id": "cobbleverse-7",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v7",
+      "version": "7",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v7/cobbleverse-7.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v7/manifest.json",
+      "sha256": "671849199f1b84e4e812968ebdeff11f1f3e01f16402fbb3ef6c2c16b6a8fd2d",
+      "description": "No sé.",
+      "published_at": "2026-01-31",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 768.7,
+      "status": "active"
+    },
+    {
+      "id": "cobbleverse-6",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v6",
+      "version": "6",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v6/cobbleverse-6.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v6/manifest.json",
+      "sha256": "b6faa79d7aa557d968f4cda9e9607593c2c1603250b6d115d9f515209709625e",
+      "description": "Añadidas megaevoluciones de Pokémon Leyendas ZA. Añadido sistema GTS (Compra/Venta). Añadidas armaduras con temática de Pokémon. Añadido Jade.",
+      "published_at": "2026-01-24",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 720,
+      "status": "active"
+    },
+    {
+      "id": "cobbleverse-5",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v5",
+      "version": "5",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v5/cobbleverse-5.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v5/manifest.json",
+      "sha256": "ca42bd469f6a6327c67116197c7ff876be632148ce211501bc3f11913f784cd4",
+      "description": "Agregados más mods. ¿Alguien lee esto?. Antau la Yabi no te quiere.",
+      "published_at": "2026-01-21",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 699.3,
+      "status": "active"
+    },
+    {
+      "id": "cobbleverse-4",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v4",
+      "version": "4",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v4/cobbleverse-4.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v4/manifest.json",
+      "sha256": "2fcbf1f0e96cc1380a03d4745fc91261aa63830d22485cf73cb95e10ee267398",
+      "description": "Agregados Only Hammers, Simple Excavators, Simplest Broadaxes (Herramientas más eficientes), Tom's Simple Storage (Administrador de almacenamiento), Datapack All The Mons (Incluye Pokémon que no spawnean naturalmente), y ReFramed (Losas, escaleras, vallas y más con texturas personalizadas).",
+      "published_at": "2026-01-19",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 672.6,
+      "status": "active"
+    },
+    {
+      "id": "cobbleverse-3",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v3",
+      "version": "3",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v3/cobbleverse-3.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v3/manifest.json",
+      "sha256": "e8a55e1bc2772d0861328c359d5b3876983187e2249e0b59ea069f52e869e1bb",
+      "description": "Eliminado Carry on. Agregado Chipped.",
+      "published_at": "2026-01-18",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 662.4,
+      "status": "active"
+    },
+    {
+      "id": "cobbleverse-2",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v2",
+      "version": "2",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v2/cobbleverse-2.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v2/manifest.json",
+      "sha256": "7e0ca37df49a583ab606f0df8ef683c16a7b9a0a96df8f5e84ffbac65627120a",
+      "description": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces.",
+      "published_at": "2026-01-18",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 656.9,
+      "status": "active"
+    },
+    {
+      "id": "cobbleverse-1",
+      "server": "cobbleverse",
+      "title": "Desgraciamon v1",
+      "version": "1",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v1/cobbleverse-1.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v1/manifest.json",
+      "sha256": "e284f5c9fdc24a640a7641cd17f0025a6c2a3365da85361d583407e52c21a13e",
+      "description": "Versión inicial base de Cobbleverse 1.7.1 (Fabric 1.21.1).",
+      "published_at": "2026-01-15",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.17.3",
+      "size_mb": 640.3,
+      "status": "active"
+    },
+    {
       "id": "desgraciamon3-1-0-1",
       "server": "desgraciamon3",
       "title": "Desgraciamon 4 Test 2",
@@ -219,63 +347,6 @@
       "published_at": "2025-11-26"
     },
     {
-      "id": "cobble2",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v2",
-      "description": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces.",
-      "link": "https://www.mediafire.com/file/2wg14mus6gesymo/Modpack_Cobbleverse_v2.rar/file",
-      "published_at": "2026-01-18"
-    },
-    {
-      "id": "cobble3",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v3",
-      "description": "Eliminado Carry on. Agregado Chipped.",
-      "link": "https://www.mediafire.com/file/6zazqhcma0hjc4l/ModPack_Cobbleverse_v3.rar/file",
-      "published_at": "2026-01-18"
-    },
-    {
-      "id": "cobble4",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v4",
-      "description": "Agregados Only Hammers, Simple Excavators, Simplest Broadaxes (Herramientas más eficientes), Tom's Simple Storage (Administrador de almacenamiento), Datapack All The Mons (Incluye Pokémon que no spawnean naturalmente), y ReFramed (Losas, escaleras, vallas y más con texturas personalizadas).",
-      "link": "https://www.mediafire.com/file/i2qekqpwmnoehk1/ModPack_Cobbleverse_v4.rar/file",
-      "published_at": "2026-01-19"
-    },
-    {
-      "id": "cobble5",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v5",
-      "description": "Agregados más mods. ¿Alguien lee esto?. Antau la Yabi no te quiere.",
-      "link": "https://www.mediafire.com/file/hcu3hh7781rlqge/ModPack_Cobbleverse_v5.rar/file",
-      "published_at": "2026-01-21"
-    },
-    {
-      "id": "cobble6",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v6",
-      "description": "Añadidas megaevoluciones de Pokémon Leyendas ZA. Añadido sistema GTS (Compra/Venta). Añadidas armaduras con temática de Pokémon. Añadido Jade.",
-      "link": "https://drive.google.com/uc?id=1wUMSFUs8IjFPvSxoOGidF4T5TI8CPZyy",
-      "published_at": "2026-01-24"
-    },
-    {
-      "id": "cobble7",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v7",
-      "description": "No sé.",
-      "link": "https://www.mediafire.com/file/uut99qvycghbjzf/ModPack_Desgraciamon_v7.rar/file",
-      "published_at": "2026-01-31",
-      "size_mb": 20.7
-    },
-    {
-      "id": "cobble8",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v8",
-      "description": "Somos carlos kirk.",
-      "link": "https://www.mediafire.com/file/z9zm1uj27njy1pj/ModPack_Desgraciamon_v8.rar/file",
-      "published_at": "2026-02-10"
-    },
-    {
       "id": "desgraciamon2v1",
       "server": "desgraciamon2",
       "title": "Desgraciamon 2 v1",
@@ -303,5 +374,5 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-17T16:35:55.843Z"
+  "launcher_refresh_id": "2026-10-18T08:52:55.716Z"
 }
