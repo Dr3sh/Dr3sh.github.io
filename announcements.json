@@ -83,6 +83,35 @@
         }
       ],
       "moneyReward": 199999999
+    },
+    {
+      "id": "ab204335-4111-4dc7-a758-29365dbba010",
+      "title": "aaaa",
+      "body": "sadasdsa",
+      "color": "#55d69e",
+      "bodyColor": "#e5ece8",
+      "objective": "GET_ITEM",
+      "itemId": "",
+      "pokemonId": "",
+      "pokemonType": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "objectives": [
+        {
+          "id": "e98489e3-2f4b-4f67-850a-8db5cc53deba",
+          "type": "GET_ITEM",
+          "amount": 1,
+          "itemId": "",
+          "pokemonId": "",
+          "pokemonType": "",
+          "pokemonProperties": ""
+        }
+      ],
+      "itemRewards": [],
+      "pokemonReward": null,
+      "pokemonRewards": [],
+      "moneyReward": 0
     }
   ]
 }
