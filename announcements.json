@@ -33,6 +33,17 @@
       "showInChat": true,
       "showInHud": true,
       "hudDurationSeconds": 15
+    },
+    {
+      "id": "341830f4-c923-4cff-88a3-f2a4f1b45b0b",
+      "title": "hablalo",
+      "body": "hikaasdasdasdas",
+      "color": "#ff6b4a",
+      "bodyColor": "#f5d76e",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
     }
   ],
   "missions": [
