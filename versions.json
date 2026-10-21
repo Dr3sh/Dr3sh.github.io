@@ -402,7 +402,7 @@
   ],
   "launcher_refresh_mode": "automatic",
   "launcher_refresh_id": "2026-10-21T02:48:55.756Z",
-  "maintenance_mode": true,
+  "maintenance_mode": false,
   "maintenance_message": "",
   "testing_mode": false,
   "testing_hours": 1
