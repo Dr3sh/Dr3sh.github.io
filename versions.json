@@ -401,8 +401,8 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-21T05:41:55.430Z",
-  "maintenance_mode": false,
+  "launcher_refresh_id": "2026-10-21T21:38:20.481Z",
+  "maintenance_mode": true,
   "maintenance_message": "",
   "testing_mode": false,
   "testing_hours": 1
