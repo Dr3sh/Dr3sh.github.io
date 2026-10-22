@@ -13,5 +13,35 @@
       "hudDurationSeconds": 15
     }
   ],
-  "missions": []
+  "missions": [
+    {
+      "id": "7779ebc8-6572-4ec8-a045-a4e0a4c98d44",
+      "title": "asdasd",
+      "body": "sadasd",
+      "color": "#55d69e",
+      "bodyColor": "#e5ece8",
+      "objective": "GET_ITEM",
+      "itemId": "",
+      "pokemonId": "",
+      "pokemonType": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "objectives": [
+        {
+          "id": "84fab92a-c0dd-4784-b5e0-551929b8f33f",
+          "type": "GET_ITEM",
+          "amount": 1,
+          "itemId": "",
+          "pokemonId": "",
+          "pokemonType": "",
+          "pokemonProperties": ""
+        }
+      ],
+      "itemRewards": [],
+      "pokemonReward": null,
+      "pokemonRewards": [],
+      "moneyReward": 0
+    }
+  ]
 }
