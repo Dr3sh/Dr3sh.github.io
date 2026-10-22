@@ -1,5 +1,17 @@
 {
   "schemaVersion": 1,
-  "announcements": [],
+  "announcements": [
+    {
+      "id": "72e16476-60ac-41e1-ad27-69dbb2c11b72",
+      "title": "dsafasd",
+      "body": "dafasdfasd",
+      "color": "#ff6b4a",
+      "bodyColor": "#f5d76e",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
+    }
+  ],
   "missions": []
 }
