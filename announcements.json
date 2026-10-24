@@ -13,5 +13,43 @@
       "hudDurationSeconds": 15
     }
   ],
-  "missions": []
+  "missions": [
+    {
+      "id": "59b150b3-9b0d-4b38-a827-8b204bdd48e4",
+      "title": "Mision diaria",
+      "body": "Captura un Charizard Shiny",
+      "color": "#55d69e",
+      "bodyColor": "#e5ece8",
+      "objective": "CATCH_SPECIES",
+      "itemId": "",
+      "pokemonId": "cobblemon:charizard",
+      "pokemonType": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "objectives": [
+        {
+          "id": "564fe174-b747-45cc-a702-54fd3588ac72",
+          "type": "CATCH_SPECIES",
+          "amount": 1,
+          "itemId": "",
+          "pokemonId": "cobblemon:charizard",
+          "pokemonType": "",
+          "pokemonProperties": "shiny=true"
+        }
+      ],
+      "itemRewards": [],
+      "pokemonReward": {
+        "speciesId": "cobblemon:arceus",
+        "properties": "shiny=true"
+      },
+      "pokemonRewards": [
+        {
+          "speciesId": "cobblemon:arceus",
+          "properties": "shiny=true"
+        }
+      ],
+      "moneyReward": 19996
+    }
+  ]
 }
