@@ -50,6 +50,43 @@
         }
       ],
       "moneyReward": 19996
+    },
+    {
+      "id": "8aa025ab-c2f3-4e16-a4cd-73fbbd587eac",
+      "title": "El primero en conseguir un diamante",
+      "body": "Consigue el primer diamante del servidor",
+      "color": "#55d69e",
+      "bodyColor": "#e5ece8",
+      "objective": "GET_ITEM",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "",
+      "pokemonType": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "objectives": [
+        {
+          "id": "6b316556-5b6f-4cc8-873c-2ba11f81f154",
+          "type": "GET_ITEM",
+          "amount": 1,
+          "itemId": "minecraft:diamond",
+          "pokemonId": "",
+          "pokemonType": "",
+          "pokemonProperties": ""
+        }
+      ],
+      "itemRewards": [],
+      "pokemonReward": {
+        "speciesId": "cobblemon:mewtwo",
+        "properties": "shiny=true"
+      },
+      "pokemonRewards": [
+        {
+          "speciesId": "cobblemon:mewtwo",
+          "properties": "shiny=true"
+        }
+      ],
+      "moneyReward": 5000
     }
   ]
 }
