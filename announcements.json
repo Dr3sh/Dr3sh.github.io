@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "announcements": [
     {
+      "id": "ann_fa8341",
+      "title": "TEST",
+      "body": "HOLA",
+      "color": "#F5C842",
+      "bodyColor": "#FFFFFF",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
+    },
+    {
       "id": "78585b32-ca8b-449d-be70-06ff1e7686ef",
       "title": "<prism=#00F2FE,#4FACFE,#B721FF>Jose idiota</prism>",
       "body": "<prism=#FF512F,#F09819,#FFD700>tontopoya</prism>",
