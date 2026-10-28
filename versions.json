@@ -8,7 +8,8 @@
       "theme_color": "#1b41a3",
       "description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales.",
       "minecraft_version": "1.21.4",
-      "mod_loader": "fabric"
+      "mod_loader": "fabric",
+      "screenshots": []
     },
     {
       "id": "pandora",
@@ -16,7 +17,8 @@
       "status": "hidden",
       "image": "assets/pandora_title.png",
       "theme_color": "#6b1b8d",
-      "description": "WIP"
+      "description": "WIP",
+      "screenshots": []
     },
     {
       "id": "opus",
@@ -141,10 +143,21 @@
       "mod_loader": "fabric",
       "mod_loader_version": "0.19.5",
       "description": "DICIEMBREEEEEEEEE...",
-      "logo_square": "assets/desgraciamon41x1.png"
+      "logo_square": "assets/desgraciamon41x1.png",
+      "screenshots": []
     }
   ],
   "versions": [
+    {
+      "id": "cobbleverse-9",
+      "server": "cobbleverse",
+      "title": "Desgraciamon 1 v9",
+      "version": "9",
+      "description": "",
+      "published_at": "2026-10-28",
+      "size_mb": 810,
+      "status": "active"
+    },
     {
       "id": "desgraciamon3-0-0-4",
       "server": "desgraciamon3",
@@ -424,9 +437,9 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-24T06:29:30.407Z",
-  "maintenance_mode": true,
+  "launcher_refresh_id": "2026-10-28T22:46:58.004Z",
+  "maintenance_mode": false,
   "maintenance_message": "",
-  "testing_mode": true,
+  "testing_mode": false,
   "testing_hours": 1
 }
