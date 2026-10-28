@@ -149,6 +149,18 @@
   ],
   "versions": [
     {
+      "id": "cobbleverse-9-1793227987439",
+      "server": "cobbleverse",
+      "title": "Desgraciamon 1 v9",
+      "version": "9",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v9/cobbleverse-9.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v9/manifest.json",
+      "description": "",
+      "published_at": "2026-10-28",
+      "size_mb": 810,
+      "status": "active"
+    },
+    {
       "id": "cobbleverse-9",
       "server": "cobbleverse",
       "title": "Desgraciamon 1 v9",
@@ -437,7 +449,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-28T22:46:58.004Z",
+  "launcher_refresh_id": "2026-10-28T22:53:44.685Z",
   "maintenance_mode": false,
   "maintenance_message": "",
   "testing_mode": false,
