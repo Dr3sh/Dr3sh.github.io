@@ -26,6 +26,44 @@
   ],
   "missions": [
     {
+      "id": "mis_652eec",
+      "title": "Nueva Misión",
+      "body": "Detalles y descripción limpia de",
+      "color": "#68D7A2",
+      "bodyColor": "#E5ECE8",
+      "isGuildMission": true,
+      "targetUsesMemberCount": false,
+      "objective": "GET_ITEM",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "",
+      "pokemonType": "",
+      "badgeId": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "objectives": [
+        {
+          "id": "eeef586c-df5c-4ebd-952b-6826888ce2db",
+          "type": "GET_ITEM",
+          "amount": 20,
+          "targetUsesMemberCount": false,
+          "itemId": "minecraft:diamond",
+          "pokemonId": "",
+          "pokemonType": "",
+          "pokemonProperties": "",
+          "badgeId": ""
+        }
+      ],
+      "itemRewards": [
+        {
+          "itemId": "cobblemon:master_ball",
+          "count": 5
+        }
+      ],
+      "pokemonRewards": [],
+      "moneyReward": 15000
+    },
+    {
       "id": "59b150b3-9b0d-4b38-a827-8b204bdd48e4",
       "title": "Mision diaria",
       "body": "Captura un Charizard Shiny",
