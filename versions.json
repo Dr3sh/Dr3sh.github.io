@@ -143,7 +143,7 @@
       "mod_loader": "fabric",
       "mod_loader_version": "0.19.5",
       "description": "DICIEMBREEEEEEEEE...",
-      "logo_square": "assets/desgraciamon41x1.png",
+      "logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1794483853006-image__4_.png",
       "screenshots": []
     }
   ],
@@ -439,7 +439,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-10-29T06:50:31.945Z",
+  "launcher_refresh_id": "2026-11-12T11:44:16.181Z",
   "maintenance_mode": false,
   "maintenance_message": "",
   "testing_mode": false,
