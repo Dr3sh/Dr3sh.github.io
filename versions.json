@@ -135,9 +135,9 @@
     },
     {
       "id": "desgraciamon3",
-      "title": "Desgraciamon 4",
+      "title": "Desgraciamon 3",
       "status": "active",
-      "theme_color": "#0c1645",
+      "theme_color": "#3000cf",
       "image": "assets/desgraciamon4logov1.png",
       "minecraft_version": "1.21.1",
       "mod_loader": "fabric",
