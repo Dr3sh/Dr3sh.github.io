@@ -1,399 +1,1530 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Dr3sh's Studio</title>
-    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
-    <style>
-        /* (el mismo CSS que la versión anterior, sin cambios) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Dr3sh Launcher Light</title>
+	<link rel="icon" type="image/png" href="assets/logo.png" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<style>
+		:root {
+			--bg-base: #101215;
+			--bg-rail: #15181d;
+			--bg-panel: #1a1e24;
+			--bg-card: #21262e;
+			--bg-elevated: #282e38;
+			--border: rgba(255, 255, 255, 0.08);
+			--border-strong: rgba(255, 255, 255, 0.14);
+			--text-primary: #f2f5f8;
+			--text-secondary: #a4b0be;
+			--text-muted: #768394;
+			--accent: #1bd96a;
+			--accent-rgb: 27, 217, 106;
+			--accent-fg: #08120c;
+			--accent-text: #1bd96a;
+			--danger: #f05a5a;
+			--warning: #f5b942;
+			--radius-xl: 22px;
+			--radius-lg: 16px;
+			--radius-md: 12px;
+			--shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.45);
+		}
 
-        body {
-            background: #212224;
-            font-family: 'Montserrat', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            padding: 32px 24px;
-            color: #E8EDDF;
-            line-height: 1.5;
-        }
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            background: rgba(33, 34, 36, 0.65);
-            backdrop-filter: blur(2px);
-            border-radius: 32px;
-            padding: 32px 28px;
-            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5);
-            transition: all 0.2s ease;
-        }
+		html,
+		body {
+			min-height: 100%;
+			background: var(--bg-base);
+			color: var(--text-primary);
+			font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			line-height: 1.5;
+			-webkit-font-smoothing: antialiased;
+		}
 
-        header {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-        .brand img {
-            max-width: 220px;
-            height: auto;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
-            transition: transform 0.25s ease;
-        }
-        .brand img:hover {
-            transform: scale(1.02);
-        }
+		button,
+		input,
+		a {
+			font-family: inherit;
+		}
 
-        hr {
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(27, 125, 79, 0.5), rgba(6, 104, 57, 0.8), rgba(27, 125, 79, 0.5), transparent);
-            margin: 12px 0 28px 0;
-        }
+		/* Top Navigation */
+		.topbar {
+			position: sticky;
+			top: 0;
+			z-index: 40;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			padding: 12px 22px;
+			background: rgba(16, 18, 21, 0.86);
+			backdrop-filter: blur(16px);
+			border-bottom: 1px solid var(--border);
+		}
 
-        .servidores-list {
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-        }
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			text-decoration: none;
+			color: var(--text-primary);
+			min-width: 0;
+		}
 
-        .server {
-            background: #2C2C2C;
-            border-radius: 28px;
-            padding: 28px 24px 24px;
-            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.35);
-            transition: all 0.25s ease;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .server:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 22px 32px -12px black;
-            border-color: #1B7D4F;
-        }
+		.brand-logo {
+			height: 32px;
+			width: auto;
+			object-fit: contain;
+			filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+		}
 
-        .server > img {
-            display: block;
-            max-width: 85%;
-            height: auto;
-            margin: 0 auto 24px auto;
-            border-radius: 24px;
-            background: rgba(0,0,0,0.2);
-            padding: 6px;
-            object-fit: contain;
-            transition: all 0.2s;
-        }
+		.brand-text {
+			display: flex;
+			flex-direction: column;
+			min-width: 0;
+		}
 
-        .server > h2.lead {
-            font-size: 1.55rem;
-            font-weight: 600;
-            margin: 12px 0 16px;
-            text-align: center;
-            color: #E8EDDF;
-            letter-spacing: -0.3px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
+		.brand-title-row {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
 
-        .versions {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+		.brand-title {
+			font-weight: 800;
+			font-size: 0.98rem;
+			letter-spacing: -0.02em;
+			white-space: nowrap;
+		}
 
-        .version {
-            background: #3A3A3A;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.2s;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 6px 12px -6px rgba(0,0,0,0.4);
-        }
+		.light-pill {
+			font-size: 0.68rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			padding: 2px 8px;
+			border-radius: 999px;
+			background: rgba(var(--accent-rgb), 0.16);
+			color: var(--accent-text);
+			border: 1px solid rgba(var(--accent-rgb), 0.35);
+		}
 
-        .version .title {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 16px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        .version .title:hover {
-            background: rgba(27, 125, 79, 0.3);
-        }
-        .version .title h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -0.2px;
-            color: #F0F5EA;
-        }
+		.brand-sub {
+			font-size: 0.75rem;
+			color: var(--text-muted);
+			white-space: nowrap;
+		}
 
-        .version .title::after {
-            content: "▾";
-            font-size: 1.5rem;
-            transition: transform 0.25s ease;
-            opacity: 0.8;
-        }
-        .version.active .title::after {
-            transform: rotate(180deg);
-        }
+		.topbar-right {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			flex: 1;
+			justify-content: flex-end;
+			min-width: 0;
+		}
 
-        .version .content {
-            max-height: 0;
-            padding: 0 24px;
-            overflow: hidden;
-            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.2s;
-            background: rgba(0, 0, 0, 0.15);
-            border-top: 1px solid transparent;
-        }
-        .version.active .content {
-            max-height: 500px;
-            padding: 20px 24px 24px;
-            border-top-color: rgba(27, 125, 79, 0.6);
-        }
-        .version .content p {
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #D4E0D0;
-        }
+		.search-box {
+			position: relative;
+			width: min(320px, 100%);
+		}
 
-        .download-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-        .download-row input[type="submit"],
-        .download-row .link-btn {
-            background: #066839;
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 10px 22px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-family: inherit;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-        .download-row input[type="submit"]:hover,
-        .download-row .link-btn:hover {
-            background: #1B7D4F;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
-        }
-        .download-row .link-btn:active {
-            transform: translateY(0);
-        }
+		.search-box svg {
+			position: absolute;
+			left: 12px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 15px;
+			height: 15px;
+			color: var(--text-muted);
+			pointer-events: none;
+		}
 
-        @media (max-width: 860px) {
-            body { padding: 20px 16px; }
-            .container { padding: 20px 16px; }
-            .server { padding: 18px 12px; }
-            .version .title h1 { font-size: 1.1rem; }
-            .server > h2.lead { font-size: 1.2rem; }
-            .download-row input[type="submit"], .download-row .link-btn { padding: 8px 16px; font-size: 0.85rem; }
-            .brand img { max-width: 150px; }
-        }
-        @media (max-width: 580px) {
-            .server > img { max-width: 95%; }
-            .version .content { padding: 0 16px; }
-            .version.active .content { padding: 16px; }
-        }
-    </style>
+		.search-box input {
+			width: 100%;
+			padding: 9px 12px 9px 36px;
+			border-radius: 10px;
+			border: 1px solid var(--border);
+			background: var(--bg-panel);
+			color: var(--text-primary);
+			font-size: 0.85rem;
+			outline: none;
+			transition: border-color 0.2s, background 0.2s;
+		}
+
+		.search-box input:focus {
+			border-color: rgba(var(--accent-rgb), 0.7);
+			background: var(--bg-card);
+		}
+
+		.icon-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 6px;
+			padding: 9px 12px;
+			border-radius: 10px;
+			border: 1px solid var(--border);
+			background: var(--bg-panel);
+			color: var(--text-secondary);
+			font-size: 0.84rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.18s ease;
+			white-space: nowrap;
+		}
+
+		.icon-btn:hover {
+			background: var(--bg-elevated);
+			color: var(--text-primary);
+			border-color: var(--border-strong);
+		}
+
+		.icon-btn.spinning svg {
+			animation: spin 0.9s linear infinite;
+		}
+
+		.launcher-cta {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 9px 15px;
+			border-radius: 10px;
+			background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.24), rgba(var(--accent-rgb), 0.12));
+			border: 1px solid rgba(var(--accent-rgb), 0.45);
+			color: #ffffff;
+			text-decoration: none;
+			font-size: 0.84rem;
+			font-weight: 700;
+			transition: transform 0.18s ease, filter 0.18s ease, border-color 0.18s ease;
+			white-space: nowrap;
+		}
+
+		.launcher-cta:hover {
+			transform: translateY(-1px);
+			filter: brightness(1.08);
+			border-color: var(--accent);
+		}
+
+		/* Main Shell */
+		.app-shell {
+			display: grid;
+			grid-template-columns: 280px minmax(0, 1fr);
+			min-height: calc(100vh - 63px);
+		}
+
+		/* Left Rail */
+		.rail {
+			background: var(--bg-rail);
+			border-right: 1px solid var(--border);
+			padding: 18px 14px;
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+
+		.rail-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 8px;
+			font-size: 0.74rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--text-muted);
+		}
+
+		.rail-list {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+
+		.rail-item {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			width: 100%;
+			padding: 10px;
+			border-radius: 14px;
+			border: 1px solid transparent;
+			background: transparent;
+			color: var(--text-primary);
+			text-align: left;
+			cursor: pointer;
+			transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+		}
+
+		.rail-item:hover {
+			background: rgba(255, 255, 255, 0.04);
+			border-color: var(--border);
+		}
+
+		.rail-item.active {
+			background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.16), rgba(255, 255, 255, 0.04));
+			border-color: rgba(var(--accent-rgb), 0.45);
+		}
+
+		.rail-avatar {
+			width: 44px;
+			height: 44px;
+			border-radius: 11px;
+			object-fit: cover;
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+
+		.rail-meta {
+			min-width: 0;
+			flex: 1;
+		}
+
+		.rail-title {
+			font-size: 0.92rem;
+			font-weight: 700;
+			color: var(--text-primary);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.rail-sub {
+			font-size: 0.75rem;
+			color: var(--text-secondary);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.rail-footer-card {
+			margin-top: auto;
+			padding: 14px;
+			border-radius: var(--radius-lg);
+			background: var(--bg-panel);
+			border: 1px solid var(--border);
+			font-size: 0.79rem;
+			color: var(--text-secondary);
+		}
+
+		.rail-footer-card strong {
+			display: block;
+			color: var(--text-primary);
+			margin-bottom: 4px;
+			font-size: 0.83rem;
+		}
+
+		/* Main Stage */
+		.stage {
+			padding: 24px 28px 48px;
+			max-width: 1160px;
+			width: 100%;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+		}
+
+		.testing-banner {
+			display: none;
+			align-items: center;
+			gap: 10px;
+			padding: 10px 16px;
+			border-radius: 12px;
+			background: rgba(245, 185, 66, 0.12);
+			border: 1px solid rgba(245, 185, 66, 0.35);
+			color: #ffd984;
+			font-size: 0.85rem;
+			font-weight: 600;
+		}
+
+		.testing-banner.visible {
+			display: flex;
+		}
+
+		/* Hero */
+		.hero-card {
+			position: relative;
+			overflow: hidden;
+			border-radius: var(--radius-xl);
+			background: var(--bg-panel);
+			border: 1px solid var(--border-strong);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.hero-backdrop {
+			position: absolute;
+			inset: 0;
+			background-size: cover;
+			background-position: center;
+			filter: blur(22px) saturate(1.25);
+			opacity: 0.34;
+			transform: scale(1.12);
+			pointer-events: none;
+		}
+
+		.hero-scrim {
+			position: absolute;
+			inset: 0;
+			background:
+				radial-gradient(circle at top right, rgba(var(--accent-rgb), 0.25), transparent 52%),
+				linear-gradient(135deg, rgba(16, 18, 21, 0.92) 20%, rgba(16, 18, 21, 0.74) 100%);
+			pointer-events: none;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 1;
+			padding: 28px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 24px;
+			flex-wrap: wrap;
+		}
+
+		.hero-left {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			flex: 1;
+			min-width: min(100%, 340px);
+		}
+
+		.hero-avatar {
+			width: 96px;
+			height: 96px;
+			border-radius: 20px;
+			object-fit: cover;
+			background: rgba(0, 0, 0, 0.35);
+			border: 1px solid rgba(255, 255, 255, 0.16);
+			box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+			flex-shrink: 0;
+		}
+
+		.hero-info {
+			min-width: 0;
+			flex: 1;
+		}
+
+		.hero-info h1 {
+			font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+			font-weight: 800;
+			letter-spacing: -0.025em;
+			margin-bottom: 8px;
+		}
+
+		.hero-desc {
+			color: #d6dde6;
+			font-size: 0.94rem;
+			max-width: 68ch;
+			margin-bottom: 14px;
+		}
+
+		.badges {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 5px 11px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			font-size: 0.78rem;
+			font-weight: 600;
+			color: var(--text-primary);
+		}
+
+		.badge.ip-btn {
+			cursor: pointer;
+			transition: background 0.18s ease, border-color 0.18s ease;
+		}
+
+		.badge.ip-btn:hover {
+			background: rgba(var(--accent-rgb), 0.2);
+			border-color: rgba(var(--accent-rgb), 0.5);
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			gap: 10px;
+			flex-shrink: 0;
+		}
+
+		.btn-primary {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			padding: 13px 22px;
+			border-radius: 14px;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			background: var(--accent);
+			color: var(--accent-fg);
+			font-weight: 800;
+			font-size: 0.94rem;
+			text-decoration: none;
+			cursor: pointer;
+			box-shadow: 0 12px 28px rgba(var(--accent-rgb), 0.28);
+			transition: transform 0.18s ease, filter 0.18s ease;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			filter: brightness(1.06);
+		}
+
+		.btn-primary.disabled {
+			background: var(--bg-elevated);
+			color: var(--text-muted);
+			box-shadow: none;
+			pointer-events: none;
+			border-color: var(--border);
+		}
+
+		.hero-secondary-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			justify-content: flex-end;
+		}
+
+		.btn-ghost {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 7px 12px;
+			border-radius: 10px;
+			border: 1px solid var(--border);
+			background: rgba(255, 255, 255, 0.05);
+			color: var(--text-secondary);
+			font-size: 0.78rem;
+			font-weight: 600;
+			text-decoration: none;
+			cursor: pointer;
+			transition: all 0.18s ease;
+		}
+
+		.btn-ghost:hover {
+			background: rgba(255, 255, 255, 0.1);
+			color: var(--text-primary);
+			border-color: var(--border-strong);
+		}
+
+		/* Section Card */
+		.section-card {
+			background: var(--bg-panel);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-xl);
+			padding: 22px;
+		}
+
+		.section-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			margin-bottom: 16px;
+		}
+
+		.section-head h2 {
+			font-size: 1.08rem;
+			font-weight: 700;
+			letter-spacing: -0.015em;
+		}
+
+		.section-head span {
+			font-size: 0.8rem;
+			color: var(--text-muted);
+		}
+
+		/* Gallery */
+		.gallery-stage {
+			position: relative;
+			border-radius: var(--radius-lg);
+			overflow: hidden;
+			background: #0d0f12;
+			border: 1px solid var(--border);
+			aspect-ratio: 16 / 9;
+			max-height: 430px;
+			width: 100%;
+			cursor: zoom-in;
+		}
+
+		.gallery-stage img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		.gallery-nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 40px;
+			height: 40px;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.18);
+			background: rgba(16, 18, 21, 0.72);
+			backdrop-filter: blur(8px);
+			color: #ffffff;
+			font-size: 1.15rem;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.gallery-nav:hover {
+			background: rgba(var(--accent-rgb), 0.35);
+		}
+
+		.gallery-nav.prev {
+			left: 12px;
+		}
+
+		.gallery-nav.next {
+			right: 12px;
+		}
+
+		.gallery-thumbs {
+			display: flex;
+			gap: 10px;
+			margin-top: 12px;
+			overflow-x: auto;
+			padding-bottom: 4px;
+		}
+
+		.gallery-thumb {
+			width: 96px;
+			height: 56px;
+			border-radius: 10px;
+			overflow: hidden;
+			border: 2px solid transparent;
+			background: var(--bg-card);
+			padding: 0;
+			cursor: pointer;
+			flex-shrink: 0;
+			opacity: 0.65;
+			transition: opacity 0.18s, border-color 0.18s;
+		}
+
+		.gallery-thumb.active,
+		.gallery-thumb:hover {
+			opacity: 1;
+		}
+
+		.gallery-thumb.active {
+			border-color: var(--accent);
+		}
+
+		.gallery-thumb img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		/* Versions List */
+		.versions-list {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.version-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: 16px 18px;
+			transition: border-color 0.18s ease, background 0.18s ease;
+		}
+
+		.version-card:hover {
+			border-color: rgba(var(--accent-rgb), 0.38);
+			background: #252b34;
+		}
+
+		.version-top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+
+		.version-title-group {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			min-width: 0;
+			flex: 1;
+		}
+
+		.version-headline {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.version-headline h3 {
+			font-size: 1rem;
+			font-weight: 700;
+		}
+
+		.latest-tag {
+			font-size: 0.7rem;
+			font-weight: 700;
+			padding: 2px 9px;
+			border-radius: 999px;
+			background: rgba(var(--accent-rgb), 0.16);
+			color: var(--accent-text);
+			border: 1px solid rgba(var(--accent-rgb), 0.38);
+		}
+
+		.version-meta-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			font-size: 0.78rem;
+			color: var(--text-secondary);
+		}
+
+		.version-meta-chip {
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid var(--border);
+			padding: 2px 9px;
+			border-radius: 8px;
+		}
+
+		.sha-chip {
+			cursor: pointer;
+			font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+		}
+
+		.sha-chip:hover {
+			border-color: rgba(var(--accent-rgb), 0.5);
+			color: var(--text-primary);
+		}
+
+		.version-actions {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+
+		.btn-download-ver {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			padding: 9px 16px;
+			border-radius: 10px;
+			background: var(--accent);
+			color: var(--accent-fg);
+			font-size: 0.84rem;
+			font-weight: 800;
+			text-decoration: none;
+			transition: transform 0.16s ease, filter 0.16s ease;
+		}
+
+		.btn-download-ver:hover {
+			transform: translateY(-1px);
+			filter: brightness(1.07);
+		}
+
+		.btn-download-ver.disabled {
+			background: var(--bg-elevated);
+			color: var(--text-muted);
+			pointer-events: none;
+		}
+
+		.version-notes {
+			margin-top: 12px;
+			padding-top: 12px;
+			border-top: 1px solid var(--border);
+			font-size: 0.88rem;
+			color: #cfd7e2;
+			white-space: pre-line;
+		}
+
+		/* Empty & Loading */
+		.empty-state {
+			text-align: center;
+			padding: 40px 20px;
+			color: var(--text-muted);
+			font-size: 0.92rem;
+		}
+
+		/* Lightbox */
+		.lightbox {
+			position: fixed;
+			inset: 0;
+			z-index: 90;
+			background: rgba(8, 10, 12, 0.92);
+			backdrop-filter: blur(8px);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 24px;
+		}
+
+		.lightbox.open {
+			display: flex;
+		}
+
+		.lightbox img {
+			max-width: 92vw;
+			max-height: 86vh;
+			border-radius: 14px;
+			box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65);
+		}
+
+		.lightbox-close {
+			position: absolute;
+			top: 18px;
+			right: 22px;
+			width: 42px;
+			height: 42px;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			background: rgba(255, 255, 255, 0.08);
+			color: #fff;
+			font-size: 1.2rem;
+			cursor: pointer;
+		}
+
+		/* Maintenance Screen */
+		.maintenance-screen {
+			position: fixed;
+			inset: 0;
+			z-index: 100;
+			background: radial-gradient(circle at top, rgba(245, 185, 66, 0.14), transparent 55%), #0f1114;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 24px;
+		}
+
+		.maintenance-screen.open {
+			display: flex;
+		}
+
+		.maintenance-card {
+			max-width: 520px;
+			width: 100%;
+			padding: 32px 28px;
+			border-radius: 22px;
+			background: var(--bg-panel);
+			border: 1px solid rgba(245, 185, 66, 0.35);
+			text-align: center;
+			box-shadow: var(--shadow-lg);
+		}
+
+		.maintenance-badge {
+			display: inline-block;
+			padding: 5px 12px;
+			border-radius: 999px;
+			background: rgba(245, 185, 66, 0.16);
+			color: var(--warning);
+			font-size: 0.78rem;
+			font-weight: 700;
+			margin-bottom: 14px;
+		}
+
+		.maintenance-card h2 {
+			font-size: 1.5rem;
+			margin-bottom: 10px;
+		}
+
+		.maintenance-card p {
+			color: var(--text-secondary);
+			font-size: 0.94rem;
+		}
+
+		/* Toast */
+		.toast {
+			position: fixed;
+			bottom: 22px;
+			right: 22px;
+			z-index: 120;
+			padding: 11px 16px;
+			border-radius: 12px;
+			background: var(--bg-elevated);
+			border: 1px solid rgba(var(--accent-rgb), 0.45);
+			color: var(--text-primary);
+			font-size: 0.85rem;
+			font-weight: 600;
+			box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+			opacity: 0;
+			transform: translateY(10px);
+			pointer-events: none;
+			transition: opacity 0.2s ease, transform 0.2s ease;
+		}
+
+		.toast.show {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@media (max-width: 900px) {
+			.app-shell {
+				grid-template-columns: 1fr;
+			}
+			.rail {
+				border-right: none;
+				border-bottom: 1px solid var(--border);
+				padding: 12px 16px;
+			}
+			.rail-list {
+				flex-direction: row;
+				overflow-x: auto;
+				padding-bottom: 4px;
+			}
+			.rail-item {
+				width: auto;
+				min-width: 205px;
+				flex-shrink: 0;
+			}
+			.rail-footer-card {
+				display: none;
+			}
+			.stage {
+				padding: 18px 16px 36px;
+			}
+		}
+
+		@media (max-width: 640px) {
+			.topbar {
+				flex-wrap: wrap;
+				padding: 12px 14px;
+			}
+			.brand-sub {
+				display: none;
+			}
+			.search-box {
+				flex: 1;
+				width: auto;
+			}
+			.launcher-cta span {
+				display: none;
+			}
+			.hero-content {
+				padding: 20px;
+			}
+			.hero-left {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			.hero-actions {
+				width: 100%;
+				align-items: stretch;
+			}
+			.hero-secondary-actions {
+				justify-content: flex-start;
+			}
+		}
+	</style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <div class="brand">
-            <img src="assets/logo.svg" alt="Dr3sh's Project Logo">
-        </div>
-    </header>
-    <hr>
-    <div class="servidores-list">
-        <!-- Las secciones estáticas se mantienen, pero se ocultarán/eliminarán dinámicamente si el servidor está hidden -->
-        <section class="server" data-server="expediciones" id="server-expediciones" aria-label="Expediciones">
-            <img src="assets/expediciones_title2.png" alt="expediciones">
-            <h2 class="lead"></h2>
-            <div class="versions" data-server="expediciones"></div>
-        </section>
-        <section class="server" data-server="otroServidor" id="server-otroServidor" aria-label="Otro Servidor" style="display:none;">
-            <img src="assets/otro_title.png" alt="otro servidor" onerror="this.style.display='none'">
-            <h2 class="lead">Descripción breve del otro servidor. Sustituye este texto por la descripción real cuando añadas versiones para este servidor.</h2>
-            <div class="versions" data-server="otroServidor"></div>
-        </section>
-    </div>
-</div>
+	<header class="topbar">
+		<a class="brand" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+			<img class="brand-logo" src="assets/logo.svg" alt="Dr3sh" onerror="this.src='assets/logo.png'; this.onerror=null;" />
+			<div class="brand-text">
+				<div class="brand-title-row">
+					<span class="brand-title">Dr3sh Launcher</span>
+					<span class="light-pill">Light Web</span>
+				</div>
+				<span class="brand-sub">Descarga directa de modpacks</span>
+			</div>
+		</a>
 
-<script>
-    let currentETag = null;
-    let currentLastModified = null;
-    const CHECK_INTERVAL_MS = 30000;
+		<div class="topbar-right">
+			<label class="search-box" aria-label="Buscar modpack o versión">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="11" cy="11" r="8" />
+					<path d="m21 21-4.3-4.3" />
+				</svg>
+				<input id="searchInput" type="search" placeholder="Buscar modpack o versión..." />
+			</label>
+			<button id="refreshBtn" type="button" class="icon-btn" title="Actualizar catálogo">
+				<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M21 12a9 9 0 1 1-2.64-6.36" />
+					<path d="M21 3v6h-6" />
+				</svg>
+			</button>
+			<a
+				id="launcherDownloadBtn"
+				class="launcher-cta"
+				href="https://github.com/Dr3sh/dr3shapp/releases/latest"
+				target="_blank"
+				rel="noopener"
+			>
+				<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+					<polyline points="7 10 12 15 17 10" />
+					<line x1="12" y1="15" x2="12" y2="3" />
+				</svg>
+				<span>Descargar Launcher</span>
+			</a>
+		</div>
+	</header>
 
-    function escapeHtml(s) {
-        if (!s) return '';
-        return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    }
-    function escapeAttr(s) { return String(s||'').replace(/"/g,'&quot;'); }
+	<div class="app-shell">
+		<aside class="rail">
+			<div class="rail-header">
+				<span>Modpacks</span>
+				<span id="packCount">0</span>
+			</div>
+			<div id="railList" class="rail-list">
+				<div class="empty-state">Cargando modpacks...</div>
+			</div>
+			<div class="rail-footer-card">
+				<strong>Versión Web de solo descarga</strong>
+				Descarga cualquier modpack manualmente en `.zip` o usa el <b>Dr3sh Launcher</b> para instalar, actualizar y jugar automáticamente.
+			</div>
+		</aside>
 
-    // Función que, dado el array de serversMeta (ya filtrados por status !== 'hidden'), crea/actualiza las secciones
-    function applyServerMetadata(serversMeta) {
-        // Ocultar primero todas las secciones .server que no estén en la lista de servidores activos
-        const allSections = document.querySelectorAll('.server');
-        allSections.forEach(section => {
-            section.style.display = 'none';
-        });
+		<main class="stage">
+			<div id="testingBanner" class="testing-banner">
+				<span>Modo pruebas activo</span>
+				<span id="testingBannerText"></span>
+			</div>
 
-        serversMeta.forEach(s => {
-            if (!s || !s.id) return;
-            const safeId = String(s.id);
-            let section = document.querySelector(`.server[data-server="${safeId}"]`);
-            if (!section) {
-                // No existe la sección en HTML, la creamos
-                const list = document.querySelector('.servidores-list');
-                if (!list) return;
-                section = document.createElement('section');
-                section.className = 'server';
-                section.setAttribute('data-server', safeId);
-                section.id = 'server-' + safeId;
-                section.setAttribute('aria-label', s.title || safeId);
-                section.innerHTML = `<img src="${escapeAttr(s.image || '')}" alt="${escapeAttr(s.title || safeId)}" onerror="this.style.display='none'"><h2 class="lead">${escapeHtml(s.description || '')}</h2><div class="versions" data-server="${escapeAttr(safeId)}"></div>`;
-                list.appendChild(section);
-            } else {
-                // Actualizar imagen y descripción
-                if (s.image) {
-                    let img = section.querySelector('img');
-                    if (!img) {
-                        img = document.createElement('img');
-                        section.insertBefore(img, section.firstChild);
-                    }
-                    img.src = s.image;
-                    img.alt = s.title || safeId;
-                    img.style.display = '';
-                }
-                if (s.description) {
-                    let lead = section.querySelector('h2.lead');
-                    if (!lead) {
-                        lead = document.createElement('h2');
-                        lead.className = 'lead';
-                        section.appendChild(lead);
-                    }
-                    lead.textContent = s.description;
-                }
-                // Asegurar que está visible
-                section.style.display = '';
-            }
-        });
-    }
+			<div id="stageContent">
+				<div class="section-card empty-state">Cargando catálogo desde `versions.json`...</div>
+			</div>
+		</main>
+	</div>
 
-    function renderGroupedVersions(versions) {
-        // Se renderizan todas las versiones sin filtrar por status de versión (solo se agrupan por servidor)
-        const containers = document.querySelectorAll('.versions');
-        containers.forEach(c => c.innerHTML = '');
-        if (!Array.isArray(versions)) versions = [];
+	<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Vista previa de captura">
+		<button id="lightboxClose" type="button" class="lightbox-close" aria-label="Cerrar">✕</button>
+		<img id="lightboxImg" src="" alt="Captura ampliada" />
+	</div>
 
-        versions.forEach(v => {
-            const serverId = v.server || 'expediciones';
-            const container = document.querySelector(`.versions[data-server="${serverId}"]`);
-            if (!container) return; // si el contenedor no existe (porque el servidor está oculto), no se añade la versión
-            const div = document.createElement('div');
-            div.className = 'version';
-            div.dataset.id = v.id || '';
-            div.innerHTML = `
-                <div class="title"><h1 title="${escapeAttr(v.title || '')}">${escapeHtml(v.title)}</h1></div>
-                <div class="content">
-                    <p>${escapeHtml(v.description || '')}</p>
-                    <div class="download-row">
-                        <form action="${escapeAttr(v.link || '#')}" method="get" target="_blank">
-                            <input type="submit" value="Descargar Modpack">
-                        </form>
-                        ${v.extra_link ? `<a class="link-btn" href="${escapeAttr(v.extra_link)}" target="_blank">Más info</a>` : ''}
-                    </div>
-                </div>
-            `;
-            container.appendChild(div);
-        });
-    }
+	<div id="maintenanceScreen" class="maintenance-screen" role="alertdialog" aria-modal="true">
+		<div class="maintenance-card">
+			<span class="maintenance-badge">Mantenimiento en curso</span>
+			<h2>Dr3sh Studio en Mantenimiento</h2>
+			<p id="maintenanceText">Estamos realizando ajustes en los servidores y modpacks. Vuelve en unos minutos.</p>
+		</div>
+	</div>
 
-    async function fetchVersionsAndRender() {
-        try {
-            const res = await fetch('/versions.json', { cache: 'no-cache' });
-            if (!res.ok) return;
-            const data = await res.json();
-            let versions = [];
-            let serversMeta = [];
+	<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-            if (Array.isArray(data)) {
-                versions = data;
-            } else if (data && typeof data === 'object') {
-                versions = Array.isArray(data.versions) ? data.versions : [];
-                serversMeta = Array.isArray(data.servers) ? data.servers : [];
-            }
+	<script>
+		(() => {
+			const CHECK_INTERVAL_MS = 20000;
+			const LAUNCHER_RELEASES_API = 'https://api.github.com/repos/Dr3sh/dr3shapp/releases/latest';
+			const REMOTE_BASE = location.hostname.endsWith('dr3sh.github.io') ? '' : 'https://dr3sh.github.io/';
+			const FALLBACK_LOGO = `${REMOTE_BASE}assets/logo.png`;
 
-            // FILTRAR SOLO SERVIDORES CON STATUS DIFERENTE DE "hidden" (case-insensitive? asumimos minúsculas)
-            const activeServersMeta = serversMeta.filter(s => s.status !== 'hidden');
+			const state = {
+				catalog: null,
+				servers: [],
+				versions: [],
+				selectedId: '',
+				search: '',
+				activeShotIdx: 0,
+				etag: null,
+				lastMod: null,
+			};
 
-            // Aplicar metadatos de servidores activos (crea/actualiza secciones)
-            applyServerMetadata(activeServersMeta);
+			const els = {
+				railList: document.getElementById('railList'),
+				packCount: document.getElementById('packCount'),
+				stageContent: document.getElementById('stageContent'),
+				searchInput: document.getElementById('searchInput'),
+				refreshBtn: document.getElementById('refreshBtn'),
+				launcherDownloadBtn: document.getElementById('launcherDownloadBtn'),
+				testingBanner: document.getElementById('testingBanner'),
+				testingBannerText: document.getElementById('testingBannerText'),
+				maintenanceScreen: document.getElementById('maintenanceScreen'),
+				maintenanceText: document.getElementById('maintenanceText'),
+				lightbox: document.getElementById('lightbox'),
+				lightboxImg: document.getElementById('lightboxImg'),
+				lightboxClose: document.getElementById('lightboxClose'),
+				toast: document.getElementById('toast'),
+			};
 
-            // Renderizar versiones (todas, sin filtrar por estado de versión)
-            renderGroupedVersions(versions);
+			let toastTimer = null;
+			function showToast(msg) {
+				els.toast.textContent = msg;
+				els.toast.classList.add('show');
+				if (toastTimer) clearTimeout(toastTimer);
+				toastTimer = setTimeout(() => els.toast.classList.remove('show'), 2600);
+			}
 
-            // Limpiar imágenes vacías (ocultar si no tienen src)
-            document.querySelectorAll('.server').forEach(section => {
-                const img = section.querySelector('img');
-                if (img && (!img.src || img.src.trim() === '')) img.style.display = 'none';
-            });
-        } catch(e) { console.warn(e); }
-    }
+			function escapeHtml(value) {
+				return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+					'&': '&amp;',
+					'<': '&lt;',
+					'>': '&gt;',
+					'"': '&quot;',
+					"'": '&#39;',
+				}[ch]));
+			}
 
-    async function checkAndUpdate() {
-        try {
-            const head = await fetch('/versions.json', { method: 'HEAD', cache: 'no-cache' });
-            if (!head.ok) return;
-            const etag = head.headers.get('etag');
-            const lastMod = head.headers.get('last-modified');
-            const changed = (etag && etag !== currentETag) ||
-                            (!etag && lastMod && lastMod !== currentLastModified) ||
-                            (etag === null && lastMod === null && currentETag === null && currentLastModified === null);
-            if (changed) {
-                currentETag = etag;
-                currentLastModified = lastMod;
-                await fetchVersionsAndRender();
-            }
-        } catch(err) { console.warn(err); }
-    }
+			function resolveUrl(raw) {
+				const s = String(raw || '').trim();
+				if (!s) return '';
+				if (/^(https?:|data:|blob:)/i.test(s)) return s;
+				return REMOTE_BASE + s.replace(/^\/+/, '');
+			}
 
-    // Acordeón
-    document.addEventListener('click', (e) => {
-        const title = e.target.closest('.title');
-        if (title) {
-            const v = title.closest('.version');
-            if (!v) return;
-            const all = document.querySelectorAll('.version');
-            const isActive = v.classList.contains('active');
-            all.forEach(x => x.classList.remove('active'));
-            if (!isActive) v.classList.add('active');
-            return;
-        }
-        if (!e.target.closest('.version')) {
-            document.querySelectorAll('.version').forEach(x => x.classList.remove('active'));
-        }
-    });
+			if (REMOTE_BASE) {
+				document.querySelectorAll('.brand-logo').forEach((img) => {
+					img.src = REMOTE_BASE + 'assets/logo.svg';
+				});
+			}
 
-    (function init() {
-        fetchVersionsAndRender();
-        setInterval(checkAndUpdate, CHECK_INTERVAL_MS);
-    })();
-</script>
+			function formatLoader(loader) {
+				const map = {
+					fabric: 'Fabric',
+					neoforge: 'NeoForge',
+					forge: 'Forge',
+					quilt: 'Quilt',
+				};
+				const key = String(loader || '').trim().toLowerCase();
+				return map[key] || (loader ? String(loader) : 'Modpack');
+			}
+
+			function hexToRgb(hex) {
+				const clean = String(hex || '').replace('#', '').trim();
+				const full = clean.length === 3
+					? clean.split('').map((c) => c + c).join('')
+					: clean;
+				if (!/^[0-9a-f]{6}$/i.test(full)) return null;
+				return {
+					r: parseInt(full.slice(0, 2), 16),
+					g: parseInt(full.slice(2, 4), 16),
+					b: parseInt(full.slice(4, 6), 16),
+				};
+			}
+
+			function applyAccentTheme(themeColor) {
+				const parsed = hexToRgb(themeColor);
+				if (parsed) {
+					const { r, g, b } = parsed;
+					const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+					const isVeryDark = lum < 0.22;
+					const btnAccent = isVeryDark ? '#1bd96a' : themeColor;
+					const btnFg = isVeryDark || lum <= 0.58 ? (isVeryDark ? '#08120c' : '#ffffff') : '#08120c';
+					const accentText = lum < 0.42
+						? `rgb(${Math.min(255, r + 115)}, ${Math.min(255, g + 115)}, ${Math.min(255, b + 115)})`
+						: themeColor;
+					document.documentElement.style.setProperty('--accent', btnAccent);
+					document.documentElement.style.setProperty('--accent-rgb', `${r}, ${g}, ${b}`);
+					document.documentElement.style.setProperty('--accent-fg', btnFg);
+					document.documentElement.style.setProperty('--accent-text', accentText);
+				} else {
+					document.documentElement.style.setProperty('--accent', '#1bd96a');
+					document.documentElement.style.setProperty('--accent-rgb', '27, 217, 106');
+					document.documentElement.style.setProperty('--accent-fg', '#08120c');
+					document.documentElement.style.setProperty('--accent-text', '#1bd96a');
+				}
+			}
+
+			function getScreenshots(server) {
+				if (!server || !Array.isArray(server.screenshots)) return [];
+				return server.screenshots
+					.filter((item) => {
+						if (!item) return false;
+						if (typeof item === 'string') return Boolean(item.trim());
+						return String(item.status || 'active').toLowerCase() !== 'hidden' && Boolean(item.url);
+					})
+					.map((item) => resolveUrl(typeof item === 'string' ? item : item.url))
+					.filter(Boolean);
+			}
+
+			function getVersionsForServer(serverId) {
+				const q = state.search.trim().toLowerCase();
+				return state.versions.filter((v) => {
+					if (!v || v.server !== serverId) return false;
+					if (String(v.status || 'active').toLowerCase() === 'hidden') return false;
+					if (!q) return true;
+					const haystack = `${v.title || ''} ${v.version || ''} ${v.description || ''}`.toLowerCase();
+					return haystack.includes(q);
+				});
+			}
+
+			function getVisibleServers() {
+				const q = state.search.trim().toLowerCase();
+				const active = state.servers.filter((s) => s && String(s.status || 'active').toLowerCase() !== 'hidden');
+				if (!q) return active;
+				return active.filter((s) => {
+					const serverText = `${s.title || ''} ${s.id || ''} ${s.description || ''} ${s.minecraft_version || ''} ${s.mod_loader || ''}`.toLowerCase();
+					if (serverText.includes(q)) return true;
+					return getVersionsForServer(s.id).length > 0;
+				});
+			}
+
+			function selectServer(id) {
+				if (!id || state.selectedId === id) return;
+				state.selectedId = id;
+				state.activeShotIdx = 0;
+				if (history.replaceState) {
+					history.replaceState(null, '', `#${encodeURIComponent(id)}`);
+				}
+				renderAll();
+			}
+
+			function renderRail(visibleServers) {
+				els.packCount.textContent = String(visibleServers.length);
+				if (visibleServers.length === 0) {
+					els.railList.innerHTML = '<div class="empty-state">No hay modpacks que coincidan.</div>';
+					return;
+				}
+				els.railList.innerHTML = visibleServers.map((srv) => {
+					const isActive = srv.id === state.selectedId;
+					const avatar = resolveUrl(srv.logo_square || srv.logo || srv.image || 'assets/logo.png');
+					const allVers = state.versions.filter(
+						(v) => v.server === srv.id && String(v.status || 'active').toLowerCase() !== 'hidden',
+					);
+					const latest = allVers[0];
+					const subParts = [
+						formatLoader(srv.mod_loader),
+						srv.minecraft_version || 'Minecraft',
+						latest && latest.version ? `v${String(latest.version).replace(/^v/i, '')}` : `${allVers.length} ver.`,
+					].filter(Boolean);
+					return `
+						<button type="button" class="rail-item ${isActive ? 'active' : ''}" data-select-server="${escapeHtml(srv.id)}">
+							<img class="rail-avatar" src="${escapeHtml(avatar)}" alt="${escapeHtml(srv.title)}" onerror="this.src='${escapeHtml(FALLBACK_LOGO)}'; this.onerror=null;" />
+							<div class="rail-meta">
+								<div class="rail-title">${escapeHtml(srv.title || srv.id)}</div>
+								<div class="rail-sub">${escapeHtml(subParts.join(' • '))}</div>
+							</div>
+						</button>
+					`;
+				}).join('');
+			}
+
+			function renderStage(visibleServers) {
+				const server = visibleServers.find((s) => s.id === state.selectedId) || visibleServers[0];
+				if (!server) {
+					applyAccentTheme(null);
+					els.stageContent.innerHTML = '<div class="section-card empty-state">No se encontraron modpacks activos para mostrar.</div>';
+					return;
+				}
+				if (server.id !== state.selectedId) {
+					state.selectedId = server.id;
+				}
+
+				applyAccentTheme(server.theme_color);
+
+				const shots = getScreenshots(server);
+				const avatar = resolveUrl(server.logo_square || server.logo || server.image || 'assets/logo.png');
+				const backdrop = shots[0] || resolveUrl(server.image || server.logo || '');
+				const serverVersions = getVersionsForServer(server.id);
+				const allServerVersions = state.versions.filter(
+					(v) => v.server === server.id && String(v.status || 'active').toLowerCase() !== 'hidden',
+				);
+				const latest = allServerVersions[0] || null;
+				const latestLink = latest && latest.link ? resolveUrl(latest.link) : '';
+				const latestManifest = latest && latest.manifest ? resolveUrl(latest.manifest) : '';
+
+				if (state.activeShotIdx >= shots.length) state.activeShotIdx = 0;
+
+				const galleryHtml = shots.length > 0 ? `
+					<section class="section-card">
+						<div class="section-head">
+							<h2>Galería</h2>
+							<span>${state.activeShotIdx + 1} / ${shots.length} • Haz clic para ampliar</span>
+						</div>
+						<div class="gallery-stage" id="galleryStage">
+							<img id="galleryMainImg" src="${escapeHtml(shots[state.activeShotIdx])}" alt="Captura de ${escapeHtml(server.title)}" onerror="this.style.opacity='0.25'" />
+							${shots.length > 1 ? `
+								<button type="button" class="gallery-nav prev" id="galleryPrev" aria-label="Anterior">‹</button>
+								<button type="button" class="gallery-nav next" id="galleryNext" aria-label="Siguiente">›</button>
+							` : ''}
+						</div>
+						${shots.length > 1 ? `
+							<div class="gallery-thumbs">
+								${shots.map((url, idx) => `
+									<button type="button" class="gallery-thumb ${idx === state.activeShotIdx ? 'active' : ''}" data-shot-idx="${idx}">
+										<img src="${escapeHtml(url)}" alt="Miniatura ${idx + 1}" loading="lazy" onerror="this.parentElement.style.display='none'" />
+									</button>
+								`).join('')}
+							</div>
+						` : ''}
+					</section>
+				` : '';
+
+				const versionsHtml = serverVersions.length > 0 ? serverVersions.map((ver, idx) => {
+					const verLink = ver.link ? resolveUrl(ver.link) : '';
+					const verManifest = ver.manifest ? resolveUrl(ver.manifest) : '';
+					const isLatest = latest && ver.id === latest.id && idx === 0 && !state.search.trim();
+					const mcVer = ver.minecraft_version || server.minecraft_version;
+					const ldName = ver.mod_loader || server.mod_loader;
+					const ldVer = ver.mod_loader_version || server.mod_loader_version;
+					const cleanVer = ver.version ? `v${String(ver.version).replace(/^v/i, '')}` : '';
+					const shaShort = ver.sha256 ? `${ver.sha256.slice(0, 10)}…` : '';
+
+					return `
+						<article class="version-card">
+							<div class="version-top">
+								<div class="version-title-group">
+									<div class="version-headline">
+										<h3>${escapeHtml(ver.title || ver.id)}</h3>
+										${isLatest ? '<span class="latest-tag">Última versión</span>' : ''}
+									</div>
+									<div class="version-meta-row">
+										${cleanVer ? `<span class="version-meta-chip">${escapeHtml(cleanVer)}</span>` : ''}
+										${mcVer ? `<span class="version-meta-chip">MC ${escapeHtml(mcVer)}</span>` : ''}
+										${ldName ? `<span class="version-meta-chip">${escapeHtml(formatLoader(ldName))}${ldVer ? ` ${escapeHtml(ldVer)}` : ''}</span>` : ''}
+										${ver.size_mb ? `<span class="version-meta-chip">${escapeHtml(ver.size_mb)} MB</span>` : ''}
+										${ver.published_at ? `<span class="version-meta-chip">${escapeHtml(ver.published_at)}</span>` : ''}
+										${shaShort ? `<button type="button" class="version-meta-chip sha-chip" data-copy="${escapeHtml(ver.sha256)}" title="Copiar SHA-256 completo">SHA256: ${escapeHtml(shaShort)}</button>` : ''}
+									</div>
+								</div>
+								<div class="version-actions">
+									${verManifest ? `<a class="btn-ghost" href="${escapeHtml(verManifest)}" target="_blank" rel="noopener">manifest.json</a>` : ''}
+									${verLink ? `
+										<a class="btn-download-ver" href="${escapeHtml(verLink)}" target="_blank" rel="noopener" download>
+											Descargar ZIP
+										</a>
+									` : `<span class="btn-download-ver disabled">Sin archivo</span>`}
+								</div>
+							</div>
+							${ver.description ? `<div class="version-notes">${escapeHtml(ver.description)}</div>` : ''}
+						</article>
+					`;
+				}).join('') : '<div class="empty-state">No hay versiones disponibles para mostrar.</div>';
+
+				els.stageContent.innerHTML = `
+					<section class="hero-card">
+						${backdrop ? `<div class="hero-backdrop" style="background-image:url('${escapeHtml(backdrop)}')"></div>` : ''}
+						<div class="hero-scrim"></div>
+						<div class="hero-content">
+							<div class="hero-left">
+								<img class="hero-avatar" src="${escapeHtml(avatar)}" alt="${escapeHtml(server.title)}" onerror="this.src='${escapeHtml(FALLBACK_LOGO)}'; this.onerror=null;" />
+								<div class="hero-info">
+									<h1>${escapeHtml(server.title || server.id)}</h1>
+									${server.description ? `<p class="hero-desc">${escapeHtml(server.description)}</p>` : ''}
+									<div class="badges">
+										<span class="badge">${escapeHtml(formatLoader(server.mod_loader))}${server.mod_loader_version ? ` ${escapeHtml(server.mod_loader_version)}` : ''}</span>
+										${server.minecraft_version ? `<span class="badge">Minecraft ${escapeHtml(server.minecraft_version)}</span>` : ''}
+										${latest && latest.version ? `<span class="badge">v${escapeHtml(String(latest.version).replace(/^v/i, ''))}</span>` : ''}
+										${latest && latest.size_mb ? `<span class="badge">${escapeHtml(latest.size_mb)} MB</span>` : ''}
+										${server.server_address ? `<button type="button" class="badge ip-btn" data-copy="${escapeHtml(server.server_address)}" title="Copiar IP del servidor">IP: ${escapeHtml(server.server_address)}</button>` : ''}
+									</div>
+								</div>
+							</div>
+
+							<div class="hero-actions">
+								${latestLink ? `
+									<a class="btn-primary" href="${escapeHtml(latestLink)}" target="_blank" rel="noopener" download>
+										<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4">
+											<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+											<polyline points="7 10 12 15 17 10" />
+											<line x1="12" y1="15" x2="12" y2="3" />
+										</svg>
+										Descargar ${escapeHtml(latest.version ? `v${String(latest.version).replace(/^v/i, '')}` : 'Modpack')} (.zip)
+									</a>
+								` : `<span class="btn-primary disabled">Próximamente</span>`}
+
+								<div class="hero-secondary-actions">
+									${latestLink ? `<button type="button" class="btn-ghost" data-copy="${escapeHtml(latestLink)}">Copiar link</button>` : ''}
+									${latestManifest ? `<a class="btn-ghost" href="${escapeHtml(latestManifest)}" target="_blank" rel="noopener">Manifest JSON</a>` : ''}
+								</div>
+							</div>
+						</div>
+					</section>
+
+					${galleryHtml}
+
+					<section class="section-card">
+						<div class="section-head">
+							<h2>Versiones disponibles</h2>
+							<span>${serverVersions.length} versión(es)</span>
+						</div>
+						<div class="versions-list">
+							${versionsHtml}
+						</div>
+					</section>
+				`;
+			}
+
+			function renderModes() {
+				const cat = state.catalog || {};
+				const isMaint = Boolean(cat.maintenance_mode);
+				els.maintenanceText.textContent = cat.maintenance_message || 'Estamos realizando ajustes en los servidores y modpacks. Vuelve en unos minutos.';
+				els.maintenanceScreen.classList.toggle('open', isMaint);
+
+				const isTest = Boolean(cat.testing_mode);
+				els.testingBanner.classList.toggle('visible', isTest && !isMaint);
+				if (isTest) {
+					els.testingBannerText.textContent = 'Algunas versiones pueden estar en fase de pruebas.';
+				}
+			}
+
+			function renderAll() {
+				renderModes();
+				const visibleServers = getVisibleServers();
+				renderRail(visibleServers);
+				renderStage(visibleServers);
+			}
+
+			async function loadCatalog(manual = false) {
+				if (manual) els.refreshBtn.classList.add('spinning');
+				try {
+					const res = await fetch(`${REMOTE_BASE}versions.json?t=${Date.now()}`, { cache: 'no-cache' });
+					if (!res.ok) throw new Error(`HTTP ${res.status}`);
+					const data = await res.json();
+					state.catalog = data || {};
+					state.servers = Array.isArray(data.servers) ? data.servers : [];
+					state.versions = Array.isArray(data.versions) ? data.versions : [];
+
+					const hashId = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+					const activeServers = state.servers.filter((s) => s && String(s.status || 'active').toLowerCase() !== 'hidden');
+					if (!state.selectedId) {
+						const fromHash = activeServers.find((s) => s.id === hashId);
+						state.selectedId = fromHash ? fromHash.id : (activeServers[0]?.id || '');
+					}
+					renderAll();
+					if (manual) showToast('Catálogo actualizado.');
+				} catch (err) {
+					console.error('Error cargando versions.json:', err);
+					els.stageContent.innerHTML = '<div class="section-card empty-state">No se pudo cargar `versions.json`. Intenta actualizar en unos segundos.</div>';
+				} finally {
+					if (manual) els.refreshBtn.classList.remove('spinning');
+				}
+			}
+
+			async function checkUpdates() {
+				try {
+					const head = await fetch(`${REMOTE_BASE}versions.json`, { method: 'HEAD', cache: 'no-cache' });
+					if (!head.ok) return;
+					const etag = head.headers.get('etag');
+					const lastMod = head.headers.get('last-modified');
+					if ((etag && etag !== state.etag) || (!etag && lastMod && lastMod !== state.lastMod)) {
+						state.etag = etag;
+						state.lastMod = lastMod;
+						await loadCatalog(false);
+					}
+				} catch {}
+			}
+
+			async function resolveLatestLauncherDownload() {
+				try {
+					const res = await fetch(LAUNCHER_RELEASES_API, {
+						headers: { Accept: 'application/vnd.github+json' },
+					});
+					if (!res.ok) return;
+					const rel = await res.json();
+					const assets = Array.isArray(rel.assets) ? rel.assets : [];
+					const setupAsset = assets.find((a) => /\.exe$/i.test(a.name || '')) || assets[0];
+					if (setupAsset && setupAsset.browser_download_url) {
+						els.launcherDownloadBtn.href = setupAsset.browser_download_url;
+						const label = els.launcherDownloadBtn.querySelector('span');
+						if (label && rel.tag_name) {
+							label.textContent = `Descargar Launcher (${rel.tag_name})`;
+						}
+					} else if (rel.html_url) {
+						els.launcherDownloadBtn.href = rel.html_url;
+					}
+				} catch {}
+			}
+
+			// Event listeners
+			els.searchInput.addEventListener('input', (e) => {
+				state.search = e.target.value || '';
+				renderAll();
+			});
+
+			els.refreshBtn.addEventListener('click', () => loadCatalog(true));
+
+			document.addEventListener('click', async (e) => {
+				const selectBtn = e.target.closest('[data-select-server]');
+				if (selectBtn) {
+					selectServer(selectBtn.getAttribute('data-select-server'));
+					return;
+				}
+
+				const copyBtn = e.target.closest('[data-copy]');
+				if (copyBtn) {
+					const value = copyBtn.getAttribute('data-copy');
+					if (value && navigator.clipboard) {
+						try {
+							await navigator.clipboard.writeText(value);
+							showToast('Copiado al portapapeles.');
+						} catch {}
+					}
+					return;
+				}
+
+				const thumbBtn = e.target.closest('[data-shot-idx]');
+				if (thumbBtn) {
+					state.activeShotIdx = Number(thumbBtn.getAttribute('data-shot-idx')) || 0;
+					renderStage(getVisibleServers());
+					return;
+				}
+
+				if (e.target.closest('#galleryPrev')) {
+					const srv = getVisibleServers().find((s) => s.id === state.selectedId);
+					const shots = getScreenshots(srv);
+					if (shots.length > 0) {
+						state.activeShotIdx = (state.activeShotIdx - 1 + shots.length) % shots.length;
+						renderStage(getVisibleServers());
+					}
+					return;
+				}
+
+				if (e.target.closest('#galleryNext')) {
+					const srv = getVisibleServers().find((s) => s.id === state.selectedId);
+					const shots = getScreenshots(srv);
+					if (shots.length > 0) {
+						state.activeShotIdx = (state.activeShotIdx + 1) % shots.length;
+						renderStage(getVisibleServers());
+					}
+					return;
+				}
+
+				const galleryStage = e.target.closest('#galleryStage');
+				if (galleryStage && !e.target.closest('.gallery-nav')) {
+					const img = galleryStage.querySelector('#galleryMainImg');
+					if (img && img.src) {
+						els.lightboxImg.src = img.src;
+						els.lightbox.classList.add('open');
+					}
+				}
+			});
+
+			els.lightboxClose.addEventListener('click', () => els.lightbox.classList.remove('open'));
+			els.lightbox.addEventListener('click', (e) => {
+				if (e.target === els.lightbox) els.lightbox.classList.remove('open');
+			});
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape') els.lightbox.classList.remove('open');
+			});
+
+			loadCatalog(false);
+			resolveLatestLauncherDownload();
+			setInterval(checkUpdates, CHECK_INTERVAL_MS);
+		})();
+	</script>
 </body>
 </html>
