@@ -109,12 +109,6 @@
 			white-space: nowrap;
 		}
 
-		.brand-sub {
-			font-size: 0.75rem;
-			color: var(--text-muted);
-			white-space: nowrap;
-		}
-
 		.topbar-right {
 			display: flex;
 			align-items: center;
@@ -178,6 +172,12 @@
 			background: var(--bg-elevated);
 			color: var(--text-primary);
 			border-color: var(--border-strong);
+		}
+
+		.icon-btn.active {
+			background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.2), rgba(var(--accent-rgb), 0.08));
+			border-color: rgba(var(--accent-rgb), 0.5);
+			color: var(--text-primary);
 		}
 
 		.icon-btn.spinning svg {
@@ -608,25 +608,23 @@
 		}
 
 		.gallery-thumbs {
-			display: flex;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
 			gap: 10px;
 			margin-top: 12px;
-			overflow-x: auto;
-			padding-bottom: 4px;
 		}
 
 		.gallery-thumb {
-			width: 96px;
-			height: 56px;
+			width: 100%;
+			aspect-ratio: 16 / 9;
 			border-radius: 10px;
 			overflow: hidden;
 			border: 2px solid transparent;
 			background: var(--bg-card);
 			padding: 0;
 			cursor: pointer;
-			flex-shrink: 0;
 			opacity: 0.65;
-			transition: opacity 0.18s, border-color 0.18s;
+			transition: opacity 0.18s, border-color 0.18s, transform 0.16s;
 		}
 
 		.gallery-thumb.active,
@@ -645,32 +643,69 @@
 			display: block;
 		}
 
-		/* Versions List */
+		/* Versions List (Collapsible) */
 		.versions-list {
 			display: flex;
 			flex-direction: column;
-			gap: 12px;
+			gap: 10px;
 		}
 
 		.version-card {
 			background: var(--bg-card);
 			border: 1px solid var(--border);
 			border-radius: var(--radius-lg);
-			padding: 16px 18px;
+			overflow: hidden;
 			transition: border-color 0.18s ease, background 0.18s ease;
 		}
 
-		.version-card:hover {
+		.version-card:hover,
+		.version-card[open] {
 			border-color: rgba(var(--accent-rgb), 0.38);
 			background: #252b34;
 		}
 
-		.version-top {
+		.version-summary {
+			list-style: none;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			gap: 16px;
-			flex-wrap: wrap;
+			gap: 14px;
+			padding: 14px 16px;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.version-summary::-webkit-details-marker {
+			display: none;
+		}
+
+		.version-summary-left {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			min-width: 0;
+			flex: 1;
+		}
+
+		.version-chevron {
+			width: 24px;
+			height: 24px;
+			border-radius: 8px;
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid var(--border);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--text-secondary);
+			flex-shrink: 0;
+			transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+		}
+
+		.version-card[open] .version-chevron {
+			transform: rotate(90deg);
+			background: rgba(var(--accent-rgb), 0.18);
+			border-color: rgba(var(--accent-rgb), 0.4);
+			color: var(--accent-text);
 		}
 
 		.version-title-group {
@@ -689,7 +724,7 @@
 		}
 
 		.version-headline h3 {
-			font-size: 1rem;
+			font-size: 0.98rem;
 			font-weight: 700;
 		}
 
@@ -707,7 +742,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			gap: 8px;
-			font-size: 0.78rem;
+			font-size: 0.77rem;
 			color: var(--text-secondary);
 		}
 
@@ -718,34 +753,25 @@
 			border-radius: 8px;
 		}
 
-		.sha-chip {
-			cursor: pointer;
-			font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-		}
-
-		.sha-chip:hover {
-			border-color: rgba(var(--accent-rgb), 0.5);
-			color: var(--text-primary);
-		}
-
 		.version-actions {
 			display: flex;
 			align-items: center;
 			gap: 8px;
-			flex-wrap: wrap;
+			flex-shrink: 0;
 		}
 
 		.btn-download-ver {
 			display: inline-flex;
 			align-items: center;
 			gap: 7px;
-			padding: 9px 16px;
+			padding: 9px 15px;
 			border-radius: 10px;
 			background: var(--accent);
 			color: var(--accent-fg);
-			font-size: 0.84rem;
+			font-size: 0.83rem;
 			font-weight: 800;
 			text-decoration: none;
+			white-space: nowrap;
 			transition: transform 0.16s ease, filter 0.16s ease;
 		}
 
@@ -760,13 +786,21 @@
 			pointer-events: none;
 		}
 
+		.version-body {
+			padding: 0 16px 16px 52px;
+		}
+
 		.version-notes {
-			margin-top: 12px;
 			padding-top: 12px;
 			border-top: 1px solid var(--border);
-			font-size: 0.88rem;
+			font-size: 0.87rem;
 			color: #cfd7e2;
 			white-space: pre-line;
+			line-height: 1.55;
+		}
+
+		.version-notes.empty {
+			color: var(--text-muted);
 		}
 
 		/* Empty & Loading */
@@ -890,12 +924,20 @@
 			transform: translateY(0);
 		}
 
+		#stageContent.hidden {
+			display: none;
+		}
+
 		/* Install Guide (Windows) */
 		.guide-section {
-			display: flex;
+			display: none;
 			flex-direction: column;
 			gap: 20px;
 			scroll-margin-top: 84px;
+		}
+
+		.guide-section.open {
+			display: flex;
 		}
 
 		.guide-header {
@@ -1397,9 +1439,6 @@
 				justify-content: flex-start;
 				gap: 8px;
 			}
-			.brand-sub {
-				display: none;
-			}
 			.search-box {
 				flex: 1;
 				min-width: 0;
@@ -1413,6 +1452,20 @@
 			}
 			.section-card {
 				padding: 16px;
+			}
+			.gallery-thumbs {
+				grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+			}
+			.version-summary {
+				flex-wrap: wrap;
+				align-items: flex-start;
+			}
+			.version-actions {
+				width: 100%;
+				justify-content: flex-end;
+			}
+			.version-body {
+				padding: 0 16px 16px;
 			}
 			.guide-prep-card,
 			.guide-step,
@@ -1441,13 +1494,12 @@
 </head>
 <body>
 	<header class="topbar">
-		<a class="brand" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+		<a class="brand" href="#top" id="brandHomeLink">
 			<img class="brand-logo" src="assets/logo-1x1.png" alt="Dr3sh" />
 			<div class="brand-text">
 				<div class="brand-title-row">
 					<span class="brand-title">Dr3sh Launcher</span>
 				</div>
-				<span class="brand-sub">Descarga directa de modpacks</span>
 			</div>
 		</a>
 
@@ -1459,14 +1511,14 @@
 				</svg>
 				<input id="searchInput" type="search" placeholder="Buscar modpack o versión..." />
 			</label>
-			<a class="icon-btn guide-nav-btn" href="#installGuide" title="¿No sabes cómo instalar un modpack?">
+			<button id="guideNavBtn" type="button" class="icon-btn guide-nav-btn" data-open-guide="true" title="¿No sabes cómo instalar un modpack?">
 				<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
 					<circle cx="12" cy="12" r="10" />
 					<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
 					<line x1="12" y1="17" x2="12.01" y2="17" />
 				</svg>
 				<span>¿Cómo instalar?</span>
-			</a>
+			</button>
 			<button id="refreshBtn" type="button" class="icon-btn" title="Actualizar catálogo">
 				<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
 					<path d="M21 12a9 9 0 1 1-2.64-6.36" />
@@ -1501,7 +1553,7 @@
 			</div>
 			<div class="rail-footer-card">
 				<strong>¿Primera vez instalando?</strong>
-				Descarga el `.zip` de tu modpack y sigue la <a href="#installGuide" style="color: var(--accent-text); font-weight: 700; text-decoration: none;">guía paso a paso para Windows</a>, o usa el <b>Dr3sh Launcher</b> para que se instale y actualice solo.
+				Descarga tu modpack y revisa la <a href="#como-instalar" data-open-guide="true" style="color: var(--accent-text); font-weight: 700; text-decoration: none;">guía paso a paso para Windows</a>, o usa el <b>Dr3sh Launcher</b> para instalar y actualizar solo.
 			</div>
 		</aside>
 
@@ -1512,7 +1564,7 @@
 			</div>
 
 			<div id="stageContent">
-				<div class="section-card empty-state">Cargando catálogo desde `versions.json`...</div>
+				<div class="section-card empty-state">Cargando modpacks...</div>
 			</div>
 
 			<section id="installGuide" class="section-card guide-section" aria-labelledby="installGuideTitle">
@@ -1531,6 +1583,12 @@
 							Te explicamos paso a paso desde cero en <b>Windows 10 / 11</b> cómo abrir el archivo descargado con WinRAR, instalar el loader y poner el modpack funcionando.
 						</p>
 					</div>
+					<button id="guideBackBtn" type="button" class="icon-btn" data-close-guide="true">
+						<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="m15 18-6-6 6-6" />
+						</svg>
+						<span>Volver a modpacks</span>
+					</button>
 				</div>
 
 				<div id="guidePackHint" class="guide-pack-hint">
@@ -1652,7 +1710,7 @@
 								<div class="guide-step-num"><span>1</span> Extraer el modpack con WinRAR</div>
 								<h4>Descarga el .zip del modpack y extráelo en una carpeta</h4>
 								<ol>
-									<li>Sube arriba, selecciona el modpack y haz clic en el botón grande <b>Descargar (.zip)</b>. El archivo se guardará en tu carpeta <b>Descargas</b>.</li>
+									<li>Selecciona el modpack en la lista de la izquierda (o pulsa <b>Descargar modpack</b> arriba en el recuadro). El archivo se guardará en tu carpeta <b>Descargas</b>.</li>
 									<li>Haz <b>clic derecho</b> sobre el archivo descargado → <b>WinRAR</b> → <b>"Extraer en [nombre-del-modpack]\"</b> (como viste en el primer video).</li>
 									<li>Abre esa carpeta amarilla extraída: adentro debes ver carpetas como <code>mods</code>, <code>config</code>, <code>resourcepacks</code> o <code>shaderpacks</code> (si hay otra carpeta con el nombre del pack adentro, entra en ella hasta ver esas carpetas).</li>
 								</ol>
@@ -1840,6 +1898,7 @@
 				servers: [],
 				versions: [],
 				selectedId: '',
+				view: 'pack',
 				search: '',
 				activeShotIdx: 0,
 				etag: null,
@@ -1850,6 +1909,9 @@
 				railList: document.getElementById('railList'),
 				packCount: document.getElementById('packCount'),
 				stageContent: document.getElementById('stageContent'),
+				installGuide: document.getElementById('installGuide'),
+				guideNavBtn: document.getElementById('guideNavBtn'),
+				brandHomeLink: document.getElementById('brandHomeLink'),
 				searchInput: document.getElementById('searchInput'),
 				refreshBtn: document.getElementById('refreshBtn'),
 				launcherDownloadBtn: document.getElementById('launcherDownloadBtn'),
@@ -1985,14 +2047,49 @@
 				});
 			}
 
+			function setView(nextView, updateHash = true) {
+				state.view = nextView === 'guide' ? 'guide' : 'pack';
+				const showGuide = state.view === 'guide';
+				if (els.stageContent) {
+					els.stageContent.classList.toggle('hidden', showGuide);
+				}
+				if (els.installGuide) {
+					els.installGuide.classList.toggle('open', showGuide);
+				}
+				if (els.guideNavBtn) {
+					els.guideNavBtn.classList.toggle('active', showGuide);
+					els.guideNavBtn.setAttribute('aria-pressed', showGuide ? 'true' : 'false');
+				}
+				renderRail(getVisibleServers());
+				if (updateHash && history.replaceState) {
+					if (showGuide) {
+						history.replaceState(null, '', '#como-instalar');
+					} else if (state.selectedId) {
+						history.replaceState(null, '', `#${encodeURIComponent(state.selectedId)}`);
+					}
+				}
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			}
+
 			function selectServer(id) {
-				if (!id || state.selectedId === id) return;
+				if (!id) return;
+				const changed = state.selectedId !== id;
 				state.selectedId = id;
-				state.activeShotIdx = 0;
+				if (changed) {
+					state.activeShotIdx = 0;
+				}
+				state.view = 'pack';
+				if (els.stageContent) els.stageContent.classList.remove('hidden');
+				if (els.installGuide) els.installGuide.classList.remove('open');
+				if (els.guideNavBtn) {
+					els.guideNavBtn.classList.remove('active');
+					els.guideNavBtn.setAttribute('aria-pressed', 'false');
+				}
 				if (history.replaceState) {
 					history.replaceState(null, '', `#${encodeURIComponent(id)}`);
 				}
 				renderAll();
+				window.scrollTo({ top: 0, behavior: 'smooth' });
 			}
 
 			function renderRail(visibleServers) {
@@ -2002,7 +2099,7 @@
 					return;
 				}
 				els.railList.innerHTML = visibleServers.map((srv) => {
-					const isActive = srv.id === state.selectedId;
+					const isActive = state.view === 'pack' && srv.id === state.selectedId;
 					const avatar = resolveUrl(srv.logo_square || srv.logo || srv.image || 'assets/logo-1x1.png');
 					const allVers = state.versions.filter(
 						(v) => v.server === srv.id && String(v.status || 'active').toLowerCase() !== 'hidden',
@@ -2049,8 +2146,8 @@
 						necesitas <b>Minecraft ${escapeHtml(mcVer)}</b> + <b>${escapeHtml(loaderName)}${loaderVer ? ` ${escapeHtml(loaderVer)}` : ''}</b>.
 					</div>
 					<div class="guide-pack-hint-actions">
-						${latestLink ? `<a class="guide-ext-btn" href="${escapeHtml(latestLink)}" target="_blank" rel="noopener" download>1. Descargar .zip</a>` : ''}
-						<a class="guide-ext-btn secondary" href="${escapeHtml(loaderHref)}" target="_blank" rel="noopener">2. Ir a ${escapeHtml(loaderName)}</a>
+						${latestLink ? `<a class="guide-ext-btn" href="${escapeHtml(latestLink)}" target="_blank" rel="noopener" download>Descargar modpack</a>` : ''}
+						<a class="guide-ext-btn secondary" href="${escapeHtml(loaderHref)}" target="_blank" rel="noopener">Ir a ${escapeHtml(loaderName)}</a>
 					</div>
 				`;
 			}
@@ -2078,7 +2175,6 @@
 				);
 				const latest = allServerVersions[0] || null;
 				const latestLink = latest && latest.link ? resolveUrl(latest.link) : '';
-				const latestManifest = latest && latest.manifest ? resolveUrl(latest.manifest) : '';
 
 				if (state.activeShotIdx >= shots.length) state.activeShotIdx = 0;
 
@@ -2111,42 +2207,51 @@
 
 				const versionsHtml = serverVersions.length > 0 ? serverVersions.map((ver, idx) => {
 					const verLink = ver.link ? resolveUrl(ver.link) : '';
-					const verManifest = ver.manifest ? resolveUrl(ver.manifest) : '';
 					const isLatest = latest && ver.id === latest.id && idx === 0 && !state.search.trim();
 					const mcVer = ver.minecraft_version || server.minecraft_version;
 					const ldName = ver.mod_loader || server.mod_loader;
 					const ldVer = ver.mod_loader_version || server.mod_loader_version;
 					const cleanVer = ver.version ? `v${String(ver.version).replace(/^v/i, '')}` : '';
-					const shaShort = ver.sha256 ? `${ver.sha256.slice(0, 10)}…` : '';
+					const hasNotes = Boolean(ver.description && String(ver.description).trim());
+					const notesContent = hasNotes
+						? escapeHtml(ver.description)
+						: `Listo para instalar en Minecraft ${escapeHtml(mcVer || '1.21.1')} con ${escapeHtml(formatLoader(ldName))}${ldVer ? ` ${escapeHtml(ldVer)}` : ''}.`;
 
 					return `
-						<article class="version-card">
-							<div class="version-top">
-								<div class="version-title-group">
-									<div class="version-headline">
-										<h3>${escapeHtml(ver.title || ver.id)}</h3>
-										${isLatest ? '<span class="latest-tag">Última versión</span>' : ''}
-									</div>
-									<div class="version-meta-row">
-										${cleanVer ? `<span class="version-meta-chip">${escapeHtml(cleanVer)}</span>` : ''}
-										${mcVer ? `<span class="version-meta-chip">MC ${escapeHtml(mcVer)}</span>` : ''}
-										${ldName ? `<span class="version-meta-chip">${escapeHtml(formatLoader(ldName))}${ldVer ? ` ${escapeHtml(ldVer)}` : ''}</span>` : ''}
-										${ver.size_mb ? `<span class="version-meta-chip">${escapeHtml(ver.size_mb)} MB</span>` : ''}
-										${ver.published_at ? `<span class="version-meta-chip">${escapeHtml(ver.published_at)}</span>` : ''}
-										${shaShort ? `<button type="button" class="version-meta-chip sha-chip" data-copy="${escapeHtml(ver.sha256)}" title="Copiar SHA-256 completo">SHA256: ${escapeHtml(shaShort)}</button>` : ''}
+						<details class="version-card">
+							<summary class="version-summary">
+								<div class="version-summary-left">
+									<span class="version-chevron" aria-hidden="true">
+										<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4">
+											<path d="m9 18 6-6-6-6" />
+										</svg>
+									</span>
+									<div class="version-title-group">
+										<div class="version-headline">
+											<h3>${escapeHtml(ver.title || ver.id)}</h3>
+											${isLatest ? '<span class="latest-tag">Última versión</span>' : ''}
+										</div>
+										<div class="version-meta-row">
+											${cleanVer ? `<span class="version-meta-chip">${escapeHtml(cleanVer)}</span>` : ''}
+											${mcVer ? `<span class="version-meta-chip">MC ${escapeHtml(mcVer)}</span>` : ''}
+											${ldName ? `<span class="version-meta-chip">${escapeHtml(formatLoader(ldName))}${ldVer ? ` ${escapeHtml(ldVer)}` : ''}</span>` : ''}
+											${ver.size_mb ? `<span class="version-meta-chip">${escapeHtml(ver.size_mb)} MB</span>` : ''}
+											${ver.published_at ? `<span class="version-meta-chip">${escapeHtml(ver.published_at)}</span>` : ''}
+										</div>
 									</div>
 								</div>
 								<div class="version-actions">
-									${verManifest ? `<a class="btn-ghost" href="${escapeHtml(verManifest)}" target="_blank" rel="noopener">manifest.json</a>` : ''}
 									${verLink ? `
-										<a class="btn-download-ver" href="${escapeHtml(verLink)}" target="_blank" rel="noopener" download>
-											Descargar ZIP
+										<a class="btn-download-ver" href="${escapeHtml(verLink)}" target="_blank" rel="noopener" download onclick="event.stopPropagation()">
+											Descargar
 										</a>
 									` : `<span class="btn-download-ver disabled">Sin archivo</span>`}
 								</div>
+							</summary>
+							<div class="version-body">
+								<div class="version-notes${hasNotes ? '' : ' empty'}">${notesContent}</div>
 							</div>
-							${ver.description ? `<div class="version-notes">${escapeHtml(ver.description)}</div>` : ''}
-						</article>
+						</details>
 					`;
 				}).join('') : '<div class="empty-state">No hay versiones disponibles para mostrar.</div>';
 
@@ -2178,14 +2283,12 @@
 											<polyline points="7 10 12 15 17 10" />
 											<line x1="12" y1="15" x2="12" y2="3" />
 										</svg>
-										Descargar ${escapeHtml(latest.version ? `v${String(latest.version).replace(/^v/i, '')}` : 'Modpack')} (.zip)
+										Descargar ${escapeHtml(latest.version ? `v${String(latest.version).replace(/^v/i, '')}` : 'Modpack')}
 									</a>
 								` : `<span class="btn-primary disabled">Próximamente</span>`}
 
 								<div class="hero-secondary-actions">
-									<a class="btn-ghost" href="#installGuide">¿Cómo instalar?</a>
-									${latestLink ? `<button type="button" class="btn-ghost" data-copy="${escapeHtml(latestLink)}">Copiar link</button>` : ''}
-									${latestManifest ? `<a class="btn-ghost" href="${escapeHtml(latestManifest)}" target="_blank" rel="noopener">Manifest JSON</a>` : ''}
+									<button type="button" class="btn-ghost" data-open-guide="true">¿Cómo instalar?</button>
 								</div>
 							</div>
 						</div>
@@ -2241,11 +2344,17 @@
 						const fromHash = activeServers.find((s) => s.id === hashId);
 						state.selectedId = fromHash ? fromHash.id : (activeServers[0]?.id || '');
 					}
+					if (hashId === 'como-instalar' || hashId === 'installGuide') {
+						state.view = 'guide';
+					}
 					renderAll();
+					if (state.view === 'guide') {
+						setView('guide', false);
+					}
 					if (manual) showToast('Catálogo actualizado.');
 				} catch (err) {
-					console.error('Error cargando versions.json:', err);
-					els.stageContent.innerHTML = '<div class="section-card empty-state">No se pudo cargar `versions.json`. Intenta actualizar en unos segundos.</div>';
+					console.error('Error cargando catálogo:', err);
+					els.stageContent.innerHTML = '<div class="section-card empty-state">No se pudieron cargar los modpacks. Intenta actualizar en unos segundos.</div>';
 				} finally {
 					if (manual) els.refreshBtn.classList.remove('spinning');
 				}
@@ -2312,14 +2421,38 @@
 			}
 
 			// Event listeners
+			if (els.brandHomeLink) {
+				els.brandHomeLink.addEventListener('click', (e) => {
+					e.preventDefault();
+					setView('pack');
+				});
+			}
+
 			els.searchInput.addEventListener('input', (e) => {
 				state.search = e.target.value || '';
+				if (state.view === 'guide' && state.search.trim()) {
+					setView('pack', false);
+				}
 				renderAll();
 			});
 
 			els.refreshBtn.addEventListener('click', () => loadCatalog(true));
 
 			document.addEventListener('click', async (e) => {
+				const openGuideBtn = e.target.closest('[data-open-guide]');
+				if (openGuideBtn) {
+					e.preventDefault();
+					setView(state.view === 'guide' && openGuideBtn === els.guideNavBtn ? 'pack' : 'guide');
+					return;
+				}
+
+				const closeGuideBtn = e.target.closest('[data-close-guide]');
+				if (closeGuideBtn) {
+					e.preventDefault();
+					setView('pack');
+					return;
+				}
+
 				const guideTabBtn = e.target.closest('[data-guide-tab]');
 				if (guideTabBtn) {
 					switchGuideTab(guideTabBtn.getAttribute('data-guide-tab'));
