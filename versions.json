@@ -14,7 +14,7 @@
     {
       "id": "pandora",
       "title": "Pandora",
-      "status": "active",
+      "status": "hidden",
       "image": "assets/pandora_title.png",
       "theme_color": "#6b1b8d",
       "description": "WIP",
@@ -387,7 +387,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-18T09:59:33.568Z",
+  "launcher_refresh_id": "2026-11-18T10:02:18.466Z",
   "maintenance_mode": false,
   "maintenance_message": "",
   "testing_mode": false,
