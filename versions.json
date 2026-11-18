@@ -22,7 +22,7 @@
     },
     {
       "id": "opus",
-      "title": "Opus Obscura 2",
+      "title": "Opus Obscura",
       "status": "active",
       "image": "https://i.imgur.com/SVPaVhd.png",
       "theme_color": "#971212",
@@ -387,7 +387,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-18T09:57:54.104Z",
+  "launcher_refresh_id": "2026-11-18T09:58:51.329Z",
   "maintenance_mode": false,
   "maintenance_message": "",
   "testing_mode": false,
