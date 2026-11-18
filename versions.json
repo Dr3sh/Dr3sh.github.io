@@ -14,7 +14,7 @@
     {
       "id": "pandora",
       "title": "Pandora",
-      "status": "active",
+      "status": "hidden",
       "image": "assets/pandora_title.png",
       "theme_color": "#6b1b8d",
       "description": "WIP",
@@ -23,7 +23,7 @@
     {
       "id": "opus",
       "title": "Opus Obscura",
-      "status": "active",
+      "status": "hidden",
       "image": "https://i.imgur.com/SVPaVhd.png",
       "theme_color": "#971212",
       "description": "Opus Obscura fue un servidor de Minecraft estilo vanilla-like que creamos integrando los mods Create, Silent Gear y Apotheosis principamente, para llevar la automatización, el equipamiento y la dificultad a otro nivel. De todos mis proyectos, este ha sido el servidor más grande que he manejado.",
@@ -387,7 +387,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-18T09:56:08.251Z",
+  "launcher_refresh_id": "2026-11-18T09:57:03.866Z",
   "maintenance_mode": false,
   "maintenance_message": "",
   "testing_mode": false,
