@@ -149,6 +149,22 @@
   ],
   "versions": [
     {
+      "id": "desgraciamon3-1",
+      "server": "desgraciamon3",
+      "title": "Desgraciamon 3 v1",
+      "version": "1",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1/desgraciamon3-1.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1/manifest.json",
+      "sha256": "d888a8e667ce3d4db84b3081e43f1a1ebe14b99cffdfee236ab09b226a0172be",
+      "description": "",
+      "published_at": "2026-11-18",
+      "minecraft_version": "1.21.1",
+      "mod_loader": "fabric",
+      "mod_loader_version": "0.19.5",
+      "size_mb": 982.9,
+      "status": "active"
+    },
+    {
       "id": "cobbleverse-9",
       "server": "cobbleverse",
       "title": "Desgraciamon 1 v9",
@@ -387,7 +403,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-18T10:37:13.749Z",
+  "launcher_refresh_id": "2026-11-18T19:54:58.741Z",
   "maintenance_mode": false,
   "maintenance_message": "",
   "testing_mode": false,
