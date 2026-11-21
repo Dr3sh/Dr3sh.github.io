@@ -978,6 +978,16 @@
 			border: 1px solid rgba(255, 255, 255, 0.12);
 		}
 
+		.lightbox-video {
+			max-width: 90vw;
+			max-height: 85vh;
+			border-radius: 12px;
+			box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			outline: none;
+			background: #000;
+		}
+
 		.lightbox-close-btn {
 			position: absolute;
 			top: -44px;
@@ -998,7 +1008,7 @@
 		.guide-container-view {
 			display: none;
 			padding: 28px 36px 60px 36px;
-			max-width: 960px;
+			max-width: 980px;
 			margin: 0 auto;
 			width: 100%;
 		}
@@ -1028,11 +1038,12 @@
 			font-size: 13px;
 			font-weight: 700;
 			cursor: pointer;
-			transition: background 0.2s ease;
+			transition: background 0.2s ease, border-color 0.2s ease;
 		}
 
 		.guide-back-btn:hover {
 			background: rgba(255, 255, 255, 0.1);
+			border-color: rgba(255, 255, 255, 0.2);
 		}
 
 		.guide-header-title {
@@ -1040,6 +1051,429 @@
 			font-weight: 850;
 			color: #ffffff;
 			letter-spacing: -0.02em;
+		}
+
+		.guide-section {
+			display: flex;
+			flex-direction: column;
+			gap: 22px;
+		}
+
+		.guide-header {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+
+		.guide-title-wrap {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+
+		.guide-title-row {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.guide-title-row h3 {
+			font-size: 1.35rem;
+			font-weight: 850;
+			color: #ffffff;
+			letter-spacing: -0.02em;
+		}
+
+		.win-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 4px 10px;
+			border-radius: 999px;
+			background: rgba(0, 120, 212, 0.16);
+			border: 1px solid rgba(0, 120, 212, 0.38);
+			color: #60a5fa;
+			font-size: 11.5px;
+			font-weight: 700;
+		}
+
+		.guide-lead {
+			color: var(--muted);
+			font-size: 0.92rem;
+			max-width: 76ch;
+			line-height: 1.55;
+		}
+
+		.guide-pack-hint {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 14px;
+			flex-wrap: wrap;
+			padding: 14px 18px;
+			border-radius: 12px;
+			background: var(--panel-2);
+			border: 1px solid var(--line);
+			font-size: 0.88rem;
+			color: var(--text);
+		}
+
+		.guide-pack-hint strong {
+			color: #ffffff;
+		}
+
+		.guide-pack-hint-actions {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+
+		.guide-launcher-tip {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 13px 18px;
+			border-radius: 12px;
+			background: rgba(27, 217, 106, 0.08);
+			border: 1px solid rgba(27, 217, 106, 0.25);
+			font-size: 0.88rem;
+			color: var(--text);
+			line-height: 1.5;
+		}
+
+		.guide-launcher-tip strong {
+			color: #ffffff;
+		}
+
+		.guide-tabs-wrap {
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+
+		.guide-tabs-header h3 {
+			font-size: 1.05rem;
+			font-weight: 800;
+			color: #ffffff;
+		}
+
+		.guide-tabs {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 12px;
+		}
+
+		.guide-tab-btn {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 5px;
+			padding: 14px 16px;
+			border-radius: 12px;
+			background: var(--panel);
+			border: 1px solid var(--line);
+			color: var(--muted);
+			cursor: pointer;
+			text-align: left;
+			transition: all 0.2s ease;
+		}
+
+		.guide-tab-btn:hover {
+			background: var(--panel-2);
+			border-color: rgba(255, 255, 255, 0.18);
+			color: #ffffff;
+		}
+
+		.guide-tab-btn.active {
+			background: linear-gradient(135deg, rgba(27, 217, 106, 0.15), rgba(28, 34, 48, 0.85));
+			border-color: rgba(27, 217, 106, 0.55);
+			color: #ffffff;
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+		}
+
+		.guide-tab-title {
+			font-size: 0.95rem;
+			font-weight: 800;
+			color: inherit;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+
+		.guide-tab-tag {
+			font-size: 0.7rem;
+			font-weight: 700;
+			padding: 2px 8px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.08);
+			color: var(--muted);
+		}
+
+		.guide-tab-btn.active .guide-tab-tag {
+			background: rgba(27, 217, 106, 0.22);
+			color: var(--brand);
+		}
+
+		.guide-tab-desc {
+			font-size: 0.82rem;
+			color: var(--muted);
+			line-height: 1.4;
+		}
+
+		.guide-tab-btn.active .guide-tab-desc {
+			color: rgba(243, 245, 248, 0.85);
+		}
+
+		.guide-panel {
+			display: none;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.guide-panel.active {
+			display: flex;
+		}
+
+		.guide-step {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 14px;
+			padding: 20px;
+			display: grid;
+			grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+			gap: 20px;
+			align-items: start;
+		}
+
+		.guide-step.no-video {
+			grid-template-columns: 1fr;
+		}
+
+		.guide-step-body {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			min-width: 0;
+		}
+
+		.guide-step-num {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			font-size: 0.78rem;
+			font-weight: 800;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			color: var(--brand);
+		}
+
+		.guide-step-num span {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: rgba(27, 217, 106, 0.16);
+			color: var(--brand);
+			font-weight: 800;
+			font-size: 0.8rem;
+		}
+
+		.guide-step-body h4 {
+			font-size: 1.05rem;
+			font-weight: 800;
+			color: #ffffff;
+		}
+
+		.guide-step-body p,
+		.guide-step-body li {
+			font-size: 0.88rem;
+			color: rgba(243, 245, 248, 0.82);
+			line-height: 1.6;
+		}
+
+		.guide-step-body ol,
+		.guide-step-body ul {
+			padding-left: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.guide-step-body strong {
+			color: #ffffff;
+		}
+
+		.guide-step-body code,
+		.guide-section code {
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			padding: 2px 7px;
+			border-radius: 6px;
+			font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+			font-size: 0.84rem;
+			color: #f3f5f8;
+		}
+
+		.kbd-inline {
+			display: inline-flex;
+			align-items: center;
+			padding: 1px 7px;
+			border-radius: 5px;
+			background: rgba(255, 255, 255, 0.12);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			font-family: ui-monospace, monospace;
+			font-size: 0.78rem;
+			font-weight: 700;
+			color: #ffffff;
+		}
+
+		.guide-note {
+			padding: 10px 14px;
+			border-radius: 8px;
+			background: rgba(245, 185, 66, 0.1);
+			border: 1px solid rgba(245, 185, 66, 0.28);
+			color: #fde68a;
+			font-size: 0.83rem;
+			line-height: 1.5;
+		}
+
+		.guide-link-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin-top: 4px;
+		}
+
+		.guide-ext-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			padding: 8px 14px;
+			border-radius: 8px;
+			background: rgba(27, 217, 106, 0.15);
+			border: 1px solid rgba(27, 217, 106, 0.35);
+			color: #ffffff;
+			text-decoration: none;
+			font-size: 0.82rem;
+			font-weight: 700;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+
+		.guide-ext-btn:hover {
+			background: rgba(27, 217, 106, 0.28);
+			transform: translateY(-1px);
+		}
+
+		.guide-ext-btn.secondary {
+			background: rgba(255, 255, 255, 0.06);
+			border-color: var(--line);
+			color: var(--text);
+		}
+
+		.guide-ext-btn.secondary:hover {
+			background: rgba(255, 255, 255, 0.12);
+			color: #ffffff;
+		}
+
+		.guide-video-wrap {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			min-width: 0;
+		}
+
+		.guide-video-frame {
+			position: relative;
+			border-radius: 10px;
+			overflow: hidden;
+			background: #080a0f;
+			border: 1px solid var(--line);
+			aspect-ratio: 16 / 9;
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+		}
+
+		.guide-video-frame video {
+			width: 100%;
+			height: 100%;
+			display: block;
+			object-fit: cover;
+		}
+
+		.guide-video-foot {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+			font-size: 0.78rem;
+			color: var(--muted);
+		}
+
+		.guide-video-zoom {
+			background: rgba(255, 255, 255, 0.06);
+			border: 1px solid var(--line);
+			color: var(--text);
+			border-radius: 6px;
+			padding: 4px 10px;
+			font-size: 0.75rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.18s ease;
+		}
+
+		.guide-video-zoom:hover {
+			background: rgba(255, 255, 255, 0.14);
+			color: #ffffff;
+		}
+
+		.guide-faq-box {
+			border-top: 1px solid var(--line);
+			padding-top: 20px;
+			margin-top: 8px;
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+
+		.guide-faq-box h3 {
+			font-size: 1.05rem;
+			font-weight: 800;
+			color: #ffffff;
+		}
+
+		.guide-faq-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 12px;
+		}
+
+		.guide-faq-item {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			padding: 14px 16px;
+		}
+
+		.guide-faq-item strong {
+			display: block;
+			font-size: 0.88rem;
+			color: #ffffff;
+			margin-bottom: 5px;
+			font-weight: 700;
+		}
+
+		.guide-faq-item p {
+			font-size: 0.82rem;
+			color: var(--muted);
+			line-height: 1.5;
+			margin: 0;
 		}
 
 		/* Responsive */
@@ -1066,6 +1500,14 @@
 			}
 			.btn-giant-download {
 				justify-content: center;
+			}
+			.guide-tabs,
+			.guide-step,
+			.guide-faq-grid {
+				grid-template-columns: 1fr;
+			}
+			.guide-container-view {
+				padding: 18px 16px 40px;
 			}
 		}
 
@@ -1280,318 +1722,280 @@
 				</section>
 			</div>
 
-			<!-- GUIDE SECTION VIEW -->
+						<!-- GUIDE SECTION VIEW -->
 			<div id="guideContainerView" class="guide-container-view">
 				<div class="guide-top-bar">
 					<h2 class="guide-header-title">Guía de instalación paso a paso</h2>
-					<button id="guideBackBtn" type="button" class="guide-back-btn">
+					<button type="button" class="guide-back-btn" data-close-guide="true">
 						<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M12.5 15 7.5 10l5-5" />
 						</svg>
 						<span>Volver a modpacks</span>
 					</button>
 				</div>
-				<div class="guide-body-mount">
-					<section id="installGuide" class="section-card guide-section" aria-labelledby="installGuideTitle">
-				<div class="guide-header">
-					<div class="guide-title-wrap">
-						<div class="guide-title-row">
-							<h2 id="installGuideTitle">¿No sabes cómo instalar un modpack?</h2>
-							<span class="win-badge">
-								<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-									<path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm8.5-1.3L21 2.8v8.7h-9.5V4.2ZM3 12.5h7.5v7.1L3 18.5v-6Zm8.5 0H21v8.7l-9.5-1.4v-7.3Z" />
-								</svg>
-								Solo para Windows
-							</span>
-						</div>
-						<p class="guide-lead">
-							Te explicamos paso a paso desde cero en <b>Windows 10 / 11</b> cómo abrir el archivo descargado con WinRAR, instalar el loader y poner el modpack funcionando.
-						</p>
-					</div>
-					<button id="guideBackBtn" type="button" class="icon-btn" data-close-guide="true">
-						<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-							<path d="m15 18-6-6 6-6" />
-						</svg>
-						<span>Volver a modpacks</span>
-					</button>
-				</div>
 
-				<div id="guidePackHint" class="guide-pack-hint">
-					<span>Selecciona un modpack en la izquierda para ver exactamente qué versión de Minecraft y Loader pide.</span>
-				</div>
-
-				<div class="guide-launcher-tip">
-					<div>
-						<strong>¿Prefieres saltarte todos los pasos manuales?</strong> Pulsa el botón <b>Descargar Launcher</b> arriba a la derecha: el <b>Dr3sh Launcher</b> descarga, instala y actualiza el modpack automáticamente por ti. Si prefieres usar tu launcher de siempre en Windows, sigue esta guía:
-					</div>
-				</div>
-
-				<!-- Paso 0: WinRAR + Mod Loader -->
-				<div class="guide-prep-grid">
-					<article class="guide-prep-card">
-						<h3>
-							<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-text); flex-shrink: 0;">
-								<path d="M21 8v13H3V8" />
-								<path d="M1 3h22v5H1z" />
-								<path d="M10 12h4" />
-							</svg>
-							Antes de empezar: ¿Qué es WinRAR y para qué sirve?
-						</h3>
-						<p>
-							Un modpack no se descarga como un programa normal (<code>.exe</code>), sino comprimido dentro de un único archivo <b><code>.zip</code></b> o <b><code>.rar</code></b>. Piensa en ello como una caja cerrada donde van guardadas todas las carpetas del modpack (<code>mods</code>, <code>config</code>, <code>resourcepacks</code>, <code>shaderpacks</code>) para que se descargue rápido y junto.
-						</p>
-						<p>
-							Para abrir esa caja y sacar las carpetas necesitas <b>WinRAR</b> (gratuito en Windows y compatible tanto con <code>.zip</code> como con <code>.rar</code>):
-						</p>
-						<ol>
-							<li>Entra a la web oficial de WinRAR y pulsa <b>Descargue WinRAR</b> (Windows 64 bits en Español).</li>
-							<li>Abre el instalador descargado y dale a <b>Instalar</b> → <b>Aceptar</b> → <b>Listo</b>.</li>
-							<li><i>Truco:</i> si tras 40 días sale un aviso pidiendo comprar licencia, solo ciérralo con la <b>X</b>; WinRAR sigue siendo gratis para siempre.</li>
-						</ol>
-						<div class="guide-link-row">
-							<a class="guide-ext-btn" href="https://www.win-rar.com/download.html" target="_blank" rel="noopener">
-								Descargar WinRAR oficial (Windows)
-							</a>
-						</div>
-						<div class="guide-video-wrap">
-							<div class="guide-video-frame">
-								<video class="guide-video" src="assets/guide/paso-winrar.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-							</div>
-							<div class="guide-video-foot">
-								<span>Video: Extraer el .zip con WinRAR y ver sus carpetas</span>
-								<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-winrar.mp4">Ampliar</button>
-							</div>
-						</div>
-					</article>
-
-					<article class="guide-prep-card">
-						<h3>
-							<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-text); flex-shrink: 0;">
-								<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z" />
-							</svg>
-							Mod Loader requerido (Fabric o NeoForge) y Java
-						</h3>
-						<p>
-							Minecraft normal ("Vanilla") no carga mods por sí solo. Necesitas instalar el <b>Mod Loader</b> que usa el modpack que vas a jugar (<b>Fabric</b> para Desgraciamon 1/2/3, o <b>NeoForge</b> para Opus Obscura).
-						</p>
-						<ol>
-							<li>Si nunca has abierto esa versión de Minecraft, ábrela una vez en Vanilla y cierra el juego.</li>
-							<li>Descarga el instalador de <b>Fabric</b> (o <b>NeoForge</b>), ábrelo, selecciona la versión exacta de Minecraft y pulsa <b>Install</b>.</li>
-							<li>Si al abrir el instalador (<code>.jar</code>) Windows no sabe con qué abrirlo o pide Java, instala <b>Java 21 LTS</b> primero.</li>
-						</ol>
-						<div class="guide-link-row">
-							<a class="guide-ext-btn" href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">
-								Descargar Fabric Installer
-							</a>
-							<a class="guide-ext-btn secondary" href="https://neoforged.net/" target="_blank" rel="noopener">
-								Descargar NeoForge
-							</a>
-							<a class="guide-ext-btn secondary" href="https://adoptium.net/" target="_blank" rel="noopener">
-								Java 21 (Adoptium)
-							</a>
-						</div>
-						<div class="guide-video-wrap">
-							<div class="guide-video-frame">
-								<video class="guide-video" src="assets/guide/paso-loader.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-							</div>
-							<div class="guide-video-foot">
-								<span>Video: Instalar el Mod Loader en la versión correcta</span>
-								<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-loader.mp4">Ampliar</button>
-							</div>
-						</div>
-					</article>
-				</div>
-
-				<!-- Selector de método -->
-				<div class="guide-tabs-wrap">
-					<div class="guide-tabs-header">
-						<h3>Elige cómo usas Minecraft en Windows:</h3>
-						<div class="guide-tabs" role="tablist" aria-label="Método de instalación en Windows">
-							<button type="button" class="guide-tab-btn active" role="tab" aria-selected="true" data-guide-tab="vanilla">
-								<span class="guide-tab-title">
-									Launcher Vanilla
-									<span class="guide-tab-tag">Ruta %appdata% normal</span>
+				<section id="installGuide" class="guide-section" aria-labelledby="installGuideTitle">
+					<div class="guide-header">
+						<div class="guide-title-wrap">
+							<div class="guide-title-row">
+								<h3 id="installGuideTitle">Instalación manual de modpacks</h3>
+								<span class="win-badge">
+									<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+										<path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm8.5-1.3L21 2.8v8.7h-9.5V4.2ZM3 12.5h7.5v7.1L3 18.5v-6Zm8.5 0H21v8.7l-9.5-1.4v-7.3Z" />
+									</svg>
+									Windows 10 / 11
 								</span>
-								<span class="guide-tab-desc">
-									Usas el Launcher oficial (o clásico) directamente en la carpeta normal <code>%appdata%\.minecraft</code>.
-								</span>
-							</button>
-							<button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="separate">
-								<span class="guide-tab-title">
-									Instancia Separada
-									<span class="guide-tab-tag">Carpeta propia / Prism / Modrinth</span>
-								</span>
-								<span class="guide-tab-desc">
-									Recomendado si juegas otros servidores o no quieres mezclar mods con tu <code>.minecraft</code> normal.
-								</span>
-							</button>
+							</div>
+							<p class="guide-lead">
+								Sigue estos pasos para instalar y ejecutar el modpack en tu launcher preferido de Minecraft.
+							</p>
 						</div>
 					</div>
 
-					<!-- TAB 1: LAUNCHER VANILLA (%appdata%) -->
-					<div id="guidePanelVanilla" class="guide-panel active" role="tabpanel">
-						<article class="guide-step no-video">
-							<div class="guide-step-body">
-								<div class="guide-step-num"><span>1</span> Extraer el modpack con WinRAR</div>
-								<h4>Descarga el .zip del modpack y extráelo en una carpeta</h4>
-								<ol>
-									<li>Selecciona el modpack en la lista de la izquierda (o pulsa <b>Descargar modpack</b> arriba en el recuadro). El archivo se guardará en tu carpeta <b>Descargas</b>.</li>
-									<li>Haz <b>clic derecho</b> sobre el archivo descargado → <b>WinRAR</b> → <b>"Extraer en [nombre-del-modpack]\"</b> (como viste en el primer video).</li>
-									<li>Abre esa carpeta amarilla extraída: adentro debes ver carpetas como <code>mods</code>, <code>config</code>, <code>resourcepacks</code> o <code>shaderpacks</code> (si hay otra carpeta con el nombre del pack adentro, entra en ella hasta ver esas carpetas).</li>
-								</ol>
-							</div>
-						</article>
-
-						<article class="guide-step">
-							<div class="guide-step-body">
-								<div class="guide-step-num"><span>2</span> Abrir la carpeta %appdata%\.minecraft</div>
-								<h4>Entra rápido usando el atajo Windows + R</h4>
-								<ol>
-									<li>En tu teclado presiona <span class="kbd-inline">Win</span> + <span class="kbd-inline">R</span> al mismo tiempo (la tecla con el logo de Windows + la letra R).</li>
-									<li>En la ventana <b>Ejecutar</b> que aparece, escribe exactamente <span class="kbd-inline">%appdata%</span> y pulsa <span class="kbd-inline">Enter</span>.</li>
-									<li>Se abrirá la carpeta <code>Roaming</code>: busca la carpeta <b><code>.minecraft</code></b> (suele estar arriba del todo) y ábrela con doble clic.</li>
-								</ol>
-								<div class="guide-link-row">
-									<button type="button" class="guide-ext-btn secondary" data-copy="%appdata%\.minecraft">Copiar ruta %appdata%\.minecraft</button>
-								</div>
-							</div>
-							<div class="guide-video-wrap">
-								<div class="guide-video-frame">
-									<video class="guide-video" src="assets/guide/paso-appdata.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-								</div>
-								<div class="guide-video-foot">
-									<span>Video: Cómo abrir %appdata%\.minecraft con Win + R</span>
-									<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-appdata.mp4">Ampliar</button>
-								</div>
-							</div>
-						</article>
-
-						<article class="guide-step">
-							<div class="guide-step-body">
-								<div class="guide-step-num"><span>3</span> Limpiar mods viejos y pegar el modpack</div>
-								<h4>Copia las carpetas extraídas dentro de .minecraft</h4>
-								<ol>
-									<li><b>¡Importante!</b> Si ya tenías mods de otro servidor dentro de <code>.minecraft\mods</code> o <code>.minecraft\config</code>, <b>bórralos o muévelos</b> a otra carpeta para que no choquen ni cierren el juego.</li>
-									<li>Ve a la carpeta donde extrajiste el modpack, selecciona todas sus carpetas (<span class="kbd-inline">Ctrl</span> + <span class="kbd-inline">A</span>) y cópialas (<span class="kbd-inline">Ctrl</span> + <span class="kbd-inline">C</span>).</li>
-									<li>Entra dentro de <code>.minecraft</code> y pégalas (<span class="kbd-inline">Ctrl</span> + <span class="kbd-inline">V</span>). Si Windows te pregunta qué hacer con archivos repetidos, haz clic en <b>"Reemplazar los archivos en el destino"</b>.</li>
-								</ol>
-								<div class="guide-note">
-									Tus mundos guardados están en la carpeta <b><code>saves</code></b>: el modpack no los borra ni los toca.
-								</div>
-							</div>
-							<div class="guide-video-wrap">
-								<div class="guide-video-frame">
-									<video class="guide-video" src="assets/guide/paso-copiar-vanilla.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-								</div>
-								<div class="guide-video-foot">
-									<span>Video: Limpiar mods viejos y reemplazar en .minecraft</span>
-									<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-copiar-vanilla.mp4">Ampliar</button>
-								</div>
-							</div>
-						</article>
-
-						<article class="guide-step">
-							<div class="guide-step-body">
-								<div class="guide-step-num"><span>4</span> Asignar RAM, elegir el perfil y jugar</div>
-								<h4>Abre el Minecraft Launcher con el perfil de Fabric o NeoForge</h4>
-								<ol>
-									<li>Asegúrate de haber instalado ya el Loader (<b>Fabric</b> o <b>NeoForge</b>, como se muestra arriba).</li>
-									<li>En el Minecraft Launcher entra en <b>Instalaciones</b> → busca el perfil del Loader (ej. <code>fabric-loader-1.21.1</code>) → <b>··· Editar</b> → <b>Más opciones</b>.</li>
-									<li>En <b>Argumentos de JVM</b>, cambia el inicio de <code>-Xmx2G</code> a <b><code>-Xmx6G</code></b> (si tu PC tiene 16 GB de RAM; usa <code>-Xmx4G</code> si tienes 8 GB) y pulsa <b>Guardar</b>.</li>
-									<li>Vuelve a <b>Jugar</b>, confirma abajo a la izquierda que está elegido ese perfil del Loader y pulsa <b>Jugar</b>.</li>
-								</ol>
-							</div>
-							<div class="guide-video-wrap">
-								<div class="guide-video-frame">
-									<video class="guide-video" src="assets/guide/paso-jugar-vanilla.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-								</div>
-								<div class="guide-video-foot">
-									<span>Video: Subir la RAM (-Xmx6G) y jugar con el perfil del loader</span>
-									<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-jugar-vanilla.mp4">Ampliar</button>
-								</div>
-							</div>
-						</article>
+					<div id="guidePackHint" class="guide-pack-hint">
+						<!-- Dynamic pack metadata -->
 					</div>
 
-					<!-- TAB 2: INSTANCIA SEPARADA -->
-					<div id="guidePanelSeparate" class="guide-panel" role="tabpanel">
-						<article class="guide-step">
-							<div class="guide-step-body">
-								<div class="guide-step-num"><span>A</span> Launcher oficial de Minecraft (Directorio de juego)</div>
-								<h4>Crea una carpeta aparte sin cambiar de launcher</h4>
-								<ol>
-									<li><b>Crea una carpeta vacía</b> donde quieras guardar este modpack (por ejemplo <code>C:\Modpacks\Desgraciamon3</code> o en Documentos).</li>
-									<li>Con <b>WinRAR</b>, haz clic derecho en el <code>.zip</code> → <b>Extraer ficheros...</b> y elige esa carpeta nueva (adentro deben quedar <code>mods</code>, <code>config</code>, <code>resourcepacks</code>, etc.).</li>
-									<li>Instala el Loader (<b>Fabric</b> o <b>NeoForge</b>) normalmente en <code>.minecraft</code> para que aparezca en tu lista de versiones.</li>
-									<li>En Minecraft Launcher ve a <b>Instalaciones</b> → <b>Nueva instalación</b>:
-										<ul>
-											<li><b>Versión:</b> elige <code>fabric-loader-...</code> o <code>neoforge-...</code>.</li>
-											<li><b>Directorio de juego:</b> pulsa <b>Examinar</b> y selecciona tu carpeta nueva.</li>
-											<li><b>Más opciones:</b> cambia <code>-Xmx2G</code> a <b><code>-Xmx6G</code></b> y pulsa <b>Crear</b>.</li>
-										</ul>
-									</li>
-									<li>Selecciona esa instalación y dale a <b>Jugar</b>. ¡Tu <code>.minecraft</code> normal queda limpio!</li>
-								</ol>
-							</div>
-							<div class="guide-video-wrap">
-								<div class="guide-video-frame">
-									<video class="guide-video" src="assets/guide/paso-instancia-vanilla.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-								</div>
-								<div class="guide-video-foot">
-									<span>Video: Configurar "Directorio de juego" en carpeta aparte</span>
-									<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-instancia-vanilla.mp4">Ampliar</button>
-								</div>
-							</div>
-						</article>
-
-						<article class="guide-step">
-							<div class="guide-step-body">
-								<div class="guide-step-num"><span>B</span> Prism Launcher o Modrinth App</div>
-								<h4>Usa una instancia dedicada desde el menú del launcher</h4>
-								<ol>
-									<li>Crea una <b>nueva instancia vacía</b> indicando la versión de Minecraft y el Loader que pide el modpack arriba (ej. <code>1.21.1</code> + <code>Fabric</code>).</li>
-									<li>Haz clic derecho en la instancia (o en sus opciones) y pulsa <b>Abrir carpeta</b> (en Prism entra a su subcarpeta <code>minecraft</code>).</li>
-									<li>Extrae el <code>.zip</code> con WinRAR y pega dentro de esa carpeta las carpetas <code>mods</code>, <code>config</code>, <code>resourcepacks</code>, <code>shaderpacks</code>, etc. (acepta reemplazar si pregunta).</li>
-									<li>En ajustes de la instancia asigna <b>6–8 GB de RAM</b> (6144–8192 MB) y pulsa <b>Jugar</b>.</li>
-								</ol>
-							</div>
-							<div class="guide-video-wrap">
-								<div class="guide-video-frame">
-									<video class="guide-video" src="assets/guide/paso-instancia-launcher.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-								</div>
-								<div class="guide-video-foot">
-									<span>Video: Abrir carpeta de instancia y pegar el modpack</span>
-									<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-instancia-launcher.mp4">Ampliar</button>
-								</div>
-							</div>
-						</article>
-					</div>
-				</div>
-
-				<!-- Soluciones rápidas -->
-				<div class="guide-faq-box">
-					<h3>¿Algo falló en Windows? Soluciones rápidas</h3>
-					<div class="guide-faq-grid">
-						<div class="guide-faq-item">
-							<strong>El juego se cierra o da error apenas abre</strong>
-							<p>Casi siempre es porque quedaron mods viejos dentro de <code>%appdata%\.minecraft\mods</code> o porque abriste Minecraft Vanilla en lugar del perfil de <b>Fabric / NeoForge</b>.</p>
-						</div>
-						<div class="guide-faq-item">
-							<strong>El instalador (.jar) no se abre o abre con WinRAR</strong>
-							<p>Descarga e instala <b>Java 21</b> para Windows desde Adoptium, o haz clic derecho en el <code>.jar</code> → <i>Abrir con → Java(TM) Platform SE binary</i>.</p>
-						</div>
-						<div class="guide-faq-item">
-							<strong>Va con tirones o dice "Out of Memory"</strong>
-							<p>Entra en <i>Instalaciones → Tu perfil → Más opciones</i> y cambia <code>-Xmx2G</code> a <code>-Xmx6G</code> (o <code>-Xmx4G</code> si tu PC tiene 8 GB de RAM total).</p>
-						</div>
-						<div class="guide-faq-item">
-							<strong>No encuentro la carpeta %appdata%</strong>
-							<p>No la busques en el buscador normal de archivos: presiona <span class="kbd-inline">Win</span> + <span class="kbd-inline">R</span>, escribe <code>%appdata%</code> con los dos signos de porcentaje y pulsa Enter.</p>
+					<div class="guide-launcher-tip">
+						<div>
+							<strong>¿Prefieres instalación en un clic?</strong> Con <b>Dr3sh Launcher</b> no necesitas configurar nada manualmente: descarga, instala y actualiza automáticamente el modpack y su loader.
 						</div>
 					</div>
-				</div>
-			</section>
-				</div>
+
+					<!-- Selector de método -->
+					<div class="guide-tabs-wrap">
+						<div class="guide-tabs-header">
+							<h3>Elige el método de instalación:</h3>
+							<div class="guide-tabs" role="tablist" aria-label="Método de instalación">
+								<button type="button" class="guide-tab-btn active" role="tab" aria-selected="true" data-guide-tab="vanilla">
+									<span class="guide-tab-title">
+										Instalación estándar
+										<span class="guide-tab-tag">Launcher oficial / %appdata%</span>
+									</span>
+									<span class="guide-tab-desc">
+										Instala el Mod Loader y los mods directamente en tu carpeta de Minecraft.
+									</span>
+								</button>
+								<button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="separate">
+									<span class="guide-tab-title">
+										Instancia aislada
+										<span class="guide-tab-tag">Prism / Modrinth / Carpeta propia</span>
+									</span>
+									<span class="guide-tab-desc">
+										Mantiene el modpack separado de otros perfiles y mundos para evitar mezclas.
+									</span>
+								</button>
+							</div>
+						</div>
+
+						<!-- TAB 1: STANDARD (%appdata% / Launcher oficial) -->
+						<div id="guidePanelVanilla" class="guide-panel active" role="tabpanel">
+							<!-- Paso 1: Instalar Loader -->
+							<article class="guide-step">
+								<div class="guide-step-body">
+									<div class="guide-step-num"><span>1</span> Instalar el Mod Loader</div>
+									<h4>Instala Fabric o NeoForge en Minecraft</h4>
+									<ol>
+										<li>Descarga el instalador correspondiente al Loader requerido por el modpack (Fabric o NeoForge).</li>
+										<li>Ejecuta el archivo descargado (<code>.jar</code> o <code>.exe</code>), selecciona la versión exacta de Minecraft del modpack y haz clic en <b>Install</b>.</li>
+										<li>Si el instalador <code>.jar</code> no se ejecuta, asegúrate de tener instalado <b>Java 21 LTS</b> en Windows.</li>
+									</ol>
+									<div class="guide-link-row">
+										<a class="guide-ext-btn" href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">Descargar Fabric</a>
+										<a class="guide-ext-btn secondary" href="https://neoforged.net/" target="_blank" rel="noopener">Descargar NeoForge</a>
+										<a class="guide-ext-btn secondary" href="https://adoptium.net/" target="_blank" rel="noopener">Descargar Java 21</a>
+									</div>
+								</div>
+								<div class="guide-video-wrap">
+									<div class="guide-video-frame">
+										<video class="guide-video" src="assets/guide/paso-loader.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
+									</div>
+									<div class="guide-video-foot">
+										<span>Video: Instalación del Mod Loader</span>
+										<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-loader.mp4">Ampliar</button>
+									</div>
+								</div>
+							</article>
+
+							<!-- Paso 2: Extraer modpack -->
+							<article class="guide-step">
+								<div class="guide-step-body">
+									<div class="guide-step-num"><span>2</span> Extraer el archivo .zip</div>
+									<h4>Descomprime el modpack descargado</h4>
+									<ol>
+										<li>Descarga el modpack desde el botón principal del catálogo o la lista de versiones.</li>
+										<li>Haz clic derecho sobre el archivo <code>.zip</code> descargado y selecciona extraer los archivos (con WinRAR o el explorador de Windows).</li>
+										<li>Abre la carpeta extraída y confirma que contenga las carpetas esenciales como <code>mods</code>, <code>config</code>, <code>resourcepacks</code>, etc.</li>
+									</ol>
+									<div class="guide-link-row">
+										<a class="guide-ext-btn secondary" href="https://www.win-rar.com/download.html" target="_blank" rel="noopener">Descargar WinRAR</a>
+									</div>
+								</div>
+								<div class="guide-video-wrap">
+									<div class="guide-video-frame">
+										<video class="guide-video" src="assets/guide/paso-winrar.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
+									</div>
+									<div class="guide-video-foot">
+										<span>Video: Extracción de archivos del modpack</span>
+										<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-winrar.mp4">Ampliar</button>
+									</div>
+								</div>
+							</article>
+
+							<!-- Paso 3: Abrir %appdata% -->
+							<article class="guide-step">
+								<div class="guide-step-body">
+									<div class="guide-step-num"><span>3</span> Abrir %appdata%\.minecraft</div>
+									<h4>Accede a la carpeta raíz del juego</h4>
+									<ol>
+										<li>Presiona <span class="kbd-inline">Win + R</span> en tu teclado.</li>
+										<li>Escribe <code>%appdata%\.minecraft</code> en la ventana Ejecutar y presiona <span class="kbd-inline">Enter</span>.</li>
+										<li>Se abrirá directamente la carpeta de instalación de Minecraft en el explorador de archivos.</li>
+									</ol>
+									<div class="guide-link-row">
+										<button type="button" class="guide-ext-btn secondary" data-copy="%appdata%\.minecraft">Copiar ruta %appdata%\.minecraft</button>
+									</div>
+								</div>
+								<div class="guide-video-wrap">
+									<div class="guide-video-frame">
+										<video class="guide-video" src="assets/guide/paso-appdata.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
+									</div>
+									<div class="guide-video-foot">
+										<span>Video: Abrir ruta %appdata%\.minecraft</span>
+										<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-appdata.mp4">Ampliar</button>
+									</div>
+								</div>
+							</article>
+
+							<!-- Paso 4: Copiar carpetas -->
+							<article class="guide-step">
+								<div class="guide-step-body">
+									<div class="guide-step-num"><span>4</span> Copiar las carpetas del modpack</div>
+									<h4>Pega los archivos dentro de .minecraft</h4>
+									<ol>
+										<li>Si tenías mods antiguos de otros servidores o versiones en <code>.minecraft\mods</code>, vacía esa carpeta o muévelos para evitar incompatibilidades.</li>
+										<li>Copia las carpetas que extrajiste del modpack (<code>mods</code>, <code>config</code>, <code>resourcepacks</code>, <code>shaderpacks</code>, etc.).</li>
+										<li>Pégalas dentro de <code>.minecraft</code> y selecciona <b>Reemplazar los archivos en el destino</b> si te lo pide.</li>
+									</ol>
+									<div class="guide-note">
+										Tus partidas guardadas en la carpeta <code>saves</code> y tus capturas en <code>screenshots</code> se mantienen intactas.
+									</div>
+								</div>
+								<div class="guide-video-wrap">
+									<div class="guide-video-frame">
+										<video class="guide-video" src="assets/guide/paso-copiar-vanilla.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
+									</div>
+									<div class="guide-video-foot">
+										<span>Video: Copiar y reemplazar carpetas en .minecraft</span>
+										<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-copiar-vanilla.mp4">Ampliar</button>
+									</div>
+								</div>
+							</article>
+
+							<!-- Paso 5: Asignar RAM y jugar -->
+							<article class="guide-step">
+								<div class="guide-step-body">
+									<div class="guide-step-num"><span>5</span> Asignar RAM y ejecutar</div>
+									<h4>Configura los argumentos JVM en el launcher</h4>
+									<ol>
+										<li>Abre Minecraft Launcher y dirígete a la pestaña <b>Instalaciones</b>.</li>
+										<li>Ubica el perfil del Loader instalado (ej. <code>fabric-loader-...</code> o <code>neoforge-...</code>) y selecciona <b>···</b> → <b>Editar</b>.</li>
+										<li>Haz clic en <b>Más opciones</b> y en el campo <b>Argumentos JVM</b> cambia el parámetro <code>-Xmx2G</code> a <code>-Xmx6G</code> (o <code>-Xmx4G</code> si tu PC cuenta con 8 GB de RAM).</li>
+										<li>Guarda los cambios, regresa a <b>Jugar</b>, selecciona el perfil en el desplegable inferior izquierdo y pulsa <b>Jugar</b>.</li>
+									</ol>
+								</div>
+								<div class="guide-video-wrap">
+									<div class="guide-video-frame">
+										<video class="guide-video" src="assets/guide/paso-jugar-vanilla.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
+									</div>
+									<div class="guide-video-foot">
+										<span>Video: Configurar RAM y ejecutar el perfil</span>
+										<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-jugar-vanilla.mp4">Ampliar</button>
+									</div>
+								</div>
+							</article>
+						</div>
+
+						<!-- TAB 2: SEPARATE INSTANCE -->
+						<div id="guidePanelSeparate" class="guide-panel" role="tabpanel">
+							<!-- Opción A: Directorio de juego separado -->
+							<article class="guide-step">
+								<div class="guide-step-body">
+									<div class="guide-step-num"><span>A</span> Launcher oficial (Directorio de juego)</div>
+									<h4>Aísla el modpack en su propia carpeta</h4>
+									<ol>
+										<li>Crea una carpeta nueva en tu equipo para este modpack (ej. <code>C:\Modpacks\Desgraciamon3</code>).</li>
+										<li>Extrae el archivo <code>.zip</code> del modpack dentro de esa carpeta.</li>
+										<li>Abre el instalador del Loader (Fabric o NeoForge) e instálalo normalmente.</li>
+										<li>En Minecraft Launcher ve a <b>Instalaciones</b> → <b>Nueva instalación</b>:
+											<ul>
+												<li><b>Versión:</b> Selecciona el loader instalado.</li>
+												<li><b>Directorio de juego:</b> Haz clic en <b>Examinar</b> y selecciona tu carpeta creada.</li>
+												<li><b>Más opciones:</b> Asigna la memoria recomendada (<code>-Xmx6G</code>) y pulsa <b>Crear</b>.</li>
+											</ul>
+										</li>
+										<li>Selecciona la nueva instalación y pulsa <b>Jugar</b>.</li>
+									</ol>
+								</div>
+								<div class="guide-video-wrap">
+									<div class="guide-video-frame">
+										<video class="guide-video" src="assets/guide/paso-instancia-vanilla.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
+									</div>
+									<div class="guide-video-foot">
+										<span>Video: Configurar Directorio de juego independiente</span>
+										<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-instancia-vanilla.mp4">Ampliar</button>
+									</div>
+								</div>
+							</article>
+
+							<!-- Opción B: Prism / Modrinth -->
+							<article class="guide-step">
+								<div class="guide-step-body">
+									<div class="guide-step-num"><span>B</span> Prism Launcher o Modrinth App</div>
+									<h4>Crea una instancia dedicada en launchers alternativos</h4>
+									<ol>
+										<li>Crea una nueva instancia personalizada eligiendo la versión de Minecraft y el Mod Loader indicados por el modpack.</li>
+										<li>Haz clic derecho sobre la instancia creada y selecciona <b>Abrir carpeta</b> (en Prism Launcher, entra a la subcarpeta <code>minecraft</code>).</li>
+										<li>Copia las carpetas extraídas del modpack (<code>mods</code>, <code>config</code>, etc.) dentro de esa carpeta.</li>
+										<li>En la configuración de la instancia asigna entre <b>6 y 8 GB de RAM</b> e inicia el juego.</li>
+									</ol>
+								</div>
+								<div class="guide-video-wrap">
+									<div class="guide-video-frame">
+										<video class="guide-video" src="assets/guide/paso-instancia-launcher.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
+									</div>
+									<div class="guide-video-foot">
+										<span>Video: Importar archivos a una instancia dedicada</span>
+										<button type="button" class="guide-video-zoom" data-zoom-video="assets/guide/paso-instancia-launcher.mp4">Ampliar</button>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+
+					<!-- Solución de problemas comunes -->
+					<div class="guide-faq-box">
+						<h3>Solución de problemas frecuentes</h3>
+						<div class="guide-faq-grid">
+							<div class="guide-faq-item">
+								<strong>El juego se cierra al iniciar (Crash)</strong>
+								<p>Verifica que no hayan quedado mods de versiones anteriores en la carpeta <code>mods</code> y que hayas iniciado con el perfil del Mod Loader (Fabric/NeoForge) y no con Minecraft Vanilla.</p>
+							</div>
+							<div class="guide-faq-item">
+								<strong>El instalador .jar no se ejecuta</strong>
+								<p>Asegúrate de tener Java 21 LTS instalado en Windows. Si aún no abre, usa la utilidad Jarfix para restablecer la asociación de archivos .jar con Java.</p>
+							</div>
+							<div class="guide-faq-item">
+								<strong>Tirones o error "Out of Memory"</strong>
+								<p>Asigna más memoria RAM en los argumentos JVM (<code>-Xmx6G</code>). La mayoría de modpacks modernos requieren al menos 4 a 6 GB asignados para funcionar con fluidez.</p>
+							</div>
+							<div class="guide-faq-item">
+								<strong>No puedo ingresar al servidor multijugador</strong>
+								<p>Comprueba que la dirección IP coincida con la indicada en el panel del modpack correspondiente y que tengas la versión exacta del modpack instalada.</p>
+							</div>
+						</div>
+					</div>
+				</section>
 			</div>
 		</main>
 	</div>
@@ -1605,7 +2009,8 @@
 					<line x1="6" y1="6" x2="18" y2="18" />
 				</svg>
 			</button>
-			<img id="lightboxImg" src="" alt="Captura ampliada" class="lightbox-img" />
+			<img id="lightboxImg" src="" alt="Captura ampliada" class="lightbox-img" style="display: none;" />
+			<video id="lightboxVideo" class="lightbox-video" controls autoplay loop playsinline style="display: none;"></video>
 		</div>
 	</div>
 
@@ -1615,8 +2020,21 @@
 	<!-- SCRIPTS -->
 	<script>
 		(() => {
-			const FABRIC_ICON = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23dcdfe4"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.2L19.5 8 12 11.8 4.5 8 12 4.2zM4 9.8l7 3.5v7.2l-7-3.5V9.8zm9 10.7v-7.2l7-3.5v7.2l-7 3.5z"/></svg>';
-			const NEOFORGE_ICON = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ea580c"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.8L18.2 8 12 11.4 5.8 8 12 4.8zM5 9.6l6 3.3v6.7l-6-3.3V9.6zm8 10v-6.7l6-3.3v6.7l-6 3.3z"/></svg>';
+			// Official Modrinth Loader Vector Icons (identical to desktop launcher)
+			const MODRINTH_LOADER_SVGS = {
+				fabric: `data:image/svg+xml;utf8,${encodeURIComponent(
+					'<svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" clip-rule="evenodd" viewBox="0 0 24 24"><path fill="none" stroke="#f1f5f9" stroke-width="23" d="m820 761-85.6-87.6c-4.6-4.7-10.4-9.6-25.9 1-19.9 13.6-8.4 21.9-5.2 25.4 8.2 9 84.1 89 97.2 104 2.5 2.8-20.3-22.5-6.5-39.7 5.4-7 18-12 26-3 6.5 7.3 10.7 18-3.4 29.7-24.7 20.4-102 82.4-127 103-12.5 10.3-28.5 2.3-35.8-6-7.5-8.9-30.6-34.6-51.3-58.2-5.5-6.3-4.1-19.6 2.3-25 35-30.3 91.9-73.8 111.9-90.8" transform="matrix(.08671 0 0 .0867 -49.8 -56)"/></svg>'
+				)}`,
+				forge: `data:image/svg+xml;utf8,${encodeURIComponent(
+					'<svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1.5" clip-rule="evenodd" viewBox="0 0 24 24"><path fill="none" stroke="#f1f5f9" stroke-width="2" d="M2 7.5h8v-2h12v2s-7 3.4-7 6 3.1 3.1 3.1 3.1l.9 3.9H5l1-4.1s3.8.1 4-2.9c.2-2.7-6.5-.7-8-6Z"/></svg>'
+				)}`,
+				neoforge: `data:image/svg+xml;utf8,${encodeURIComponent(
+					'<svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1.5" clip-rule="evenodd" viewBox="0 0 100 100"><g fill="none" stroke="#f1f5f9" stroke-width="8.33"><path d="M61.098 32.028V6.529L84.001 26.74v52.944L50.38 93.608 16.759 79.684V26.74L39.662 6.529v25.499M39.805 25.427h21.15M34.23 54.498v7.815M65.77 54.498v7.815M47.035 77.633h6.692M21.719 51.608 6.492 44.885M21.719 63.582 6.492 70.305M79.043 51.608l15.227-6.723M79.043 63.582l15.227 6.723"/></g></svg>'
+				)}`,
+				quilt: `data:image/svg+xml;utf8,${encodeURIComponent(
+					'<svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 0 24 24"><path fill="none" stroke="#f1f5f9" stroke-width="65.6" d="M442.5 233.9c0-6.4-5.2-11.6-11.6-11.6h-197c-6.4 0-11.6 5.2-11.6 11.6v197c0 6.4 5.2 11.6 11.6 11.6h197c6.4 0 11.6-5.2 11.6-11.7v-197 .1Z" transform="matrix(.03053 0 0 .03046 -3.2 -3.2)"/><path fill="none" stroke="#f1f5f9" stroke-width="65.6" d="M442.5 233.9c0-6.4-5.2-11.6-11.6-11.6h-197c-6.4 0-11.6 5.2-11.6 11.6v197c0 6.4 5.2 11.6 11.6 11.6h197c6.4 0 11.6-5.2 11.6-11.7v-197 .1Z" transform="matrix(.03053 0 0 .03046 -3.2 7)"/><path fill="none" stroke="#f1f5f9" stroke-width="65.6" d="M442.5 233.9c0-6.4-5.2-11.6-11.6-11.6h-197c-6.4 0-11.6 5.2-11.6 11.6v197c0 6.4 5.2 11.6 11.6 11.6h197c6.4 0 11.6-5.2 11.6-11.7v-197 .1Z" transform="matrix(.03053 0 0 .03046 6.9 -3.2)"/><path fill="none" stroke="#f1f5f9" stroke-width="70.4" d="M442.5 234.8c0-7-5.6-12.5-12.5-12.5H234.7c-6.8 0-12.4 5.6-12.4 12.5V430c0 6.9 5.6 12.5 12.4 12.5H430c6.9 0 11.5-5.6 12.5-12.5V234.8Z" transform="rotate(45 3.5 24) scale(.02843 .02835)"/></svg>'
+				)}`,
+			};
 
 			const state = {
 				servers: [],
@@ -1656,8 +2074,96 @@
 
 			function getLoaderIcon(raw) {
 				const key = String(raw || '').toLowerCase().trim();
-				if (key.includes('neoforge') || key.includes('forge')) return NEOFORGE_ICON;
-				return FABRIC_ICON;
+				if (key.includes('neoforge')) return MODRINTH_LOADER_SVGS.neoforge;
+				if (key.includes('quilt')) return MODRINTH_LOADER_SVGS.quilt;
+				if (key.includes('forge')) return MODRINTH_LOADER_SVGS.forge;
+				return MODRINTH_LOADER_SVGS.fabric;
+			}
+
+			function openLightboxMedia({ imgUrl, videoUrl }) {
+				const lightbox = document.getElementById('lightbox');
+				const lightboxImg = document.getElementById('lightboxImg');
+				const lightboxVideo = document.getElementById('lightboxVideo');
+				if (!lightbox) return;
+
+				if (videoUrl && lightboxVideo) {
+					if (lightboxImg) {
+						lightboxImg.style.display = 'none';
+						lightboxImg.src = '';
+					}
+					lightboxVideo.style.display = 'block';
+					lightboxVideo.src = resolveUrl(videoUrl);
+					lightbox.classList.add('open');
+					lightboxVideo.play().catch(() => {});
+				} else if (imgUrl && lightboxImg) {
+					if (lightboxVideo) {
+						lightboxVideo.pause();
+						lightboxVideo.style.display = 'none';
+						lightboxVideo.removeAttribute('src');
+					}
+					lightboxImg.style.display = 'block';
+					lightboxImg.src = resolveUrl(imgUrl);
+					lightbox.classList.add('open');
+				}
+			}
+
+			function closeLightbox() {
+				const lightbox = document.getElementById('lightbox');
+				const lightboxImg = document.getElementById('lightboxImg');
+				const lightboxVideo = document.getElementById('lightboxVideo');
+				if (!lightbox) return;
+				lightbox.classList.remove('open');
+				if (lightboxImg) {
+					lightboxImg.style.display = 'none';
+					lightboxImg.src = '';
+				}
+				if (lightboxVideo) {
+					lightboxVideo.pause();
+					lightboxVideo.style.display = 'none';
+					lightboxVideo.removeAttribute('src');
+				}
+			}
+
+			function switchGuideTab(tabName) {
+				document.querySelectorAll('[data-guide-tab]').forEach((btn) => {
+					const isActive = btn.getAttribute('data-guide-tab') === tabName;
+					btn.classList.toggle('active', isActive);
+					btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+				});
+				const panelVanilla = document.getElementById('guidePanelVanilla');
+				const panelSeparate = document.getElementById('guidePanelSeparate');
+				if (panelVanilla) panelVanilla.classList.toggle('active', tabName === 'vanilla');
+				if (panelSeparate) panelSeparate.classList.toggle('active', tabName === 'separate');
+			}
+
+			function updateGuidePackHint() {
+				const hint = document.getElementById('guidePackHint');
+				if (!hint) return;
+				const srv = state.servers.find((s) => s.id === state.selectedId) || state.servers[0];
+				if (!srv) {
+					hint.innerHTML = '<span>Selecciona un modpack en la barra lateral para ver su versión y mod loader correspondientes.</span>';
+					return;
+				}
+				const loaderName = formatLoaderName(srv.mod_loader);
+				const mcVer = srv.minecraft_version || '1.21.1';
+				const isNeo = String(srv.mod_loader || '').toLowerCase().includes('neoforge');
+				const loaderLink = isNeo
+					? 'https://neoforged.net/'
+					: 'https://fabricmc.net/use/installer/';
+
+				hint.innerHTML = `
+					<div>
+						Modpack seleccionado: <strong>${escapeHtml(srv.title)}</strong> • Minecraft <strong>${escapeHtml(mcVer)}</strong> • Loader: <strong>${escapeHtml(loaderName)}</strong>
+					</div>
+					<div class="guide-pack-hint-actions">
+						<a class="guide-ext-btn" href="${loaderLink}" target="_blank" rel="noopener">
+							Descargar ${escapeHtml(loaderName)} (${escapeHtml(mcVer)})
+						</a>
+						<button type="button" class="guide-ext-btn secondary" data-copy="%appdata%\\.minecraft">
+							Copiar ruta %appdata%\\.minecraft
+						</button>
+					</div>
+				`;
 			}
 
 			/* Color Mathematics matching desktop launcher */
@@ -1915,6 +2421,7 @@
 
 				state.selectedId = srv.id;
 				applyTheme(srv.theme_color);
+				updateGuidePackHint();
 
 				document.getElementById('heroTitle').textContent = srv.title || 'Modpack';
 				updateDescriptionMarquee(srv.description);
@@ -2025,6 +2532,7 @@
 					if (packView) packView.style.display = 'none';
 					if (guideView) guideView.classList.add('open');
 					if (guideNavBtn) guideNavBtn.classList.add('active');
+					updateGuidePackHint();
 					window.location.hash = '#como-instalar';
 				} else {
 					if (packView) packView.style.display = 'block';
@@ -2175,27 +2683,63 @@
 					});
 				}
 
-				// Lightbox click on slideshow
-				const slideshow = document.getElementById('slideshowContainer');
-				const lightbox = document.getElementById('lightbox');
-				const lightboxImg = document.getElementById('lightboxImg');
-				const lightboxClose = document.getElementById('lightboxClose');
+				// Global event delegation for Guide & Lightbox
+				document.addEventListener('click', (e) => {
+					const guideTab = e.target.closest('[data-guide-tab]');
+					if (guideTab) {
+						switchGuideTab(guideTab.getAttribute('data-guide-tab'));
+						return;
+					}
 
-				if (slideshow && lightbox && lightboxImg) {
+					const closeGuide = e.target.closest('[data-close-guide]');
+					if (closeGuide) {
+						e.preventDefault();
+						setView('pack');
+						return;
+					}
+
+					const zoomBtn = e.target.closest('[data-zoom-video]');
+					if (zoomBtn) {
+						const vSrc = zoomBtn.getAttribute('data-zoom-video');
+						if (vSrc) openLightboxMedia({ videoUrl: vSrc });
+						return;
+					}
+
+					const copyBtn = e.target.closest('[data-copy]');
+					if (copyBtn) {
+						const val = copyBtn.getAttribute('data-copy');
+						if (val && navigator.clipboard) {
+							navigator.clipboard.writeText(val).then(() => {
+								showToast(`Copiado: ${val}`);
+							}).catch(() => {});
+						}
+						return;
+					}
+				});
+
+				// Escape key closes modal
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape') closeLightbox();
+				});
+
+				// Slideshow lightbox
+				const slideshow = document.getElementById('slideshowContainer');
+				if (slideshow) {
 					slideshow.addEventListener('click', () => {
 						const srv = state.servers.find((s) => s.id === state.selectedId);
 						const shots = getScreenshots(srv);
 						if (shots[state.activeShotIdx]) {
-							lightboxImg.src = shots[state.activeShotIdx];
-							lightbox.classList.add('open');
+							openLightboxMedia({ imgUrl: shots[state.activeShotIdx] });
 						}
 					});
 				}
 
-				if (lightboxClose && lightbox) {
-					lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
+				const lightbox = document.getElementById('lightbox');
+				const lightboxClose = document.getElementById('lightboxClose');
+				if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+				if (lightbox) {
 					lightbox.addEventListener('click', (e) => {
-						if (e.target === lightbox) lightbox.classList.remove('open');
+						if (e.target === lightbox) closeLightbox();
 					});
 				}
 			});
