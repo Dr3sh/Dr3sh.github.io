@@ -149,13 +149,13 @@
   ],
   "versions": [
     {
-      "id": "desgraciamon3-1",
+      "id": "desgraciamon3-1-2-0",
       "server": "desgraciamon3",
       "title": "Desgraciamon 3",
-      "version": "1",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1/desgraciamon3-1.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1/manifest.json",
-      "sha256": "fd00224853b653d5b2e33f56dbb938bd4d65b76f78a19ff63e162e4a6488d5f2",
+      "version": "1.2.0",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.2.0/desgraciamon3-1.2.0.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.2.0/manifest.json",
+      "sha256": "fe62654f7e58538a289940390b74c48d243caf62765c74efa8190b975e0b9580",
       "description": "",
       "published_at": "2026-11-21",
       "size_mb": 1363.3,
@@ -400,7 +400,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-21T10:51:13.635Z",
+  "launcher_refresh_id": "2026-11-21T11:19:48.865Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
