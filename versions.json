@@ -144,10 +144,24 @@
       "mod_loader_version": "0.20.1",
       "description": "Una vez más Desgraciamon está devuelta! Esta vez con su tercera edición, con mods preparados especifícamente para este servidor. ¿Cuanto durará?",
       "logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1794574726392-desgraciamon3.png",
-      "screenshots": []
+      "screenshots": [],
+      "release_date": "2026-12-01T19:30"
     }
   ],
   "versions": [
+    {
+      "id": "desgraciamon3-1-0-0",
+      "server": "desgraciamon3",
+      "title": "Desgraciamon 3",
+      "version": "1.0.0",
+      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.0.0/desgraciamon3-1.0.0.zip",
+      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.0.0/manifest.json",
+      "sha256": "fc82dea1c7c388c15a29031529604078126a3f34d6d49dfafc91dd7f405f1825",
+      "description": "",
+      "published_at": "2026-11-23",
+      "size_mb": 1515.9,
+      "status": "active"
+    },
     {
       "id": "cobbleverse-9",
       "server": "cobbleverse",
@@ -387,7 +401,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-23T09:03:39.073Z",
+  "launcher_refresh_id": "2026-11-23T09:29:06.859Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
