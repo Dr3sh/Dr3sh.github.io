@@ -141,7 +141,7 @@
       "image": "assets/LOGO2.png",
       "minecraft_version": "1.21.1",
       "mod_loader": "fabric",
-      "mod_loader_version": "0.19.5",
+      "mod_loader_version": "0.20.1",
       "description": "Una vez más Desgraciamon está devuelta! Esta vez con su tercera edición, con mods preparados especifícamente para este servidor. ¿Cuanto durará?",
       "logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1794574726392-desgraciamon3.png",
       "screenshots": []
@@ -400,7 +400,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-23T08:09:38.922Z",
+  "launcher_refresh_id": "2026-11-23T08:10:17.527Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
