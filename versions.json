@@ -401,8 +401,8 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-23T09:33:27.691Z",
-  "maintenance_mode": true,
+  "launcher_refresh_id": "2026-11-23T09:33:39.402Z",
+  "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
   "testing_hours": 1
