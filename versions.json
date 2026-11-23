@@ -148,6 +148,10 @@
         {
           "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795458102217-frame.png",
           "status": "active"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795458202185-frame.png",
+          "status": "active"
         }
       ],
       "disabled": false
@@ -406,7 +410,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-23T18:21:49.038Z",
+  "launcher_refresh_id": "2026-11-23T18:23:26.384Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
