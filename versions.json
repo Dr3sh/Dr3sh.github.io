@@ -145,8 +145,7 @@
       "description": "Una vez más Desgraciamon está devuelta! Esta vez con su tercera edición, con mods preparados especifícamente para este servidor. ¿Cuanto durará?",
       "logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1794574726392-desgraciamon3.png",
       "screenshots": [],
-      "disabled": true,
-      "disabled_message": "MANTENIMIENTO!"
+      "disabled": true
     }
   ],
   "versions": [
@@ -402,7 +401,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-23T09:34:23.338Z",
+  "launcher_refresh_id": "2026-11-23T09:34:39.309Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
