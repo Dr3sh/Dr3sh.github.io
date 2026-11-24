@@ -1577,6 +1577,111 @@
 			}
 		}
 
+		/* Secret Web Developer Modal */
+		.webdev-backdrop {
+			position: fixed;
+			inset: 0;
+			z-index: 9500;
+			background: rgba(5, 8, 15, 0.82);
+			backdrop-filter: blur(10px);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 16px;
+		}
+		.webdev-backdrop.open { display: flex; }
+		.webdev-modal {
+			width: min(920px, 100%);
+			max-height: 90vh;
+			background: #0f1420;
+			border: 1px solid #293246;
+			border-radius: 18px;
+			box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+			color: #e2e8f0;
+		}
+		.webdev-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			padding: 16px 20px;
+			border-bottom: 1px solid #222b3d;
+			background: #131a29;
+		}
+		.webdev-header h2 { margin: 0; font-size: 16px; font-weight: 700; color: #fff; }
+		.webdev-header small { display: block; font-size: 12px; color: #94a3b8; margin-top: 2px; }
+		.webdev-close {
+			width: 32px; height: 32px; border-radius: 9px; border: 1px solid #2d374c;
+			background: #1a2234; color: #cbd5e1; cursor: pointer; font-size: 18px; line-height: 1;
+		}
+		.webdev-body {
+			padding: 18px 20px;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+		.webdev-tabs {
+			display: flex;
+			gap: 8px;
+			flex-wrap: wrap;
+			border-bottom: 1px solid #222b3d;
+			padding-bottom: 12px;
+		}
+		.webdev-tab {
+			padding: 7px 14px; border-radius: 10px; border: 1px solid #2a3449;
+			background: #161d2d; color: #cbd5e1; font-size: 12.5px; font-weight: 600; cursor: pointer;
+		}
+		.webdev-tab.active {
+			background: color-mix(in srgb, var(--accent, #1bd96a) 22%, #161d2d);
+			border-color: var(--accent, #1bd96a);
+			color: #fff;
+		}
+		.webdev-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 12px;
+		}
+		.webdev-field {
+			display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; color: #cbd5e1;
+		}
+		.webdev-field.wide { grid-column: 1 / -1; }
+		.webdev-field input:not([type="checkbox"]),
+		.webdev-field select,
+		.webdev-field textarea {
+			width: 100%; box-sizing: border-box; padding: 9px 11px; border-radius: 10px;
+			border: 1px solid #293246; background: #0a0e17; color: #f8fafc; font: inherit; font-size: 13px;
+		}
+		.webdev-row { display: flex; gap: 8px; align-items: center; }
+		.webdev-row > input { flex: 1; }
+		.webdev-btn {
+			padding: 8px 14px; border-radius: 10px; border: 1px solid #2d374c;
+			background: #1a2234; color: #f8fafc; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap;
+		}
+		.webdev-btn.primary {
+			background: var(--accent, #1bd96a); color: #05130b; border-color: transparent;
+		}
+		.webdev-btn.danger { background: rgba(239, 68, 68, 0.16); border-color: rgba(239, 68, 68, 0.4); color: #fca5a5; }
+		.webdev-check {
+			display: flex; align-items: center; gap: 10px; font-size: 13px; color: #e2e8f0; cursor: pointer;
+			padding: 8px 12px; border-radius: 10px; background: #141b29; border: 1px solid #242e42;
+		}
+		.webdev-check input[type="checkbox"] {
+			width: 17px; height: 17px; accent-color: #22c55e; cursor: pointer; flex-shrink: 0;
+		}
+		.webdev-footer {
+			display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+			padding: 14px 20px; border-top: 1px solid #222b3d; background: #131a29;
+		}
+		.webdev-status { font-size: 12.5px; color: #94a3b8; }
+		.webdev-ver-card {
+			padding: 12px; border-radius: 12px; background: #141b29; border: 1px solid #242e42;
+			display: flex; flex-direction: column; gap: 10px;
+		}
+
 		/* Toast */
 		.portal-toast {
 			position: fixed;
@@ -1613,7 +1718,6 @@
 				</div>
 				<div class="brand-title-wrap">
 					<span class="brand-title">Dr3sh App</span>
-					<span id="launcherVerPill" class="brand-version-pill">v1.1.2</span>
 				</div>
 			</a>
 		</div>
@@ -2777,6 +2881,7 @@
 			}
 
 			function processData(data) {
+				state.rawCatalog = data && typeof data === 'object' ? JSON.parse(JSON.stringify(data)) : {};
 				const srvRaw = data.servers || [];
 				state.servers = Array.isArray(srvRaw) ? srvRaw : Object.values(srvRaw);
 				state.versions = Array.isArray(data.versions) ? data.versions : Object.values(data.versions || {});
@@ -2957,7 +3062,408 @@
 						if (e.target === lightbox) closeLightbox();
 					});
 				}
+
+				initSecretWebDevMenu();
 			});
+
+			function initSecretWebDevMenu() {
+				const modalHtml = `
+				<div id="webDevBackdrop" class="webdev-backdrop" aria-hidden="true">
+					<div class="webdev-modal" role="dialog" aria-label="Panel Secreto de Desarrollador">
+						<div class="webdev-header">
+							<div>
+								<h2>Panel Web de Desarrollador</h2>
+								<small id="webDevAuthUser">Edita modpacks, logos, fechas de estreno y mantenimiento directo en GitHub</small>
+							</div>
+							<button id="webDevCloseBtn" type="button" class="webdev-close" title="Cerrar">&times;</button>
+						</div>
+						<div id="webDevBody" class="webdev-body"></div>
+						<div id="webDevFooter" class="webdev-footer">
+							<span id="webDevStatus" class="webdev-status">Listo.</span>
+							<div class="webdev-row">
+								<button id="webDevLogoutBtn" type="button" class="webdev-btn" style="display:none;">Cerrar sesión</button>
+								<button id="webDevPublishBtn" type="button" class="webdev-btn primary" style="display:none;">Guardar y Publicar en GitHub</button>
+							</div>
+						</div>
+					</div>
+				</div>`;
+				document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+				const backdrop = document.getElementById('webDevBackdrop');
+				const bodyEl = document.getElementById('webDevBody');
+				const statusEl = document.getElementById('webDevStatus');
+				const authUserEl = document.getElementById('webDevAuthUser');
+				const publishBtn = document.getElementById('webDevPublishBtn');
+				const logoutBtn = document.getElementById('webDevLogoutBtn');
+				const closeBtn = document.getElementById('webDevCloseBtn');
+
+				const devState = {
+					token: localStorage.getItem('dr3sh_web_dev_token') || '',
+					user: null,
+					tab: 'pack',
+					draft: null,
+					selectedServerId: '',
+					busy: false,
+				};
+
+				const setDevStatus = (msg) => {
+					if (statusEl) statusEl.textContent = msg;
+				};
+
+				async function ghApi(method, apiPath, bodyObj) {
+					const res = await fetch(`https://api.github.com${apiPath}`, {
+						method,
+						headers: {
+							Authorization: `Bearer ${devState.token}`,
+							Accept: 'application/vnd.github+json',
+							'X-GitHub-Api-Version': '2022-11-28',
+							...(bodyObj ? { 'Content-Type': 'application/json' } : {}),
+						},
+						...(bodyObj ? { body: JSON.stringify(bodyObj) } : {}),
+					});
+					const text = await res.text();
+					const json = text ? JSON.parse(text) : null;
+					if (!res.ok) throw new Error((json && json.message) || `GitHub HTTP ${res.status}`);
+					return json;
+				}
+
+				async function verifyToken(token) {
+					devState.token = String(token || '').trim();
+					if (!devState.token) throw new Error('Ingresa un token válido.');
+					const user = await ghApi('GET', '/user');
+					const repoInfo = await ghApi('GET', '/repos/Dr3sh/Dr3sh.github.io');
+					if (!repoInfo?.permissions?.push) {
+						throw new Error(`La cuenta @${user.login} no tiene permisos de escritura en Dr3sh/Dr3sh.github.io.`);
+					}
+					devState.user = user.login;
+					return user;
+				}
+
+				function cloneCatalogDraft() {
+					const raw = state.rawCatalog && typeof state.rawCatalog === 'object' ? JSON.parse(JSON.stringify(state.rawCatalog)) : {};
+					raw.servers = Array.isArray(state.servers) ? JSON.parse(JSON.stringify(state.servers)) : [];
+					raw.versions = Array.isArray(state.versions) ? JSON.parse(JSON.stringify(state.versions)) : [];
+					raw.maintenance_mode = Boolean(state.maintenanceMode);
+					raw.maintenance_message = state.maintenanceMessage || '';
+					raw.testing_mode = Boolean(raw.testing_mode);
+					devState.draft = raw;
+					devState.selectedServerId = state.selectedId || raw.servers[0]?.id || '';
+				}
+
+				async function uploadAssetFile(file, onDone) {
+					if (!file) return;
+					try {
+						devState.busy = true;
+						setDevStatus(`Subiendo ${file.name} a GitHub...`);
+						const b64 = await new Promise((resolve, reject) => {
+							const r = new FileReader();
+							r.onload = () => {
+								const s = String(r.result || '');
+								resolve(s.includes(',') ? s.split(',')[1] : s);
+							};
+							r.onerror = () => reject(new Error('No se pudo leer el archivo'));
+							r.readAsDataURL(file);
+						});
+						const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+						const repoPath = `assets/uploads/${Date.now()}-${safeName}`;
+						await ghApi('PUT', `/repos/Dr3sh/Dr3sh.github.io/contents/${repoPath}`, {
+							message: `Upload web asset ${safeName}`,
+							content: b64,
+							branch: 'main',
+						});
+						const url = `https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/${repoPath}`;
+						onDone(url);
+						setDevStatus(`Imagen subida: ${safeName} (recuerda Guardar y Publicar)`);
+						renderDevBody();
+					} catch (err) {
+						setDevStatus(`Error subiendo imagen: ${err.message}`);
+					} finally {
+						devState.busy = false;
+					}
+				}
+
+				function renderDevBody() {
+					if (!devState.user) {
+						if (publishBtn) publishBtn.style.display = 'none';
+						if (logoutBtn) logoutBtn.style.display = 'none';
+						if (authUserEl) authUserEl.textContent = 'Acceso restringido con token personal de GitHub';
+						bodyEl.innerHTML = `
+							<div class="webdev-field">
+								<span>Token de GitHub (con permiso repo)</span>
+								<input id="webDevTokenInput" type="password" placeholder="ghp_... o github_pat_..." value="${escapeHtml(devState.token)}" />
+							</div>
+							<label class="webdev-check">
+								<input id="webDevRememberCheck" type="checkbox" checked />
+								<span>Recordar token en este navegador</span>
+							</label>
+							<div class="webdev-row">
+								<button id="webDevLoginBtn" type="button" class="webdev-btn primary">Entrar al Panel</button>
+							</div>
+						`;
+						document.getElementById('webDevLoginBtn')?.addEventListener('click', async () => {
+							const inp = document.getElementById('webDevTokenInput');
+							const rem = document.getElementById('webDevRememberCheck');
+							try {
+								setDevStatus('Verificando permisos en GitHub...');
+								await verifyToken(inp?.value || '');
+								if (rem?.checked) localStorage.setItem('dr3sh_web_dev_token', devState.token);
+								else localStorage.removeItem('dr3sh_web_dev_token');
+								cloneCatalogDraft();
+								setDevStatus(`Conectado como @${devState.user}`);
+								renderDevBody();
+							} catch (err) {
+								devState.user = null;
+								setDevStatus(err.message || 'Token inválido');
+							}
+						});
+						return;
+					}
+
+					if (publishBtn) publishBtn.style.display = '';
+					if (logoutBtn) logoutBtn.style.display = '';
+					if (authUserEl) authUserEl.textContent = `Conectado como @${devState.user} • Edita y publica directo en versions.json`;
+
+					const servers = devState.draft?.servers || [];
+					const srv = servers.find((s) => s.id === devState.selectedServerId) || servers[0] || null;
+					if (srv) devState.selectedServerId = srv.id;
+
+					const tabsHtml = `
+						<div class="webdev-tabs">
+							<button type="button" class="webdev-tab ${devState.tab === 'pack' ? 'active' : ''}" data-dev-tab="pack">Modpack</button>
+							<button type="button" class="webdev-tab ${devState.tab === 'versions' ? 'active' : ''}" data-dev-tab="versions">Versiones</button>
+							<button type="button" class="webdev-tab ${devState.tab === 'global' ? 'active' : ''}" data-dev-tab="global">Mantenimiento y Testing</button>
+						</div>
+					`;
+
+					let contentHtml = '';
+					if (devState.tab === 'pack') {
+						const serverOpts = servers.map((s) => `<option value="${escapeHtml(s.id)}" ${s.id === srv?.id ? 'selected' : ''}>${escapeHtml(s.title || s.id)} (${escapeHtml(s.id)})</option>`).join('');
+						contentHtml = `
+							<div class="webdev-row">
+								<select id="webDevSrvSelect" style="flex:1;padding:9px 11px;border-radius:10px;border:1px solid #293246;background:#0a0e17;color:#fff;">
+									${serverOpts}
+								</select>
+							</div>
+							${srv ? `
+								<div class="webdev-grid">
+									<label class="webdev-field">Título <input data-srv-field="title" value="${escapeHtml(srv.title || '')}" /></label>
+									<label class="webdev-field">Estado
+										<select data-srv-field="status">
+											<option value="active" ${(srv.status || 'active') === 'active' ? 'selected' : ''}>Visible (active)</option>
+											<option value="hidden" ${srv.status === 'hidden' ? 'selected' : ''}>Oculto (hidden)</option>
+										</select>
+									</label>
+									<label class="webdev-field">IP del servidor <input data-srv-field="server_address" value="${escapeHtml(srv.server_address || '')}" placeholder="play.ejemplo.net" /></label>
+									<label class="webdev-field">Color tema <input data-srv-field="theme_color" value="${escapeHtml(srv.theme_color || '#1bd96a')}" /></label>
+									<label class="webdev-field">Fecha estreno (ISO/local) <input type="datetime-local" data-srv-field="release_date" value="${escapeHtml(srv.release_date || '')}" /></label>
+									<label class="webdev-field">Horas antes para precarga <input type="number" min="0" data-srv-field="preload_hours_before" value="${escapeHtml(srv.preload_hours_before ?? '')}" placeholder="Ej: 24" /></label>
+									<label class="webdev-field wide">Descripción <textarea rows="2" data-srv-field="description">${escapeHtml(srv.description || '')}</textarea></label>
+									<div class="webdev-field wide">
+										<label class="webdev-check">
+											<input type="checkbox" data-srv-bool="disabled" ${srv.disabled ? 'checked' : ''} />
+											<span>Inhabilitar modpack (muestra No disponible)</span>
+										</label>
+									</div>
+									<label class="webdev-field wide">Mensaje de inhabilitación <input data-srv-field="disabled_message" value="${escapeHtml(srv.disabled_message || '')}" placeholder="Mensaje opcional..." /></label>
+									${[
+										['title_logo', 'Foto Título estilo Steam (PNG, GIF, WebP, APNG)'],
+										['image', 'Banner principal'],
+										['explore_image', 'Foto fija en Explorar'],
+										['logo_square', 'Icono cuadrado 1:1'],
+									].map(([field, label]) => `
+										<div class="webdev-field wide">
+											<span>${label}</span>
+											<div class="webdev-row">
+												<input data-srv-field="${field}" value="${escapeHtml(srv[field] || '')}" placeholder="https://..." />
+												<button type="button" class="webdev-btn" data-upload-btn="${field}">Subir</button>
+												<input type="file" accept="image/png,image/gif,image/webp,image/apng,image/*" hidden data-upload-input="${field}" />
+											</div>
+										</div>
+									`).join('')}
+								</div>
+							` : '<p>No hay modpacks en el catálogo.</p>'}
+						`;
+					} else if (devState.tab === 'versions') {
+						const srvVersions = (devState.draft?.versions || []).filter((v) => v.server === devState.selectedServerId);
+						contentHtml = `
+							<div class="webdev-row" style="justify-content:space-between;">
+								<strong>Versiones de ${escapeHtml(srv?.title || devState.selectedServerId)}</strong>
+							</div>
+							${srvVersions.map((v) => `
+								<div class="webdev-ver-card" data-ver-id="${escapeHtml(v.id)}">
+									<div class="webdev-grid">
+										<label class="webdev-field">Título <input data-ver-field="title" value="${escapeHtml(v.title || '')}" /></label>
+										<label class="webdev-field">Versión <input data-ver-field="version" value="${escapeHtml(v.version || '')}" /></label>
+										<label class="webdev-field">Estado
+											<select data-ver-field="status">
+												<option value="active" ${(v.status || 'active') === 'active' ? 'selected' : ''}>Activa</option>
+												<option value="hidden" ${v.status === 'hidden' ? 'selected' : ''}>Oculta</option>
+											</select>
+										</label>
+										<label class="webdev-field wide">Link ZIP <input data-ver-field="link" value="${escapeHtml(v.link || '')}" /></label>
+										<label class="webdev-field wide">Notas / Changelog <textarea rows="2" data-ver-field="description">${escapeHtml(v.description || '')}</textarea></label>
+									</div>
+								</div>
+							`).join('') || '<p>No hay versiones para este modpack.</p>'}
+						`;
+					} else {
+						contentHtml = `
+							<div class="webdev-grid">
+								<div class="webdev-field wide">
+									<label class="webdev-check">
+										<input type="checkbox" id="webDevMaintCheck" ${devState.draft.maintenance_mode ? 'checked' : ''} />
+										<span>Activar Modo Mantenimiento global (bloquea web y launcher)</span>
+									</label>
+								</div>
+								<label class="webdev-field wide">
+									Mensaje de mantenimiento
+									<textarea id="webDevMaintMsg" rows="3" placeholder="Estamos realizando mejoras...">${escapeHtml(devState.draft.maintenance_message || '')}</textarea>
+								</label>
+								<div class="webdev-field wide">
+									<label class="webdev-check">
+										<input type="checkbox" id="webDevTestCheck" ${devState.draft.testing_mode ? 'checked' : ''} />
+										<span>Modo Testing (solo testers/admins)</span>
+									</label>
+								</div>
+							</div>
+						`;
+					}
+
+					bodyEl.innerHTML = tabsHtml + contentHtml;
+
+					bodyEl.querySelectorAll('[data-dev-tab]').forEach((b) => {
+						b.addEventListener('click', () => {
+							devState.tab = b.getAttribute('data-dev-tab');
+							renderDevBody();
+						});
+					});
+					document.getElementById('webDevSrvSelect')?.addEventListener('change', (e) => {
+						devState.selectedServerId = e.target.value;
+						renderDevBody();
+					});
+					if (srv) {
+						bodyEl.querySelectorAll('[data-srv-field]').forEach((el) => {
+							el.addEventListener('input', () => {
+								const f = el.getAttribute('data-srv-field');
+								const val = el.value;
+								if (f === 'preload_hours_before') srv[f] = val === '' ? undefined : Number(val);
+								else srv[f] = val || undefined;
+							});
+						});
+						bodyEl.querySelectorAll('[data-srv-bool]').forEach((el) => {
+							el.addEventListener('change', () => {
+								srv[el.getAttribute('data-srv-bool')] = el.checked;
+							});
+						});
+						bodyEl.querySelectorAll('[data-upload-btn]').forEach((btn) => {
+							const f = btn.getAttribute('data-upload-btn');
+							const inp = bodyEl.querySelector(`[data-upload-input="${f}"]`);
+							btn.addEventListener('click', () => inp?.click());
+							inp?.addEventListener('change', (e) => {
+								const file = e.target.files?.[0];
+								if (file) uploadAssetFile(file, (url) => { srv[f] = url; });
+							});
+						});
+					}
+					bodyEl.querySelectorAll('.webdev-ver-card').forEach((card) => {
+						const vid = card.getAttribute('data-ver-id');
+						const verObj = (devState.draft?.versions || []).find((x) => x.id === vid);
+						if (!verObj) return;
+						card.querySelectorAll('[data-ver-field]').forEach((el) => {
+							el.addEventListener('input', () => {
+								verObj[el.getAttribute('data-ver-field')] = el.value;
+							});
+						});
+					});
+					document.getElementById('webDevMaintCheck')?.addEventListener('change', (e) => {
+						devState.draft.maintenance_mode = e.target.checked;
+					});
+					document.getElementById('webDevMaintMsg')?.addEventListener('input', (e) => {
+						devState.draft.maintenance_message = e.target.value;
+					});
+					document.getElementById('webDevTestCheck')?.addEventListener('change', (e) => {
+						devState.draft.testing_mode = e.target.checked;
+					});
+				}
+
+				async function openWebDevModal() {
+					if (!backdrop) return;
+					backdrop.classList.add('open');
+					if (devState.token && !devState.user) {
+						try {
+							await verifyToken(devState.token);
+						} catch {
+							devState.user = null;
+						}
+					}
+					if (devState.user && !devState.draft) cloneCatalogDraft();
+					renderDevBody();
+				}
+
+				function closeWebDevModal() {
+					backdrop?.classList.remove('open');
+				}
+
+				closeBtn?.addEventListener('click', closeWebDevModal);
+				backdrop?.addEventListener('click', (e) => {
+					if (e.target === backdrop) closeWebDevModal();
+				});
+				logoutBtn?.addEventListener('click', () => {
+					localStorage.removeItem('dr3sh_web_dev_token');
+					devState.token = '';
+					devState.user = null;
+					devState.draft = null;
+					setDevStatus('Sesión cerrada.');
+					renderDevBody();
+				});
+				publishBtn?.addEventListener('click', async () => {
+					if (!devState.draft || devState.busy) return;
+					try {
+						devState.busy = true;
+						publishBtn.disabled = true;
+						setDevStatus('Publicando versions.json en GitHub...');
+						const cur = await ghApi('GET', '/repos/Dr3sh/Dr3sh.github.io/contents/versions.json?ref=main');
+						const jsonText = JSON.stringify(devState.draft, null, '\t') + '\n';
+						const b64 = btoa(unescape(encodeURIComponent(jsonText)));
+						await ghApi('PUT', '/repos/Dr3sh/Dr3sh.github.io/contents/versions.json', {
+							message: `Web dev update by @${devState.user}`,
+							content: b64,
+							sha: cur.sha,
+							branch: 'main',
+						});
+						processData(devState.draft);
+						setDevStatus('¡Publicado en GitHub correctamente!');
+						showToast('Cambios publicados en versions.json');
+					} catch (err) {
+						setDevStatus(`Error al publicar: ${err.message}`);
+					} finally {
+						devState.busy = false;
+						publishBtn.disabled = false;
+					}
+				});
+
+				// Secret trigger 1: 5 quick clicks on Dr3sh App brand logo
+				let secretClicks = 0;
+				let secretTimer = null;
+				const brandLink = document.getElementById('brandHomeLink');
+				brandLink?.addEventListener('click', () => {
+					secretClicks++;
+					if (secretTimer) clearTimeout(secretTimer);
+					secretTimer = setTimeout(() => { secretClicks = 0; }, 1400);
+					if (secretClicks >= 5) {
+						secretClicks = 0;
+						openWebDevModal();
+					}
+				});
+
+				// Secret trigger 2: Ctrl + Shift + D
+				document.addEventListener('keydown', (e) => {
+					if (e.ctrlKey && e.shiftKey && String(e.key).toLowerCase() === 'd') {
+						e.preventDefault();
+						openWebDevModal();
+					}
+				});
+			}
 		})();
 	</script>
 </body>
