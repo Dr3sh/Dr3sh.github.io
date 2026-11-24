@@ -119,7 +119,7 @@
       "id": "desgraciamon2",
       "title": "Desgraciamon 2",
       "status": "active",
-      "theme_color": "#925d7d",
+      "theme_color": "#c85b9c",
       "image": "assets/desgraciamon2logo.png",
       "minecraft_version": "1.21.1",
       "mod_loader": "fabric",
@@ -428,7 +428,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-24T07:26:50.346Z",
+  "launcher_refresh_id": "2026-11-24T08:14:10.168Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
