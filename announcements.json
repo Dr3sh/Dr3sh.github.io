@@ -1,5 +1,17 @@
 {
   "schemaVersion": 1,
-  "announcements": [],
+  "announcements": [
+    {
+      "id": "ann_77a307",
+      "title": "INICIO DEL SERVER!",
+      "body": "Descripción del anuncio",
+      "color": "#F5C842",
+      "bodyColor": "#FFFFFF",
+      "imageUrl": "",
+      "showInChat": true,
+      "showInHud": true,
+      "hudDurationSeconds": 15
+    }
+  ],
   "missions": []
 }
