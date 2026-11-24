@@ -3431,30 +3431,8 @@
 					try {
 						devState.busy = true;
 						publishBtn.disabled = true;
-						setDevStatus('Publicando en catalog-live/versions.json...');
-						const rel = await ghApi('GET', '/repos/Dr3sh/modpack-versions/releases/tags/catalog-live');
-						const oldAssets = Array.isArray(rel.assets)
-							? rel.assets.filter((a) => a && a.name === 'versions.json')
-							: [];
-						for (const oldAsset of oldAssets) {
-							await ghApi('DELETE', `/repos/Dr3sh/modpack-versions/releases/assets/${oldAsset.id}`);
-						}
-						const uploadBase = String(rel.upload_url || '').replace(/\{.*$/, '');
+						setDevStatus('Guardando versions.json en GitHub...');
 						const jsonText = JSON.stringify(devState.draft, null, '\t') + '\n';
-						const upRes = await fetch(`${uploadBase}?name=versions.json`, {
-							method: 'POST',
-							headers: {
-								Authorization: `Bearer ${devState.token}`,
-								Accept: 'application/vnd.github+json',
-								'Content-Type': 'application/json',
-							},
-							body: jsonText,
-						});
-						if (!upRes.ok) {
-							const errText = await upRes.text();
-							throw new Error(`Upload HTTP ${upRes.status}: ${errText}`);
-						}
-						// Also sync raw mirror versions.json on Dr3sh/modpack-versions main branch for browser CORS
 						let mirrorSha;
 						try {
 							const curMirror = await ghApi('GET', '/repos/Dr3sh/modpack-versions/contents/versions.json?ref=main');
@@ -3462,14 +3440,20 @@
 						} catch {}
 						const mirrorB64 = btoa(unescape(encodeURIComponent(jsonText)));
 						await ghApi('PUT', '/repos/Dr3sh/modpack-versions/contents/versions.json', {
-							message: `Sync versions.json from web dev by @${devState.user}`,
+							message: `Update versions.json from web dev by @${devState.user}`,
 							content: mirrorB64,
 							branch: 'main',
 							...(mirrorSha ? { sha: mirrorSha } : {}),
 						});
+						setDevStatus('Sincronizando release catalog-live...');
+						await ghApi(
+							'POST',
+							'/repos/ramirezjeider28-alt/modpack-versions/actions/workflows/sync-catalog-live.yml/dispatches',
+							{ ref: 'main' },
+						);
 						processData(devState.draft);
-						setDevStatus('¡Publicado en catalog-live/versions.json correctamente!');
-						showToast('Cambios publicados en catalog-live/versions.json');
+						setDevStatus('¡Publicado y sincronizado con catalog-live!');
+						showToast('Cambios guardados y sincronizando catalog-live');
 					} catch (err) {
 						setDevStatus(`Error al publicar: ${err.message}`);
 					} finally {
