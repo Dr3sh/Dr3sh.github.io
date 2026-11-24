@@ -1,431 +1,433 @@
 {
-  "servers": [
-    {
-      "id": "expediciones",
-      "title": "Expediciones",
-      "status": "hidden",
-      "image": "assets/expediciones_title2.png",
-      "theme_color": "#1b41a3",
-      "description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales.",
-      "minecraft_version": "1.21.4",
-      "mod_loader": "fabric",
-      "screenshots": []
-    },
-    {
-      "id": "pandora",
-      "title": "Pandora",
-      "status": "hidden",
-      "image": "assets/pandora_title.png",
-      "theme_color": "#6b1b8d",
-      "description": "WIP",
-      "screenshots": []
-    },
-    {
-      "id": "opus",
-      "title": "Opus Obscura",
-      "status": "active",
-      "image": "https://i.imgur.com/SVPaVhd.png",
-      "theme_color": "#520000",
-      "description": "Opus Obscura fue un servidor de Minecraft estilo vanilla-like que creamos integrando los mods Create, Silent Gear y Apotheosis principalmente, para llevar la automatización, el equipamiento y la dificultad a otro nivel. De todos mis proyectos, este ha sido el servidor más grande que he manejado.",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "neoforge",
-      "screenshots": [
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052515124-9d8960aa-c7ca-4367-89ce-739b6602bdf4-2026-07-29_00-23-27.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052523089-cf4a3ebc-851f-4ebe-b160-8394e418dd35-221223.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052531718-6d115972-4123-466e-94d6-2de359c155a1-2026-07-28_03-02-58.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052536997-145bc078-c898-4f8f-8088-b69c6fa0ba13-2026-07-18_03-45-27.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052541807-56cd89a3-a097-47a1-819f-977d5f669756-2026-07-04_20-48-37.png",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "cobbleverse",
-      "title": "Desgraciamon",
-      "status": "active",
-      "image": "assets/desgraciamon_title.png",
-      "description": "Desgraciamon 1, un servidor que usa Cobbleverse como base, con algunos agregados por nuestra parte, una muy linda experiencia, nada mas que decir.",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "logo": "https://i.imgur.com/ykI6gmG.png",
-      "logo_square": "https://i.imgur.com/RMpI0r8.png",
-      "theme_color": "#383838",
-      "screenshots": [
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255943226-8af5e4b1-3665-470c-820f-2eb2a898eb51-2026-01-18_15-46-12.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255953357-16d55390-ed15-4c4c-98bb-fad96694f4b3-2026-01-20_10-27-00.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255961241-3f3fbef0-e309-400a-b56a-dcd65347c5be-2026-01-20_17-07-21.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255972033-bef94dcc-8f75-42c4-a970-eaf5e9615696-2026-01-30_19-44-18.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255976711-3cc1510d-c037-4847-b4cb-7ca067730c5f-2026-02-01_15-35-30.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255983232-6f041f04-3757-4b2c-8bd1-3bd6dc45f227-2026-01-31_13-59-39_2.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255987503-6692c9b0-062e-4cfb-9054-090820a26166-2026-01-31_15-02-12.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255991096-94bec1a8-f742-487c-adc0-872c59e2a067-2026-01-31_13-38-50.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255995490-7832f397-8042-4e64-ab07-962f1b4d7d32-2026-01-31_13-48-42.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256007677-31ddb27e-a576-4213-977c-aabefabc03ac-2026-01-31_13-45-49.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256019524-781d6dd2-bc85-4d9b-9856-fa452c452772-IMG-20260203-WA0021.jpg",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256023940-a95ab7ae-60d9-4925-9133-823d6ba61443-IMG-20260128-WA0020.jpg",
-          "status": "active"
-        }
-      ]
-    },
-    {
-      "id": "desgraciamon2",
-      "title": "Desgraciamon 2",
-      "status": "active",
-      "theme_color": "#f6a0d3",
-      "image": "assets/desgraciamon2logo.png",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.19.5",
-      "description": "Secuela del mejor servidor de Cobbleverse que existe, pero ahora con casino Y SIN GENTE QUE CAPTURE 50 MIL LEGENDARIOS AL DIA",
-      "logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792254449126-043f672c-474a-4341-b655-b15f9a524cf4-DESGRACIAMON-3-LOGO-1X1.png",
-      "screenshots": [
-        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(1).jpg",
-        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(2).jpg",
-        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(3).jpg.",
-        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(4).jpg",
-        "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(5).jpg"
-      ]
-    },
-    {
-      "id": "desgraciamon3",
-      "title": "Desgraciamon 3",
-      "status": "active",
-      "theme_color": "#0c1855",
-      "image": "assets/LOGO2.png",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.20.1",
-      "description": "Una vez más Desgraciamon está devuelta! Esta vez con su tercera edición, con mods preparados especifícamente para este servidor. ¿Cuanto durará?",
-      "logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1794574726392-desgraciamon3.png",
-      "screenshots": [
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795458102217-frame.png",
-          "status": "active"
-        },
-        {
-          "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795458202185-frame.png",
-          "status": "active"
-        }
-      ],
-      "disabled": false
-    }
-  ],
-  "versions": [
-    {
-      "id": "desgraciamon3-1-2-0",
-      "server": "desgraciamon3",
-      "title": "Desgraciamon 3 v1.2.0",
-      "version": "1.2.0",
-      "link": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.2.0/desgraciamon3-1.2.0.zip",
-      "manifest": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.2.0/manifest.json",
-      "sha256": "f6437eca4dcc99801603b8e729e439d2aead55e072e6cc57474c011f146abf11",
-      "description": "",
-      "published_at": "2026-11-24",
-      "size_mb": 1349.5,
-      "status": "active"
-    },
-    {
-      "id": "desgraciamon3-1-0-0",
-      "server": "desgraciamon3",
-      "title": "Desgraciamon 3",
-      "version": "1.0.0",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.0.0/desgraciamon3-1.0.0.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.0.0/manifest.json",
-      "sha256": "fc82dea1c7c388c15a29031529604078126a3f34d6d49dfafc91dd7f405f1825",
-      "description": "",
-      "published_at": "2026-11-23",
-      "size_mb": 1515.9,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-9",
-      "server": "cobbleverse",
-      "title": "Desgraciamon 1 v9",
-      "version": "9",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v9/cobbleverse-9.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v9/manifest.json",
-      "description": "",
-      "published_at": "2026-10-29",
-      "size_mb": 791.6,
-      "status": "active"
-    },
-    {
-      "id": "desgraciamon2-3-0-0",
-      "server": "desgraciamon2",
-      "title": "Desgraciamon 2 v3",
-      "version": "3.0.0",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v3-0-0/desgraciamon2-3-0-0.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v3-0-0/manifest.json",
-      "sha256": "c94faa308b9974cb2b2f2411b8f5830aadb4be923d77d513ce6fe714ed14df14",
-      "description": "",
-      "published_at": "2026-10-20",
-      "size_mb": 966.6,
-      "status": "active"
-    },
-    {
-      "id": "desgraciamon2-2-0-0",
-      "server": "desgraciamon2",
-      "title": "Desgraciamon 2 v2",
-      "version": "2.0.0",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v2-0-0/desgraciamon2-2-0-0.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v2-0-0/manifest.json",
-      "sha256": "4c2860ab9ab03dd98c92b80f3870b11f720ded6ac3059625b87c50c4e7975a97",
-      "description": "",
-      "published_at": "2026-10-20",
-      "size_mb": 964.3,
-      "status": "active"
-    },
-    {
-      "id": "desgraciamon2-1-0-0",
-      "server": "desgraciamon2",
-      "title": "Desgraciamon 2 v1",
-      "version": "1.0.0",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v1-0-0/desgraciamon2-1-0-0.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v1-0-0/manifest.json",
-      "sha256": "4f998ff506caa5999d951e92f8cbb5a5fcfefba0b7e857367e6391199a68664a",
-      "description": "",
-      "published_at": "2026-10-20",
-      "size_mb": 954.5,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-8",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v8",
-      "version": "8",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v8/cobbleverse-8.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v8/manifest.json",
-      "sha256": "e1b5b56e8198e3a87e183f93bc36f29c51e7e97c383f7346f1ddfb096b904ac5",
-      "description": "Somos carlos kirk.",
-      "published_at": "2026-02-10",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 769.7,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-7",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v7",
-      "version": "7",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v7/cobbleverse-7.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v7/manifest.json",
-      "sha256": "671849199f1b84e4e812968ebdeff11f1f3e01f16402fbb3ef6c2c16b6a8fd2d",
-      "description": "No sé.",
-      "published_at": "2026-01-31",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 768.7,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-6",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v6",
-      "version": "6",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v6/cobbleverse-6.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v6/manifest.json",
-      "sha256": "b6faa79d7aa557d968f4cda9e9607593c2c1603250b6d115d9f515209709625e",
-      "description": "Añadidas megaevoluciones de Pokémon Leyendas ZA. Añadido sistema GTS (Compra/Venta). Añadidas armaduras con temática de Pokémon. Añadido Jade.",
-      "published_at": "2026-01-24",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 720,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-5",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v5",
-      "version": "5",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v5/cobbleverse-5.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v5/manifest.json",
-      "sha256": "ca42bd469f6a6327c67116197c7ff876be632148ce211501bc3f11913f784cd4",
-      "description": "Agregados más mods. ¿Alguien lee esto?. Antau la Yabi no te quiere.",
-      "published_at": "2026-01-21",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 699.3,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-4",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v4",
-      "version": "4",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v4/cobbleverse-4.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v4/manifest.json",
-      "sha256": "2fcbf1f0e96cc1380a03d4745fc91261aa63830d22485cf73cb95e10ee267398",
-      "description": "Agregados Only Hammers, Simple Excavators, Simplest Broadaxes (Herramientas más eficientes), Tom's Simple Storage (Administrador de almacenamiento), Datapack All The Mons (Incluye Pokémon que no spawnean naturalmente), y ReFramed (Losas, escaleras, vallas y más con texturas personalizadas).",
-      "published_at": "2026-01-19",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 672.6,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-3",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v3",
-      "version": "3",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v3/cobbleverse-3.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v3/manifest.json",
-      "sha256": "e8a55e1bc2772d0861328c359d5b3876983187e2249e0b59ea069f52e869e1bb",
-      "description": "Eliminado Carry on. Agregado Chipped.",
-      "published_at": "2026-01-18",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 662.4,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-2",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v2",
-      "version": "2",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v2/cobbleverse-2.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v2/manifest.json",
-      "sha256": "7e0ca37df49a583ab606f0df8ef683c16a7b9a0a96df8f5e84ffbac65627120a",
-      "description": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces.",
-      "published_at": "2026-01-18",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 656.9,
-      "status": "active"
-    },
-    {
-      "id": "cobbleverse-1",
-      "server": "cobbleverse",
-      "title": "Desgraciamon v1",
-      "version": "1",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v1/cobbleverse-1.zip",
-      "manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v1/manifest.json",
-      "sha256": "e284f5c9fdc24a640a7641cd17f0025a6c2a3365da85361d583407e52c21a13e",
-      "description": "Versión inicial base de Cobbleverse 1.7.1 (Fabric 1.21.1).",
-      "published_at": "2026-01-15",
-      "minecraft_version": "1.21.1",
-      "mod_loader": "fabric",
-      "mod_loader_version": "0.17.3",
-      "size_mb": 640.3,
-      "status": "active"
-    },
-    {
-      "id": "exp-v1",
-      "server": "expediciones",
-      "title": "Expediciones v0.1",
-      "description": "Versión fundacional del modpack de Expediciones. Esta primera versión está diseñada para un juego estable y optimizado, sirviendo como molde para futuras expansiones.",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/EXPEDICIONES/EXPEDICIOENS.zip",
-      "published_at": "2025-11-26",
-      "minecraft_version": "1.21.4",
-      "mod_loader_version": "",
-      "size_mb": 961
-    },
-    {
-      "id": "exp-v0.2",
-      "server": "expediciones",
-      "title": "Expediciones v0.2",
-      "description": "Bug fixes.",
-      "link": "https://download1321.mediafire.com/j5xp3pkmmwcgbFolkWIdS43Ix78i5Oato4ZoOIsgMbS1r-zxsZ7Q3BNYxuhUaFzVFgQfT1dyeUdJHA9J0naElEtBcqoyGHSGL7WnQgGq3zCLjW0t1rDu0-zSEnj8IM7TBydpj_FTP_AZ_wClH13J94E0ZIezIZvyC64dilRmP8LeF80/ofn8yc8g81mr67d/expediciones+modpack+v0.2.rar",
-      "published_at": "2025-11-26"
-    },
-    {
-      "id": "exp-v0.3",
-      "server": "expediciones",
-      "title": "Expediciones v0.3",
-      "description": "Mala mia se me olvidó poner los mods.",
-      "link": "https://download1326.mediafire.com/kpupkzu4979g5byyam423JOxkp_pPUPnKJ-MB0z1GuKBCgIZaCJnnAFNjyzLXf0Ya7yhNQ3ROgiu4R_a5Ri22ZjyzfRoprkatIsZJ0NRIip9_-JGUA6ktZ83w2W638io5jb74XtkoSfwe6X4W_MYBxLUzLbG_pkxsv0Dj6bDfiVQmLA/gio13cz8y4btyd4/Modpack+Expediciones+v0.3.rar",
-      "published_at": "2025-11-26"
-    },
-    {
-      "id": "exp-v0.4",
-      "server": "expediciones",
-      "title": "Expediciones v0.4",
-      "description": "Bug fixes.",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/EXPV4/Modpack.Expediciones.v0.4.rar",
-      "published_at": "2025-11-26",
-      "minecraft_version": "1.21.4",
-      "mod_loader_version": ""
-    },
-    {
-      "id": "pandora1",
-      "server": "pandora",
-      "title": "Pandora v1",
-      "description": "Versión fundacional del modpack de Pandora.",
-      "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      "published_at": "2025-11-26"
-    },
-    {
-      "id": "opusv1",
-      "server": "opus",
-      "title": "Opus Obscura v1",
-      "status": "active",
-      "description": "Hola",
-      "link": "https://github.com/Dr3sh/modpack-versions/releases/download/OPUS-OBSCURA/OPUS.OBSCURA.MODS.rar",
-      "size_mb": 858,
-      "minecraft_version": "1.21.1",
-      "mod_loader": "neoforge",
-      "mod_loader_version": "21.1.233",
-      "published_at": "2026-07-15"
-    }
-  ],
-  "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-24T02:04:49.419Z",
-  "maintenance_mode": false,
-  "maintenance_message": "que vinite a hacer aquí averiguador",
-  "testing_mode": false,
-  "testing_hours": 1
+	"servers": [
+		{
+			"id": "expediciones",
+			"title": "Expediciones",
+			"status": "hidden",
+			"image": "assets/expediciones_title2.png",
+			"theme_color": "#1b41a3",
+			"description": "Servidor de Minecraft con gameplay Semi-Vanilla. Incluye mods y shaders visuales para una inmersión gráfica superior y un rendimiento optimizado, manteniendo la integridad de las mecánicas originales.",
+			"minecraft_version": "1.21.4",
+			"mod_loader": "fabric",
+			"screenshots": []
+		},
+		{
+			"id": "pandora",
+			"title": "Pandora",
+			"status": "hidden",
+			"image": "assets/pandora_title.png",
+			"theme_color": "#6b1b8d",
+			"description": "WIP",
+			"screenshots": []
+		},
+		{
+			"id": "opus",
+			"title": "Opus Obscura",
+			"status": "active",
+			"image": "https://i.imgur.com/SVPaVhd.png",
+			"theme_color": "#520000",
+			"description": "Opus Obscura fue un servidor de Minecraft estilo vanilla-like que creamos integrando los mods Create, Silent Gear y Apotheosis principalmente, para llevar la automatización, el equipamiento y la dificultad a otro nivel. De todos mis proyectos, este ha sido el servidor más grande que he manejado.",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "neoforge",
+			"screenshots": [
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052515124-9d8960aa-c7ca-4367-89ce-739b6602bdf4-2026-07-29_00-23-27.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052523089-cf4a3ebc-851f-4ebe-b160-8394e418dd35-221223.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052531718-6d115972-4123-466e-94d6-2de359c155a1-2026-07-28_03-02-58.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052536997-145bc078-c898-4f8f-8088-b69c6fa0ba13-2026-07-18_03-45-27.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792052541807-56cd89a3-a097-47a1-819f-977d5f669756-2026-07-04_20-48-37.png",
+					"status": "active"
+				}
+			]
+		},
+		{
+			"id": "cobbleverse",
+			"title": "Desgraciamon",
+			"status": "active",
+			"image": "assets/desgraciamon_title.png",
+			"description": "Desgraciamon 1, un servidor que usa Cobbleverse como base, con algunos agregados por nuestra parte, una muy linda experiencia, nada mas que decir.",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"logo": "https://i.imgur.com/ykI6gmG.png",
+			"logo_square": "https://i.imgur.com/RMpI0r8.png",
+			"theme_color": "#383838",
+			"screenshots": [
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255943226-8af5e4b1-3665-470c-820f-2eb2a898eb51-2026-01-18_15-46-12.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255953357-16d55390-ed15-4c4c-98bb-fad96694f4b3-2026-01-20_10-27-00.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255961241-3f3fbef0-e309-400a-b56a-dcd65347c5be-2026-01-20_17-07-21.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255972033-bef94dcc-8f75-42c4-a970-eaf5e9615696-2026-01-30_19-44-18.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255976711-3cc1510d-c037-4847-b4cb-7ca067730c5f-2026-02-01_15-35-30.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255983232-6f041f04-3757-4b2c-8bd1-3bd6dc45f227-2026-01-31_13-59-39_2.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255987503-6692c9b0-062e-4cfb-9054-090820a26166-2026-01-31_15-02-12.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255991096-94bec1a8-f742-487c-adc0-872c59e2a067-2026-01-31_13-38-50.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255995490-7832f397-8042-4e64-ab07-962f1b4d7d32-2026-01-31_13-48-42.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256007677-31ddb27e-a576-4213-977c-aabefabc03ac-2026-01-31_13-45-49.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256019524-781d6dd2-bc85-4d9b-9856-fa452c452772-IMG-20260203-WA0021.jpg",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792256023940-a95ab7ae-60d9-4925-9133-823d6ba61443-IMG-20260128-WA0020.jpg",
+					"status": "active"
+				}
+			]
+		},
+		{
+			"id": "desgraciamon2",
+			"title": "Desgraciamon 2",
+			"status": "active",
+			"theme_color": "#f6a0d3",
+			"image": "assets/desgraciamon2logo.png",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.19.5",
+			"description": "Secuela del mejor servidor de Cobbleverse que existe, pero ahora con casino Y SIN GENTE QUE CAPTURE 50 MIL LEGENDARIOS AL DIA",
+			"logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792254449126-043f672c-474a-4341-b655-b15f9a524cf4-DESGRACIAMON-3-LOGO-1X1.png",
+			"screenshots": [
+				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(1).jpg",
+				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(2).jpg",
+				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(3).jpg.",
+				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(4).jpg",
+				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(5).jpg"
+			]
+		},
+		{
+			"id": "desgraciamon3",
+			"title": "Desgraciamon 3",
+			"status": "active",
+			"theme_color": "#0c1855",
+			"image": "assets/LOGO2.png",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.20.1",
+			"description": "Una vez más Desgraciamon está devuelta! Esta vez con su tercera edición, con mods preparados especifícamente para este servidor. ¿Cuanto durará?",
+			"logo_square": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1794574726392-desgraciamon3.png",
+			"screenshots": [
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795458102217-frame.png",
+					"status": "active"
+				},
+				{
+					"url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795458202185-frame.png",
+					"status": "active"
+				}
+			],
+			"disabled": false,
+			"release_date": "2026-12-01T19:00",
+			"title_logo": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795488168304-d3sgraciamon_animated_v2.apng"
+		}
+	],
+	"versions": [
+		{
+			"id": "desgraciamon3-1-2-0",
+			"server": "desgraciamon3",
+			"title": "Desgraciamon 3 v1.2.0",
+			"version": "1.2.0",
+			"link": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.2.0/desgraciamon3-1.2.0.zip",
+			"manifest": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.2.0/manifest.json",
+			"sha256": "f6437eca4dcc99801603b8e729e439d2aead55e072e6cc57474c011f146abf11",
+			"description": "",
+			"published_at": "2026-11-24",
+			"size_mb": 1349.5,
+			"status": "active"
+		},
+		{
+			"id": "desgraciamon3-1-0-0",
+			"server": "desgraciamon3",
+			"title": "Desgraciamon 3",
+			"version": "1.0.0",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.0.0/desgraciamon3-1.0.0.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon3-v1.0.0/manifest.json",
+			"sha256": "fc82dea1c7c388c15a29031529604078126a3f34d6d49dfafc91dd7f405f1825",
+			"description": "",
+			"published_at": "2026-11-23",
+			"size_mb": 1515.9,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-9",
+			"server": "cobbleverse",
+			"title": "Desgraciamon 1 v9",
+			"version": "9",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v9/cobbleverse-9.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v9/manifest.json",
+			"description": "",
+			"published_at": "2026-10-29",
+			"size_mb": 791.6,
+			"status": "active"
+		},
+		{
+			"id": "desgraciamon2-3-0-0",
+			"server": "desgraciamon2",
+			"title": "Desgraciamon 2 v3",
+			"version": "3.0.0",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v3-0-0/desgraciamon2-3-0-0.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v3-0-0/manifest.json",
+			"sha256": "c94faa308b9974cb2b2f2411b8f5830aadb4be923d77d513ce6fe714ed14df14",
+			"description": "",
+			"published_at": "2026-10-20",
+			"size_mb": 966.6,
+			"status": "active"
+		},
+		{
+			"id": "desgraciamon2-2-0-0",
+			"server": "desgraciamon2",
+			"title": "Desgraciamon 2 v2",
+			"version": "2.0.0",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v2-0-0/desgraciamon2-2-0-0.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v2-0-0/manifest.json",
+			"sha256": "4c2860ab9ab03dd98c92b80f3870b11f720ded6ac3059625b87c50c4e7975a97",
+			"description": "",
+			"published_at": "2026-10-20",
+			"size_mb": 964.3,
+			"status": "active"
+		},
+		{
+			"id": "desgraciamon2-1-0-0",
+			"server": "desgraciamon2",
+			"title": "Desgraciamon 2 v1",
+			"version": "1.0.0",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v1-0-0/desgraciamon2-1-0-0.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/desgraciamon2-v1-0-0/manifest.json",
+			"sha256": "4f998ff506caa5999d951e92f8cbb5a5fcfefba0b7e857367e6391199a68664a",
+			"description": "",
+			"published_at": "2026-10-20",
+			"size_mb": 954.5,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-8",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v8",
+			"version": "8",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v8/cobbleverse-8.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v8/manifest.json",
+			"sha256": "e1b5b56e8198e3a87e183f93bc36f29c51e7e97c383f7346f1ddfb096b904ac5",
+			"description": "Somos carlos kirk.",
+			"published_at": "2026-02-10",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 769.7,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-7",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v7",
+			"version": "7",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v7/cobbleverse-7.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v7/manifest.json",
+			"sha256": "671849199f1b84e4e812968ebdeff11f1f3e01f16402fbb3ef6c2c16b6a8fd2d",
+			"description": "No sé.",
+			"published_at": "2026-01-31",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 768.7,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-6",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v6",
+			"version": "6",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v6/cobbleverse-6.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v6/manifest.json",
+			"sha256": "b6faa79d7aa557d968f4cda9e9607593c2c1603250b6d115d9f515209709625e",
+			"description": "Añadidas megaevoluciones de Pokémon Leyendas ZA. Añadido sistema GTS (Compra/Venta). Añadidas armaduras con temática de Pokémon. Añadido Jade.",
+			"published_at": "2026-01-24",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 720,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-5",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v5",
+			"version": "5",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v5/cobbleverse-5.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v5/manifest.json",
+			"sha256": "ca42bd469f6a6327c67116197c7ff876be632148ce211501bc3f11913f784cd4",
+			"description": "Agregados más mods. ¿Alguien lee esto?. Antau la Yabi no te quiere.",
+			"published_at": "2026-01-21",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 699.3,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-4",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v4",
+			"version": "4",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v4/cobbleverse-4.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v4/manifest.json",
+			"sha256": "2fcbf1f0e96cc1380a03d4745fc91261aa63830d22485cf73cb95e10ee267398",
+			"description": "Agregados Only Hammers, Simple Excavators, Simplest Broadaxes (Herramientas más eficientes), Tom's Simple Storage (Administrador de almacenamiento), Datapack All The Mons (Incluye Pokémon que no spawnean naturalmente), y ReFramed (Losas, escaleras, vallas y más con texturas personalizadas).",
+			"published_at": "2026-01-19",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 672.6,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-3",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v3",
+			"version": "3",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v3/cobbleverse-3.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v3/manifest.json",
+			"sha256": "e8a55e1bc2772d0861328c359d5b3876983187e2249e0b59ea069f52e869e1bb",
+			"description": "Eliminado Carry on. Agregado Chipped.",
+			"published_at": "2026-01-18",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 662.4,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-2",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v2",
+			"version": "2",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v2/cobbleverse-2.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v2/manifest.json",
+			"sha256": "7e0ca37df49a583ab606f0df8ef683c16a7b9a0a96df8f5e84ffbac65627120a",
+			"description": "Carry On: Permite cargar bloques funcionales y animales con las manos.\nChat Heads: Muestra la cara de la skin de los jugadores junto a sus mensajes en el chat.\nEmojiful: Añade soporte para el uso de emojis personalizados dentro del chat.\nImmersive Paintings: Permite importar imágenes externas para crear cuadros personalizados.\nInventory Profiles Next: Organiza automáticamente el inventario y repone herramientas rotas.\nMyths and Legends: Sidemod de Cobblemon que añade encuentros con Pokémon legendarios y míticos.\nPlayer Roles: Sistema para asignar rangos, iconos y permisos específicos a los jugadores.\nPokegift: Permite regalar tus propios Pokémon a otros jugadores.\nWatut: Añade animaciones de inmersión adicionales al ver interfaces.",
+			"published_at": "2026-01-18",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 656.9,
+			"status": "active"
+		},
+		{
+			"id": "cobbleverse-1",
+			"server": "cobbleverse",
+			"title": "Desgraciamon v1",
+			"version": "1",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v1/cobbleverse-1.zip",
+			"manifest": "https://github.com/Dr3sh/modpack-versions/releases/download/cobbleverse-v1/manifest.json",
+			"sha256": "e284f5c9fdc24a640a7641cd17f0025a6c2a3365da85361d583407e52c21a13e",
+			"description": "Versión inicial base de Cobbleverse 1.7.1 (Fabric 1.21.1).",
+			"published_at": "2026-01-15",
+			"minecraft_version": "1.21.1",
+			"mod_loader": "fabric",
+			"mod_loader_version": "0.17.3",
+			"size_mb": 640.3,
+			"status": "active"
+		},
+		{
+			"id": "exp-v1",
+			"server": "expediciones",
+			"title": "Expediciones v0.1",
+			"description": "Versión fundacional del modpack de Expediciones. Esta primera versión está diseñada para un juego estable y optimizado, sirviendo como molde para futuras expansiones.",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/EXPEDICIONES/EXPEDICIOENS.zip",
+			"published_at": "2025-11-26",
+			"minecraft_version": "1.21.4",
+			"mod_loader_version": "",
+			"size_mb": 961
+		},
+		{
+			"id": "exp-v0.2",
+			"server": "expediciones",
+			"title": "Expediciones v0.2",
+			"description": "Bug fixes.",
+			"link": "https://download1321.mediafire.com/j5xp3pkmmwcgbFolkWIdS43Ix78i5Oato4ZoOIsgMbS1r-zxsZ7Q3BNYxuhUaFzVFgQfT1dyeUdJHA9J0naElEtBcqoyGHSGL7WnQgGq3zCLjW0t1rDu0-zSEnj8IM7TBydpj_FTP_AZ_wClH13J94E0ZIezIZvyC64dilRmP8LeF80/ofn8yc8g81mr67d/expediciones+modpack+v0.2.rar",
+			"published_at": "2025-11-26"
+		},
+		{
+			"id": "exp-v0.3",
+			"server": "expediciones",
+			"title": "Expediciones v0.3",
+			"description": "Mala mia se me olvidó poner los mods.",
+			"link": "https://download1326.mediafire.com/kpupkzu4979g5byyam423JOxkp_pPUPnKJ-MB0z1GuKBCgIZaCJnnAFNjyzLXf0Ya7yhNQ3ROgiu4R_a5Ri22ZjyzfRoprkatIsZJ0NRIip9_-JGUA6ktZ83w2W638io5jb74XtkoSfwe6X4W_MYBxLUzLbG_pkxsv0Dj6bDfiVQmLA/gio13cz8y4btyd4/Modpack+Expediciones+v0.3.rar",
+			"published_at": "2025-11-26"
+		},
+		{
+			"id": "exp-v0.4",
+			"server": "expediciones",
+			"title": "Expediciones v0.4",
+			"description": "Bug fixes.",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/EXPV4/Modpack.Expediciones.v0.4.rar",
+			"published_at": "2025-11-26",
+			"minecraft_version": "1.21.4",
+			"mod_loader_version": ""
+		},
+		{
+			"id": "pandora1",
+			"server": "pandora",
+			"title": "Pandora v1",
+			"description": "Versión fundacional del modpack de Pandora.",
+			"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+			"published_at": "2025-11-26"
+		},
+		{
+			"id": "opusv1",
+			"server": "opus",
+			"title": "Opus Obscura v1",
+			"status": "active",
+			"description": "Hola",
+			"link": "https://github.com/Dr3sh/modpack-versions/releases/download/OPUS-OBSCURA/OPUS.OBSCURA.MODS.rar",
+			"size_mb": 858,
+			"minecraft_version": "1.21.1",
+			"mod_loader": "neoforge",
+			"mod_loader_version": "21.1.233",
+			"published_at": "2026-07-15"
+		}
+	],
+	"launcher_refresh_mode": "automatic",
+	"launcher_refresh_id": "2026-11-24T02:04:49.419Z",
+	"maintenance_mode": false,
+	"maintenance_message": "que vinite a hacer aquí averiguador",
+	"testing_mode": false,
+	"testing_hours": 1
 }
