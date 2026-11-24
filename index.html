@@ -2311,10 +2311,10 @@
 				const basePanel2 = '#1c2230';
 				const baseLine = '#2a3245';
 
-				const tintedInk = mixHex(subdued, baseInk, 0.40);
-				const tintedPanel = mixHex(subdued, basePanel, 0.40);
-				const tintedPanel2 = mixHex(subdued, basePanel2, 0.40);
-				const tintedLine = mixHex(subdued, baseLine, 0.40);
+				const tintedInk = mixHex(subdued, baseInk, 0.60);
+				const tintedPanel = mixHex(subdued, basePanel, 0.60);
+				const tintedPanel2 = mixHex(subdued, basePanel2, 0.60);
+				const tintedLine = mixHex(subdued, baseLine, 0.60);
 
 				document.documentElement.style.setProperty('--ink', tintedInk);
 				document.documentElement.style.setProperty('--panel', tintedPanel);
@@ -2770,10 +2770,6 @@
 					if (preferred && preferred.browser_download_url) {
 						btn.href = preferred.browser_download_url;
 						if (preferred.name) btn.setAttribute('download', preferred.name);
-						const labelSpan = btn.querySelector('span');
-						if (labelSpan && data.tag_name) {
-							labelSpan.textContent = `Descargar Launcher ${data.tag_name}`;
-						}
 					}
 				} catch (err) {
 					console.warn('No se pudo obtener el enlace directo del launcher:', err);
