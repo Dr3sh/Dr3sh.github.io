@@ -2773,7 +2773,7 @@
 
 			async function fetchCatalog() {
 				try {
-					const res = await fetch(`./versions.json?t=${Date.now()}`);
+					const res = await fetch(`./versions.json?t=${Date.now()}`, { cache: 'no-store' });
 					if (!res.ok) throw new Error(`HTTP ${res.status}`);
 					const data = await res.json();
 					processData(data);
@@ -2803,6 +2803,15 @@
 				return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
 			}
 
+			function parseReleaseTimestamp(raw) {
+				if (!raw) return NaN;
+				const str = String(raw).trim();
+				if (!str) return NaN;
+				const hasTz = /(?:Z|[+-]\d{2}:?\d{2})$/i.test(str);
+				const normalized = hasTz ? str : (str.length === 16 ? `${str}:00-04:00` : `${str}-04:00`);
+				return new Date(normalized).getTime();
+			}
+
 			function getReleaseLockInfo(srv) {
 				if (state.maintenanceMode) {
 					return {
@@ -2821,7 +2830,7 @@
 					};
 				}
 				if (srv && srv.release_date) {
-					const target = new Date(srv.release_date).getTime();
+					const target = parseReleaseTimestamp(srv.release_date);
 					if (!isNaN(target) && target > Date.now()) {
 						return {
 							locked: true,
