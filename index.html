@@ -2773,20 +2773,29 @@
 
 			async function fetchCatalog() {
 				try {
-					const res = await fetch(`./versions.json?t=${Date.now()}`, { cache: 'no-store' });
-					if (!res.ok) throw new Error(`HTTP ${res.status}`);
-					const data = await res.json();
+					const relRes = await fetch(
+						`https://api.github.com/repos/Dr3sh/modpack-versions/releases/tags/catalog-live?t=${Date.now()}`,
+						{
+							cache: 'no-store',
+							headers: { Accept: 'application/vnd.github+json' },
+						},
+					);
+					if (!relRes.ok) throw new Error(`HTTP ${relRes.status}`);
+					const rel = await relRes.json();
+					const asset = Array.isArray(rel.assets)
+						? rel.assets.find((a) => a && a.name === 'versions.json')
+						: null;
+					if (!asset || !asset.url) throw new Error('versions.json no encontrado en catalog-live');
+					const assetRes = await fetch(asset.url, {
+						cache: 'no-store',
+						headers: { Accept: 'application/octet-stream' },
+					});
+					if (!assetRes.ok) throw new Error(`Asset HTTP ${assetRes.status}`);
+					const data = await assetRes.json();
 					processData(data);
 				} catch (err) {
-					console.warn('Local versions.json failed, trying fallback...', err);
-					try {
-						const fb = await fetch(`https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/versions.json?t=${Date.now()}`);
-						const data = await fb.json();
-						processData(data);
-					} catch (e2) {
-						console.error('All catalog fetches failed:', e2);
-						showToast('No se pudo conectar con el catálogo.');
-					}
+					console.error('catalog-live fetch failed:', err);
+					showToast('No se pudo conectar con catalog-live/versions.json.');
 				}
 			}
 
@@ -3140,9 +3149,9 @@
 					devState.token = String(token || '').trim();
 					if (!devState.token) throw new Error('Ingresa un token válido.');
 					const user = await ghApi('GET', '/user');
-					const repoInfo = await ghApi('GET', '/repos/Dr3sh/Dr3sh.github.io');
+					const repoInfo = await ghApi('GET', '/repos/Dr3sh/modpack-versions');
 					if (!repoInfo?.permissions?.push) {
-						throw new Error(`La cuenta @${user.login} no tiene permisos de escritura en Dr3sh/Dr3sh.github.io.`);
+						throw new Error(`La cuenta @${user.login} no tiene permisos de escritura en Dr3sh/modpack-versions.`);
 					}
 					devState.user = user.login;
 					return user;
@@ -3436,19 +3445,32 @@
 					try {
 						devState.busy = true;
 						publishBtn.disabled = true;
-						setDevStatus('Publicando versions.json en GitHub...');
-						const cur = await ghApi('GET', '/repos/Dr3sh/Dr3sh.github.io/contents/versions.json?ref=main');
+						setDevStatus('Publicando en catalog-live/versions.json...');
+						const rel = await ghApi('GET', '/repos/Dr3sh/modpack-versions/releases/tags/catalog-live');
+						const oldAssets = Array.isArray(rel.assets)
+							? rel.assets.filter((a) => a && a.name === 'versions.json')
+							: [];
+						for (const oldAsset of oldAssets) {
+							await ghApi('DELETE', `/repos/Dr3sh/modpack-versions/releases/assets/${oldAsset.id}`);
+						}
+						const uploadBase = String(rel.upload_url || '').replace(/\{.*$/, '');
 						const jsonText = JSON.stringify(devState.draft, null, '\t') + '\n';
-						const b64 = btoa(unescape(encodeURIComponent(jsonText)));
-						await ghApi('PUT', '/repos/Dr3sh/Dr3sh.github.io/contents/versions.json', {
-							message: `Web dev update by @${devState.user}`,
-							content: b64,
-							sha: cur.sha,
-							branch: 'main',
+						const upRes = await fetch(`${uploadBase}?name=versions.json`, {
+							method: 'POST',
+							headers: {
+								Authorization: `Bearer ${devState.token}`,
+								Accept: 'application/vnd.github+json',
+								'Content-Type': 'application/json',
+							},
+							body: jsonText,
 						});
+						if (!upRes.ok) {
+							const errText = await upRes.text();
+							throw new Error(`Upload HTTP ${upRes.status}: ${errText}`);
+						}
 						processData(devState.draft);
-						setDevStatus('¡Publicado en GitHub correctamente!');
-						showToast('Cambios publicados en versions.json');
+						setDevStatus('¡Publicado en catalog-live/versions.json correctamente!');
+						showToast('Cambios publicados en catalog-live/versions.json');
 					} catch (err) {
 						setDevStatus(`Error al publicar: ${err.message}`);
 					} finally {
