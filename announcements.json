@@ -13,5 +13,61 @@
       "hudDurationSeconds": 15
     }
   ],
-  "missions": []
+  "missions": [
+    {
+      "id": "mis_927fe1",
+      "title": "Captura un rayquaza shiny y un a",
+      "body": "Detalles y descripción limpia de",
+      "color": "#68D7A2",
+      "bodyColor": "#E5ECE8",
+      "isGuildMission": false,
+      "targetUsesMemberCount": false,
+      "objective": "GET_ITEM",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "",
+      "pokemonType": "",
+      "badgeId": "",
+      "amount": 1,
+      "daily": false,
+      "repeatable": false,
+      "expirationDate": "",
+      "objectives": [
+        {
+          "id": "21f89c5a-1fea-4ea1-9ba2-8df5f48d7224",
+          "type": "CATCH_SPECIES",
+          "amount": 1,
+          "targetUsesMemberCount": false,
+          "itemId": "minecraf:",
+          "pokemonId": "rayquaza",
+          "pokemonType": "",
+          "pokemonProperties": "shiny=yes",
+          "badgeId": "",
+          "consumeOnClaim": false,
+          "secondaryPokemonType": "",
+          "minLevel": 0,
+          "minEvolutionStage": 0
+        },
+        {
+          "id": "929dd3ff-3539-496c-bf67-a6375173df08",
+          "type": "CATCH_SPECIES",
+          "amount": 1,
+          "targetUsesMemberCount": false,
+          "itemId": "minecraft:diamond",
+          "pokemonId": "arceus",
+          "pokemonType": "fire",
+          "pokemonProperties": "shiny=yes",
+          "badgeId": "",
+          "consumeOnClaim": false,
+          "secondaryPokemonType": "",
+          "minLevel": 0,
+          "minEvolutionStage": 0
+        }
+      ],
+      "itemRewards": [],
+      "pokemonRewards": [],
+      "moneyReward": 130000,
+      "categoryTag": "",
+      "dailySlot": 0
+    }
+  ]
 }
