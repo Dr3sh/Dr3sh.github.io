@@ -2773,28 +2773,14 @@
 
 			async function fetchCatalog() {
 				try {
-					const relRes = await fetch(
-						`https://api.github.com/repos/Dr3sh/modpack-versions/releases/tags/catalog-live?t=${Date.now()}`,
-						{
-							cache: 'no-store',
-							headers: { Accept: 'application/vnd.github+json' },
-						},
+					const res = await fetch(
+						`https://raw.githubusercontent.com/Dr3sh/modpack-versions/main/versions.json?t=${Date.now()}`,
 					);
-					if (!relRes.ok) throw new Error(`HTTP ${relRes.status}`);
-					const rel = await relRes.json();
-					const asset = Array.isArray(rel.assets)
-						? rel.assets.find((a) => a && a.name === 'versions.json')
-						: null;
-					if (!asset || !asset.url) throw new Error('versions.json no encontrado en catalog-live');
-					const assetRes = await fetch(asset.url, {
-						cache: 'no-store',
-						headers: { Accept: 'application/octet-stream' },
-					});
-					if (!assetRes.ok) throw new Error(`Asset HTTP ${assetRes.status}`);
-					const data = await assetRes.json();
+					if (!res.ok) throw new Error(`HTTP ${res.status}`);
+					const data = await res.json();
 					processData(data);
 				} catch (err) {
-					console.error('catalog-live fetch failed:', err);
+					console.error('catalog fetch failed:', err);
 					showToast('No se pudo conectar con catalog-live/versions.json.');
 				}
 			}
@@ -3468,6 +3454,19 @@
 							const errText = await upRes.text();
 							throw new Error(`Upload HTTP ${upRes.status}: ${errText}`);
 						}
+						// Also sync raw mirror versions.json on Dr3sh/modpack-versions main branch for browser CORS
+						let mirrorSha;
+						try {
+							const curMirror = await ghApi('GET', '/repos/Dr3sh/modpack-versions/contents/versions.json?ref=main');
+							mirrorSha = curMirror.sha;
+						} catch {}
+						const mirrorB64 = btoa(unescape(encodeURIComponent(jsonText)));
+						await ghApi('PUT', '/repos/Dr3sh/modpack-versions/contents/versions.json', {
+							message: `Sync versions.json from web dev by @${devState.user}`,
+							content: mirrorB64,
+							branch: 'main',
+							...(mirrorSha ? { sha: mirrorSha } : {}),
+						});
 						processData(devState.draft);
 						setDevStatus('¡Publicado en catalog-live/versions.json correctamente!');
 						showToast('Cambios publicados en catalog-live/versions.json');
