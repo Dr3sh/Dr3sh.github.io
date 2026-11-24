@@ -158,7 +158,8 @@
       ],
       "disabled": false,
       "title_logo": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795488168304-d3sgraciamon_animated_v2.apng",
-      "disabled_message": "MANTENIMIENTOOOO"
+      "disabled_message": "MANTENIMIENTOOOO",
+      "release_date": "2026-12-01T19:00"
     }
   ],
   "versions": [
@@ -453,7 +454,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-24T12:46:45.471Z",
+  "launcher_refresh_id": "2026-11-24T13:46:19.980Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
