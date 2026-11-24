@@ -57,6 +57,42 @@
 			transition: background-color 0.45s ease;
 		}
 
+		/* SITE LOADING OVERLAY */
+		.site-loading-overlay {
+			position: fixed;
+			inset: 0;
+			z-index: 99999;
+			background: radial-gradient(circle at 50% 35%, #161d2f 0%, #0d1017 70%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 16px;
+			transition: opacity 280ms ease, visibility 280ms ease;
+		}
+		.site-loading-overlay.is-hidden {
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+		}
+		.site-loading-spinner {
+			width: 38px;
+			height: 38px;
+			border-radius: 50%;
+			border: 3px solid rgba(255, 255, 255, 0.14);
+			border-top-color: #1bd96a;
+			animation: site-spin 0.8s linear infinite;
+		}
+		@keyframes site-spin {
+			to { transform: rotate(360deg); }
+		}
+		.site-loading-text {
+			font-size: 14px;
+			font-weight: 600;
+			color: #cbd5e1;
+			letter-spacing: 0.02em;
+		}
+
 		/* TOPBAR */
 		.topbar {
 			position: sticky;
@@ -1753,6 +1789,12 @@
 		</div>
 	</header>
 
+	<div id="siteLoadingOverlay" class="site-loading-overlay" aria-live="polite">
+		<img src="assets/logo-1x1.png" alt="Dr3sh App" style="width:52px;height:52px;border-radius:12px;object-fit:contain;" />
+		<div class="site-loading-spinner"></div>
+		<span class="site-loading-text">Cargando catálogo de modpacks...</span>
+	</div>
+
 	<!-- APP SHELL -->
 	<div class="app-shell">
 		<!-- SIDEBAR (RAIL): ALL MODPACKS ALWAYS VISIBLE -->
@@ -1793,7 +1835,7 @@
 					<div class="hero-top-row">
 						<div class="hero-meta-col">
 							<img id="heroTitleLogo" class="hero-title-logo-img" alt="" style="display: none;" />
-							<h1 id="heroTitle" class="hero-modpack-title">Opus Obscura</h1>
+							<h1 id="heroTitle" class="hero-modpack-title"></h1>
 							<div id="heroDescBox" class="hero-desc-scroll-box">
 								<div class="scrolling-desc-track">
 									<p id="heroDescText"></p>
@@ -2771,17 +2813,36 @@
 				renderHeroAndVersions();
 			}
 
+			function hideSiteLoader() {
+				const overlay = document.getElementById('siteLoadingOverlay');
+				if (overlay) {
+					overlay.classList.add('is-hidden');
+				}
+			}
+
 			async function fetchCatalog() {
 				try {
-					const res = await fetch(
-						`https://raw.githubusercontent.com/Dr3sh/modpack-versions/main/versions.json?t=${Date.now()}`,
-					);
-					if (!res.ok) throw new Error(`HTTP ${res.status}`);
-					const data = await res.json();
+					let data = null;
+					const urls = [
+						`./versions.json?t=${Date.now()}`,
+						`https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/versions.json?t=${Date.now()}`,
+					];
+					for (const url of urls) {
+						try {
+							const res = await fetch(url, { cache: 'no-store' });
+							if (res.ok) {
+								data = await res.json();
+								if (data && Array.isArray(data.servers)) break;
+							}
+						} catch {}
+					}
+					if (!data) throw new Error('No se pudo cargar versions.json');
 					processData(data);
 				} catch (err) {
 					console.error('catalog fetch failed:', err);
-					showToast('No se pudo conectar con catalog-live/versions.json.');
+					showToast('No se pudo conectar con versions.json.');
+				} finally {
+					hideSiteLoader();
 				}
 			}
 
@@ -2812,8 +2873,8 @@
 					return {
 						locked: true,
 						reason: 'maintenance',
-						label: 'En mantenimiento',
-						message: state.maintenanceMessage || 'Launcher en mantenimiento temporal.',
+						label: 'Estamos en mantenimiento!',
+						message: state.maintenanceMessage || 'Estamos en mantenimiento!',
 					};
 				}
 				if (srv && srv.disabled) {
@@ -2831,8 +2892,8 @@
 							locked: true,
 							reason: 'countdown',
 							target,
-							label: `Estreno en ${formatCountdownRemaining(target - Date.now())}`,
-							message: 'Disponible para descargar al llegar la fecha de estreno.',
+							label: `Inicio del server en ${formatCountdownRemaining(target - Date.now())}`,
+							message: 'Disponible al llegar el inicio del server.',
 						};
 					}
 				}
@@ -2855,7 +2916,7 @@
 							return;
 						}
 						if (giantText) {
-							giantText.textContent = `Estreno en ${formatCountdownRemaining(remaining)}`;
+							giantText.textContent = `Inicio del server en ${formatCountdownRemaining(remaining)}`;
 						}
 					}, 1000);
 				}
@@ -2901,10 +2962,15 @@
 					maintText.textContent = state.maintenanceMessage;
 				}
 
-				// Determine active initial server
+				// Determine active initial server (always default to desgraciamon3 when no hash)
 				const hash = window.location.hash.replace('#', '').trim();
 				const match = state.servers.find((s) => s.id === hash);
-				const firstActive = state.servers.find((s) => String(s.status || 'active').toLowerCase() !== 'hidden');
+				const defaultDesgraciamon3 = state.servers.find(
+					(s) => s.id === 'desgraciamon3' && String(s.status || 'active').toLowerCase() !== 'hidden',
+				);
+				const firstActive =
+					defaultDesgraciamon3 ||
+					state.servers.find((s) => String(s.status || 'active').toLowerCase() !== 'hidden');
 
 				if (hash === 'como-instalar') {
 					state.selectedId = firstActive ? firstActive.id : (state.servers[0]?.id || '');
