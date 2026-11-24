@@ -485,6 +485,72 @@
 			text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 		}
 
+		.hero-title-logo-img {
+			max-height: 94px;
+			max-width: min(460px, 100%);
+			width: auto;
+			height: auto;
+			object-fit: contain;
+			display: block;
+			filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.72));
+		}
+
+		.maintenance-web-banner {
+			display: none;
+			align-items: center;
+			gap: 14px;
+			margin: 0 0 18px 0;
+			padding: 14px 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(15, 23, 42, 0.92));
+			border: 1px solid rgba(245, 158, 11, 0.45);
+			color: #fef3c7;
+			box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+		}
+
+		.maintenance-web-banner.active {
+			display: flex;
+		}
+
+		.maintenance-web-icon {
+			width: 36px;
+			height: 36px;
+			border-radius: 10px;
+			background: rgba(245, 158, 11, 0.2);
+			color: #fbbf24;
+			display: grid;
+			place-items: center;
+			flex-shrink: 0;
+		}
+
+		.maintenance-web-copy strong {
+			display: block;
+			font-size: 14px;
+			color: #fde68a;
+			margin-bottom: 2px;
+		}
+
+		.maintenance-web-copy p {
+			margin: 0;
+			font-size: 13px;
+			color: #e2e8f0;
+			line-height: 1.45;
+		}
+
+		.ver-download-locked {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 6px 12px;
+			border-radius: 8px;
+			font-size: 12px;
+			font-weight: 600;
+			color: #94a3b8;
+			background: rgba(15, 23, 42, 0.7);
+			border: 1px solid rgba(148, 163, 184, 0.2);
+			cursor: not-allowed;
+		}
+
 		/* Scrolling Description Box (exact from launcher) */
 		.hero-desc-scroll-box {
 			height: 42px !important;
@@ -1598,6 +1664,18 @@
 
 		<!-- MAIN STAGE -->
 		<main class="main-stage">
+			<div id="maintenanceWebBanner" class="maintenance-web-banner" role="status">
+				<div class="maintenance-web-icon">
+					<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+					</svg>
+				</div>
+				<div class="maintenance-web-copy">
+					<strong>Modo Mantenimiento Activo</strong>
+					<p id="maintenanceWebText">Estamos realizando mejoras en nuestros servidores. Las descargas se habilitarán al finalizar.</p>
+				</div>
+			</div>
+
 			<!-- MODPACK HERO + VERSIONS VIEW -->
 			<div id="packViewContainer">
 				<section id="heroSection" class="hero-section">
@@ -1610,6 +1688,7 @@
 					<!-- Hero Top Row: Title + Auto-scrolling Description + 3-dots -->
 					<div class="hero-top-row">
 						<div class="hero-meta-col">
+							<img id="heroTitleLogo" class="hero-title-logo-img" alt="" style="display: none;" />
 							<h1 id="heroTitle" class="hero-modpack-title">Opus Obscura</h1>
 							<div id="heroDescBox" class="hero-desc-scroll-box">
 								<div class="scrolling-desc-track">
@@ -2423,7 +2502,25 @@
 				applyTheme(srv.theme_color);
 				updateGuidePackHint();
 
-				document.getElementById('heroTitle').textContent = srv.title || 'Modpack';
+				const titleEl = document.getElementById('heroTitle');
+				const titleLogoEl = document.getElementById('heroTitleLogo');
+				titleEl.textContent = srv.title || 'Modpack';
+				if (titleLogoEl && srv.title_logo && String(srv.title_logo).trim()) {
+					titleLogoEl.src = resolveUrl(srv.title_logo);
+					titleLogoEl.alt = srv.title || 'Modpack';
+					titleLogoEl.style.display = 'block';
+					titleEl.style.display = 'none';
+					titleLogoEl.onerror = () => {
+						titleLogoEl.style.display = 'none';
+						titleEl.style.display = '';
+					};
+				} else {
+					if (titleLogoEl) {
+						titleLogoEl.style.display = 'none';
+						titleLogoEl.removeAttribute('src');
+					}
+					titleEl.style.display = '';
+				}
 				updateDescriptionMarquee(srv.description);
 
 				const shots = getScreenshots(srv);
@@ -2452,19 +2549,33 @@
 					ipGroup.style.display = 'none';
 				}
 
+				// Check maintenance / disabled / scheduled release lock
+				const lockInfo = getReleaseLockInfo(srv);
+				syncCountdownTicker(lockInfo);
+
 				// Giant Download Button
 				const giantBtn = document.getElementById('heroGiantDownloadBtn');
 				const giantText = document.getElementById('heroGiantDownloadText');
-				if (latest && latest.link) {
+				if (lockInfo.locked) {
+					giantBtn.href = '#';
+					giantBtn.setAttribute('disabled', 'true');
+					giantBtn.style.pointerEvents = 'none';
+					giantBtn.style.opacity = '0.55';
+					giantBtn.title = lockInfo.message || '';
+					giantText.textContent = lockInfo.label;
+				} else if (latest && latest.link) {
 					giantBtn.href = resolveUrl(latest.link);
 					giantBtn.removeAttribute('disabled');
 					giantBtn.style.pointerEvents = 'auto';
 					giantBtn.style.opacity = '1';
+					giantBtn.removeAttribute('title');
 					giantText.textContent = `Descargar ${dockVer}`;
 				} else {
 					giantBtn.href = '#';
+					giantBtn.setAttribute('disabled', 'true');
 					giantBtn.style.pointerEvents = 'none';
 					giantBtn.style.opacity = '0.5';
+					giantBtn.removeAttribute('title');
 					giantText.textContent = 'Próximamente';
 				}
 
@@ -2483,7 +2594,7 @@
 							const ldName = formatLoaderName(v.mod_loader || srv.mod_loader);
 							const isLatest = idx === 0;
 							const hasDesc = Boolean(v.description && String(v.description).trim());
-							const dlLink = v.link ? resolveUrl(v.link) : '';
+							const dlLink = !lockInfo.locked && v.link ? resolveUrl(v.link) : '';
 
 							return `
 								<details class="ver-item-card" ${isLatest ? 'open' : ''}>
@@ -2502,7 +2613,9 @@
 											</div>
 										</div>
 										<div class="ver-summary-right">
-											${dlLink ? `
+											${lockInfo.locked ? `
+												<span class="ver-download-locked">${escapeHtml(lockInfo.reason === 'countdown' ? 'Bloqueado hasta estreno' : 'No disponible')}</span>
+											` : dlLink ? `
 												<a class="ver-download-btn" href="${escapeHtml(dlLink)}" target="_blank" rel="noopener" download onclick="event.stopPropagation()">
 													<svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
 														<path d="M10 3v10m0 0-3-3m3 3 3-3M4 15h12" />
@@ -2573,10 +2686,115 @@
 				}
 			}
 
+			let countdownTimer = null;
+
+			function formatCountdownRemaining(ms) {
+				const totalSec = Math.max(0, Math.floor(ms / 1000));
+				const days = Math.floor(totalSec / 86400);
+				const hrs = Math.floor((totalSec % 86400) / 3600);
+				const mins = Math.floor((totalSec % 3600) / 60);
+				const secs = totalSec % 60;
+				const pad = (n) => String(n).padStart(2, '0');
+				if (days > 0) return `${days}d ${pad(hrs)}h ${pad(mins)}m`;
+				return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+			}
+
+			function getReleaseLockInfo(srv) {
+				if (state.maintenanceMode) {
+					return {
+						locked: true,
+						reason: 'maintenance',
+						label: 'En mantenimiento',
+						message: state.maintenanceMessage || 'Launcher en mantenimiento temporal.',
+					};
+				}
+				if (srv && srv.disabled) {
+					return {
+						locked: true,
+						reason: 'disabled',
+						label: 'No disponible',
+						message: srv.disabled_message || 'Este modpack no está disponible en este momento.',
+					};
+				}
+				if (srv && srv.release_date) {
+					const target = new Date(srv.release_date).getTime();
+					if (!isNaN(target) && target > Date.now()) {
+						return {
+							locked: true,
+							reason: 'countdown',
+							target,
+							label: `Estreno en ${formatCountdownRemaining(target - Date.now())}`,
+							message: 'Disponible para descargar al llegar la fecha de estreno.',
+						};
+					}
+				}
+				return { locked: false };
+			}
+
+			function syncCountdownTicker(lockInfo) {
+				if (countdownTimer) {
+					clearInterval(countdownTimer);
+					countdownTimer = null;
+				}
+				if (lockInfo && lockInfo.reason === 'countdown' && lockInfo.target) {
+					countdownTimer = setInterval(() => {
+						const giantText = document.getElementById('heroGiantDownloadText');
+						const remaining = lockInfo.target - Date.now();
+						if (remaining <= 0) {
+							clearInterval(countdownTimer);
+							countdownTimer = null;
+							renderHeroAndVersions();
+							return;
+						}
+						if (giantText) {
+							giantText.textContent = `Estreno en ${formatCountdownRemaining(remaining)}`;
+						}
+					}, 1000);
+				}
+			}
+
+			async function fetchLatestLauncherDownload() {
+				const btn = document.getElementById('launcherDownloadBtn');
+				if (!btn) return;
+				try {
+					const res = await fetch('https://api.github.com/repos/Dr3sh/dr3shapp/releases/latest', {
+						headers: { Accept: 'application/vnd.github+json' },
+					});
+					if (!res.ok) return;
+					const data = await res.json();
+					const assets = Array.isArray(data.assets) ? data.assets : [];
+					const preferred =
+						assets.find((a) => a && typeof a.name === 'string' && /setup.*\.exe$/i.test(a.name)) ||
+						assets.find((a) => a && typeof a.name === 'string' && /\.exe$/i.test(a.name)) ||
+						assets[0];
+					if (preferred && preferred.browser_download_url) {
+						btn.href = preferred.browser_download_url;
+						if (preferred.name) btn.setAttribute('download', preferred.name);
+						const labelSpan = btn.querySelector('span');
+						if (labelSpan && data.tag_name) {
+							labelSpan.textContent = `Descargar Launcher ${data.tag_name}`;
+						}
+					}
+				} catch (err) {
+					console.warn('No se pudo obtener el enlace directo del launcher:', err);
+				}
+			}
+
 			function processData(data) {
 				const srvRaw = data.servers || [];
 				state.servers = Array.isArray(srvRaw) ? srvRaw : Object.values(srvRaw);
 				state.versions = Array.isArray(data.versions) ? data.versions : Object.values(data.versions || {});
+				state.maintenanceMode = Boolean(data.maintenance_mode);
+				state.maintenanceMessage = String(data.maintenance_message || '').trim();
+
+				const maintBanner = document.getElementById('maintenanceWebBanner');
+				const maintText = document.getElementById('maintenanceWebText');
+				if (maintBanner) {
+					maintBanner.classList.toggle('active', state.maintenanceMode);
+				}
+				if (maintText && state.maintenanceMessage) {
+					maintText.textContent = state.maintenanceMessage;
+				}
 
 				// Determine active initial server
 				const hash = window.location.hash.replace('#', '').trim();
@@ -2598,6 +2816,7 @@
 			// Setup event listeners
 			document.addEventListener('DOMContentLoaded', () => {
 				fetchCatalog();
+				fetchLatestLauncherDownload();
 
 				// Search
 				const searchInput = document.getElementById('searchInput');
