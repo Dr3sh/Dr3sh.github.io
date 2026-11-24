@@ -57,7 +57,7 @@
 			"title": "Desgraciamon",
 			"status": "active",
 			"image": "assets/desgraciamon_title.png",
-			"description": "Desgraciamon 1, un servidor que usa Cobbleverse como base, con algunos agregados por nuestra parte, una muy linda experiencia, nada mas que decir.",
+			"description": "Desgraciamon 1, un servidor que usa Cobbleverse como base, con algunos agregados por nuestra parte, una muy linda experiencia!",
 			"minecraft_version": "1.21.1",
 			"mod_loader": "fabric",
 			"logo": "https://i.imgur.com/ykI6gmG.png",
@@ -113,7 +113,7 @@
 					"status": "active"
 				}
 			],
-			"title_logo": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795488832586-desgraciamon_title.png"
+			"title_logo": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795490870306-desgraciamon_title.png"
 		},
 		{
 			"id": "desgraciamon2",
@@ -132,8 +132,7 @@
 				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(3).jpg.",
 				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(4).jpg",
 				"https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/4fc7f15191920824c38f09b2761ec2a641b5d941/assets/screenshots/desgraciamon2.%20(5).jpg"
-			],
-			"title_logo": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795488822227-desgraciamontitlefinal.png"
+			]
 		},
 		{
 			"id": "desgraciamon3",
@@ -156,9 +155,7 @@
 					"status": "active"
 				}
 			],
-			"disabled": false,
-			"release_date": "2026-12-01T19:00",
-			"title_logo": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1795488168304-d3sgraciamon_animated_v2.apng"
+			"disabled": false
 		}
 	],
 	"versions": [
