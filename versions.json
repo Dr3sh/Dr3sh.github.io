@@ -62,7 +62,7 @@
       "mod_loader": "fabric",
       "logo": "https://i.imgur.com/ykI6gmG.png",
       "logo_square": "https://i.imgur.com/RMpI0r8.png",
-      "theme_color": "#454545",
+      "theme_color": "#ffdd00",
       "screenshots": [
         {
           "url": "https://raw.githubusercontent.com/Dr3sh/Dr3sh.github.io/main/assets/uploads/1792255943226-8af5e4b1-3665-470c-820f-2eb2a898eb51-2026-01-18_15-46-12.png",
@@ -571,7 +571,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-25T15:22:01.680Z",
+  "launcher_refresh_id": "2026-11-25T15:22:31.262Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
