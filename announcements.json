@@ -15,6 +15,47 @@
   ],
   "missions": [
     {
+      "id": "mis_e31312",
+      "title": "Nueva Misión",
+      "body": "Detalles y descripción limpia de",
+      "color": "#B91C3C",
+      "bodyColor": "#E5ECE8",
+      "isGuildMission": false,
+      "targetUsesMemberCount": false,
+      "objective": "GET_ITEM",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "",
+      "pokemonType": "",
+      "badgeId": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "publishAt": "",
+      "expirationDate": "",
+      "objectives": [
+        {
+          "id": "12ad77e0-df6e-4d02-ad7a-1ffcf4b84922",
+          "type": "GET_ITEM",
+          "amount": 1,
+          "targetUsesMemberCount": false,
+          "itemId": "minecraft:diamond",
+          "pokemonId": "",
+          "pokemonType": "",
+          "pokemonProperties": "",
+          "badgeId": "",
+          "consumeOnClaim": false,
+          "secondaryPokemonType": "",
+          "minLevel": 0,
+          "minEvolutionStage": 0
+        }
+      ],
+      "itemRewards": [],
+      "pokemonRewards": [],
+      "moneyReward": 0,
+      "categoryTag": "",
+      "dailySlot": 0
+    },
+    {
       "id": "mis_b3df3a",
       "title": "Nueva Misión",
       "body": "Detalles y descripción limpia de",
@@ -30,6 +71,7 @@
       "amount": 1,
       "daily": true,
       "repeatable": false,
+      "publishAt": "",
       "expirationDate": "",
       "objectives": [
         {
@@ -70,6 +112,7 @@
       "amount": 1,
       "daily": true,
       "repeatable": false,
+      "publishAt": "",
       "expirationDate": "",
       "objectives": [
         {
@@ -110,6 +153,7 @@
       "amount": 1,
       "daily": false,
       "repeatable": false,
+      "publishAt": "",
       "expirationDate": "",
       "objectives": [
         {
