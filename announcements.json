@@ -15,6 +15,46 @@
   ],
   "missions": [
     {
+      "id": "mis_10d721",
+      "title": "Nueva Misión",
+      "body": "Detalles y descripción limpia de",
+      "color": "#68D7A2",
+      "bodyColor": "#E5ECE8",
+      "isGuildMission": true,
+      "targetUsesMemberCount": false,
+      "objective": "GET_ITEM",
+      "itemId": "minecraft:diamond",
+      "pokemonId": "",
+      "pokemonType": "",
+      "badgeId": "",
+      "amount": 1,
+      "daily": true,
+      "repeatable": false,
+      "expirationDate": "",
+      "objectives": [
+        {
+          "id": "2beb97bc-5dd5-463a-bab1-1612c361a8e9",
+          "type": "OBTAIN_BADGE",
+          "amount": 1,
+          "targetUsesMemberCount": false,
+          "itemId": "minecraft:diamond",
+          "pokemonId": "",
+          "pokemonType": "",
+          "pokemonProperties": "",
+          "badgeId": "kanto_boulder_badge",
+          "consumeOnClaim": false,
+          "secondaryPokemonType": "",
+          "minLevel": 0,
+          "minEvolutionStage": 0
+        }
+      ],
+      "itemRewards": [],
+      "pokemonRewards": [],
+      "moneyReward": 35000,
+      "categoryTag": "",
+      "dailySlot": 0
+    },
+    {
       "id": "mis_927fe1",
       "title": "Captura un rayquaza shiny y un a",
       "body": "Detalles y descripción limpia de",
