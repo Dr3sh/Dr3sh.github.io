@@ -580,13 +580,33 @@ function b64EncodeUtf8(str) {
   return btoa(bin);
 }
 async function ghGetFile(cfg, path) {
-  const url = `https://api.github.com/repos/${cfg.repo}/contents/${path}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
-  const headers = { 'Accept': 'application/vnd.github+json' };
-  if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
-  const res = await fetch(url, { headers });
-  if (!res.ok) throw new Error(`HTTP ${res.status} al leer ${path}`);
-  const data = await res.json();
-  return { sha: data.sha, text: b64DecodeUtf8(data.content) };
+  const cleanPath = path.replace(/^\/+/, '');
+  if (cfg.token) {
+    const url = `https://api.github.com/repos/${cfg.repo}/contents/${cleanPath}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
+    const headers = { 'Accept': 'application/vnd.github+json', 'Authorization': `Bearer ${cfg.token}` };
+    const res = await fetch(url, { headers });
+    if (res.ok) {
+      const data = await res.json();
+      return { sha: data.sha, text: b64DecodeUtf8(data.content) };
+    }
+    if (res.status !== 403 && res.status !== 404) {
+      throw new Error(`HTTP ${res.status} al leer ${cleanPath}`);
+    }
+  }
+  const candidates = [];
+  if (cfg.repo.toLowerCase() === 'dr3sh/dr3sh.github.io' && typeof location !== 'undefined' && location.hostname.endsWith('dr3sh.github.io')) {
+    candidates.push(`/${cleanPath}?_=${Date.now()}`);
+  }
+  candidates.push(`https://raw.githubusercontent.com/${cfg.repo}/${encodeURIComponent(cfg.branch)}/${cleanPath}?_=${Date.now()}`);
+  let lastStatus = 0;
+  for (const url of candidates) {
+    const res = await fetch(url);
+    lastStatus = res.status;
+    if (res.ok) {
+      return { sha: null, text: await res.text() };
+    }
+  }
+  throw new Error(`HTTP ${lastStatus || 404} al leer ${cleanPath}`);
 }
 async function ghPutFile(cfg, path, jsonObj, message) {
   if (!cfg.token) throw new Error('Falta el Token PAT de GitHub en la pestaña Conexión GitHub.');
@@ -1007,6 +1027,7 @@ function renderAll() {
 
 loadGhSettings();
 renderAll();
+loadFromGitHub();
 </script>
 </body>
 </html>
