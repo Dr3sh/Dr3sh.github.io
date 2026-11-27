@@ -163,6 +163,19 @@
   ],
   "versions": [
     {
+      "id": "desgraciamon3-1-9-20",
+      "server": "desgraciamon3",
+      "title": "Desgraciamon 3 1.9.20",
+      "version": "1.9.20",
+      "link": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.20/desgraciamon3-1.9.20.zip",
+      "manifest": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.20/manifest.json",
+      "sha256": "a3845457767b510735c35e70bb26242666d3f8b7c1316c57626da0b0c545cdc1",
+      "description": "",
+      "published_at": "2026-11-27",
+      "size_mb": 1364.9,
+      "status": "active"
+    },
+    {
       "id": "cobbleverse-9",
       "server": "cobbleverse",
       "title": "Desgraciamon 1 v9",
@@ -401,7 +414,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-27T22:24:08.600Z",
+  "launcher_refresh_id": "2026-11-27T22:27:40.300Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
