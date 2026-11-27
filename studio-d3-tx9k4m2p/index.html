@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Desgraciamon 3 - Editor Visual de texts.json (Prism)</title>
+<style>
+  :root {
+    --bg: #0b0f19;
+    --panel: #121826;
+    --card: #171f31;
+    --border: #26324b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --red: #f87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(11, 15, 25, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  header {
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(38, 50, 75, 0.6);
+  }
+  .brand { display: flex; flex-direction: column; gap: 2px; }
+  .brand h1 { margin: 0; font-size: 16px; color: #f8fafc; }
+  .brand span { font-size: 12px; color: var(--muted); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  button, .btn {
+    background: #1e293b;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 11px;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: 0.15s ease;
+  }
+  button:hover, .btn:hover { border-color: var(--accent); background: #243249; }
+  button.primary { background: #0284c7; border-color: #38bdf8; color: #fff; font-weight: 600; }
+  button.primary:hover { background: #0369a1; }
+  button.success { background: #065f46; border-color: #34d399; color: #ecfdf5; font-weight: 600; }
+  button.success:hover { background: #047857; }
+  input[type="text"], input[type="search"], select {
+    background: #0d1320;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12.5px;
+    outline: none;
+  }
+  input[type="search"]:focus, input[type="text"]:focus, textarea:focus { border-color: var(--accent); }
+
+  .prism-builder {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 9px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .prism-builder label { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  input[type="color"] {
+    width: 28px; height: 24px; padding: 0; border: 1px solid var(--border);
+    border-radius: 4px; background: transparent; cursor: pointer;
+  }
+  .preset-bar {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .preset-chip {
+    padding: 3px 8px;
+    font-size: 11px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #172033;
+  }
+  .drop-zone {
+    max-width: 1280px;
+    margin: 12px auto 0;
+    padding: 12px;
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12.5px;
+  }
+  .drop-zone.dragover { border-color: var(--accent); background: rgba(56, 189, 248, 0.08); color: #fff; }
+
+  main {
+    max-width: 1280px;
+    margin: 12px auto 60px;
+    padding: 0 14px;
+    display: grid;
+    gap: 12px;
+  }
+  .entry {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: grid;
+    gap: 8px;
+  }
+  .entry.active-card { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25); }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .entry-key {
+    font-family: Consolas, monospace;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .entry-context {
+    font-size: 11.5px;
+    color: #cbd5e1;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 5px;
+    padding: 2px 8px;
+    display: inline-block;
+  }
+  .warn-pill {
+    font-size: 11px;
+    color: #fde68a;
+    background: rgba(245, 158, 11, 0.16);
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    border-radius: 5px;
+    padding: 2px 7px;
+  }
+  .entry-actions { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+  .entry-actions button { padding: 4px 8px; font-size: 11.5px; }
+  .ph-btn {
+    background: rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.35);
+    color: #7dd3fc;
+    font-family: Consolas, monospace;
+  }
+  .preview {
+    background: #080b12;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 36px;
+  }
+  .is-bold {
+    font-weight: 900;
+    letter-spacing: 0.4px;
+  }
+  textarea {
+    width: 100%;
+    min-height: 48px;
+    resize: vertical;
+    background: #0d1320;
+    color: #e2e8f0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .placeholder-pill {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    color: #7dd3fc;
+    border-radius: 4px;
+    padding: 0 4px;
+    font-size: 12px;
+    margin: 0 1px;
+  }
+  .prism-span {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 250% 100%;
+    animation: prismShift 3.5s linear infinite;
+  }
+  @keyframes prismShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 250% 50%; }
+  }
+  .status { font-size: 12px; color: var(--green); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="sticky-top">
+  <header>
+    <div class="brand">
+      <h1>Desgraciamon 3 · Editor Visual de texts.json</h1>
+      <span id="fileInfo">Ningún archivo cargado (arrastra un texts.json o pulsa Abrir)</span>
+    </div>
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Buscar clave o texto..." style="width:220px" />
+      <button class="primary" id="btnOpen">Abrir texts.json</button>
+      <input type="file" id="fileInput" accept=".json,application/json" hidden />
+      <button class="success" id="btnSaveDirect" title="Sobrescribe el archivo abierto (Chrome/Edge)">Guardar directo</button>
+      <button id="btnDownload">Descargar JSON</button>
+      <button id="btnCopy">Copiar JSON</button>
+    </div>
+  </header>
+
+  <section class="prism-builder" id="toolbar">
+    <label>Color: <input type="color" id="singleColor" value="#38bdf8" /></label>
+    <button data-keepfocus id="btnApplyColor" title="Si no seleccionas texto, reemplaza el color de toda la línea">Aplicar &lt;color&gt;</button>
+    <span style="color:var(--border)">|</span>
+    <label>Prism 1: <input type="color" id="p1" value="#38bdf8" /></label>
+    <label>2: <input type="color" id="p2" value="#60a5fa" /></label>
+    <label>3: <input type="color" id="p3" value="#818cf8" /></label>
+    <label><input type="checkbox" id="useP3" checked /> 3er</label>
+    <label>Vel: <input type="number" id="pSpeed" value="1.0" step="0.2" min="-10" max="10" style="width:56px;background:#0d1320;color:#fff;border:1px solid var(--border);border-radius:4px;padding:3px 5px;" /></label>
+    <button data-keepfocus id="btnApplyPrism" title="Si no seleccionas texto, aplica Prism a toda la línea">Aplicar &lt;prism&gt;</button>
+    <button data-keepfocus id="btnBold" title="Negrita"><b>B</b></button>
+    <button data-keepfocus id="btnItalic" title="Cursiva"><i>I</i></button>
+    <button data-keepfocus id="btnCleanActive" title="Quita colores/prism/negrita sin tocar {placeholders}">Limpiar formato</button>
+    <div class="preset-bar">
+      <span style="font-size:11.5px;color:var(--muted);">Presets:</span>
+      <button data-keepfocus class="preset-chip" data-preset="#38BDF8,#60A5FA,#818CF8">Azul Cielo</button>
+      <button data-keepfocus class="preset-chip" data-preset="#F97316,#EF4444,#FACC15">Fuego</button>
+      <button data-keepfocus class="preset-chip" data-preset="#10B981,#34D399,#2DD4BF">Esmeralda</button>
+      <button data-keepfocus class="preset-chip" data-preset="#FDE047,#F59E0B,#FEF08A">Dorado</button>
+      <button data-keepfocus class="preset-chip" data-preset="#FF3CAC,#784BA0,#00F2FE">Galaxia</button>
+    </div>
+    <span class="status" id="statusMsg"></span>
+  </section>
+</div>
+
+<div class="drop-zone" id="dropZone">
+  Arrastra aquí cualquier <code>config/&lt;mod&gt;/.texts/texts.json</code>. Consejo: selecciona una parte del texto (o haz clic sin seleccionar para aplicarlo a toda la línea).
+</div>
+
+<main id="list"></main>
+
+<script>
+const LEGACY = {
+  '0':'#000000','1':'#0000AA','2':'#00AA00','3':'#00AAAA','4':'#AA0000','5':'#AA00AA','6':'#FFAA00','7':'#AAAAAA',
+  '8':'#555555','9':'#5555FF','a':'#55FF55','b':'#55FFFF','c':'#FF5555','d':'#FF55FF','e':'#FFFF55','f':'#FFFFFF'
+};
+
+let fileHandle = null;
+let originalData = {};
+let data = {};
+let activeTextarea = null;
+const undoStacks = new Map();
+
+const elList = document.getElementById('list');
+const elSearch = document.getElementById('search');
+const elFileInfo = document.getElementById('fileInfo');
+const elStatus = document.getElementById('statusMsg');
+
+function setStatus(msg) {
+  elStatus.textContent = msg;
+  setTimeout(() => { if (elStatus.textContent === msg) elStatus.textContent = ''; }, 3000);
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function expandHex(hex) {
+  const h = hex.replace('#','');
+  return '#' + (h.length === 3 ? h[0]+h[0]+h[1]+h[1]+h[2]+h[2] : h);
+}
+
+function stripFormatTags(str) {
+  return str
+    .replace(/<\/?(?:color|bold|italic|prism)(?:=[^<>]*)?>/gi, '')
+    .replace(/§[0-9a-flmnor]/gi, '');
+}
+
+function extractPlaceholders(str) {
+  return [...new Set((str.match(/\{[A-Za-z][A-Za-z0-9_]*\}/g) || []))];
+}
+
+function validateTemplate(key, val) {
+  const warnings = [];
+  const origPh = extractPlaceholders(String(originalData[key] ?? ''));
+  const curPh = extractPlaceholders(val);
+  const missing = origPh.filter(p => !curPh.includes(p));
+  if (missing.length) warnings.push(`Falta: ${missing.join(', ')}`);
+
+  const tagRe = /<(\/?)(color|bold|italic|prism)(?:=[^<>]*)?>/gi;
+  const stack = [];
+  for (const m of val.matchAll(tagRe)) {
+    const isClose = m[1] === '/';
+    const name = m[2].toLowerCase();
+    if (!isClose) stack.push(name);
+    else {
+      const idx = stack.lastIndexOf(name);
+      if (idx < 0) warnings.push(`Cierre sobrante </${name}>`);
+      else stack.splice(idx);
+    }
+  }
+  if (stack.length) warnings.push(`Sin cerrar: <${stack.join('>, <')}>`);
+  return warnings;
+}
+
+function renderRichPreview(template) {
+  const tokenRe = /<color=#(?:[0-9a-f]{6}|[0-9a-f]{3})>|<bold>|<italic>|<prism=[^<>]{1,200}>|<\/(?:color|bold|italic|prism)>|\{[A-Za-z][A-Za-z0-9_]*\}|§[0-9a-flmnor]/gi;
+  let stack = [];
+  let state = { color: '#e2e8f0', bold: false, italic: false, prism: null };
+  let out = '';
+  let last = 0;
+
+  function emitText(txt) {
+    if (!txt) return;
+    const styleParts = [];
+    const classes = [];
+    if (state.bold) {
+      classes.push('is-bold');
+      if (!state.prism) styleParts.push('text-shadow:0.6px 0 0 currentColor');
+    }
+    if (state.italic) styleParts.push('font-style:italic');
+    if (state.prism) {
+      classes.push('prism-span');
+      const cols = [...state.prism.colors, state.prism.colors[0]].join(', ');
+      const dur = state.prism.speed === 0 ? 0 : Math.max(0.6, 3.5 / Math.abs(state.prism.speed));
+      styleParts.push(`background-image:linear-gradient(90deg, ${cols})`);
+      if (dur > 0) styleParts.push(`animation-duration:${dur.toFixed(2)}s`);
+      else styleParts.push('animation:none');
+      out += `<span class="${classes.join(' ')}" style="${styleParts.join(';')}">${escapeHtml(txt)}</span>`;
+    } else {
+      styleParts.push(`color:${state.color}`);
+      const clsAttr = classes.length ? ` class="${classes.join(' ')}"` : '';
+      out += `<span${clsAttr} style="${styleParts.join(';')}">${escapeHtml(txt)}</span>`;
+    }
+  }
+
+  for (const m of template.matchAll(tokenRe)) {
+    if (m.index > last) emitText(template.slice(last, m.index));
+    const tok = m[0];
+    const low = tok.toLowerCase();
+    if (low.startsWith('<color=')) {
+      stack.push({ tag: 'color', prev: { ...state } });
+      state.color = expandHex(tok.slice(7, -1));
+    } else if (low === '<bold>') {
+      stack.push({ tag: 'bold', prev: { ...state } });
+      state.bold = true;
+    } else if (low === '<italic>') {
+      stack.push({ tag: 'italic', prev: { ...state } });
+      state.italic = true;
+    } else if (low.startsWith('<prism=')) {
+      stack.push({ tag: 'prism', prev: { ...state } });
+      const inner = tok.slice(7, -1);
+      const colors = [...inner.matchAll(/#([0-9a-f]{6}|[0-9a-f]{3})/gi)].map(x => expandHex(x[0]));
+      const spdMatch = inner.match(/speed=(-?[0-9]+(?:\.[0-9]+)?)/i);
+      const speed = spdMatch ? parseFloat(spdMatch[1]) : 1.0;
+      if (colors.length) state.prism = { colors, speed };
+    } else if (low.startsWith('</')) {
+      const closeTag = low.slice(2, -1);
+      for (let i = stack.length - 1; i >= 0; i--) {
+        if (stack[i].tag === closeTag) {
+          state = stack[i].prev;
+          stack.length = i;
+          break;
+        }
+      }
+    } else if (tok.startsWith('{')) {
+      out += `<span class="placeholder-pill">${escapeHtml(tok)}</span>`;
+    } else if (tok.startsWith('§')) {
+      const code = tok[1].toLowerCase();
+      if (LEGACY[code]) { state.color = LEGACY[code]; state.prism = null; }
+      else if (code === 'l') state.bold = true;
+      else if (code === 'o') state.italic = true;
+      else if (code === 'r') state = { color: '#e2e8f0', bold: false, italic: false, prism: null };
+    }
+    last = m.index + tok.length;
+  }
+  if (last < template.length) emitText(template.slice(last));
+  return out || '<span style="color:#475569">(vacío)</span>';
+}
+
+const CONTEXTS = {
+  'badge.unlocked.personal': 'Chat personal · Cuando el jugador desbloquea una insignia',
+  'badge.unlocked.broadcast': 'Chat global · Aviso de desbloqueo',
+  'daily.unlocked': 'Chat personal · Cuando se desbloquea una nueva ranura de misión diaria',
+  'vortex.bossbar.title': 'BossBar superior · Título del Vórtice activo',
+  'link.message': 'Chat personal · Código al usar /discord vincular',
+  'protect.blocked': 'ActionBar / Chat · Al intentar romper/colocar bloques en Mundo Espejo'
+};
+
+function getContextForKey(key) {
+  if (CONTEXTS[key]) return CONTEXTS[key];
+  if (key.startsWith('badge.')) return 'Insignias · ' + key;
+  if (key.startsWith('discord.')) return 'Discord Bot · Respuesta de comando slash';
+  if (key.startsWith('team.')) return 'Discord Embed · /equipo';
+  if (key.startsWith('invite.') || key.startsWith('kick.')) return 'Mundo Espejo · Invitación / expulsión';
+  if (key.startsWith('enter.') || key.startsWith('exit.')) return 'Mundo Espejo · Entrada / salida';
+  if (key.startsWith('challenge.') || key.startsWith('arena.') || key.startsWith('tournament.')) return 'Showdown Arena';
+  if (key.startsWith('market.') || key.startsWith('economy.') || key.startsWith('bank.')) return 'Economía y Mercado';
+  if (key.startsWith('announcement.') || key.startsWith('mission.') || key.startsWith('daily.')) return 'Anuncios y Misiones';
+  if (key.startsWith('catch.') || key.startsWith('legendary.')) return 'Bestiario / Capturas';
+  return 'Texto configurable del mod';
+}
+
+function pushUndo(key, prevVal) {
+  if (!undoStacks.has(key)) undoStacks.set(key, []);
+  const st = undoStacks.get(key);
+  if (st[st.length - 1] !== prevVal) st.push(prevVal);
+  if (st.length > 30) st.shift();
+}
+
+function updateCardUI(entryObj) {
+  const { ta, key, prev, warnEl } = entryObj;
+  prev.innerHTML = renderRichPreview(ta.value);
+  const warns = validateTemplate(key, ta.value);
+  warnEl.innerHTML = warns.map(w => `<span class="warn-pill">⚠ ${escapeHtml(w)}</span>`).join(' ');
+}
+
+function renderList() {
+  const q = elSearch.value.trim().toLowerCase();
+  elList.innerHTML = '';
+  const keys = Object.keys(data).filter(k => !q || k.toLowerCase().includes(q) || String(data[k]).toLowerCase().includes(q));
+  for (const key of keys) {
+    const card = document.createElement('div');
+    card.className = 'entry';
+
+    const head = document.createElement('div');
+    head.className = 'entry-head';
+    const titleWrap = document.createElement('div');
+    titleWrap.innerHTML = `<span class="entry-key">${escapeHtml(key)}</span> <span class="entry-context">${escapeHtml(getContextForKey(key))}</span>`;
+    const warnEl = document.createElement('span');
+    titleWrap.append(' ', warnEl);
+
+    const actions = document.createElement('div');
+    actions.className = 'entry-actions';
+
+    const origPh = extractPlaceholders(String(originalData[key] ?? ''));
+    for (const ph of origPh) {
+      const phBtn = document.createElement('button');
+      phBtn.className = 'ph-btn';
+      phBtn.textContent = `+ ${ph}`;
+      phBtn.title = `Insertar ${ph} en el cursor`;
+      phBtn.onmousedown = (e) => e.preventDefault();
+      phBtn.onclick = () => {
+        pushUndo(key, ta.value);
+        const s = ta.selectionStart ?? ta.value.length;
+        const e = ta.selectionEnd ?? ta.value.length;
+        ta.value = ta.value.slice(0, s) + ph + ta.value.slice(e);
+        data[key] = ta.value;
+        ta.focus();
+        ta.setSelectionRange(s + ph.length, s + ph.length);
+        updateCardUI(entryObj);
+      };
+      actions.appendChild(phBtn);
+    }
+
+    const btnUndo = document.createElement('button');
+    btnUndo.textContent = 'Deshacer';
+    btnUndo.onclick = () => {
+      const st = undoStacks.get(key);
+      if (!st || !st.length) { setStatus('Nada que deshacer'); return; }
+      ta.value = st.pop();
+      data[key] = ta.value;
+      updateCardUI(entryObj);
+    };
+
+    const btnReset = document.createElement('button');
+    btnReset.textContent = 'Restaurar';
+    btnReset.onclick = () => {
+      pushUndo(key, ta.value);
+      data[key] = originalData[key];
+      ta.value = data[key];
+      updateCardUI(entryObj);
+      setStatus(`Restaurado: ${key}`);
+    };
+    actions.append(btnUndo, btnReset);
+    head.append(titleWrap, actions);
+
+    const prev = document.createElement('div');
+    prev.className = 'preview';
+
+    const ta = document.createElement('textarea');
+    ta.value = String(data[key] ?? '');
+    const entryObj = { ta, key, prev, warnEl, card };
+
+    ta.addEventListener('focus', () => {
+      document.querySelectorAll('.entry.active-card').forEach(c => c.classList.remove('active-card'));
+      card.classList.add('active-card');
+      activeTextarea = entryObj;
+    });
+    ta.addEventListener('input', () => {
+      pushUndo(key, data[key]);
+      data[key] = ta.value;
+      updateCardUI(entryObj);
+    });
+
+    updateCardUI(entryObj);
+    card.append(head, prev, ta);
+    elList.appendChild(card);
+  }
+}
+
+document.querySelectorAll('[data-keepfocus]').forEach(btn => {
+  btn.addEventListener('mousedown', (e) => e.preventDefault());
+});
+
+function applyFormat(openTag, closeTag, replaceOuterColorOrPrism = false) {
+  if (!activeTextarea) { setStatus('Haz clic o selecciona texto en un campo primero'); return; }
+  const { ta, key } = activeTextarea;
+  pushUndo(key, ta.value);
+
+  let start = ta.selectionStart ?? 0;
+  let end = ta.selectionEnd ?? 0;
+  const val = ta.value;
+
+  if (start === end) {
+    // Sin selección: aplicar a toda la línea limpiando color/prism previo para no apilar etiquetas
+    const base = replaceOuterColorOrPrism ? stripFormatTags(val) : val;
+    ta.value = openTag + base + closeTag;
+    data[key] = ta.value;
+    updateCardUI(activeTextarea);
+    ta.focus();
+    ta.setSelectionRange(openTag.length, openTag.length + base.length);
+    return;
+  }
+
+  let selected = val.slice(start, end);
+  if (replaceOuterColorOrPrism) {
+    selected = selected.replace(/^<(?:color|prism)=[^<>]*>|<\/(?:color|prism)>$/gi, '');
+  }
+  const inserted = openTag + selected + closeTag;
+  ta.value = val.slice(0, start) + inserted + val.slice(end);
+  data[key] = ta.value;
+  updateCardUI(activeTextarea);
+  ta.focus();
+  ta.setSelectionRange(start + openTag.length, start + openTag.length + selected.length);
+}
+
+document.getElementById('btnApplyColor').onclick = () => {
+  const c = document.getElementById('singleColor').value.toUpperCase();
+  applyFormat(`<color=${c}>`, '</color>', true);
+};
+document.getElementById('btnApplyPrism').onclick = () => {
+  const c1 = document.getElementById('p1').value.toUpperCase();
+  const c2 = document.getElementById('p2').value.toUpperCase();
+  const c3 = document.getElementById('useP3').checked ? ',' + document.getElementById('p3').value.toUpperCase() : '';
+  const spd = parseFloat(document.getElementById('pSpeed').value || '1.0');
+  const spdAttr = spd !== 1.0 ? ` speed=${spd}` : '';
+  applyFormat(`<prism=${c1},${c2}${c3}${spdAttr}>`, '</prism>', true);
+};
+document.getElementById('btnBold').onclick = () => applyFormat('<bold>', '</bold>', false);
+document.getElementById('btnItalic').onclick = () => applyFormat('<italic>', '</italic>', false);
+document.getElementById('btnCleanActive').onclick = () => {
+  if (!activeTextarea) { setStatus('Selecciona un campo primero'); return; }
+  const { ta, key } = activeTextarea;
+  pushUndo(key, ta.value);
+  ta.value = stripFormatTags(ta.value);
+  data[key] = ta.value;
+  updateCardUI(activeTextarea);
+  ta.focus();
+  setStatus('Formato limpiado');
+};
+
+document.querySelectorAll('[data-preset]').forEach(btn => {
+  btn.onclick = () => {
+    const cols = btn.dataset.preset.split(',');
+    document.getElementById('p1').value = cols[0];
+    document.getElementById('p2').value = cols[1];
+    if (cols[2]) {
+      document.getElementById('useP3').checked = true;
+      document.getElementById('p3').value = cols[2];
+    } else {
+      document.getElementById('useP3').checked = false;
+    }
+    setStatus(`Preset cargado: ${btn.textContent}`);
+  };
+});
+
+elSearch.oninput = renderList;
+
+function loadJsonText(text, name) {
+  try {
+    const parsed = JSON.parse(text);
+    originalData = { ...parsed };
+    data = { ...parsed };
+    undoStacks.clear();
+    elFileInfo.textContent = `Archivo: ${name} (${Object.keys(data).length} claves)`;
+    renderList();
+    setStatus('Archivo cargado');
+  } catch (e) {
+    alert('JSON inválido: ' + e.message);
+  }
+}
+
+document.getElementById('btnOpen').onclick = async () => {
+  if (window.showOpenFilePicker) {
+    try {
+      const [h] = await window.showOpenFilePicker({ types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }] });
+      fileHandle = h;
+      const f = await h.getFile();
+      loadJsonText(await f.text(), f.name);
+      return;
+    } catch (e) { if (e.name === 'AbortError') return; }
+  }
+  document.getElementById('fileInput').click();
+};
+
+document.getElementById('fileInput').onchange = async (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  fileHandle = null;
+  loadJsonText(await f.text(), f.name);
+};
+
+document.getElementById('btnSaveDirect').onclick = async () => {
+  if (!fileHandle) { setStatus('Usa "Abrir texts.json" en Chrome/Edge para guardar directo, o usa Descargar'); return; }
+  try {
+    const writable = await fileHandle.createWritable();
+    await writable.write(JSON.stringify(data, null, 2) + '\n');
+    await writable.close();
+    originalData = { ...data };
+    setStatus('Guardado directamente en disco');
+  } catch (e) { alert('No se pudo guardar: ' + e.message); }
+};
+
+document.getElementById('btnDownload').onclick = () => {
+  const blob = new Blob([JSON.stringify(data, null, 2) + '\n'], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'texts.json';
+  a.click();
+};
+
+document.getElementById('btnCopy').onclick = async () => {
+  await navigator.clipboard.writeText(JSON.stringify(data, null, 2) + '\n');
+  setStatus('JSON copiado al portapapeles');
+};
+
+const dz = document.getElementById('dropZone');
+dz.ondragover = (e) => { e.preventDefault(); dz.classList.add('dragover'); };
+dz.ondragleave = () => dz.classList.remove('dragover');
+dz.ondrop = async (e) => {
+  e.preventDefault();
+  dz.classList.remove('dragover');
+  const f = e.dataTransfer.files[0];
+  if (f) { fileHandle = null; loadJsonText(await f.text(), f.name); }
+};
+
+loadJsonText(JSON.stringify({
+  "ejemplo.prism": "<prism=#38BDF8,#60A5FA,#818CF8 speed=1.2><bold>Desgraciamon 3</bold></prism> <color=#93C5FD>Bienvenido {player}</color>",
+  "daily.unlocked": "<color=#38BDF8>¡Nueva misión diaria disponible! Pulsa [{key}] para verla.</color>"
+}, null, 2), 'Ejemplo (abre tu texts.json)');
+</script>
+</body>
+</html>
