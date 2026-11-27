@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Base de Datos Desgraciamon — Panel Web (GitHub)</title>
+<style>
+  :root {
+    --bg: #090d16;
+    --panel: #101726;
+    --card: #151e30;
+    --card2: #1a253b;
+    --border: #25344f;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --celeste: #38bdf8;
+    --vino: #e11d48;
+    --vino-bg: #3b0d1b;
+    --naranja: #f97316;
+    --verde: #34d399;
+    --amarillo: #fbbf24;
+    --rojo: #f87171;
+    --morado: #a78bfa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(9, 13, 22, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 18px;
+  }
+  .topbar-row {
+    max-width: 1380px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand h1 { margin: 0; font-size: 17px; color: #f8fafc; letter-spacing: .2px; }
+  .brand small { color: var(--muted); font-size: 12px; }
+  .ve-clock {
+    background: #131d31;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--celeste);
+    font-weight: 600;
+  }
+  .tabs {
+    max-width: 1380px;
+    margin: 10px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .tab-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: .15s ease;
+  }
+  .tab-btn.active[data-tab="missions"] { background: rgba(225,29,72,.16); border-color: var(--vino); color: #fda4af; }
+  .tab-btn.active[data-tab="announcements"] { background: rgba(249,115,22,.16); border-color: var(--naranja); color: #fdba74; }
+  .tab-btn.active[data-tab="daily"] { background: rgba(56,189,248,.16); border-color: var(--celeste); color: #7dd3fc; }
+  .tab-btn.active[data-tab="texts"] { background: rgba(167,139,250,.16); border-color: var(--morado); color: #ddd6fe; }
+  .tab-btn.active[data-tab="github"] { background: rgba(52,211,153,.16); border-color: var(--verde); color: #6ee7b7; }
+  button, .btn {
+    background: #1d283d;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 7px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: .15s ease;
+  }
+  button:hover { border-color: var(--celeste); background: #24334e; }
+  button.primary { background: #0284c7; border-color: var(--celeste); color: #fff; font-weight: 600; }
+  button.primary:hover { background: #0369a1; }
+  button.success { background: #065f46; border-color: var(--verde); color: #ecfdf5; font-weight: 600; }
+  button.danger { background: #7f1d1d; border-color: #ef4444; color: #fee2e2; }
+  button.vino { background: #881337; border-color: var(--vino); color: #fff; font-weight: 600; }
+  button.naranja { background: #9a3412; border-color: var(--naranja); color: #fff; font-weight: 600; }
+  input[type="text"], input[type="password"], input[type="number"], input[type="search"], select, textarea {
+    width: 100%;
+    background: #0b111e;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 7px 10px;
+    font-size: 12.5px;
+    outline: none;
+    font-family: inherit;
+  }
+  textarea { min-height: 70px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { border-color: var(--celeste); }
+  .wrap {
+    max-width: 1380px;
+    margin: 14px auto 70px;
+    padding: 0 18px;
+  }
+  .grid-2 { display: grid; grid-template-columns: 340px 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .panel h2 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .panel h3 { margin: 14px 0 8px; font-size: 13px; color: var(--celeste); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+  .list-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 9px 11px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: .14s ease;
+  }
+  .list-item:hover { border-color: var(--celeste); }
+  .list-item.selected { border-color: var(--celeste); background: #192842; }
+  .list-item .title { font-weight: 600; font-size: 13px; margin-bottom: 3px; }
+  .list-item .meta { font-size: 11px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+    border: 1px solid transparent;
+  }
+  .b-pub { background: rgba(52,211,153,.15); color: var(--verde); border-color: rgba(52,211,153,.35); }
+  .b-sched { background: rgba(251,191,36,.15); color: var(--amarillo); border-color: rgba(251,191,36,.35); }
+  .b-exp { background: rgba(248,113,113,.15); color: var(--rojo); border-color: rgba(248,113,113,.35); }
+  .b-guild { background: rgba(167,139,250,.15); color: var(--morado); border-color: rgba(167,139,250,.35); }
+  .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 10px; }
+  .field label { display: block; font-size: 11.5px; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+  .subcard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .subcard-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .chip-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
+  .chip {
+    background: #172338;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 3px 9px;
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .chip:hover { color: #fff; border-color: var(--celeste); }
+  .preview-box {
+    background: #070b12;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    min-height: 36px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+  }
+  .status-toast {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 60;
+    background: #0f172a;
+    border: 1px solid var(--celeste);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+    display: none;
+  }
+  .hidden { display: none !important; }
+  .inline-checks { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; padding: 6px 0; }
+  .inline-checks label { display: flex; align-items: center; gap: 6px; font-size: 12.5px; cursor: pointer; margin: 0; color: var(--text); }
+  .inline-checks input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--celeste); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-row">
+    <div class="brand">
+      <h1>Base de Datos Desgraciamon</h1>
+      <small>Panel Web del Staff · Misiones, Anuncios, Diarias y Textos Prism · Sincronizado con GitHub (Hora de Venezuela UTC-4)</small>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+      <div class="ve-clock" id="veClock">Hora Venezuela (UTC-4): --/--/---- --:--:--</div>
+      <button class="primary" onclick="loadFromGitHub()">Cargar de GitHub</button>
+      <button class="success" onclick="publishToGitHub()">Publicar a GitHub</button>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="missions" onclick="setTab('missions')">Misiones (<span id="countMissions">0</span>)</button>
+    <button class="tab-btn" data-tab="announcements" onclick="setTab('announcements')">Anuncios (<span id="countAnnouncements">0</span>)</button>
+    <button class="tab-btn" data-tab="daily" onclick="setTab('daily')">Misiones Diarias</button>
+    <button class="tab-btn" data-tab="texts" onclick="setTab('texts')">Textos Prism (<span id="countTexts">0</span>)</button>
+    <button class="tab-btn" data-tab="github" onclick="setTab('github')">Conexión GitHub & Archivos</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- ==================== TAB: MISIONES ==================== -->
+  <div id="tab-missions" class="grid-2">
+    <div class="panel">
+      <h2>
+        <span>Misiones</span>
+        <button class="vino" onclick="newMission()">+ Nueva Misión</button>
+      </h2>
+      <input type="search" id="missionSearch" placeholder="Buscar misión por título o ID..." oninput="renderMissionList()" style="margin-bottom:10px;" />
+      <div id="missionList" style="max-height:66vh;overflow-y:auto;"></div>
+    </div>
+
+    <div class="panel" id="missionEditorPanel">
+      <div id="missionEditorEmpty" style="color:var(--muted);padding:30px;text-align:center;">
+        Selecciona una misión de la izquierda o pulsa <b>+ Nueva Misión</b>.
+      </div>
+      <div id="missionEditorForm" class="hidden">
+        <h2>
+          <span id="misHeaderTitle">Editar Misión</span>
+          <div style="display:flex;gap:8px;">
+            <button onclick="duplicateCurrentMission()">Duplicar</button>
+            <button class="danger" onclick="deleteCurrentMission()">Eliminar</button>
+          </div>
+        </h2>
+
+        <h3>1. Información General</h3>
+        <div class="form-row">
+          <div class="field"><label>ID único</label><input type="text" id="m_id" oninput="syncMissionField('id', this.value)" /></div>
+          <div class="field"><label>Categoría</label>
+            <select id="m_cat" onchange="syncMissionField('categoryTag', this.value)">
+              <option value="">Automática según objetivo</option>
+              <option value="ITEMS">ITEMS</option>
+              <option value="CAPTURA">CAPTURA</option>
+              <option value="COMBATE">COMBATE</option>
+              <option value="ESPECIAL">ESPECIAL</option>
+            </select>
+          </div>
+          <div class="field"><label>Color título</label><input type="text" id="m_color" oninput="syncMissionField('color', this.value)" /></div>
+          <div class="field"><label>Color descripción</label><input type="text" id="m_bodyColor" oninput="syncMissionField('bodyColor', this.value)" /></div>
+        </div>
+        <div class="field" style="margin-bottom:10px;">
+          <label>Título (acepta &lt;prism=#C1,#C2&gt; y &lt;color=#HEX&gt;)</label>
+          <input type="text" id="m_title" oninput="syncMissionField('title', this.value)" />
+        </div>
+        <div class="field" style="margin-bottom:10px;">
+          <label>Descripción</label>
+          <textarea id="m_body" oninput="syncMissionField('body', this.value)"></textarea>
+        </div>
+        <div class="inline-checks">
+          <label><input type="checkbox" id="m_guild" onchange="syncMissionField('isGuildMission', this.checked)" /> Misión de Gremio (colaborativa)</label>
+          <label><input type="checkbox" id="m_repeat" onchange="syncMissionField('repeatable', this.checked)" /> Repetible</label>
+        </div>
+
+        <h3>2. Programación Oculta y Tiempo Límite (Hora de Venezuela UTC-4)</h3>
+        <div class="form-row">
+          <div class="field">
+            <label>Publicar automáticamente a las (oculta antes de esa hora)</label>
+            <input type="text" id="m_publishAt" placeholder="Ej: 2026-11-30 20:00 (vacío = inmediata)" oninput="syncMissionField('publishAt', this.value)" />
+            <div class="chip-bar">
+              <span class="chip" onclick="setVeDateOffset('m_publishAt','publishAt',0)">Limpiar (Inmediata)</span>
+              <span class="chip" onclick="setVeHourToday('m_publishAt','publishAt',20,0)">Hoy 20:00 VE</span>
+              <span class="chip" onclick="setVeHourOffsetDays('m_publishAt','publishAt',1,8,0)">Mañana 08:00 VE</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Fecha/hora límite de expiración (Hora VE)</label>
+            <input type="text" id="m_exp" placeholder="Ej: 2026-12-05 23:59 (vacío = sin límite)" oninput="syncMissionField('expirationDate', this.value)" />
+            <div class="chip-bar">
+              <span class="chip" onclick="setVeDateOffset('m_exp','expirationDate',0)">Sin expiración</span>
+              <span class="chip" onclick="setVeHourOffsetDays('m_exp','expirationDate',1,23,59)">+1 día 23:59 VE</span>
+              <span class="chip" onclick="setVeHourOffsetDays('m_exp','expirationDate',7,23,59)">+7 días 23:59 VE</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>3. Objetivos <button class="primary" style="float:right;padding:3px 9px;font-size:11.5px;" onclick="addObjective()">+ Añadir Objetivo</button></h3>
+        <div id="objectivesContainer"></div>
+
+        <h3>4. Recompensas</h3>
+        <div class="form-row">
+          <div class="field"><label>CobbleDollars ($)</label><input type="number" id="m_money" min="0" oninput="syncMissionField('moneyReward', Number(this.value||0))" /></div>
+        </div>
+        <div class="subcard">
+          <div class="subcard-head">
+            <strong style="font-size:12.5px;">Ítems de recompensa</strong>
+            <button onclick="addItemReward()">+ Añadir Ítem</button>
+          </div>
+          <div id="itemRewardsContainer"></div>
+        </div>
+        <div class="subcard">
+          <div class="subcard-head">
+            <strong style="font-size:12.5px;">Pokémon de recompensa</strong>
+            <button onclick="addPokemonReward()">+ Añadir Pokémon</button>
+          </div>
+          <div id="pokemonRewardsContainer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB: ANUNCIOS ==================== -->
+  <div id="tab-announcements" class="grid-2 hidden">
+    <div class="panel">
+      <h2>
+        <span>Anuncios</span>
+        <button class="naranja" onclick="newAnnouncement()">+ Nuevo Anuncio</button>
+      </h2>
+      <div id="announcementList" style="max-height:68vh;overflow-y:auto;"></div>
+    </div>
+    <div class="panel">
+      <div id="annEditorEmpty" style="color:var(--muted);padding:30px;text-align:center;">
+        Selecciona un anuncio de la izquierda o pulsa <b>+ Nuevo Anuncio</b>.
+      </div>
+      <div id="annEditorForm" class="hidden">
+        <h2>
+          <span>Editar Anuncio</span>
+          <button class="danger" onclick="deleteCurrentAnnouncement()">Eliminar</button>
+        </h2>
+        <div class="form-row">
+          <div class="field"><label>ID único</label><input type="text" id="a_id" oninput="syncAnnField('id', this.value)" /></div>
+          <div class="field"><label>Color título</label><input type="text" id="a_color" oninput="syncAnnField('color', this.value)" /></div>
+          <div class="field"><label>Color cuerpo</label><input type="text" id="a_bodyColor" oninput="syncAnnField('bodyColor', this.value)" /></div>
+          <div class="field"><label>Duración HUD (seg)</label><input type="number" id="a_dur" min="3" max="300" oninput="syncAnnField('hudDurationSeconds', Number(this.value||15))" /></div>
+        </div>
+        <div class="field" style="margin-bottom:10px;"><label>Título</label><input type="text" id="a_title" oninput="syncAnnField('title', this.value);renderAnnPreview();" /></div>
+        <div class="field" style="margin-bottom:10px;"><label>Contenido</label><textarea id="a_body" style="min-height:110px;" oninput="syncAnnField('body', this.value);renderAnnPreview();"></textarea></div>
+        <div class="field" style="margin-bottom:10px;"><label>Imagen (data:image/... base64 opcional)</label><input type="text" id="a_img" oninput="syncAnnField('imageUrl', this.value)" /></div>
+        <div class="inline-checks">
+          <label><input type="checkbox" id="a_chat" onchange="syncAnnField('showInChat', this.checked)" /> Mostrar en chat al entrar si estuvo desconectado</label>
+          <label><input type="checkbox" id="a_hud" onchange="syncAnnField('showInHud', this.checked)" /> Mostrar aviso flotante en HUD</label>
+        </div>
+        <h3>Vista previa en vivo</h3>
+        <div class="preview-box" id="annPreview"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB: MISIONES DIARIAS ==================== -->
+  <div id="tab-daily" class="hidden">
+    <div class="panel" style="margin-bottom:14px;">
+      <h2>
+        <span>Configuración del Ciclo Diario (Hora Venezuela UTC-4)</span>
+        <div style="display:flex;gap:8px;">
+          <button onclick="downloadJson(dailyDoc, 'daily-missions.json')">Descargar daily-missions.json</button>
+          <label class="btn" style="margin:0;">Cargar archivo local <input type="file" accept=".json" style="display:none" onchange="loadLocalDailyFile(this.files[0])" /></label>
+        </div>
+      </h2>
+      <div class="form-row">
+        <div class="field"><label>Zona Horaria</label><input type="text" id="d_tz" value="America/Caracas" oninput="dailyDoc.cycle.timezone=this.value" /></div>
+        <div class="field"><label>Hora de Reinicio (HH:mm VE)</label><input type="text" id="d_reset" oninput="dailyDoc.cycle.resetTime=this.value" /></div>
+        <div class="field"><label>Slot 1 Items (HH:mm VE)</label><input type="text" id="d_s1" oninput="dailyDoc.cycle.slot1UnlockTime=this.value" /></div>
+        <div class="field"><label>Slot 2 Captura (HH:mm VE)</label><input type="text" id="d_s2" oninput="dailyDoc.cycle.slot2UnlockTime=this.value" /></div>
+        <div class="field"><label>Slot 3 Combate (HH:mm VE)</label><input type="text" id="d_s3" oninput="dailyDoc.cycle.slot3UnlockTime=this.value" /></div>
+        <div class="field"><label>Bono 3/3 CobbleDollars</label><input type="number" id="d_bonusMoney" oninput="dailyDoc.dailyBonus.moneyReward=Number(this.value||0)" /></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <h2>
+          <span>Pool de Misiones Diarias</span>
+          <button class="primary" onclick="addDailyPoolMission()">+ Añadir</button>
+        </h2>
+        <select id="dailyPoolSelector" onchange="selectedDailyIdx=-1;renderDailyList()" style="margin-bottom:10px;">
+          <option value="itemsMissions">Slot 1 — Items</option>
+          <option value="captureMissions">Slot 2 — Captura</option>
+          <option value="combatMissions">Slot 3 — Combate</option>
+        </select>
+        <div id="dailyList" style="max-height:55vh;overflow-y:auto;"></div>
+      </div>
+      <div class="panel">
+        <div id="dailyEditorEmpty" style="color:var(--muted);padding:24px;text-align:center;">Selecciona una misión diaria del pool o carga `daily-missions.json`.</div>
+        <div id="dailyEditorForm" class="hidden">
+          <h2><span>Editar Misión Diaria</span><button class="danger" onclick="deleteCurrentDaily()">Eliminar</button></h2>
+          <div class="form-row">
+            <div class="field"><label>ID</label><input type="text" id="dm_id" oninput="currentDaily().id=this.value;renderDailyList()" /></div>
+            <div class="field"><label>Título</label><input type="text" id="dm_title" oninput="currentDaily().title=this.value;renderDailyList()" /></div>
+            <div class="field"><label>CobbleDollars</label><input type="number" id="dm_money" oninput="currentDaily().moneyReward=Number(this.value||0)" /></div>
+          </div>
+          <div class="field" style="margin-bottom:10px;"><label>Descripción</label><textarea id="dm_body" oninput="currentDaily().body=this.value"></textarea></div>
+          <div class="field"><label>JSON de objetivos (edición directa)</label><textarea id="dm_objs" style="min-height:130px;font-family:monospace;" onchange="updateDailyObjectivesJson(this.value)"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB: TEXTOS PRISM ==================== -->
+  <div id="tab-texts" class="hidden">
+    <div class="panel">
+      <h2>
+        <span>Editor de Textos Prism (texts.json)</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button onclick="addTextEntry()">+ Nueva Clave</button>
+          <button onclick="downloadJson(textsDoc, 'texts.json')">Descargar texts.json</button>
+          <label class="btn" style="margin:0;">Cargar local <input type="file" accept=".json" style="display:none" onchange="loadLocalTextsFile(this.files[0])" /></label>
+        </div>
+      </h2>
+      <input type="search" id="textsSearch" placeholder="Filtrar por clave o texto..." oninput="renderTextsList()" style="margin-bottom:10px;" />
+      <div id="textsContainer" style="display:grid;gap:10px;"></div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB: CONEXION GITHUB ==================== -->
+  <div id="tab-github" class="hidden">
+    <div class="panel">
+      <h2>Conexión al Repositorio GitHub del Mod</h2>
+      <p style="color:var(--muted);font-size:12.5px;margin-top:0;">
+        Tu token personal (PAT con permiso <b>Contents: Read & Write</b>) se guarda únicamente en este navegador (localStorage).
+      </p>
+      <div class="form-row">
+        <div class="field"><label>Propietario / Repo</label><input type="text" id="gh_repo" value="Dr3sh/Dr3sh.github.io" /></div>
+        <div class="field"><label>Rama (branch)</label><input type="text" id="gh_branch" value="main" /></div>
+        <div class="field"><label>Archivo Anuncios y Misiones</label><input type="text" id="gh_annPath" value="announcements.json" /></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Archivo Misiones Diarias (opcional en repo)</label><input type="text" id="gh_dailyPath" value="daily-missions.json" /></div>
+        <div class="field"><label>Archivo Textos Prism (opcional en repo)</label><input type="text" id="gh_textsPath" value="texts.json" /></div>
+        <div class="field"><label>GitHub Token (PAT)</label><input type="password" id="gh_token" placeholder="github_pat_..." /></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+        <button class="primary" onclick="saveGhSettings();testGitHubConnection()">Guardar y Probar Conexión</button>
+        <button class="success" onclick="saveGhSettings();loadFromGitHub()">Cargar Todo desde GitHub</button>
+        <button onclick="downloadJson(bulletinDoc, 'announcements.json')">Descargar announcements.json local</button>
+        <label class="btn" style="margin:0;">Importar announcements.json local <input type="file" accept=".json" style="display:none" onchange="loadLocalBulletinFile(this.files[0])" /></label>
+      </div>
+      <div id="ghStatusBox" style="margin-top:12px;font-size:12.5px;color:var(--celeste);"></div>
+    </div>
+  </div>
+</div>
+
+<div class="status-toast" id="toast"></div>
+
+<script>
+const OBJECTIVE_META = {
+  GET_ITEM: { label: 'Obtener Objeto', fields: ['itemId', 'consumeOnClaim'] },
+  CRAFT_ITEM: { label: 'Craftear / Fabricar Objeto', fields: ['itemId'] },
+  CATCH_SPECIES: { label: 'Capturar Especie Pokémon', fields: ['pokemonId', 'minLevel', 'pokemonProperties'] },
+  CATCH_TYPE: { label: 'Capturar Tipo Pokémon', fields: ['pokemonType', 'secondaryPokemonType', 'minLevel', 'pokemonProperties'] },
+  DEFEAT_POKEMON: { label: 'Derrotar Pokémon', fields: ['pokemonId', 'pokemonType', 'minLevel', 'minEvolutionStage'] },
+  EVOLVE_SPECIES: { label: 'Evolucionar Especie Inicial (ej. charmander)', fields: ['pokemonId'] },
+  WIN_PVP: { label: 'Ganar Combates PvP', fields: [] },
+  WIN_SHOWDOWN: { label: 'Ganar Combates en Showdown', fields: [] },
+  WIN_PVP_OR_SHOWDOWN: { label: 'Ganar Combates PvP o Showdown', fields: [] },
+  DEFEAT_RCT_NPC: { label: 'Vencer Entrenadores NPC (rctmod)', fields: ['pokemonId_npc'] },
+  EARN_MONEY: { label: 'Ganar Dinero (CobbleDollars en tiempo límite)', fields: [] },
+  SPEND_MONEY: { label: 'Gastar Dinero (CobbleDollars en tiempo límite)', fields: [] },
+  OBTAIN_BADGE: { label: 'Obtener Medalla de Gimnasio', fields: ['badgeId'] }
+};
+
+let bulletinDoc = { schemaVersion: 1, announcements: [], missions: [] };
+let dailyDoc = {
+  schemaVersion: 1,
+  cycle: { timezone: 'America/Caracas', resetTime: '08:00', slot1UnlockTime: '08:00', slot2UnlockTime: '13:30', slot3UnlockTime: '19:00', seed: 20261118 },
+  dailyBonus: { title: 'Recompensa del Dia', moneyReward: 2500, itemRewards: [] },
+  itemsMissions: [], captureMissions: [], combatMissions: []
+};
+let textsDoc = {};
+
+let activeTab = 'missions';
+let selectedMissionIdx = -1;
+let selectedAnnIdx = -1;
+let selectedDailyIdx = -1;
+
+// ==================== HORA VENEZUELA (UTC-4) ====================
+function getVenezuelaNow() {
+  const nowUtcMs = Date.now();
+  const veMs = nowUtcMs - 4 * 3600 * 1000;
+  return new Date(veMs);
+}
+function pad2(n) { return String(n).padStart(2, '0'); }
+function formatVeClock(d) {
+  return `${pad2(d.getUTCDate())}/${pad2(d.getUTCMonth()+1)}/${d.getUTCFullYear()} ${pad2(d.getUTCHours())}:${pad2(d.getUTCMinutes())}:${pad2(d.getUTCSeconds())}`;
+}
+function formatVeInput(d) {
+  return `${d.getUTCFullYear()}-${pad2(d.getUTCMonth()+1)}-${pad2(d.getUTCDate())} ${pad2(d.getUTCHours())}:${pad2(d.getUTCMinutes())}`;
+}
+function parseVeDateTime(str) {
+  if (!str || !str.trim()) return null;
+  const s = str.trim();
+  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2})(?::(\d{2}))?)?$/);
+  if (!m) return null;
+  return Date.UTC(+m[1], +m[2]-1, +m[3], +(m[4]||0), +(m[5]||0), +(m[6]||0));
+}
+function getMissionStatus(m) {
+  const nowVeMs = getVenezuelaNow().getTime();
+  const pubMs = parseVeDateTime(m.publishAt);
+  if (pubMs !== null && nowVeMs < pubMs) return { key: 'sched', label: 'Programada oculta' };
+  if (m.expirationDate && m.expirationDate.trim()) {
+    const expStr = m.expirationDate.trim();
+    const expMs = expStr.length === 10 ? parseVeDateTime(expStr + ' 23:59:59') : parseVeDateTime(expStr);
+    if (expMs !== null && nowVeMs > expMs) return { key: 'exp', label: 'Expirada' };
+  }
+  return { key: 'pub', label: 'Publicada' };
+}
+setInterval(() => {
+  document.getElementById('veClock').textContent = 'Hora Venezuela (UTC-4): ' + formatVeClock(getVenezuelaNow());
+}, 1000);
+document.getElementById('veClock').textContent = 'Hora Venezuela (UTC-4): ' + formatVeClock(getVenezuelaNow());
+
+// ==================== UI TABS & TOAST ====================
+function toast(msg, isError = false) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.style.borderColor = isError ? 'var(--rojo)' : 'var(--celeste)';
+  el.style.display = 'block';
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => { el.style.display = 'none'; }, 4200);
+}
+function setTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  ['missions','announcements','daily','texts','github'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('hidden', t !== tab);
+  });
+}
+function updateCounts() {
+  document.getElementById('countMissions').textContent = bulletinDoc.missions.length;
+  document.getElementById('countAnnouncements').textContent = bulletinDoc.announcements.length;
+  document.getElementById('countTexts').textContent = Object.keys(textsDoc).length;
+}
+
+// ==================== GITHUB API ====================
+function loadGhSettings() {
+  const saved = JSON.parse(localStorage.getItem('desgraciamon_db_gh') || '{}');
+  if (saved.repo) document.getElementById('gh_repo').value = saved.repo;
+  if (saved.branch) document.getElementById('gh_branch').value = saved.branch;
+  if (saved.annPath) document.getElementById('gh_annPath').value = saved.annPath;
+  if (saved.dailyPath) document.getElementById('gh_dailyPath').value = saved.dailyPath;
+  if (saved.textsPath) document.getElementById('gh_textsPath').value = saved.textsPath;
+  if (saved.token) document.getElementById('gh_token').value = saved.token;
+}
+function saveGhSettings() {
+  const cfg = {
+    repo: document.getElementById('gh_repo').value.trim(),
+    branch: document.getElementById('gh_branch').value.trim() || 'main',
+    annPath: document.getElementById('gh_annPath').value.trim() || 'announcements.json',
+    dailyPath: document.getElementById('gh_dailyPath').value.trim() || 'daily-missions.json',
+    textsPath: document.getElementById('gh_textsPath').value.trim() || 'texts.json',
+    token: document.getElementById('gh_token').value.trim()
+  };
+  localStorage.setItem('desgraciamon_db_gh', JSON.stringify(cfg));
+  return cfg;
+}
+function b64DecodeUtf8(b64) {
+  const bin = atob(b64.replace(/\n/g, ''));
+  const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+function b64EncodeUtf8(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  bytes.forEach(b => bin += String.fromCharCode(b));
+  return btoa(bin);
+}
+async function ghGetFile(cfg, path) {
+  const url = `https://api.github.com/repos/${cfg.repo}/contents/${path}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`;
+  const headers = { 'Accept': 'application/vnd.github+json' };
+  if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
+  const res = await fetch(url, { headers });
+  if (!res.ok) throw new Error(`HTTP ${res.status} al leer ${path}`);
+  const data = await res.json();
+  return { sha: data.sha, text: b64DecodeUtf8(data.content) };
+}
+async function ghPutFile(cfg, path, jsonObj, message) {
+  if (!cfg.token) throw new Error('Falta el Token PAT de GitHub en la pestaña Conexión GitHub.');
+  let sha = null;
+  try { sha = (await ghGetFile(cfg, path)).sha; } catch (_) {}
+  const url = `https://api.github.com/repos/${cfg.repo}/contents/${path}`;
+  const body = { message, content: b64EncodeUtf8(JSON.stringify(jsonObj, null, 2)), branch: cfg.branch };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${cfg.token}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`HTTP ${res.status} al subir ${path}: ${err.slice(0, 180)}`);
+  }
+}
+async function testGitHubConnection() {
+  const cfg = saveGhSettings();
+  const box = document.getElementById('ghStatusBox');
+  box.textContent = 'Probando conexión con GitHub...';
+  try {
+    const f = await ghGetFile(cfg, cfg.annPath);
+    box.style.color = 'var(--verde)';
+    box.textContent = `Conexión exitosa. Archivo ${cfg.annPath} encontrado (${f.text.length} caracteres).`;
+  } catch (e) {
+    box.style.color = 'var(--rojo)';
+    box.textContent = 'Error: ' + e.message;
+  }
+}
+async function loadFromGitHub() {
+  const cfg = saveGhSettings();
+  try {
+    const ann = await ghGetFile(cfg, cfg.annPath);
+    bulletinDoc = JSON.parse(ann.text);
+    bulletinDoc.announcements ||= [];
+    bulletinDoc.missions ||= [];
+    selectedMissionIdx = bulletinDoc.missions.length ? 0 : -1;
+    selectedAnnIdx = bulletinDoc.announcements.length ? 0 : -1;
+    try {
+      const d = await ghGetFile(cfg, cfg.dailyPath);
+      dailyDoc = JSON.parse(d.text);
+    } catch (_) {}
+    try {
+      const t = await ghGetFile(cfg, cfg.textsPath);
+      textsDoc = JSON.parse(t.text);
+    } catch (_) {}
+    renderAll();
+    toast('Datos cargados desde GitHub correctamente.');
+  } catch (e) {
+    toast(e.message, true);
+  }
+}
+async function publishToGitHub() {
+  const cfg = saveGhSettings();
+  try {
+    if (activeTab === 'daily') {
+      await ghPutFile(cfg, cfg.dailyPath, dailyDoc, 'Actualización de misiones diarias desde Panel Web');
+      toast('daily-missions.json publicado en GitHub.');
+    } else if (activeTab === 'texts') {
+      await ghPutFile(cfg, cfg.textsPath, textsDoc, 'Actualización de textos Prism desde Panel Web');
+      toast('texts.json publicado en GitHub.');
+    } else {
+      await ghPutFile(cfg, cfg.annPath, bulletinDoc, 'Actualización de anuncios y misiones desde Panel Web');
+      toast('announcements.json publicado en GitHub.');
+    }
+  } catch (e) {
+    toast(e.message, true);
+  }
+}
+
+// ==================== MISIONES ====================
+function newMission() {
+  const id = 'mis_' + Math.random().toString(36).slice(2, 8);
+  bulletinDoc.missions.unshift({
+    id, title: 'Nueva Misión', body: '', color: '#B91C3C', bodyColor: '#E5ECE8',
+    isGuildMission: false, targetUsesMemberCount: false,
+    objective: 'GET_ITEM', itemId: 'minecraft:diamond', pokemonId: '', pokemonType: '', badgeId: '',
+    amount: 1, daily: false, repeatable: false, publishAt: '', expirationDate: '',
+    objectives: [{ id: 'obj_' + Math.random().toString(36).slice(2, 7), type: 'GET_ITEM', amount: 1, targetUsesMemberCount: false, itemId: 'minecraft:diamond', pokemonId: '', pokemonType: '', secondaryPokemonType: '', pokemonProperties: '', badgeId: '', consumeOnClaim: false, minLevel: 0, minEvolutionStage: 0 }],
+    itemRewards: [], pokemonRewards: [], moneyReward: 1000, categoryTag: '', dailySlot: 0
+  });
+  selectedMissionIdx = 0;
+  renderAll();
+}
+function duplicateCurrentMission() {
+  if (selectedMissionIdx < 0) return;
+  const copy = JSON.parse(JSON.stringify(bulletinDoc.missions[selectedMissionIdx]));
+  copy.id = 'mis_' + Math.random().toString(36).slice(2, 8);
+  copy.title = copy.title + ' (Copia)';
+  bulletinDoc.missions.unshift(copy);
+  selectedMissionIdx = 0;
+  renderAll();
+}
+function deleteCurrentMission() {
+  if (selectedMissionIdx < 0) return;
+  bulletinDoc.missions.splice(selectedMissionIdx, 1);
+  selectedMissionIdx = bulletinDoc.missions.length ? Math.min(selectedMissionIdx, bulletinDoc.missions.length - 1) : -1;
+  renderAll();
+}
+function currentMission() { return selectedMissionIdx >= 0 ? bulletinDoc.missions[selectedMissionIdx] : null; }
+function syncMissionField(key, val) {
+  const m = currentMission(); if (!m) return;
+  m[key] = val;
+  renderMissionList();
+}
+function setVeDateOffset(inputId, field) {
+  document.getElementById(inputId).value = '';
+  syncMissionField(field, '');
+}
+function setVeHourToday(inputId, field, h, min) {
+  const d = getVenezuelaNow();
+  d.setUTCHours(h, min, 0, 0);
+  const s = formatVeInput(d);
+  document.getElementById(inputId).value = s;
+  syncMissionField(field, s);
+}
+function setVeHourOffsetDays(inputId, field, days, h, min) {
+  const d = new Date(getVenezuelaNow().getTime() + days * 86400 * 1000);
+  d.setUTCHours(h, min, 0, 0);
+  const s = formatVeInput(d);
+  document.getElementById(inputId).value = s;
+  syncMissionField(field, s);
+}
+function renderMissionList() {
+  const q = (document.getElementById('missionSearch').value || '').toLowerCase();
+  const listEl = document.getElementById('missionList');
+  listEl.innerHTML = '';
+  bulletinDoc.missions.forEach((m, i) => {
+    if (q && !(m.title || '').toLowerCase().includes(q) && !(m.id || '').toLowerCase().includes(q)) return;
+    const st = getMissionStatus(m);
+    const div = document.createElement('div');
+    div.className = 'list-item' + (i === selectedMissionIdx ? ' selected' : '');
+    div.onclick = () => { selectedMissionIdx = i; renderMissionEditor(); renderMissionList(); };
+    div.innerHTML = `<div class="title">${escapeHtml(stripTags(m.title || '(Sin título)'))}</div>
+      <div class="meta">
+        <span class="badge b-${st.key}">${st.label}</span>
+        ${m.isGuildMission ? '<span class="badge b-guild">Gremio</span>' : ''}
+        <span>${escapeHtml(m.id)}</span>
+      </div>`;
+    listEl.appendChild(div);
+  });
+}
+function renderMissionEditor() {
+  const m = currentMission();
+  document.getElementById('missionEditorEmpty').classList.toggle('hidden', !!m);
+  document.getElementById('missionEditorForm').classList.toggle('hidden', !m);
+  if (!m) return;
+  m.objectives ||= [];
+  m.itemRewards ||= [];
+  m.pokemonRewards ||= [];
+  document.getElementById('m_id').value = m.id || '';
+  document.getElementById('m_cat').value = m.categoryTag || '';
+  document.getElementById('m_color').value = m.color || '#B91C3C';
+  document.getElementById('m_bodyColor').value = m.bodyColor || '#E5ECE8';
+  document.getElementById('m_title').value = m.title || '';
+  document.getElementById('m_body').value = m.body || '';
+  document.getElementById('m_guild').checked = !!m.isGuildMission;
+  document.getElementById('m_repeat').checked = !!m.repeatable;
+  document.getElementById('m_publishAt').value = m.publishAt || '';
+  document.getElementById('m_exp').value = m.expirationDate || '';
+  document.getElementById('m_money').value = m.moneyReward || 0;
+  renderObjectives();
+  renderRewards();
+}
+function addObjective() {
+  const m = currentMission(); if (!m) return;
+  m.objectives.push({ id: 'obj_' + Math.random().toString(36).slice(2, 7), type: 'GET_ITEM', amount: 1, targetUsesMemberCount: false, itemId: 'minecraft:diamond', pokemonId: '', pokemonType: '', secondaryPokemonType: '', pokemonProperties: '', badgeId: '', consumeOnClaim: false, minLevel: 0, minEvolutionStage: 0 });
+  renderObjectives();
+}
+function renderObjectives() {
+  const m = currentMission(); if (!m) return;
+  const box = document.getElementById('objectivesContainer');
+  box.innerHTML = '';
+  m.objectives.forEach((o, idx) => {
+    const meta = OBJECTIVE_META[o.type] || { label: o.type, fields: [] };
+    const div = document.createElement('div');
+    div.className = 'subcard';
+    const optionsHtml = Object.entries(OBJECTIVE_META).map(([k, v]) => `<option value="${k}" ${o.type === k ? 'selected' : ''}>${v.label}</option>`).join('');
+    let extraFields = '';
+    if (meta.fields.includes('itemId')) {
+      extraFields += `<div class="field"><label>ID del Objeto</label><input type="text" value="${escapeAttr(o.itemId||'')}" oninput="currentMission().objectives[${idx}].itemId=this.value" placeholder="minecraft:diamond" /></div>`;
+    }
+    if (meta.fields.includes('pokemonId')) {
+      extraFields += `<div class="field"><label>${o.type==='EVOLVE_SPECIES'?'Especie Inicial (ej. charmander)':'Especie Pokémon'}</label><input type="text" value="${escapeAttr(o.pokemonId||'')}" oninput="currentMission().objectives[${idx}].pokemonId=this.value" placeholder="charmander" /></div>`;
+    }
+    if (meta.fields.includes('pokemonId_npc')) {
+      extraFields += `<div class="field"><label>ID Entrenador RCT (vacío = cualquiera)</label><input type="text" value="${escapeAttr(o.pokemonId||'')}" oninput="currentMission().objectives[${idx}].pokemonId=this.value" placeholder="Opcional" /></div>`;
+    }
+    if (meta.fields.includes('pokemonType')) {
+      extraFields += `<div class="field"><label>Tipo Principal</label><input type="text" value="${escapeAttr(o.pokemonType||'')}" oninput="currentMission().objectives[${idx}].pokemonType=this.value" placeholder="fire, water..." /></div>`;
+    }
+    if (meta.fields.includes('secondaryPokemonType')) {
+      extraFields += `<div class="field"><label>Tipo Secundario</label><input type="text" value="${escapeAttr(o.secondaryPokemonType||'')}" oninput="currentMission().objectives[${idx}].secondaryPokemonType=this.value" placeholder="Opcional" /></div>`;
+    }
+    if (meta.fields.includes('badgeId')) {
+      extraFields += `<div class="field"><label>ID Medalla</label><input type="text" value="${escapeAttr(o.badgeId||'')}" oninput="currentMission().objectives[${idx}].badgeId=this.value" placeholder="kanto_boulder_badge" /></div>`;
+    }
+    if (meta.fields.includes('minLevel')) {
+      extraFields += `<div class="field"><label>Nivel Mínimo</label><input type="number" min="0" value="${o.minLevel||0}" oninput="currentMission().objectives[${idx}].minLevel=Number(this.value||0)" /></div>`;
+    }
+    if (meta.fields.includes('minEvolutionStage')) {
+      extraFields += `<div class="field"><label>Etapa Evolutiva Mín.</label><input type="number" min="0" value="${o.minEvolutionStage||0}" oninput="currentMission().objectives[${idx}].minEvolutionStage=Number(this.value||0)" /></div>`;
+    }
+    if (meta.fields.includes('pokemonProperties')) {
+      extraFields += `<div class="field"><label>Propiedades (ej. shiny=yes)</label><input type="text" value="${escapeAttr(o.pokemonProperties||'')}" oninput="currentMission().objectives[${idx}].pokemonProperties=this.value" /></div>`;
+    }
+    div.innerHTML = `<div class="subcard-head">
+        <strong>Objetivo #${idx + 1}</strong>
+        <button class="danger" style="padding:3px 8px;" onclick="currentMission().objectives.splice(${idx},1);renderObjectives()">Quitar</button>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Tipo de Objetivo</label><select onchange="currentMission().objectives[${idx}].type=this.value;renderObjectives()">${optionsHtml}</select></div>
+        <div class="field"><label>Cantidad / Meta</label><input type="number" min="1" value="${o.amount||1}" oninput="currentMission().objectives[${idx}].amount=Math.max(1,Number(this.value||1))" /></div>
+        ${extraFields}
+      </div>
+      <div class="inline-checks">
+        <label><input type="checkbox" ${o.targetUsesMemberCount?'checked':''} onchange="currentMission().objectives[${idx}].targetUsesMemberCount=this.checked" /> Escalar x miembros de gremio</label>
+        ${o.type==='GET_ITEM' ? `<label><input type="checkbox" ${o.consumeOnClaim?'checked':''} onchange="currentMission().objectives[${idx}].consumeOnClaim=this.checked" /> Entregar ítems al reclamar</label>` : ''}
+      </div>`;
+    box.appendChild(div);
+  });
+}
+function addItemReward() { currentMission().itemRewards.push({ itemId: 'minecraft:diamond', count: 1 }); renderRewards(); }
+function addPokemonReward() { currentMission().pokemonRewards.push({ speciesId: 'cobblemon:eevee', properties: 'shiny=yes' }); renderRewards(); }
+function renderRewards() {
+  const m = currentMission(); if (!m) return;
+  const ir = document.getElementById('itemRewardsContainer');
+  ir.innerHTML = m.itemRewards.map((r, i) => `<div class="form-row" style="margin-bottom:6px;">
+    <div class="field"><input type="text" value="${escapeAttr(r.itemId)}" oninput="currentMission().itemRewards[${i}].itemId=this.value" placeholder="ID ítem" /></div>
+    <div class="field" style="display:flex;gap:6px;"><input type="number" min="1" value="${r.count}" oninput="currentMission().itemRewards[${i}].count=Number(this.value||1)" /><button class="danger" onclick="currentMission().itemRewards.splice(${i},1);renderRewards()">X</button></div>
+  </div>`).join('');
+  const pr = document.getElementById('pokemonRewardsContainer');
+  pr.innerHTML = m.pokemonRewards.map((r, i) => `<div class="form-row" style="margin-bottom:6px;">
+    <div class="field"><input type="text" value="${escapeAttr(r.speciesId)}" oninput="currentMission().pokemonRewards[${i}].speciesId=this.value" placeholder="Especie" /></div>
+    <div class="field" style="display:flex;gap:6px;"><input type="text" value="${escapeAttr(r.properties||'')}" oninput="currentMission().pokemonRewards[${i}].properties=this.value" placeholder="shiny=yes" /><button class="danger" onclick="currentMission().pokemonRewards.splice(${i},1);renderRewards()">X</button></div>
+  </div>`).join('');
+}
+
+// ==================== ANUNCIOS ====================
+function newAnnouncement() {
+  bulletinDoc.announcements.unshift({ id: 'ann_' + Math.random().toString(36).slice(2, 8), title: 'Nuevo Anuncio', body: '', color: '#F97316', bodyColor: '#FFFFFF', imageUrl: '', showInChat: true, showInHud: true, hudDurationSeconds: 15 });
+  selectedAnnIdx = 0;
+  renderAll();
+}
+function currentAnn() { return selectedAnnIdx >= 0 ? bulletinDoc.announcements[selectedAnnIdx] : null; }
+function syncAnnField(k, v) { const a = currentAnn(); if (!a) return; a[k] = v; renderAnnList(); }
+function deleteCurrentAnnouncement() {
+  if (selectedAnnIdx < 0) return;
+  bulletinDoc.announcements.splice(selectedAnnIdx, 1);
+  selectedAnnIdx = bulletinDoc.announcements.length ? 0 : -1;
+  renderAll();
+}
+function renderAnnList() {
+  const el = document.getElementById('announcementList');
+  el.innerHTML = '';
+  bulletinDoc.announcements.forEach((a, i) => {
+    const div = document.createElement('div');
+    div.className = 'list-item' + (i === selectedAnnIdx ? ' selected' : '');
+    div.onclick = () => { selectedAnnIdx = i; renderAnnEditor(); renderAnnList(); };
+    div.innerHTML = `<div class="title">${escapeHtml(stripTags(a.title || '(Sin título)'))}</div><div class="meta"><span>${escapeHtml(a.id)}</span></div>`;
+    el.appendChild(div);
+  });
+}
+function renderAnnEditor() {
+  const a = currentAnn();
+  document.getElementById('annEditorEmpty').classList.toggle('hidden', !!a);
+  document.getElementById('annEditorForm').classList.toggle('hidden', !a);
+  if (!a) return;
+  document.getElementById('a_id').value = a.id || '';
+  document.getElementById('a_color').value = a.color || '#F97316';
+  document.getElementById('a_bodyColor').value = a.bodyColor || '#FFFFFF';
+  document.getElementById('a_dur').value = a.hudDurationSeconds || 15;
+  document.getElementById('a_title').value = a.title || '';
+  document.getElementById('a_body').value = a.body || '';
+  document.getElementById('a_img').value = a.imageUrl || '';
+  document.getElementById('a_chat').checked = !!a.showInChat;
+  document.getElementById('a_hud').checked = !!a.showInHud;
+  renderAnnPreview();
+}
+function renderAnnPreview() {
+  const a = currentAnn(); if (!a) return;
+  document.getElementById('annPreview').innerHTML =
+    `<div style="font-weight:700;margin-bottom:6px;">${renderPrismHtml(`<color=${a.color||'#F97316'}>${a.title||''}</color>`)}</div>` +
+    `<div>${renderPrismHtml(`<color=${a.bodyColor||'#FFFFFF'}>${a.body||''}</color>`)}</div>`;
+}
+
+// ==================== MISIONES DIARIAS ====================
+function activePool() { return dailyDoc[document.getElementById('dailyPoolSelector').value] || []; }
+function currentDaily() { return selectedDailyIdx >= 0 ? activePool()[selectedDailyIdx] : null; }
+function addDailyPoolMission() {
+  const pool = activePool();
+  pool.unshift({ id: 'daily_' + Math.random().toString(36).slice(2, 7), title: 'Nueva Diaria', body: '', moneyReward: 500, objectives: [{ id: 'o1', type: 'GET_ITEM', amount: 16, itemId: 'minecraft:cobblestone' }] });
+  selectedDailyIdx = 0;
+  renderDailyList();
+  renderDailyEditor();
+}
+function deleteCurrentDaily() {
+  if (selectedDailyIdx < 0) return;
+  activePool().splice(selectedDailyIdx, 1);
+  selectedDailyIdx = -1;
+  renderDailyList();
+  renderDailyEditor();
+}
+function renderDailyList() {
+  document.getElementById('d_tz').value = dailyDoc.cycle.timezone || 'America/Caracas';
+  document.getElementById('d_reset').value = dailyDoc.cycle.resetTime || '08:00';
+  document.getElementById('d_s1').value = dailyDoc.cycle.slot1UnlockTime || '08:00';
+  document.getElementById('d_s2').value = dailyDoc.cycle.slot2UnlockTime || '13:30';
+  document.getElementById('d_s3').value = dailyDoc.cycle.slot3UnlockTime || '19:00';
+  document.getElementById('d_bonusMoney').value = dailyDoc.dailyBonus?.moneyReward || 0;
+  const list = document.getElementById('dailyList');
+  list.innerHTML = '';
+  activePool().forEach((m, i) => {
+    const div = document.createElement('div');
+    div.className = 'list-item' + (i === selectedDailyIdx ? ' selected' : '');
+    div.onclick = () => { selectedDailyIdx = i; renderDailyEditor(); renderDailyList(); };
+    div.innerHTML = `<div class="title">${escapeHtml(stripTags(m.title||m.id))}</div><div class="meta"><span>${escapeHtml(m.id)}</span></div>`;
+    list.appendChild(div);
+  });
+}
+function renderDailyEditor() {
+  const m = currentDaily();
+  document.getElementById('dailyEditorEmpty').classList.toggle('hidden', !!m);
+  document.getElementById('dailyEditorForm').classList.toggle('hidden', !m);
+  if (!m) return;
+  document.getElementById('dm_id').value = m.id || '';
+  document.getElementById('dm_title').value = m.title || '';
+  document.getElementById('dm_money').value = m.moneyReward || 0;
+  document.getElementById('dm_body').value = m.body || '';
+  document.getElementById('dm_objs').value = JSON.stringify(m.objectives || [], null, 2);
+}
+function updateDailyObjectivesJson(val) {
+  try { currentDaily().objectives = JSON.parse(val); toast('Objetivos actualizados.'); } catch (e) { toast('JSON inválido: ' + e.message, true); }
+}
+
+// ==================== TEXTOS PRISM ====================
+function addTextEntry() {
+  const k = prompt('Nombre de la clave (ej. mission.custom):');
+  if (!k) return;
+  textsDoc[k.trim()] = '<color=#38BDF8>Texto nuevo</color>';
+  renderTextsList();
+  updateCounts();
+}
+function renderTextsList() {
+  const q = (document.getElementById('textsSearch').value || '').toLowerCase();
+  const c = document.getElementById('textsContainer');
+  c.innerHTML = '';
+  Object.keys(textsDoc).sort().forEach(k => {
+    const val = textsDoc[k] || '';
+    if (q && !k.toLowerCase().includes(q) && !val.toLowerCase().includes(q)) return;
+    const div = document.createElement('div');
+    div.className = 'subcard';
+    div.innerHTML = `<div class="subcard-head"><strong>${escapeHtml(k)}</strong><button class="danger" style="padding:3px 8px;" onclick="delete textsDoc['${escapeAttr(k)}'];renderTextsList();updateCounts()">Eliminar</button></div>
+      <textarea oninput="textsDoc['${escapeAttr(k)}']=this.value;this.nextElementSibling.innerHTML=renderPrismHtml(this.value)">${escapeHtml(val)}</textarea>
+      <div class="preview-box" style="margin-top:6px;">${renderPrismHtml(val)}</div>`;
+    c.appendChild(div);
+  });
+}
+
+// ==================== PRISM PREVIEW & ARCHIVOS ====================
+function stripTags(s) { return String(s).replace(/<\/?(?:color|prism|bold|italic)(?:=[^>]*)?>/gi, ''); }
+function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escapeAttr(s) { return escapeHtml(s).replace(/"/g,'&quot;'); }
+function renderPrismHtml(text) {
+  return escapeHtml(text)
+    .replace(/&lt;bold&gt;/gi, '<b>').replace(/&lt;\/bold&gt;/gi, '</b>')
+    .replace(/&lt;italic&gt;/gi, '<i>').replace(/&lt;\/italic&gt;/gi, '</i>')
+    .replace(/&lt;color=(#[0-9a-fA-F]{3,6})&gt;/gi, '<span style="color:$1">')
+    .replace(/&lt;prism=([^&]+)&gt;/gi, (_, cols) => {
+      const first = (cols.match(/#[0-9a-fA-F]{3,6}/) || ['#38bdf8'])[0];
+      return `<span style="color:${first};font-weight:700;">`;
+    })
+    .replace(/&lt;\/(?:color|prism)&gt;/gi, '</span>');
+}
+function downloadJson(obj, filename) {
+  const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+}
+function loadLocalBulletinFile(file) {
+  if (!file) return;
+  file.text().then(txt => {
+    bulletinDoc = JSON.parse(txt);
+    bulletinDoc.announcements ||= [];
+    bulletinDoc.missions ||= [];
+    selectedMissionIdx = bulletinDoc.missions.length ? 0 : -1;
+    selectedAnnIdx = bulletinDoc.announcements.length ? 0 : -1;
+    renderAll();
+    toast('Archivo local cargado.');
+  }).catch(e => toast(e.message, true));
+}
+function loadLocalDailyFile(file) {
+  if (!file) return;
+  file.text().then(txt => { dailyDoc = JSON.parse(txt); renderAll(); toast('daily-missions.json cargado.'); }).catch(e => toast(e.message, true));
+}
+function loadLocalTextsFile(file) {
+  if (!file) return;
+  file.text().then(txt => { textsDoc = JSON.parse(txt); renderAll(); toast('texts.json cargado.'); }).catch(e => toast(e.message, true));
+}
+function renderAll() {
+  updateCounts();
+  renderMissionList();
+  renderMissionEditor();
+  renderAnnList();
+  renderAnnEditor();
+  renderDailyList();
+  renderDailyEditor();
+  renderTextsList();
+}
+
+loadGhSettings();
+renderAll();
+</script>
+</body>
+</html>
+
