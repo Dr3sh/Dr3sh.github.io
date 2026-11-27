@@ -163,45 +163,6 @@
   ],
   "versions": [
     {
-      "id": "desgraciamon3-1-9-19",
-      "server": "desgraciamon3",
-      "title": "Desgraciamon 3 1.9.19",
-      "version": "1.9.19",
-      "link": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.19/desgraciamon3-1.9.19.zip",
-      "manifest": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.19/manifest.json",
-      "sha256": "39667037768acb3d57c483f0a6265af78e25369686e34e15ca22bb7be9c91327",
-      "description": "",
-      "published_at": "2026-11-27",
-      "size_mb": 1365.4,
-      "status": "active"
-    },
-    {
-      "id": "desgraciamon3-1-9-18",
-      "server": "desgraciamon3",
-      "title": "Desgraciamon 3 1.9.18",
-      "version": "1.9.18",
-      "link": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.18/desgraciamon3-1.9.18.zip",
-      "manifest": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.18/manifest.json",
-      "sha256": "f8d05792dd60ef3d80a6eaaeb2799218a84616eadcd96bedf0a8646cabc1cc6c",
-      "description": "",
-      "published_at": "2026-11-27",
-      "size_mb": 1365.4,
-      "status": "active"
-    },
-    {
-      "id": "desgraciamon3-1-9-17",
-      "server": "desgraciamon3",
-      "title": "Desgraciamon 3 1.9.17",
-      "version": "1.9.17",
-      "link": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.17/desgraciamon3-1.9.17.zip",
-      "manifest": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.17/manifest.json",
-      "sha256": "ae3d4ddef49e9e925b3a6c3bfc9ea1967a6299b38dca6242824d8aec94c656cc",
-      "description": "",
-      "published_at": "2026-11-27",
-      "size_mb": 1364.8,
-      "status": "active"
-    },
-    {
       "id": "cobbleverse-9",
       "server": "cobbleverse",
       "title": "Desgraciamon 1 v9",
@@ -440,7 +401,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-27T18:36:18.898Z",
+  "launcher_refresh_id": "2026-11-27T22:24:08.600Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
