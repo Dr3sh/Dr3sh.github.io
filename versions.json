@@ -163,6 +163,19 @@
   ],
   "versions": [
     {
+      "id": "desgraciamon3-1-9-21",
+      "server": "desgraciamon3",
+      "title": "Desgraciamon 3 1.9.21",
+      "version": "1.9.21",
+      "link": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.21/desgraciamon3-1.9.21.zip",
+      "manifest": "https://github.com/ramirezjeider28-alt/modpack-versions/releases/download/desgraciamon3-v1.9.21/manifest.json",
+      "sha256": "c1aa1ae4c8798e4858b86928deb93a70b689050a76e35c2ff02b2f044bb33029",
+      "description": "",
+      "published_at": "2026-11-28",
+      "size_mb": 1365.5,
+      "status": "active"
+    },
+    {
       "id": "desgraciamon3-1-9-20",
       "server": "desgraciamon3",
       "title": "Desgraciamon 3 1.9.20",
@@ -414,7 +427,7 @@
     }
   ],
   "launcher_refresh_mode": "automatic",
-  "launcher_refresh_id": "2026-11-27T22:27:51.642Z",
+  "launcher_refresh_id": "2026-11-28T09:29:46.586Z",
   "maintenance_mode": false,
   "maintenance_message": "que vinite a hacer aquí averiguador",
   "testing_mode": false,
